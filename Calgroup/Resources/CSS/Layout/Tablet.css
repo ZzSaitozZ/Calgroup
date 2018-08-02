@@ -1,0 +1,104 @@
+﻿@media only screen and (max-width: 1200px ) {
+    .Top{
+        height:100px
+    }
+    .Top .Ewons-logo{
+        position: relative;
+        top: 0;
+        width: 100%;
+        text-align: center;
+        margin: auto;
+    }
+    .Topnav {
+        width: 100%;
+        display: flex;
+        overflow: hidden;
+        height: auto;
+        position: relative;
+        z-index: 2;
+        background-color: #3A5199;
+        color: white;
+        width: 100%;
+        padding: 0;
+        letter-spacing: 1px;
+        font-family: "Segoe UI",Arial,sans-serif;
+    }
+    .icon {
+        padding: 18px 10px !important;
+        font-size: 20px !important;
+    }
+    a.Topnav-item {
+        padding: 10px 10px;
+        width: auto;
+        border: none;
+        display: block;
+        outline: 0;
+        font-size: 15px;
+    }
+    .Search {
+        padding: unset;
+        display: inline-flex;
+        outline: 0;
+        font-size: 20px;
+    }
+        .Search input {
+            width: auto;
+            max-width: 150px;
+        }
+    .Introduce {
+        width:100%;
+        text-align:center !important;
+    }
+
+    .Webdiscover {
+        text-align: center;
+        padding-left: 10%;
+        padding-right: 10%;
+        height: 0px;
+        overflow: hidden;
+        transition: 0.5s;
+    }
+        .Webdiscover.Show {
+            margin-top: 30px;
+            margin-bottom: 30px;
+            height: auto !important;
+            transition: 0.5s;
+        }
+    .Baner-img {
+        width: 100%;
+        height: 250px;
+    }
+    .CategoryChoice .row .col-md-4 div {
+        margin: 15px;
+        height: 100%;
+        text-align: center;
+        transition: all 0.2s linear;
+    }
+    .CategoryChoice .row .col-md-4 div h3{
+        font-size: larger;
+    }
+
+    .Caroselfix1 h2 {
+        top: 100px;
+        right: 50px;
+        font-size:16px;
+        text-align: left;
+        color: #ffffffb3;
+        text-shadow: 0px 0px 20px white;
+    }
+    .Caroselfix2 h2 {
+        top: 100px;
+        right: 50px;
+        font-size: 16px;
+        text-align: right;
+        color: #ffffffb3;
+        text-shadow: 0px 0px 20px white;
+    }
+    .Caroselfix3 h2 {
+        top: 100px;
+        right: 50px;
+        font-size: 16px;
+        color: #ffffffb3;
+        text-shadow: 0px 0px 20px white;
+    }
+}

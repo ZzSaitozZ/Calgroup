@@ -1,0 +1,67 @@
+﻿@media only screen and (max-width: 768px ) {
+    .Top {
+        height: 68px
+    }
+        .Top .Ewons-logo {
+            position: relative;
+            top: 0;
+            width: 100%;
+            text-align: center;
+            margin: auto;
+        }
+    .Introduce {
+        display:none;
+    }
+    .Topnav-item {
+        padding: 15px 10px;
+        width: auto;
+        border: none;
+        display: block;
+        outline: 0;
+        font-size: 20px;
+    }
+    .Search input {
+        width: auto;
+        max-width: 120px;
+    }
+    .Title-web {
+        padding-top: 100px;
+        padding-bottom: 100px;
+        background-color: #bbc3c64d;
+        background-image: linear-gradient(180deg,white, #bbc3c64d 90%);
+    }
+
+    .Title-soft {
+        padding-top: 100px;
+        padding-bottom: 100px;
+        background-color: #006cf9b3;
+        background-image: linear-gradient(180deg,#006cf9b3,white 90%);
+    }
+    div.Title-webbtn {
+        text-align: center;
+    }
+    .Webdiscover {
+        text-align: center;
+        padding-left: 10%;
+        padding-right: 10%;
+        height: 0px;
+        overflow: hidden;
+        transition: 0.5s;
+    }
+
+        .Webdiscover.Show {
+            margin-top: 30px;
+            margin-bottom: 30px;
+            height: auto !important;
+            transition: 0.5s;
+        }
+
+    div.Title-softbtn {
+        text-align: center
+    }
+
+    .Baner-img {
+        width: 100%;
+        height: 200px;
+    }
+}
