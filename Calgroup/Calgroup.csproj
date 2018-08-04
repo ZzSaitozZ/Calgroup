@@ -185,15 +185,38 @@
     <Content Include="Resources\Icons\webfonts\fa-brands-400.svg" />
     <Content Include="Resources\Icons\webfonts\fa-regular-400.svg" />
     <Content Include="Resources\Icons\webfonts\fa-solid-900.svg" />
+    <Content Include="Resources\Images\Banners\CÁC LĨNH VỰC KHÁC_1.png" />
     <Content Include="Resources\Images\Banners\home-banner-1.png" />
     <Content Include="Resources\Images\Banners\honda-logo.png" />
     <Content Include="Resources\Images\Banners\logo.png" />
     <Content Include="Resources\Images\Banners\home-banner-2.png" />
     <Content Include="Resources\Images\Banners\home-banner-3.png" />
+    <Content Include="Resources\Images\Banners\LĨNH VỰC CƠ KHÍ_2.png" />
+    <Content Include="Resources\Images\Banners\LĨNH VỰC HOÁ HỌC-THỂ TÍCH_3.png" />
+    <Content Include="Resources\Images\Banners\LĨNH VỰC KHỐI LƯỢNG_1.png" />
+    <Content Include="Resources\Images\Banners\LĨNH VỰC LỰC ĐỘ CỨNG_1.png" />
+    <Content Include="Resources\Images\Banners\LĨNH VỰC NHIỆT ĐỘ-ĐỘ ẨM_1.png" />
+    <Content Include="Resources\Images\Banners\LĨNH VỰC ÁP SUẤT_1.png" />
+    <Content Include="Resources\Images\Banners\LĨNH VỰC ĐIỆN_1.png" />
     <Content Include="Resources\Images\Banners\panasonic-logo.png" />
     <Content Include="Resources\Images\Banners\samsung-logo.png" />
     <Content Include="Resources\Images\Banners\sony-logo.png" />
     <Content Include="Resources\Images\Banners\Toyota-logo.png" />
+    <Content Include="Resources\Images\Banners\Tận nơi.jpg" />
+    <Content Include="Resources\Images\Item\Capacitance Meter.png" />
+    <Content Include="Resources\Images\Item\KEYSIGHT U1241B Multimeter_0.png" />
+    <Content Include="Resources\Images\Item\Keysight U1242C Multimeter_0.png" />
+    <Content Include="Resources\Images\Item\Keysight U1250 Multimeter_1.jpg" />
+    <Content Include="Resources\Images\Item\thuoc cap.png" />
+    <Content Include="Resources\Images\Item\U1191A Keysight.jpg" />
+    <Content Include="Resources\Images\Item\U1271A U1272A U1273AX U1273A Keysight Multimeter.png" />
+    <Content Include="Resources\Images\Item\U1271A U1272A U1273AX U1273A Keysight Multimeter_0.png" />
+    <Content Include="Resources\Images\Item\U1280A Keysight Multimeter_0.png" />
+    <Content Include="Resources\Images\Item\U1401B Multi- Function Calibrator-Meter.png" />
+    <Content Include="Resources\Images\Item\U1602 Oscilloscope.png" />
+    <Content Include="Resources\Images\Item\U1602 Oscilloscope_0.png" />
+    <Content Include="Resources\Images\Item\U1602B Oscilloscope Keysight.png" />
+    <Content Include="Resources\Images\Item\U1733C Keysight LCR Meter-.png" />
     <Content Include="Resources\JS\Layout\Layout_1.js" />
     <Content Include="Resources\JS\Scripts\bootstrap.bundle.js" />
     <Content Include="Resources\JS\Scripts\bootstrap.bundle.min.js" />
@@ -311,7 +334,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Resources\Images\Item\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

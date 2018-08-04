@@ -9,43 +9,20 @@ body {
     padding:unset;
     transition:all 250s ease-in-out;
 }
-.E-container {
-    padding: 0.01em 16px
-}
-.E-container::before ::after{
-    box-sizing:inherit;
-}
-.Top {
-    position: relative;
-    background-color: #ffffff;
-    height: 90px;
-    line-height: 50px;
-    overflow: hidden;
-    z-index: 2;
-}
-.Top ::before ::after {
-    line-height:50px;
-}
-.Ewons-logo {
-    font-family: fontawesome;
-    text-decoration:none;
-    line-height:1;
-    font-size:37px;
-    letter-spacing:3px;
-    color: #bbc3c6;
-    display:block;
-    position: absolute;
-    height:100px;
-}
+
 .logo{
-    height:100%;
+    height:95px;
     width:auto;
 }
-.Introduce{
-    float:right;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    letter-spacing: 4px;
+.Company {
+    position: relative;
+    top: 15px;
 }
+    .Company h3 {
+        font-family: fontawesome;
+        font-size: 20px;
+    }
+
 .sticky {
     position: fixed !important;
     top: 0;
@@ -58,7 +35,7 @@ body {
     height: auto;
     position: relative;
     z-index: 2;
-    background-color: #3A5199;
+    background-color: #0075bf;
     color: white;
     width: 100%;
     padding: 0;
@@ -66,25 +43,16 @@ body {
     font-family: "Segoe UI",Arial,sans-serif;
 }
     .Topnav a:hover {
-        background-color: #576CAD;
+        background-color: #0988c7;
         color: white !important;
         text-decoration: none;
         cursor: pointer;
     }
 
-    .Topnav div div.Left {
+    .Topnav div div.Bar {
         display: inline-flex;
     }
-    .Topnav div div.Left a{
-        display: inline-flex;
-    }
-    .Topnav div div.Right {
-        display:inline-flex;
-        margin-left:auto;
-    }
-    .Topnav div div.Right a{
-        display: inline-flex;
-    }
+
 .icon {
     padding: 18px 35px !important;
     font-size: 24px !important;
@@ -99,7 +67,7 @@ a.Topnav-item {
     font-size:20px;
 }
 .Search {
-    padding:unset;
+    padding: 0px 5px 0px 5px;
     display: inline-flex;
     outline: 0;
     font-size: 20px;
@@ -108,77 +76,12 @@ a.Topnav-item {
         width:auto;
         max-width:150px;
     }
-.Title-web {
-    padding-top: 100px;
-    padding-bottom: 100px;
-    background-color: #bbc3c6b3;
-    background-image: linear-gradient(90deg,white, #bbc3c64d 90%);
-    margin: unset;
+.CategoryChoice {
+    text-align:center;
 }
-.Title-soft {
-    padding-top: 100px;
-    padding-bottom: 100px;
-    background-color: #006cf9b3;
-    background-image: linear-gradient(90deg,#006cf9b3,white 95%);
-
-}
-h1.Title-text {
-    letter-spacing: 3px;
-    font-weight: bold;
-}
-h2, h3, h4 .Title-text{
-    letter-spacing:2px;
-    font-family:fontawesome;
-}
-li.Title-text{
-    font-size:20px;
-}
-div.Title-webbtn{
-    text-align:left
-}
-a.Title-webbtn {
-    display: inline-block;
-    font-weight: 400;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: middle;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    border: 1px solid transparent;
-    border-top-color: transparent;
-    border-right-color: transparent;
-    border-bottom-color: transparent;
-    border-left-color: transparent;
-    padding: 0.375rem 0.75rem;
-    font-size: 1rem;
-    line-height: 1.5;
-    border-radius: 0.25rem;
-    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-    color: #007bff !important;
-    background-color: transparent;
-    background-image: none;
-    border-color: #007bff;
-}
-    a.Title-webbtn:hover {
-        color: #fff !important;
-        background-color: #007bff;
-        border-color: #007bff;
-    }
-.Webdiscover {
-        text-align:center;
-        padding-left: 10%;
-        padding-right:10%;
-        height: 0px !important;
-        overflow: hidden;
-        transition: 0.5s;
-    }
-    .Webdiscover.Show {
-        margin-bottom:30px;
-        height: auto !important;
-        transition: 0.5s;
-        padding-bottom:30px;
+    .CategoryChoice h2 {
+        margin-top: 1%;
+        color: #0075bf;
     }
 .CategoryChoice .row .col-md-4 div {
     margin: 0px 15px 0px 15px;
@@ -191,6 +94,14 @@ a.Title-webbtn {
     -moz-box-shadow: 0px 40px 20px -40px rgb(133, 133, 133);
     -o-box-shadow: 0px 40px 20px -40px rgb(133, 133, 133);
 }
+    .CategoryChoice .row .col-md-4 .Service {
+        margin: 0px 15px 0px 15px;
+        height: 100%;
+        padding-top: 30px;
+        text-align: center;
+        box-shadow:unset;
+    }
+
     .CategoryChoice .row .col-md-4 div h3 {
         text-align: center;
         font-family: fontawesome;
@@ -198,6 +109,13 @@ a.Title-webbtn {
         background-color: white;
         margin: unset
     }
+.Services {
+    background-image: linear-gradient(to right,white,#F7A747,white);
+}
+.Services.line{
+    padding-top:17px;
+    padding-bottom:16px;
+}
 div.Title-softbtn {
     text-align: right
 }
@@ -272,9 +190,8 @@ a.Title-softbtn {
     border-bottom-color:whitesmoke;
     cursor: pointer;
 }
-.Baner-img{
-    width:100%;
-    height:400px;
+.Baner-img {
+    width: 100%;
 }
 .Caroselfix1{
     left:2%;
