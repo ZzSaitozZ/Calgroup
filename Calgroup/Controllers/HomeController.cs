@@ -13,6 +13,8 @@ namespace Calgroup.Controllers
             return View();
         }
 
+       
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
@@ -24,6 +26,20 @@ namespace Calgroup.Controllers
         {
             ViewBag.Message = "Your contact page.";
 
+            return View();
+        }
+        // Downy-Code
+        public ActionResult News()
+        {
+            return View();
+        }
+
+        public ActionResult NewsDetail()
+        {
+            return View();
+        }
+        public ActionResult Question()
+        {
             return View();
         }
     }
