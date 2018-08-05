@@ -13,6 +13,8 @@ namespace Calgroup.Controllers
             return View();
         }
 
+       
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
@@ -26,6 +28,7 @@ namespace Calgroup.Controllers
 
             return View();
         }
+<<<<<<< HEAD
 
         public ActionResult SanPham(string cat)
         {
@@ -37,6 +40,21 @@ namespace Calgroup.Controllers
         {
             CalgroupEntities cgi = new CalgroupEntities();            
             return View(cgi.SanPhams.ToList());
+=======
+        // Downy-Code
+        public ActionResult News()
+        {
+            return View();
+        }
+
+        public ActionResult NewsDetail()
+        {
+            return View();
+        }
+        public ActionResult Question()
+        {
+            return View();
+>>>>>>> 8a79c6288ce2ec5cdc74b2de218478db6a48986f
         }
     }
 }

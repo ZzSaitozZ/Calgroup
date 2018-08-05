@@ -1,7 +1,9 @@
 ﻿$(document).ready(function () {
     'use strict';
     var c, currentScrollTop = 0;
-
+    var h = window.innerHeight;
+    $("#carouselTitle").height(h - 155)
+    $(".Baner-img").height($("#carouselTitle").height())
     $("#map").height ( $("#ContactUs").height())
     //var Left = $("#MenuLeft")
     //var Right = $("#MenuRight")
@@ -31,16 +33,9 @@
         c = currentScrollTop;
     })
 
-    $(Webdiscover).click(function() {
-        var Cate = $("#Cate");
-        var height = $("#Cate").height();
-        if (height < 100) {
-            Cate.addClass("Show");
-        } else if (height > 0) {
-            Cate.removeClass("Show");
-        }
-    })
+
 });
+
 window.onscroll = function () { myFunction() };
 
 var navbar = document.getElementById("navbar");
