@@ -69,4 +69,22 @@
         width: 100%;
         max-height: 250px;
     }
+
+    /*Question*/
+    .title_news_detail {
+        text-transform: uppercase;
+        text-align: center;
+        font-weight: bold;
+        color: #00609c;
+        margin: 0;
+        background-size: 100% 100%;
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+
+    h2.Question-title {
+        font-size: 1.5rem !important;
+        text-align: left;
+        padding-left: 10% !important;
+    }
 }

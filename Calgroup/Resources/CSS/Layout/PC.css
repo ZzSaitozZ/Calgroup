@@ -83,10 +83,14 @@ a.Topnav-item {
         margin-top: 1%;
         color: #0075bf;
     }
+    .CategoryChoice .row .col-md-4  {
+        margin:30px 0 0 0;
+    }
+
 .CategoryChoice .row .col-md-4 div {
     margin: 0px 15px 0px 15px;
     height: 100%;
-    padding-top: 30px;
+    background-color:white;
     text-align: center;
     transition: all 0.2s linear;
     box-shadow: 0px 40px 20px -40px rgb(133, 133, 133);
@@ -102,7 +106,7 @@ a.Topnav-item {
         box-shadow:unset;
     }
 
-    .CategoryChoice .row .col-md-4 div h3 {
+    .CategoryChoice .row .col-md-4 div h4 {
         text-align: center;
         font-family: fontawesome;
         letter-spacing: 2px;
@@ -231,15 +235,17 @@ a.Title-softbtn {
 }
 a.Footerlink {
     color: white;
-    font-weight: bold;
-    letter-spacing: 3px;
 }
 a.Footerlink:hover{
     color:white;
     text-decoration:none;
     border-bottom:solid;
 }
-
+i.icons:hover{
+    color:#ECECEC !important;
+    cursor:pointer;
+}
+/*AboutUs*/
 .AboutUs{
     padding:2% 10% 10% 10%; 
 }
@@ -248,6 +254,8 @@ a.Footerlink:hover{
         letter-spacing: 3px;
         color: #3A5199;
     }
+
+/*ContactUs*/
 .ContactUs {    
     width: 100%;
     height:auto;
@@ -260,3 +268,20 @@ a.Footerlink:hover{
     .ContactUs input,textarea{
         max-width:none;
     }
+
+/*Question*/
+.title_news_detail {
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: bold;
+    color: #00609c;
+    margin: 0;        
+    background-size: 100% 100%;
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+h2.Question-title {
+    font-size: 2.5rem !important;
+    text-align:center;
+    padding-left:unset;
+}
