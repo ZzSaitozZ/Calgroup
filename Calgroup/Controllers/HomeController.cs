@@ -26,5 +26,17 @@ namespace Calgroup.Controllers
 
             return View();
         }
+
+        public ActionResult SanPham(string cat)
+        {
+            
+            return View();
+        }
+
+        public ActionResult ChiTiet(string name)
+        {
+            CalgroupEntities cgi = new CalgroupEntities();            
+            return View(cgi.SanPhams.ToList());
+        }
     }
 }
