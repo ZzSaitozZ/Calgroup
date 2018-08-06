@@ -5,7 +5,7 @@
 @model List<Calgroup.SanPham>
 <style>
     #P-container{
-        width:1000px;margin:auto;
+        width:1000px;margin:10px auto;
     }
     #P-image {
         width:400px;display:inline-block;
@@ -105,6 +105,23 @@
                 .tags a:hover:before {
                     border-color: transparent transparent transparent #555;
                 }
+    #P-card-container {
+        margin: auto;
+        font-size: 0;
+    }
+             .P-card{                
+                 display:inline-block;
+                 text-align:center;
+               
+                 margin:0 5px;
+             }
+             .P-card img{
+                width:300px;
+             }
+             .P-card p{                 
+                 font-size:18px;
+                 font-weight:bold;
+             }
 
 </style>
 <div id="P-container">
@@ -153,26 +170,78 @@
 </div>
 
 <div>
-    <h1>Các sản phẩm liên quan</h1>
-    <div>
-
+    <h1 style="text-align:center;background-color:#0075bf;color:white;padding:10px 0;margin:5px 0;">Các sản phẩm liên quan</h1>
+    <div id="P-card-container">
+        
     </div>
 </div>
 
+<ul class="pagination pagination-lg justify-content-center">
+    <li id="pre"class="page-item"><a class="page-link" href="#">Previous</a></li>
+    <li id="n1" class="page-item number number1"><a class="page-link" href="#">1</a></li>
+    <li id="n2" class="page-item number"><a class="page-link" href="#">2</a></li>   
+    <li id="next"class="page-item"><a class="page-link" href="#">Next</a></li>
+</ul>
+
 <script>
-   
+    //Responsive with fixed width
+    function setWidth() {
+        var b = Math.floor($(window).width() / 310);
+        $('#P-card-container').width(b * 310);
+    }
+    setWidth();
+    $(window).resize(setWidth);
 
 
-
+    //TabNav
     $('.buttons').click(function () {
         var activeButton = $('#P-container .active')[0];
-        
+
         id = $(this)[0].dataset.link;
         if (!$(this).hasClass('active')) {
-            activeButton.className = activeButton.className.replace(" active", "");            
+            activeButton.className = activeButton.className.replace(" active", "");
             $(this)[0].className += ' active';
-            $('.P-description').hide();       
+            $('.P-description').hide();
             $('#' + id).show();
         }
     });
+
+    //
+    var page1 = '';
+    var page2 = '';
+    for (var i = 0; i <= 4; i++) {
+        page1 +=
+            '<div class="P-card">'+
+            '<img src="'+ '@Model[0].ImageLink'+'" />'+
+            '<p>'+'@Model[0].Name'+'</p>'+
+         '</div>'
+    }
+    for (var i = 0; i <= 3; i++) {
+        page2 +=
+            '<div class="P-card">'+
+            '<img src="'+ '@Model[0].ImageLink'+'" />'+
+            '<p>'+'@Model[0].Name'+'</p>'+
+         '</div>'
+    }
+    $('.number').click(function (event) {
+        event.preventDefault()
+        if (!$(this).hasClass('active')) {
+            $('.pagination .active').removeClass('active');
+            $(this).addClass('active');
+            $('.P-card').remove();
+            
+            if ($(this).children('a').html() == '1') { $('#P-card-container').append(page1) }
+            else { $('#P-card-container').append(page2) }
+        }
+    })
+    $('#pre').click(function (event) {
+        event.preventDefault()
+        $('#n1').click();
+    })
+    $('#next').click(function (event) {
+        event.preventDefault()
+        $('#n2').click();
+    })
+    $('#n1').click();
+   
 </script>
