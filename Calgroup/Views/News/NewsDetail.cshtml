@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "NewsDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    Model.EF.Post newsdetail = (Model.EF.Post)ViewBag.newsdetail;
+}
+<style>
+    .images {
+        border: 0;
+        font-size: 0;
+        line-height: 0;
+        max-width: 100%;
+    }
+</style>
+<div class="row2 mb-2 justify-content-center" style="padding-top:10px;">
+    <div class="col-md-8">
+        @Html.Raw(newsdetail.Content)
+    </div>
+</div>
+

@@ -1,0 +1,376 @@
+﻿
+@{
+    ViewBag.Title = "Library";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Library</h2>
+<style>
+    #lvcontainer {
+        margin-left: 10px;
+        display: inline-block;
+
+    }
+
+    .linhvuccha {
+        margin-top:10px;
+        width: 300px;
+        /*background-color: #0075bf;
+        border-radius: unset;*/
+        font-size: 14px;
+        color: white;
+        background-color: #428bca;
+        border-color: #428bca;
+        border-bottom-right-radius: 0 !important;
+        border-bottom-left-radius: 0 !important;
+    }
+
+    .linhvuccon {
+        width: 300px;
+        /*background-color: antiquewhite;*/
+        border: 1px solid #428bca;
+        border-bottom-right-radius: 0.25rem !important;
+        border-bottom-left-radius: 0.25rem  !important;
+    }
+
+        .linhvuccon div {
+            /*border-top: solid 1px;*/
+        }
+
+            .linhvuccon div:nth-child(1) {
+                border-top: unset;
+            }
+
+    .buttons.active {
+        /*color: white;*/
+        border-left: 10px solid #428bca;
+    }
+
+    .buttons {
+        display: inline-block;
+        padding: 5px;
+        cursor: pointer;
+        border-left: 10px solid transparent;
+    }
+    .clickable {
+        cursor: pointer;
+    }
+
+    .pull-right {
+        float: right !important;
+    }
+    .fas fa-angle-up::before {
+        content: "\f106";
+    }
+</style>
+
+<div class="row2">
+    <div id="lvcontainer" class="col-md-3">
+        <div class="navbar-toggler linhvuccha" type="button" data-toggle="collapse" data-target="#lvkeysight" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+            THIÊT BỊ HÃNG KEYSIGHT
+            <span class="pull-right clickable"><i class="fas fa-angle-down"></i></span>
+        </div>
+
+        <div class="collapse linhvuccon" id="lvkeysight">
+
+            <div class="buttons active" data-link="product">
+                Máy hiện sóng / Oscilloscope
+            </div>
+            <div class="buttons"  data-link="detail">
+                Máy đo điện trở cách điện / Insulation Resistance Tester
+            </div>
+            <div class="buttons">
+                Thiết bị hiệu chuẩn / Multi-function Calibrator
+            </div>
+            <div class="buttons">
+                Thiết bị đo ảnh nhiệt / Thermal Imager
+            </div>
+            <div class="buttons">
+                Đồng hồ Ampe kìm / Clamp Meter
+            </div>
+            <div class="buttons">
+                Đồng hồ đa năng / Multimeter
+            </div>
+            <div class="buttons">
+                Đồng hồ đo LCR / LCR Meter
+            </div>
+        </div>
+
+        <div class="navbar-toggler linhvuccha" type="button" data-toggle="collapse" data-target="#lvcokhi" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+            LĨNH VỰC CƠ KHÍ CHÍNH XÁC
+            <span class="pull-right clickable"><i class="fas fa-angle-down"></i></span>
+        </div>
+
+        <div class="collapse linhvuccon" id="lvcokhi">
+
+            <div>
+                Thước cặp / Caliper
+            </div>
+            <div>
+                Panme đo ngoài / Outside Micrometer
+            </div>
+            <div>
+                Panme đo trong / Inside Micrometer
+            </div>
+            <div>
+                Đồng hồ so điện tử / Digital Indicator
+            </div>
+            <div>
+                Đồng hồ so cơ khí / Dial Indicator
+            </div>
+            <div>
+                Thước đo độ dày / Thickness gauge
+            </div>
+            <div>
+                Thước đo độ sâu / Depth gauge
+            </div>
+            <div>
+                Thước đo chiều cao / Height gauge
+            </div>
+            <div>
+                Đế từ gá đồng hồ so / Magnetic Stands
+            </div>
+            <div>
+                Máy đo độ nhám /  Surface Roughness Tester
+            </div>
+
+
+        </div>
+
+        <div class="navbar-toggler linhvuccha" type="button" data-toggle="collapse" data-target="#lvnhiet" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+            LĨNH VỰC NHIỆT- NHIỆT &amp; ẨM
+        </div>
+
+        <div class="collapse linhvuccon" id="lvnhiet">
+
+            <div>
+                Máy đo nhiệt độ hồng ngoại / IR Thermometer
+            </div>
+            <div>
+                Máy đo nhiệt độ / Thermometer
+            </div>
+            <div>
+                Máy độ nhiệt độ &amp; độ ẩm / Thermo Hygrometer
+            </div>
+        </div>
+
+        <div class="navbar-toggler linhvuccha" type="button" data-toggle="collapse" data-target="#lvhoaly" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+            LĨNH VỰC HOÁ-LÝ-THỂ TÍCH
+        </div>
+
+        <div class="collapse linhvuccon" id="lvhoaly">
+
+            <div>
+                Máy đo độ dẫn điện / Conductivity Meter
+            </div>
+            <div>
+                Máy đo pH / pH Meter
+            </div>
+            <div>
+                Dung dịch / Solution
+            </div>
+        </div>
+
+        <div class="navbar-toggler linhvuccha" type="button" data-toggle="collapse" data-target="#lvdocung" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+            LĨNH VỰC LỰC-ĐỘ CỨNG
+        </div>
+
+        <div class="collapse linhvuccon" id="lvdocung">
+
+            <div>
+                Máy đo độ cứng
+            </div>
+
+        </div>
+
+        <div class="navbar-toggler linhvuccha" type="button" data-toggle="collapse" data-target="#lvkhoiluong" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+            LĨNH VỰC KHỐI LƯỢNG
+        </div>
+
+        <div class="collapse linhvuccon" id="lvkhoiluong">
+
+            <div>
+                Cân kỹ thuật
+            </div>
+            <div>
+                Cân phân tích / Analytical Balance
+            </div>
+            <div>
+                Cân bàn
+            </div>
+            <div>
+                Qủa cân chuẩn / Standard Weight
+            </div>
+        </div>
+
+        <div class="navbar-toggler linhvuccha" type="button" data-toggle="collapse" data-target="#lvapsuat" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+            LĨNH VỰC ĐIỆN
+        </div>
+
+        <div class="collapse linhvuccon" id="lvapsuat">
+
+            <div>
+                Đồng hồ đa năng / Multimeter
+            </div>
+            <div>
+                Ampe kìm / Clamp Meter
+            </div>
+
+        </div>
+
+        <div class="navbar-toggler linhvuccha" type="button" data-toggle="collapse" data-target="#lvdien" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+            LĨNH VỰC KHÁC
+        </div>
+
+        <div class="collapse linhvuccon" id="lvdien">
+
+            <div>
+                Máy đo ánh sáng / Light meter
+            </div>
+
+        </div>
+    </div>
+    <div id="P-container" class="col-md-8">
+        <div>
+            <div class="P-description .active" id="product">
+
+                <div class="CategoryChoice" style=" margin-top:5%">
+                    <h2>Sản phẩm được nhiều người quan tâm</h2>
+                    <div class="row justify-content-around" style="margin:1% 0% 3% 0%; padding-bottom:5%">
+                        
+                        <div class="col-md-4">
+                            <div>
+                                <img class="img-fluid" src="~/Resources/Images/Item/U1602 Oscilloscope_0.png" />
+                                <h4>Máy hiện sóng Keysight U1602B</h4>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div>
+                                <img class="img-fluid" src="~/Resources/Images/Item/U1401B Multi- Function Calibrator-Meter.png" />
+                                <h4>Thiết bị hiệu chuẩn Keysight U1401B</h4>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div>
+                                <img class="img-fluid" src="~/Resources/Images/Item/U1733C Keysight LCR Meter-.png" />
+                                <h4>Máy đo LCR cầm tay Keysight U1731C</h4>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div>
+                                <img class="img-fluid" src="~/Resources/Images/Item/Capacitance Meter.png" />
+                                <h4>Đồng hồ đo tụ điện Keysight U1701B</h4>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div>
+                                <img class="img-fluid" src="~/Resources/Images/Item/U1191A Keysight.jpg" />
+                                <h3>Ampe kìm Keysight U1192A</h3>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div>
+                                <img class="img-fluid" src="~/Resources/Images/Item/KEYSIGHT U1241B Multimeter_0.png" />
+                                <h4>Đồng hô đa năng Keysight U1241B</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="P-description" id="detail" style="display:none">
+                <div class="CategoryChoice" style=" margin-top:5%">
+                    <h2>Sản phẩm được nhiều người quan tâm</h2>
+                    <div class="row justify-content-around" style="margin:1% 0% 3% 0%; padding-bottom:5%">
+                        <div class="col-md-4">
+                            <div>
+                                <img class="img-fluid" src="~/Resources/Images/Item/thuoc cap.png" />
+                                <h4>Thước cặp điện tử 500-502-10 (1000) mm</h4>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div>
+                                <img class="img-fluid" src="~/Resources/Images/Item/thuoc cap.png" />
+                                <h4>Thước cặp điện tử 500-500-10 (0-450) mm </h4>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div>
+                                <img class="img-fluid" src="~/Resources/Images/Item/U1602 Oscilloscope_0.png" />
+                                <h4>Máy hiện sóng Keysight U1604B</h4>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div>
+                                <img class="img-fluid" src="~/Resources/Images/Item/U1602 Oscilloscope_0.png" />
+                                <h4>Máy hiện sóng Keysight U1602B</h4>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div>
+                                <img class="img-fluid" src="~/Resources/Images/Item/U1401B Multi- Function Calibrator-Meter.png" />
+                                <h4>Thiết bị hiệu chuẩn Keysight U1401B</h4>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div>
+                                <img class="img-fluid" src="~/Resources/Images/Item/U1733C Keysight LCR Meter-.png" />
+                                <h4>Máy đo LCR cầm tay Keysight U1731C</h4>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div>
+                                <img class="img-fluid" src="~/Resources/Images/Item/Capacitance Meter.png" />
+                                <h4>Đồng hồ đo tụ điện Keysight U1701B</h4>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div>
+                                <img class="img-fluid" src="~/Resources/Images/Item/U1191A Keysight.jpg" />
+                                <h3>Ampe kìm Keysight U1192A</h3>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div>
+                                <img class="img-fluid" src="~/Resources/Images/Item/KEYSIGHT U1241B Multimeter_0.png" />
+                                <h4>Đồng hô đa năng Keysight U1241B</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="P-description" id="specification" style="display:none">
+                <p>3</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script>
+    //TabNav
+    $('.buttons').click(function () {
+        var activeButton = $('.linhvuccon .active')[0];
+
+        id = $(this)[0].dataset.link;
+        if (!$(this).hasClass('active')) {
+            activeButton.className = activeButton.className.replace(" active", "");
+            $(this)[0].className += ' active';
+            $('.P-description').hide();
+            $('#' + id).show();
+        }
+    });
+    //$(document).on('click', '.linhvuccha.clickable', function (e) {
+    $('.linhvuccha').click(function () {
+        var $this = $(this);
+        if (!$this.hasClass('collapsed') && $this.find('i').hasClass('fas fa-angle-down')) {
+            $this.find('i').removeClass('fas fa-angle-down').addClass('fas fa-angle-up');
+        } else if (!$this.hasClass('collapsed') && $this.find('i').hasClass('fas fa-angle-up'))
+        {
+            $this.find('i').removeClass('fas fa-angle-up').addClass('fas fa-angle-down');
+        }
+        else {
+            $this.find('i').removeClass('fas fa-angle-down').addClass('fas fa-angle-up');
+        }
+    })
+</script>

@@ -157,7 +157,10 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
-    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CalibrationsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\LibrariesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\LibraryCategoriesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\MainController.cs" />
     <Compile Include="Areas\Admin\Controllers\MenusController.cs" />
     <Compile Include="Areas\Admin\Controllers\OrderDetailsController.cs" />
     <Compile Include="Areas\Admin\Controllers\OrdersController.cs" />
@@ -201,6 +204,7 @@
       <DependentUpon>CalgroupDB.edmx</DependentUpon>
     </Compile>
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -2367,9 +2371,6 @@
     <Content Include="obj\Debug\Calgroup.csprojResolveAssemblyReference.cache" />
     <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
     <Content Include="obj\Debug\Tsc.out" />
-    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Home\Login.cshtml" />
-    <Content Include="Areas\Admin\Views\Home\NotificationAuthorize.cshtml" />
     <Content Include="Areas\Admin\Views\Menus\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Menus\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Menus\Details.cshtml" />
@@ -2573,6 +2574,24 @@
     <Content Include="Resources\Admin\plugins\datatables\extensions\TableTools\Readme.md" />
     <Content Include="Resources\Admin\plugins\input-mask\phone-codes\phone-be.json" />
     <Content Include="Resources\Admin\plugins\input-mask\phone-codes\phone-codes.json" />
+    <Content Include="Areas\Admin\Views\Calibrations\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Calibrations\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Calibrations\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Calibrations\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Calibrations\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Main\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Main\Login.cshtml" />
+    <Content Include="Areas\Admin\Views\Main\NotificationAuthorize.cshtml" />
+    <Content Include="Areas\Admin\Views\Libraries\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Libraries\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Libraries\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Libraries\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Libraries\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\LibraryCategories\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\LibraryCategories\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\LibraryCategories\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\LibraryCategories\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\LibraryCategories\Index.cshtml" />
     <None Include="Resources\JS\Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Resources\JS\Scripts\jquery-3.3.1.js" />
     <Content Include="Resources\JS\Scripts\jquery-3.3.1.min.js" />
@@ -2633,6 +2652,10 @@
     <Content Include="Views\Home\NewsDetail.cshtml" />
     <Content Include="Views\Home\Question.cshtml" />
     <Content Include="Views\Home\Services.cshtml" />
+    <Content Include="Views\Home\Calibration.cshtml" />
+    <Content Include="Views\Home\Library.cshtml" />
+    <Content Include="Views\News\Index.cshtml" />
+    <Content Include="Views\News\NewsDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

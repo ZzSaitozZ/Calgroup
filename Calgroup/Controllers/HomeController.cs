@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Model.DAO;
 
 namespace Calgroup.Controllers
 {
@@ -51,6 +52,17 @@ namespace Calgroup.Controllers
         public ActionResult Question()
         {
             return View();
+        }
+        public ActionResult Library()
+        {
+            return View();
+
+        }
+        public ActionResult Calibration()
+        {
+            ViewBag.calibration = new CalibrationDAO().ListAllCalibration();
+            return View();
+
         }
     }
 }

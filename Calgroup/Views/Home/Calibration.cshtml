@@ -1,0 +1,127 @@
+﻿
+@{
+    ViewBag.Title = "Calibration";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>HieuChuan</h2>
+<style>
+    #lvcontainer {
+        margin-left: 10px;
+        display: inline-block;
+    }
+
+    .linhvuccha {
+        width: 300px;
+        background-color: #0075bf;
+        border-radius: unset;
+        font-size: 18px;
+        color: white;
+    }
+
+    .linhvuccon {
+        width: 300px;
+        /*background-color: antiquewhite;*/
+    }
+
+        .linhvuccon div {
+            border-top: solid 1px;
+        }
+
+            .linhvuccon div:nth-child(1) {
+                border-top: unset;
+            }
+
+    .buttons.active {
+        background-color: #7a7a7a;
+        color: white;
+    }
+
+    .buttons {
+        display: inline-block;
+        padding: 5px;
+        cursor: pointer;
+    }
+</style>
+@{ 
+    var calibration = (List<Model.EF.Calibration>)ViewBag.calibration;
+}
+
+<div class="row2">
+    <div id="lvcontainer" class="col-md-3">
+        <div class="navbar-toggler linhvuccha" type="button" @*data-toggle="collapse"*@ data-target="#lvkeysight" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+           Hiệu chuẩn
+        </div>
+
+        <div class="@*collapse*@ linhvuccon" id="lvkeysight">
+
+            @for (int i = 0; i < calibration.Count; i++)
+            {
+                String a = "hieuchuan" + calibration[i].ID;
+                if (i == 0)
+                {
+                    <div class="buttons active" data-link=@a>
+                        @calibration[i].Category
+                    </div>
+                }
+                else
+                {
+                    <div class="buttons" data-link=@a>
+                        @calibration[i].Category
+                    </div>
+                }
+            }
+
+
+        </div>
+    </div>
+    <div id="P-container" class="col-md-8">
+        
+        <div>
+            @for (int i = 0; i < calibration.Count; i++)
+            {
+                String a = "hieuchuan" + calibration[i].ID;
+                if (i == 0)
+                {
+                    <div class="P-description .active" id=@a>
+                        @Html.Raw(calibration[i].Detail);
+
+                    </div>
+                }
+                else
+                {
+                    <div class="P-description" id=@a style="display:none">
+                        @Html.Raw(calibration[i].Detail);
+
+                    </div>
+                }
+
+            }
+
+
+            @*<div class="P-description" id="detail" style="display:none">
+            <div class="Service">
+                <img class="img-fluid" src="~/Resources/Images/Banners/LĨNH VỰC ĐIỆN_1.png" />
+                <h4 class="Services line">Lĩnh vực điện - tần số</h4>
+            </div>
+        </div>*@
+
+
+        </div>
+
+    </div>
+</div>
+<script>
+    //TabNav
+    $('.buttons').click(function () {
+        var activeButton = $('.linhvuccon .active')[0];
+
+        id = $(this)[0].dataset.link;
+        if (!$(this).hasClass('active')) {
+            activeButton.className = activeButton.className.replace(" active", "");
+            $(this)[0].className += ' active';
+            $('.P-description').hide();
+            $('#' + id).show();
+        }
+    });
+</script>

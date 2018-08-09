@@ -1,0 +1,91 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    var news = (List<Model.EF.Post>)ViewBag.news;
+}
+@using Calgroup.Resources.Common;
+<h2 style="text-transform: uppercase;text-align: center;font-weight: bold;font-size: 50px;color: #0075bf;margin: 0;">Tin Tức</h2>
+<div id="P-card-container">
+    @foreach (var i in news)
+    {
+        var link = "/News/" + @i.Alias + "-" + @i.ID;
+        <div class="row2 mb-2 justify-content-center" style="padding-top:10px;">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <img src=@i.Image style="width:100%;">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="news-title">
+                                    <a href="#"><h5>@i.Name</h5></a>
+                                </div>
+                                <div class="news-cats">
+                                    <ul class="list-unstyled list-inline mb-1">
+                                        <li class="list-inline-item">
+                                            <i class="fa fa-folder-open text-danger"></i>
+                                            <a href="#"><small>Advertisment</small> </a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <i class="fa fa-folder-open text-danger"></i>
+                                            <a href="#"><small>@i.ViewCount</small> </a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <i class="fa fa-folder-open text-danger"></i>
+                                            <a href="#"><small>@i.CreatedDate</small></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="news-content">
+                                    <p>  @Html.Raw(StringHelper.ShortArticle(i.Description, 19))</p>
+                                </div>
+                                <div class="news-buttons">
+
+                                    <a href=@link class="btn btn-outline-danger btn-sm">Read More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+<ul class="pagination pagination-lg justify-content-center">
+    <li id="pre" class="page-item"><a class="page-link" href="#">Previous</a></li>
+    <li id="n1" class="page-item number number1"><a class="page-link" href="#">1</a></li>
+    <li id="n2" class="page-item number"><a class="page-link" href="#">2</a></li>
+    <li id="next" class="page-item"><a class="page-link" href="#">Next</a></li>
+</ul>
+<script>
+
+    //
+
+    $('.number').click(function (event) {
+        event.preventDefault()
+        if (!$(this).hasClass('active')) {
+            $('.pagination .active').removeClass('active');
+            $(this).addClass('active');
+            $('.P-card').remove();
+
+            if ($(this).children('a').html() == '1') { $('#P-card-container').append(page1) }
+            else { $('#P-card-container').append(page2) }
+        }
+    })
+    $('#pre').click(function (event) {
+        event.preventDefault()
+        $('#n1').click();
+    })
+    $('#next').click(function (event) {
+        event.preventDefault()
+        $('#n2').click();
+    })
+    $('#n1').click();
+
+</script>
+
+
