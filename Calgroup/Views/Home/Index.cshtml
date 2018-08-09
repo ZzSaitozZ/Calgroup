@@ -1,6 +1,7 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
+
 <div id="carouselTitle" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
         <li data-target="#carouselTitle" data-slide-to="0" class="active"></li>
@@ -33,10 +34,19 @@
         <span class="sr-only">Next</span>
     </a>
 </div>
+<div class="Certificate">
+    <h2>Chứng chỉ quốc tế</h2>
+    <div class="row justify-content-center" style="margin:3% 0% 3% 0%">
+        <div class="col-md-4">
+            <img />
+            <h4>Certificate</h4>
+        </div>
+    </div>
 
+</div>
 <div class="CategoryChoice" style="margin-top:4%">
     <h2>Dịch vụ hiệu chuẩn chúng tôi đang cung cấp theo các lĩnh vực</h2>
-    <div class="row justify-content-around" style="margin:3% 0% 3% 0%;padding-top:2%;padding-bottom:3%; border-radius:50px; box-shadow: 0 1px 10px 1px rgba(0,0,0,0.5)">
+    <div class="row justify-content-around" style="margin:unset;padding:unset">
         <div class="col-md-4">
             <div class="Service">
                 <img class="img-fluid" src="~/Resources/Images/Banners/LĨNH VỰC CƠ KHÍ_2.png" />
@@ -81,71 +91,81 @@
         </div>
         <div class="col-md-4">
             <div class="Service">
-                <img class="img-fluid" src="~/Resources/Images/Banners/CÁC LĨNH VỰC KHÁC_1.png" />
+                <img class="img-fluid" id="Origin" src="~/Resources/Images/Banners/CÁC LĨNH VỰC KHÁC_1.png" />
                 <h4 class="Services line">Lĩnh vực khác</h4>
             </div>
         </div>
         <div class="col-md-4">
             <div class="Service">
-                <img class="img-fluid" src="~/Resources/Images/Banners/Tận nơi.jpg" />
+                <img class="img-fluid" id="Another" src="~/Resources/Images/Banners/Tận nơi.jpg" />
                 <h4 class="Services">Hiệu chuẩn và sửa chữa thiết bị tận nơi</h4>
             </div>
         </div>
     </div>
 </div>
-<div class="CategoryChoice" style=" margin-top:5%">
+<div class="CategoryChoice" style=" margin-top:4%">
     <h2>Sản phẩm được nhiều người quan tâm</h2>
     <div class="row justify-content-around" style="margin:1% 0% 3% 0%; padding-bottom:5%">
         <div class="col-md-4">
-            <div>
+            <div class="Item">
                 <img class="img-fluid" src="~/Resources/Images/Item/thuoc cap.png" />
                 <h4>Thước cặp điện tử 500-502-10 (1000) mm</h4>
             </div>
         </div>
         <div class="col-md-4">
-            <div>
+            <div class="Item">
                 <img class="img-fluid" src="~/Resources/Images/Item/thuoc cap.png" />
                 <h4>Thước cặp điện tử 500-500-10 (0-450) mm </h4>
             </div>
         </div>
         <div class="col-md-4">
-            <div>
+            <div class="Item">
                 <img class="img-fluid" src="~/Resources/Images/Item/U1602 Oscilloscope_0.png" />
                 <h4>Máy hiện sóng Keysight U1604B</h4>
             </div>
         </div>
         <div class="col-md-4">
-            <div>
+            <div class="Item">
                 <img class="img-fluid" src="~/Resources/Images/Item/U1602 Oscilloscope_0.png" />
-                <h4>Máy hiện sóng Keysight U1602B</h4>
-            </div>
+                <h4>Máy hiện sóng</h4>
+                <ul>
+                    <li>Loại: Máy hiện sóng</li>
+                    <li>Model: FUCK</li>
+                    <li>Xuất xứ: TQ</li>
+                </ul>
+            </div>            
         </div>
         <div class="col-md-4">
-            <div>
+            <div class="Item">
                 <img class="img-fluid" src="~/Resources/Images/Item/U1401B Multi- Function Calibrator-Meter.png" />
                 <h4>Thiết bị hiệu chuẩn Keysight U1401B</h4>
+                <ul>
+                    <li>Loại: Máy hiện sóng</li>
+                    <li>Model: FUCK</li>
+                    <li>Xuất xứ: TQ</li>
+                </ul>
             </div>
         </div>
         <div class="col-md-4">
-            <div>
+            <div class="Item">
                 <img class="img-fluid" src="~/Resources/Images/Item/U1733C Keysight LCR Meter-.png" />
                 <h4>Máy đo LCR cầm tay Keysight U1731C</h4>
             </div>
         </div>
         <div class="col-md-4">
-            <div>
+            <div class="Item">
                 <img class="img-fluid" src="~/Resources/Images/Item/Capacitance Meter.png" />
                 <h4>Đồng hồ đo tụ điện Keysight U1701B</h4>
             </div>
         </div>
         <div class="col-md-4">
-            <div>
+            <div class="Item">
                 <img class="img-fluid" src="~/Resources/Images/Item/U1191A Keysight.jpg" />
-                <h3>Ampe kìm Keysight U1192A</h3>
+                <h4>Ampe kìm Keysight U1192A</h4>
             </div>
         </div>
         <div class="col-md-4">
-            <div>
+            <div class="Item">
                 <img class="img-fluid" src="~/Resources/Images/Item/KEYSIGHT U1241B Multimeter_0.png" />
                 <h4>Đồng hô đa năng Keysight U1241B</h4>
             </div>

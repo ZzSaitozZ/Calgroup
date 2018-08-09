@@ -1,12 +1,29 @@
 ﻿@media only screen and (max-width: 750px ) {
+    .Title {
+        text-align: center;
+        height: 100px !important;
+    }
+
+    .logo {
+        position: relative;
+        height: 100px !important;
+        left: unset;
+        width: auto;
+    }
+
     .Company {
-        display:none !important;
+        display: none !important;
     }
 
         .Company h3 {
-            font-family: fontawesome;
-            font-size: 15px;
+            font-size: 20px;
         }
+    .hotline {
+        display:none !important;
+        position: absolute;
+        right: 10%;
+        width: auto;
+    }
     a.Topnav-item {
         padding: 15px 10px;
         width: auto;
@@ -20,48 +37,81 @@
         display: flex !important;
         flex-direction:column !important;
     }
-    .Search input {
-        width: auto;
-        max-width: 120px;
-    }
-    .Services.line {
-        padding:unset;
-    }
-    .Title-web {
-        padding-top: 100px;
-        padding-bottom: 100px;
-        background-color: #bbc3c64d;
-        background-image: linear-gradient(180deg,white, #bbc3c64d 90%);
-    }
-
-    .Title-soft {
-        padding-top: 100px;
-        padding-bottom: 100px;
-        background-color: #006cf9b3;
-        background-image: linear-gradient(180deg,#006cf9b3,white 90%);
-    }
-    div.Title-webbtn {
+    .CategoryChoice {
         text-align: center;
     }
-    .Webdiscover {
-        text-align: center;
-        padding-left: 10%;
-        padding-right: 10%;
-        height: 0px;
-        overflow: hidden;
-        transition: 0.5s;
-    }
 
-        .Webdiscover.Show {
-            margin-top: 30px;
-            margin-bottom: 30px;
-            height: auto !important;
-            transition: 0.5s;
+        .CategoryChoice h2 {
+            margin-top: 1%;
+            color: #0075bf;
         }
 
-    div.Title-softbtn {
-        text-align: center
+        .CategoryChoice .row .col-md-4 {
+            margin: 4% 0 0 0;
+        }
+    .Service {
+        margin: 0px 15px 0px 15px;
+        height: 100%;
+        text-align: center;
+        border-radius: 1rem;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }
+        .Service img {
+            border-radius: 1rem;
+        }
+
+        .Service h4 {
+            text-align: center;
+            height: 56px;
+            letter-spacing: 1px;
+            background-color: #0075bf;
+            font-size: larger;
+            color: white;
+            margin: unset;
+            border-radius: 0 0 1rem 1rem;
+        }
+    .Services {
+        padding-top:12px;
+    }
+    .Services.line {
+        padding-top: 12px;
+        padding-bottom: 11px;
+    }
+    .Item {
+        margin: 0px 15px 0px 15px;
+        height: 100%;
+        background-color: white;
+        text-align: center;
+        transition: all 0.2s linear;
+        border-radius: 0 0 1rem 1rem;
+        background-image: linear-gradient(0deg, #ECECEC 0%, white 35%);
+    }
+
+        .Item h4 {
+            text-align: center;
+            height: 56px;
+            letter-spacing: 1px;
+            padding-top:10px;
+            font-size:larger;
+            background-image: linear-gradient(white, #F79119);
+            color: black;
+            margin: unset;
+            border-radius: 0 0 1rem 1rem;
+        }
+
+        .Item ul {
+            text-align: left;
+            margin: unset;
+            height: auto;
+            margin-bottom: unset;
+            font-size: 20px
+        }
+
+    .logo-sub {
+        width: 100%;
+        height: auto;
+    } 
+    
     .slide {
         max-height: 250px !important;
     }
@@ -69,7 +119,10 @@
         width: 100%;
         max-height: 250px;
     }
-
+    .logo-sub {
+        width: 50%;
+        height: auto;
+    }
     /*Question*/
     .title_news_detail {
         text-transform: uppercase;
