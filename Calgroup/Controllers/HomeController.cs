@@ -11,7 +11,7 @@ namespace Calgroup.Controllers
         public ActionResult Index()
         {
             return View();
-        }       
+        }
 
         public ActionResult About()
         {
@@ -29,13 +29,13 @@ namespace Calgroup.Controllers
 
         public ActionResult SanPham(string cat)
         {
-            
-            return View();
+            Calgroup_v2Entities cgi = new Calgroup_v2Entities();
+            return View(cgi.SanPhams.ToList()); ;
         }
 
         public ActionResult ChiTiet(string name)
         {
-            CalgroupEntities cgi = new CalgroupEntities();
+            Calgroup_v2Entities cgi = new Calgroup_v2Entities();
             return View(cgi.SanPhams.ToList());
         }
         // Downy-Code

@@ -8,36 +8,17 @@
     $("#Another").height($("#Origin").height())
     $("#logo").height($("#Company").height())
     $("#top").height($("#logo").height())
-    //var Left = $("#MenuLeft")
-    //var Right = $("#MenuRight")
-    //var Menu2 = $("#Menubar2")
-    //var MenuMain = $("#MenuCenter")
-    //var Topnav = $("#Topnav")
-    //var Sidebtn = $("#Sidebtn")
     var k = 1;
 
     $(window).scroll(function () {
         var a = $(window).scrollTop();
         currentScrollTop = a;
         if (c < currentScrollTop) {
-            //Left.removeClass("ShowL");            
-            //Right.removeClass("ShowR");                       
-            //MenuMain.addClass("MenuCenterHide");
-            //Topnav.addClass("Tophide");
-            //Sidebtn.addClass("Sidebtnhide");
-            //Menu2.addClass("Hide");
-        } else if (c > currentScrollTop) {
-            //Left.addClass("ShowL");
-            //Right.addClass("ShowR");
-            //MenuMain.removeClass("MenuCenterHide");
-            //Topnav.removeClass("Tophide");
-            //Sidebtn.removeClass("Sidebtnhide")
-            //Menu2.removeClass("Hide")
+        }
+        else if (c > currentScrollTop) {
         }
         c = currentScrollTop;
     })
-
-
 });
 
 window.onscroll = function () { myFunction() };
@@ -52,6 +33,8 @@ function myFunction() {
     } else {
         navbar.classList.remove("sticky");
     }
+    $('i.fa-list-ul').css('top', $('.navbar.Topnav')[0].offsetTop + $('.navbar.Topnav').height());
+    $('#lvcontainer').css('top', $('i.fa-list-ul')[0].offsetTop);
 }
 
 function Resize() {

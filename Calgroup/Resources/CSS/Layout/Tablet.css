@@ -45,10 +45,11 @@
     }
     .icon {
         padding: 18px 10px !important;
+        margin-right: 0px;
         font-size: 20px !important;
     }
     a.Topnav-item {
-        padding: 10px 10px;
+        padding: 17px 5px;
         width: auto;
         border: none;
         display: block;

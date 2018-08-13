@@ -2,6 +2,415 @@
 @{
     ViewBag.Title = "SanPham";
 }
+@model List<SanPham>
+<div style="background">SanPham</div>
+<style>
+    #lvcontainer {
+        margin-left: 10px;
+        display: inline-block;
+        transition: left 0.5s;
+    }
+    .linhvuccha {
+        width: 300px;
+        padding: 10px 10px 10px 15px;
+        font-size: 16px;
+        color: white;
+        background-color: #0075bf;
+        border-color: #0075bf;
+        border-radius: 0;
+    }
 
-<h2>SanPham</h2>
+    .linhvuccon {
+        width: 300px;
+        background-color: white;
+        border: 1px solid #0075bf;
+        font-size: 16px;
+    }
 
+        .linhvuccon div {
+            width: 100%;
+            border-bottom: solid 1px #0075bf;
+            padding: 5px 0px 5px 15px;
+        }
+            .linhvuccon div:hover {
+                cursor: pointer;
+                background-color: #0075bf45;
+            }
+    .linhvuccon div:nth-child(1)
+    {
+        border-top:unset;
+    }
+
+    .clickable {
+        cursor: pointer;
+    }
+
+    .pull-right {
+        float: right !important;
+    }
+
+    
+    #P-card-container {
+        margin: 0px auto 20px auto;
+        font-size: 0;
+        background-color: rgb(227, 227, 247);       
+        display:inline-block;
+        vertical-align:top;
+    }
+    #P-card-subcontainer{
+        margin:auto;
+    }
+    i.fa-list-ul {
+        font-size: 25px;
+        color: white;
+        background: #0075bf;
+        padding: 7px 15px 10px 7px;
+        border-radius: 0 0 30px 0;
+        transition: left 0.5s;
+        display: none;
+        position: abl;
+        left: 0;
+    }
+    .P-card {
+        display: inline-block;
+        text-align: center;
+        margin-bottom: 15px;
+        margin-top: 15px
+    }
+    .P-card img {
+            width: 100%;
+        }
+
+        .P-card p {
+            font-size: 18px;
+            font-weight: bold;
+            width:100%;
+            margin-bottom: 0;
+            background-color: whitesmoke;
+        }
+
+        .P-card div {
+            font-size: 14px;
+            width: 100%;
+            background-color: ghostwhite;
+        }
+
+    .buttons.active {
+        /*color: white;*/
+        border-left: 10px solid #0075bf;
+    }
+
+    .buttons {
+        display: inline-block;
+        padding: 5px;
+        cursor: pointer;
+        border-left: 10px solid transparent;
+    }
+
+    @@media screen and (min-width: 1400px)
+    {
+        .P-card{
+            width:22.75%;
+            margin-left:1.8%;
+        }
+        .P-card:nth-child(4n+4)
+        {
+            margin-right:1.8%;
+        }
+    }
+    @@media screen and (max-width: 1400px) and (min-width:1024px) {
+        .P-card {
+            width: 31%;
+        }
+
+            .P-card:nth-child(3n+1), .P-card:nth-child(3n+3) {
+                margin-left: 1.75%;
+                margin-right: 1.75%
+            }
+
+            .P-card:nth-child(3n+2) {
+                margin-left: 0;
+                margin-right: 0;
+            }
+    }
+    @@media screen and (max-width: 1024px)  {
+        .P-card {
+            width: 41%;
+        }
+
+            .P-card:nth-child(2n+1) {
+                margin-left: 6%;
+            }
+
+            .P-card:nth-child(2n+1) {
+                margin-left: 6%;
+                margin-right: 6%;
+            }
+    }
+    @@media screen and (max-width: 800px) {
+        #P-card-container{
+            width:100%;
+        }        
+        i.fa-list-ul{
+            display:inline-block;
+            position:fixed;
+             
+        }
+        #lvcontainer{
+            
+            position:fixed;
+            margin-left:0;
+            left:-300px;    
+        }      
+    }
+    @@media screen and (max-width:500px) {
+        .P-card p {
+            font-size: 14px;
+        }
+        .P-card div{
+            font-size:12px;
+        }
+    }
+</style>
+
+<div style="font-size:0px">
+    <div><i class="fas fa-list-ul"></i></div>
+    <div id="lvcontainer" style="margin-left:0;">        
+        <div class="navbar-toggler linhvuccha"  data-toggle="collapse" data-target="#lvkeysight" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+            THIÊT BỊ HÃNG KEYSIGHT
+            <span class="pull-right clickable"><i class="fas fa-angle-down"></i></span>
+        </div>
+        <div class="collapse linhvuccon" id="lvkeysight">
+
+            <div>
+                Máy hiện sóng / Oscilloscope
+            </div>
+            <div>
+                Máy đo điện trở cách điện / Insulation Resistance Tester
+            </div>
+            <div>
+                Thiết bị hiệu chuẩn / Multi-function Calibrator
+            </div>
+            <div>
+                Thiết bị đo ảnh nhiệt / Thermal Imager
+            </div>
+            <div>
+                Đồng hồ Ampe kìm / Clamp Meter
+            </div>
+            <div>
+                Đồng hồ đa năng / Multimeter
+            </div>
+            <div>
+                Đồng hồ đo LCR / LCR Meter
+            </div>
+        </div>
+        <div class="navbar-toggler linhvuccha"  data-toggle="collapse" data-target="#lvcokhi" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+            LĨNH VỰC CƠ KHÍ CHÍNH XÁC
+            <span class="pull-right clickable"><i class="fas fa-angle-down"></i></span>
+        </div>
+        <div class="collapse linhvuccon" id="lvcokhi">
+            <div>
+                Thước cặp / Caliper
+            </div>
+            <div>
+                Panme đo ngoài / Outside Micrometer
+            </div>
+            <div>
+                Panme đo trong / Inside Micrometer
+            </div>
+            <div>
+                Đồng hồ so điện tử / Digital Indicator
+            </div>
+            <div>
+                Đồng hồ so cơ khí / Dial Indicator
+            </div>
+            <div>
+                Thước đo độ dày / Thickness gauge
+            </div>
+            <div>
+                Thước đo độ sâu / Depth gauge
+            </div>
+            <div>
+                Thước đo chiều cao / Height gauge
+            </div>
+            <div>
+                Đế từ gá đồng hồ so / Magnetic Stands
+            </div>
+            <div>
+                Máy đo độ nhám /  Surface Roughness Tester
+            </div>
+        </div>
+
+        <div class="navbar-toggler linhvuccha" data-toggle="collapse" data-target="#lvnhiet" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+            LĨNH VỰC NHIỆT- NHIỆT &amp; ẨM
+        </div>
+
+        <div class="collapse linhvuccon" id="lvnhiet">
+
+            <div>
+                Máy đo nhiệt độ hồng ngoại / IR Thermometer
+            </div>
+            <div>
+                Máy đo nhiệt độ / Thermometer
+            </div>
+            <div>
+                Máy độ nhiệt độ &amp; độ ẩm / Thermo Hygrometer
+            </div>
+        </div>
+
+        <div class="navbar-toggler linhvuccha"  data-toggle="collapse" data-target="#lvhoaly" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+            LĨNH VỰC HOÁ-LÝ-THỂ TÍCH
+        </div>
+
+        <div class="collapse linhvuccon" id="lvhoaly">
+
+            <div>
+                Máy đo độ dẫn điện / Conductivity Meter
+            </div>
+            <div>
+                Máy đo pH / pH Meter
+            </div>
+            <div>
+                Dung dịch / Solution
+            </div>
+        </div>
+
+        <div class="navbar-toggler linhvuccha" data-toggle="collapse" data-target="#lvdocung" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+            LĨNH VỰC LỰC-ĐỘ CỨNG
+        </div>
+
+        <div class="collapse linhvuccon" id="lvdocung">
+
+            <div>
+                Máy đo độ cứng
+            </div>
+
+        </div>
+
+        <div class="navbar-toggler linhvuccha" data-toggle="collapse" data-target="#lvkhoiluong" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+            LĨNH VỰC KHỐI LƯỢNG
+        </div>
+
+        <div class="collapse linhvuccon" id="lvkhoiluong">
+
+            <div>
+                Cân kỹ thuật
+            </div>
+            <div>
+                Cân phân tích / Analytical Balance
+            </div>
+            <div>
+                Cân bàn
+            </div>
+            <div>
+                Qủa cân chuẩn / Standard Weight
+            </div>
+        </div>
+
+        <div class="navbar-toggler linhvuccha"  data-toggle="collapse" data-target="#lvapsuat" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+            LĨNH VỰC ĐIỆN
+        </div>
+
+        <div class="collapse linhvuccon" id="lvapsuat">
+
+            <div>
+                Đồng hồ đa năng / Multimeter
+            </div>
+            <div>
+                Ampe kìm / Clamp Meter
+            </div>
+
+        </div>
+
+        <div class="navbar-toggler linhvuccha" data-toggle="collapse" data-target="#lvdien" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+            LĨNH VỰC KHÁC
+        </div>
+
+        <div class="collapse linhvuccon" id="lvdien">
+
+            <div>
+                Máy đo ánh sáng / Light meter
+            </div>
+
+        </div>
+    </div>
+
+    <div id="P-card-container">
+        <div id="P-card-subcontainer"></div>
+
+    </div>
+</div>
+<script>
+    //Responsive with fixed width (SanPham)
+    function setWidth() {
+        if ($(window).width() > 768) {
+            var b = Math.floor(($(window).width() - $('#lvcontainer').outerWidth(true)) / 330);
+            //$('#P-card-container').width(b * 310-20);
+            $('#P-card-container').width(($(window).width() - $('#lvcontainer').outerWidth(true)));
+        }
+        else $('#P-card-container').width('100%');
+    }
+
+
+    @*for (var i = 0; i <= 3; i++) {
+        page2 +=
+              '<div class="P-card">'+
+            '<img src="'+ '@Model[0].ImageLink'+'" />'+
+        '<p>' + '@Model[0].Name' + '</p>' +
+             '<div>Loại:' + '@Model[0].Category' + '</div>' +
+            '<div>Model:' + '@Model[0].Model' + '</div>' +
+        '<div>Nhà sản xuất:' + '@Model[0].Manufacturer' + '</div>' +
+
+         '</div>'
+    }*@
+
+
+
+
+    //Cho Down JS Collapse
+    $('.linhvuccha').click(function () {
+        var $this = $(this);
+
+            if ($this.next().hasClass('show')) {
+                $this.find('i').removeClass('fa-angle-up').addClass('fa-angle-down');
+                $this.next().collapse()
+            }
+            else {
+                if ($('.linhvuccon').hasClass('show')) {
+                    $('.show').collapse('hide').prev().find('i').removeClass('fa-angle-up').addClass('fa-angle-down');
+                }
+                $this.find('i').removeClass('fas fa-angle-down').addClass('fas fa-angle-up');
+                $this.next().collapse()
+            }
+
+    })
+
+
+    //Auto icon
+    function toNavBar() {
+
+    }
+
+
+    var page1 = '';
+
+    for (var i = 0; i <= 9; i++) {
+        var x = i;
+        page1 +=
+            '<div class="P-card">'+
+            '<img src="'+ '@Model[0].ImageLink'+'" />'+
+            '<div>' + '@Model[0].Ten' + '</div>' +         
+            '<div>Model:' + '@Model[0].Model' + '</div>' +
+            '<div>Nhà sản xuất:' + '@Model[0].Manufacturer' + '</div>' +
+            '</div>'
+    }
+    $('#P-card-subcontainer').append(page1);
+    setWidth();
+    toNavBar();
+    $(window).resize(setWidth);
+    $(window).scroll(toNavBar);
+    $('i.fa-list-ul').click(function () {
+        if ($(this).css('left') == '300px') { $(this).css('left', 0);$('#lvcontainer').css('left','-300px') }
+        else { $(this).css('left', '300px'); $('#lvcontainer').css('left', 0)}
+    })
+</script>

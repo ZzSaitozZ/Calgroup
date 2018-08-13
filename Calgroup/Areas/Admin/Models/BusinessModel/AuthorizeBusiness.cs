@@ -12,8 +12,8 @@ namespace Calgroup.Areas.Admin.Models.BusinessModel
         {
             if (HttpContext.Current.Session["userId"] == null)
             {
-                //filterContext.Result = new RedirectResult("/Admin/Home/Login?returnUrl=/Admin/" + filterContext.ActionDescriptor.ControllerDescriptor + "/" + filterContext.ActionDescriptor.ActionName);
-                filterContext.Result = new RedirectResult("/Admin/Home/Login");
+                //filterContext.Result = new RedirectResult("/Admin/Admin/Login?returnUrl=/Admin/" + filterContext.ActionDescriptor.ControllerDescriptor + "/" + filterContext.ActionDescriptor.ActionName);
+                filterContext.Result = new RedirectResult("/Admin/Admin/Login");
                 return;
             }
             int userId = int.Parse(HttpContext.Current.Session["userId"].ToString());
@@ -45,7 +45,7 @@ namespace Calgroup.Areas.Admin.Models.BusinessModel
             //Nếu không thì nhẩy tới trang thông báo
             if (!listpermission.Contains(actionName))
             {
-                filterContext.Result = new RedirectResult("/Admin/Home/NotificationAuthorize");
+                filterContext.Result = new RedirectResult("/Admin/Admin/NotificationAuthorize");
                 return;
             }
 

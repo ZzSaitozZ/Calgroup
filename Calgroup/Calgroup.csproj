@@ -157,7 +157,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
-    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\MenusController.cs" />
     <Compile Include="Areas\Admin\Controllers\OrderDetailsController.cs" />
     <Compile Include="Areas\Admin\Controllers\OrdersController.cs" />
@@ -204,6 +204,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Linhvuc.cs">
+      <DependentUpon>CalgroupDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LoaiSanPham.cs">
+      <DependentUpon>CalgroupDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
@@ -212,6 +218,9 @@
     <Compile Include="Resources\Common\Encryptors.cs" />
     <Compile Include="Resources\Common\StringHelper.cs" />
     <Compile Include="SanPham.cs">
+      <DependentUpon>CalgroupDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ShortProduct.cs">
       <DependentUpon>CalgroupDB.tt</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -2270,6 +2279,9 @@
     <Content Include="Resources\Images\Banners\sony-logo.png" />
     <Content Include="Resources\Images\Banners\Toyota-logo.png" />
     <Content Include="Resources\Images\Banners\Tận nơi.jpg" />
+    <Content Include="Resources\Images\Hinhanh\Dimensional-Calibration.jpg" />
+    <Content Include="Resources\Images\Hinhanh\Hieu chuan may do nhiet do.jpg" />
+    <Content Include="Resources\Images\Hinhanh\working-together.jpg" />
     <Content Include="Resources\Images\Item\Capacitance Meter.png" />
     <Content Include="Resources\Images\Item\KEYSIGHT U1241B Multimeter_0.png" />
     <Content Include="Resources\Images\Item\Keysight U1242C Multimeter_0.png" />
@@ -2285,6 +2297,8 @@
     <Content Include="Resources\Images\Item\U1602B Oscilloscope Keysight.png" />
     <Content Include="Resources\Images\Item\U1733C Keysight LCR Meter-.png" />
     <Content Include="Resources\Images\Light-Bulb-question_background_banner.jpg" />
+    <Content Include="Resources\Images\skype.png" />
+    <Content Include="Resources\Images\zalo.png" />
     <Content Include="Resources\JS\Layout\Layout_1.js" />
     <Content Include="Resources\JS\Scripts\bootstrap.bundle.js" />
     <Content Include="Resources\JS\Scripts\bootstrap.bundle.min.js" />
@@ -2352,13 +2366,6 @@
     <Content Include="Resources\Icons\webfonts\fa-solid-900.ttf" />
     <Content Include="Resources\Icons\webfonts\fa-solid-900.woff" />
     <Content Include="Resources\Icons\webfonts\fa-solid-900.woff2" />
-    <EntityDeploy Include="CalgroupDB.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>CalgroupDB.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="CalgroupDB.edmx.diagram">
-      <DependentUpon>CalgroupDB.edmx</DependentUpon>
-    </Content>
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Content\ckeditor\.htaccess" />
     <Content Include="Areas\Admin\Content\ckfinder\plugins\fileeditor\codemirror\LICENSE" />
@@ -2367,9 +2374,9 @@
     <Content Include="obj\Debug\Calgroup.csprojResolveAssemblyReference.cache" />
     <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
     <Content Include="obj\Debug\Tsc.out" />
-    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Home\Login.cshtml" />
-    <Content Include="Areas\Admin\Views\Home\NotificationAuthorize.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\Login.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\NotificationAuthorize.cshtml" />
     <Content Include="Areas\Admin\Views\Menus\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Menus\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Menus\Details.cshtml" />
@@ -2573,6 +2580,13 @@
     <Content Include="Resources\Admin\plugins\datatables\extensions\TableTools\Readme.md" />
     <Content Include="Resources\Admin\plugins\input-mask\phone-codes\phone-be.json" />
     <Content Include="Resources\Admin\plugins\input-mask\phone-codes\phone-codes.json" />
+    <EntityDeploy Include="CalgroupDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>CalgroupDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="CalgroupDB.edmx.diagram">
+      <DependentUpon>CalgroupDB.edmx</DependentUpon>
+    </Content>
     <None Include="Resources\JS\Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Resources\JS\Scripts\jquery-3.3.1.js" />
     <Content Include="Resources\JS\Scripts\jquery-3.3.1.min.js" />
@@ -2596,10 +2610,10 @@
     <Content Include="Resources\JS\Scripts\umd\popper-utils.min.js" />
     <Content Include="Resources\JS\Scripts\umd\popper.js" />
     <Content Include="Resources\JS\Scripts\umd\popper.min.js" />
-    <Content Include="Sanpham\DongHoDaNang\FLUKE-17B.JPG" />
-    <Content Include="Sanpham\MayDoNhietDoIR\42515.png" />
-    <Content Include="Sanpham\MayHienSong\Keysight-U1604B.png" />
-    <Content Include="Sanpham\ThuocCapDienTu\500-507-10.png" />
+    <Content Include="Resources\Sanpham\DongHoDaNang\FLUKE-17B.JPG" />
+    <Content Include="Resources\Sanpham\MayDoNhietDoIR\42515.png" />
+    <Content Include="Resources\Sanpham\MayHienSong\Keysight-U1604B.png" />
+    <Content Include="Resources\Sanpham\ThuocCapDienTu\500-507-10.png" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -2623,22 +2637,21 @@
     <Content Include="Resources\JS\Scripts\popper.js.map" />
     <Content Include="Resources\JS\Scripts\popper-utils.min.js.map" />
     <Content Include="Resources\JS\Scripts\popper-utils.js.map" />
-    <Content Include="Views\Home\SanPham.cshtml" />
     <Content Include="Views\Home\ChiTiet.cshtml" />
-    <Content Include="Sanpham\MayDoDoDan\Fivego-f3.pdf" />
-    <Content Include="Sanpham\MayDoNhietDoIR\Extech-42515.pdf" />
-    <Content Include="Sanpham\MayHienSong\U1604B-U1602B.pdf" />
-    <Content Include="Sanpham\ThuocCapDienTu\Mitutoyo-Caliper%28500 Series%29.pdf" />
+    <Content Include="Resources\Sanpham\MayDoDoDan\Fivego-f3.pdf" />
+    <Content Include="Resources\Sanpham\MayDoNhietDoIR\Extech-42515.pdf" />
+    <Content Include="Resources\Sanpham\MayHienSong\U1604B-U1602B.pdf" />
+    <Content Include="Resources\Sanpham\ThuocCapDienTu\Mitutoyo-Caliper%28500 Series%29.pdf" />
     <Content Include="Views\Home\News.cshtml" />
     <Content Include="Views\Home\NewsDetail.cshtml" />
     <Content Include="Views\Home\Question.cshtml" />
     <Content Include="Views\Home\Services.cshtml" />
+    <Content Include="Views\Home\SanPham.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Content\files\" />
     <Folder Include="Areas\Admin\Content\flash\" />
-    <Folder Include="bin\roslyn\" />
     <Folder Include="Models\" />
     <Folder Include="obj\Debug\edmxResourcesToEmbed\" />
     <Folder Include="Resources\Admin\gentelella-master\build\css\" />

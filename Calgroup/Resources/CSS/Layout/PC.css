@@ -68,17 +68,21 @@ body {
     }
 
 .icon {
-    padding: 18px 35px !important;
+    padding: 18px 35px !important;    
+    margin-right:5px;
     font-size: 24px !important;
 }
 a.Topnav-item {
-    color:white;
-    padding: 15px 35px;
+    color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 15px;
+    padding-bottom:15px;
     width: auto;
     border: none;
     display: block;
     outline: 0;
-    font-size:20px;
+    font-size: 20px;
 }
 .Search {
     padding: 0px 5px 0px 5px;
@@ -133,7 +137,7 @@ a.Topnav-item {
         white-space: normal;
         overflow: hidden;
         text-overflow: ellipsis;
-        border-radius: 0 0 1rem 1rem;
+        border-radius: 0 0 1rem 1rem;        
     }
     .Item ul {
         text-align: left;
@@ -254,7 +258,7 @@ a.Footerlink:hover{
     text-decoration:none;
     border-bottom:solid;
 }
-i.icons:hover{
+.icons:hover{
     color:#ECECEC !important;
     cursor:pointer;
 }
