@@ -19,14 +19,18 @@ namespace Model.EF
         public virtual DbSet<AppUserLogin> AppUserLogins { get; set; }
         public virtual DbSet<AppUserRole> AppUserRoles { get; set; }
         public virtual DbSet<AppUser> AppUsers { get; set; }
+        public virtual DbSet<Calibration> Calibrations { get; set; }
         public virtual DbSet<Color> Colors { get; set; }
         public virtual DbSet<ContactDetail> ContactDetails { get; set; }
         public virtual DbSet<Error> Errors { get; set; }
         public virtual DbSet<Feedback> Feedbacks { get; set; }
         public virtual DbSet<Footer> Footers { get; set; }
         public virtual DbSet<Function> Functions { get; set; }
+        public virtual DbSet<Library> Libraries { get; set; }
+        public virtual DbSet<LibraryCategory> LibraryCategories { get; set; }
         public virtual DbSet<Menu> Menus { get; set; }
         public virtual DbSet<MenuType> MenuTypes { get; set; }
+        public virtual DbSet<News> News { get; set; }
         public virtual DbSet<OrderDetail> OrderDetails { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<Page> Pages { get; set; }
@@ -113,6 +117,12 @@ namespace Model.EF
                 .HasMany(e => e.Functions1)
                 .WithOptional(e => e.Function1)
                 .HasForeignKey(e => e.ParentId);
+
+            modelBuilder.Entity<LibraryCategory>()
+                .HasMany(e => e.Libraries)
+                .WithRequired(e => e.LibraryCategory)
+                .HasForeignKey(e => e.IDCategory)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Page>()
                 .Property(e => e.Alias)

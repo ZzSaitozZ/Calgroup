@@ -26,9 +26,10 @@ namespace Model.DAO
             return db.Posts.OrderByDescending(x => x.CreatedDate).Where(x => x.Status == true && x.CategoryID != 1002).ToList(); ;
         }
 
-        public IEnumerable<Post> ListByGroup(int top)
+        public IEnumerable<Post> ListByGroupAll()
         {
-            return db.Posts.OrderByDescending(x => x.CreatedDate).Where(x => x.Status == true && x.CategoryID != 1002).Take(top).ToList(); ;
+            //return db.Posts.OrderByDescending(x => x.CreatedDate).Where(x => x.Status == true && x.CategoryID != 1002).Take(top).ToList();
+            return db.Posts.OrderByDescending(x => x.CreatedDate).Where(x => x.Status == true).ToList();
         }
 
         public IEnumerable<Post> ListByGroupId( long id)

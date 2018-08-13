@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAO\CalibrationDAO.cs" />
     <Compile Include="DAO\ChangesDAO.cs" />
     <Compile Include="DAO\MenuDAO.cs" />
     <Compile Include="DAO\PostNewsDAO.cs" />
@@ -67,14 +68,18 @@
     <Compile Include="EF\AppUserClaim.cs" />
     <Compile Include="EF\AppUserLogin.cs" />
     <Compile Include="EF\AppUserRole.cs" />
+    <Compile Include="EF\Calibration.cs" />
     <Compile Include="EF\Color.cs" />
     <Compile Include="EF\ContactDetail.cs" />
     <Compile Include="EF\Error.cs" />
     <Compile Include="EF\Feedback.cs" />
     <Compile Include="EF\Footer.cs" />
     <Compile Include="EF\Function.cs" />
+    <Compile Include="EF\Library.cs" />
+    <Compile Include="EF\LibraryCategory.cs" />
     <Compile Include="EF\Menu.cs" />
     <Compile Include="EF\MenuType.cs" />
+    <Compile Include="EF\News.cs" />
     <Compile Include="EF\Order.cs" />
     <Compile Include="EF\OrderDetail.cs" />
     <Compile Include="EF\Page.cs" />
