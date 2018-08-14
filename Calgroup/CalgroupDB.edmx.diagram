@@ -4,8 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="ee250b6c9b374344be84bb79db5ffad3" Name="Diagram1">
-        <EntityTypeShape EntityType="CalgroupModel.SanPham" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+      <Diagram DiagramId="67bf510515d84d359323038114a1d404" Name="Diagram1">
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

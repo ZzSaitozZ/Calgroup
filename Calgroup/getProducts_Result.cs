@@ -10,21 +10,14 @@
 namespace Calgroup
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class ShortProduct
+    public partial class getProducts_Result
     {
-        public string Category { get; set; }
-        public string AliasCat { get; set; }
-        public string Alias { get; set; }
         public string Name { get; set; }
+        public string Alias { get; set; }
+        public string Category { get; set; }
         public string Model { get; set; }
         public string Manufacturer { get; set; }
         public string ImageLink { get; set; }
-        public string ManualLink { get; set; }
-        public string Detail { get; set; }
-        public string Specification { get; set; }
-        public string Price { get; set; }
-        public Nullable<int> Hot { get; set; }
     }
 }

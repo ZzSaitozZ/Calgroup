@@ -12,11 +12,13 @@ namespace Calgroup
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
-    public partial class CalgroupEntities : DbContext
+    public partial class Calgroup_v2DB : DbContext
     {
-        public CalgroupEntities()
-            : base("name=CalgroupEntities")
+        public Calgroup_v2DB()
+            : base("name=Calgroup_v2DB")
         {
         }
     
@@ -25,6 +27,23 @@ namespace Calgroup
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<SanPham> SanPhams { get; set; }
+    
+        public virtual ObjectResult<getProductDetail_Result> getProductDetail(string alias)
+        {
+            var aliasParameter = alias != null ?
+                new ObjectParameter("alias", alias) :
+                new ObjectParameter("alias", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<getProductDetail_Result>("getProductDetail", aliasParameter);
+        }
+    
+        public virtual ObjectResult<getProducts_Result> getProducts(string aliascat)
+        {
+            var aliascatParameter = aliascat != null ?
+                new ObjectParameter("aliascat", aliascat) :
+                new ObjectParameter("aliascat", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<getProducts_Result>("getProducts", aliascatParameter);
+        }
     }
 }

@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Model.DAO;
+using Calgroup.VM;
+using Calgroup.Models;
+using System.Web.Script.Serialization;
 
 namespace Calgroup.Controllers
 {
@@ -28,16 +31,46 @@ namespace Calgroup.Controllers
             return View();
         }
 
-        public ActionResult SanPham(string cat)
+        public ActionResult SanPham(string aliascat)
         {
-            Calgroup_v2Entities cgi = new Calgroup_v2Entities();
-            return View(cgi.SanPhams.ToList()); ;
+            Calgroup_v2DB cgi = new Calgroup_v2DB();
+            var a = cgi.Database.SqlQuery<Menu>("Select Linhvuc,Category,AliasCat from dbo.MenuSP order by DisplayOrder ASC").ToList();
+            SanPhamPageVM pageVM = new SanPhamPageVM(a);
+            pageVM.AliasCat = aliascat;
+            return View(pageVM);
         }
-
-        public ActionResult ChiTiet(string name)
+        [HttpPost]
+        public JsonResult getSanPham(string aliascat)
         {
-            Calgroup_v2Entities cgi = new Calgroup_v2Entities();
-            return View(cgi.SanPhams.ToList());
+            Calgroup_v2DB cgi = new Calgroup_v2DB();
+            var temp = cgi.getProducts(aliascat).ToList();
+            getSanPhamVM pageVM = new getSanPhamVM();
+
+            if (temp.Any())
+            {
+                pageVM.Products = new JavaScriptSerializer().Serialize(temp);
+                pageVM.CategoryVi = temp[0].Category.Substring(0, temp[0].Category.IndexOf("/"));
+            }
+            else
+            {
+                if (aliascat == "" || aliascat == null)
+                {
+                    pageVM.Products = new JavaScriptSerializer().Serialize(cgi.Database.SqlQuery<ShortProduct>("Select Name,Alias,Category,Model,Manufacturer,ImageLink FROM dbo.ShortProducts where Hot is not null  order by Hot asc").ToList());
+                    pageVM.CategoryVi = "Sản phẩm đang hot";
+                }
+                else pageVM.CategoryVi = "Hiện chưa có loại sản phẩm này";
+            }
+            return Json(pageVM, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult ChiTiet(string alias)
+        {
+            Calgroup_v2DB cgi = new Calgroup_v2DB();
+            if (alias != null)
+            {
+                var a = cgi.getProductDetail(alias).ToList();
+                if (a.Any()) { return View(a); }
+            }
+            return RedirectToRoute("Category", new { });
         }
         // Downy-Code
         public ActionResult News()

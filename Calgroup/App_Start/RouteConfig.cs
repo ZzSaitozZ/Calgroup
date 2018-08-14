@@ -12,6 +12,23 @@ namespace Calgroup
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            routes.MapRoute(
+                name: "Products",
+                url: "getSanPham/{aliascat}",
+                defaults: new { controller = "Home", action = "getSanPham", aliascat = UrlParameter.Optional }
+                );
+
+            routes.MapRoute(
+                name: "Detail",
+                url: "ChiTiet/{alias}",
+                defaults: new { controller = "Home", action = "ChiTiet", alias = UrlParameter.Optional }
+                );
+
+            routes.MapRoute(
+                name: "Category",
+                url: "SanPham/{aliascat}",
+                defaults: new { controller = "Home", action = "SanPham", aliascat = UrlParameter.Optional }
+                );
 
             routes.MapRoute(
                name: "News",

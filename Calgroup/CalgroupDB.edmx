@@ -4,69 +4,92 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="CalgroupModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="SanPham">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="nvarchar(max)" />
-          <Property Name="Category" Type="nvarchar" MaxLength="50" />
-          <Property Name="Model" Type="nvarchar" MaxLength="50" />
-          <Property Name="Manufacturer" Type="nvarchar" MaxLength="50" />
-          <Property Name="ImageLink" Type="nvarchar(max)" />
-          <Property Name="ManualLink" Type="nvarchar(max)" />
-          <Property Name="Detail" Type="nvarchar(max)" />
-          <Property Name="Specification" Type="nvarchar(max)" />
-          <Property Name="Price" Type="nvarchar" MaxLength="50" />
-        </EntityType>
-        <EntityContainer Name="CalgroupModelStoreContainer">
-          <EntitySet Name="SanPham" EntityType="Self.SanPham" Schema="dbo" store:Type="Tables" />
+      <Schema Namespace="Calgroup_v2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'Calgroup_v2.dbo.MenuSP' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="MenuSP">
+          <Property Name="Linhvuc" Type="nvarchar" MaxLength="50" />
+          <Property Name="Category" Type="nvarchar(max)" />
+          <Property Name="AliasCat" Type="varchar" MaxLength="50" />
+          <Property Name="DisplayOrder" Type="int" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Calgroup_v2.dbo.ShortProducts' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <Function Name="getProductDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="alias" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="getProducts" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="aliascat" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="Calgroup_v2ModelStoreContainer">
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="CalgroupModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="SanPham">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Model" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Manufacturer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ImageLink" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="ManualLink" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Detail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Specification" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Price" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityContainer Name="CalgroupEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="SanPhams" EntityType="Self.SanPham" />
+      <Schema Namespace="Calgroup_v2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Calgroup_v2DB" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="getProductDetail" ReturnType="Collection(Calgroup_v2Model.getProductDetail_Result)">
+            <Parameter Name="alias" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="getProducts" ReturnType="Collection(Calgroup_v2Model.getProducts_Result)">
+            <Parameter Name="aliascat" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
+        <ComplexType Name="getProductDetail_Result">
+          <Property Type="String" Name="Name" Nullable="true" />
+          <Property Type="String" Name="AliasCat" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Category" Nullable="true" />
+          <Property Type="String" Name="Model" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Manufacturer" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ImageLinkDetail" Nullable="true" />
+          <Property Type="String" Name="ManualLink" Nullable="true" />
+          <Property Type="String" Name="Detail" Nullable="true" />
+          <Property Type="String" Name="Specification" Nullable="true" />
+          <Property Type="String" Name="Price" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="getProducts_Result">
+          <Property Type="String" Name="Name" Nullable="true" />
+          <Property Type="String" Name="Alias" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Category" Nullable="true" />
+          <Property Type="String" Name="Model" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Manufacturer" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ImageLink" Nullable="true" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="CalgroupModelStoreContainer" CdmEntityContainer="CalgroupEntities">
-          <EntitySetMapping Name="SanPhams">
-            <EntityTypeMapping TypeName="CalgroupModel.SanPham">
-              <MappingFragment StoreEntitySet="SanPham">
-                <ScalarProperty Name="ID" ColumnName="ID" />
+        <EntityContainerMapping StorageEntityContainer="Calgroup_v2ModelStoreContainer" CdmEntityContainer="Calgroup_v2DB">
+          <FunctionImportMapping FunctionImportName="getProductDetail" FunctionName="Calgroup_v2Model.Store.getProductDetail">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Calgroup_v2Model.getProductDetail_Result">
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="AliasCat" ColumnName="AliasCat" />
                 <ScalarProperty Name="Category" ColumnName="Category" />
                 <ScalarProperty Name="Model" ColumnName="Model" />
                 <ScalarProperty Name="Manufacturer" ColumnName="Manufacturer" />
-                <ScalarProperty Name="ImageLink" ColumnName="ImageLink" />
+                <ScalarProperty Name="ImageLinkDetail" ColumnName="ImageLinkDetail" />
                 <ScalarProperty Name="ManualLink" ColumnName="ManualLink" />
                 <ScalarProperty Name="Detail" ColumnName="Detail" />
                 <ScalarProperty Name="Specification" ColumnName="Specification" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="getProducts" FunctionName="Calgroup_v2Model.Store.getProducts">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Calgroup_v2Model.getProducts_Result">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Alias" ColumnName="Alias" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="Manufacturer" ColumnName="Manufacturer" />
+                <ScalarProperty Name="ImageLink" ColumnName="ImageLink" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

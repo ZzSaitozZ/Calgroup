@@ -31,7 +31,6 @@ namespace Model.DAO
             db.SaveChanges();
             return status.Status;
         }
-
         public bool PostsStatus(int id)
         {
             var status = db.Posts.Find(id);
@@ -39,7 +38,6 @@ namespace Model.DAO
             db.SaveChanges();
             return status.Status;
         }
-
         public bool PostsCateStatus(int id)
         {
             var status = db.PostCategories.Find(id);
@@ -61,7 +59,5 @@ namespace Model.DAO
             db.SaveChanges();
             return status.Status;
         }
-
-
     }
 }

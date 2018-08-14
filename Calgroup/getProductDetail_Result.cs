@@ -10,13 +10,18 @@
 namespace Calgroup
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class LoaiSanPham
+    public partial class getProductDetail_Result
     {
-        public int CatID { get; set; }
-        public Nullable<int> LinhvucID { get; set; }
-        public string Category { get; set; }
+        public string Name { get; set; }
         public string AliasCat { get; set; }
+        public string Category { get; set; }
+        public string Model { get; set; }
+        public string Manufacturer { get; set; }
+        public string ImageLinkDetail { get; set; }
+        public string ManualLink { get; set; }
+        public string Detail { get; set; }
+        public string Specification { get; set; }
+        public string Price { get; set; }
     }
 }

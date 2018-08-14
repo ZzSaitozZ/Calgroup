@@ -10,15 +10,15 @@
     $("#top").height($("#logo").height())
     var k = 1;
 
-    $(window).scroll(function () {
-        var a = $(window).scrollTop();
-        currentScrollTop = a;
-        if (c < currentScrollTop) {
-        }
-        else if (c > currentScrollTop) {
-        }
-        c = currentScrollTop;
-    })
+    //$(window).scroll(function () {
+    //    var a = $(window).scrollTop();
+    //    currentScrollTop = a;
+    //    if (c < currentScrollTop) {
+    //    }
+    //    else if (c > currentScrollTop) {
+    //    }
+    //    c = currentScrollTop;
+    //})
 });
 
 window.onscroll = function () { myFunction() };
