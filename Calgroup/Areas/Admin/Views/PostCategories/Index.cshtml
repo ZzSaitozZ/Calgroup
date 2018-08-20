@@ -7,7 +7,14 @@
         Response.Redirect("/Admin/Admin/Login");
     }
 }
-
+@{
+    if (TempData["message"] != null)
+    {
+        <script type="text/javascript">
+             alert(@Html.Raw(Json.Encode(TempData["message"])));
+        </script>
+    }
+}
 <section class="content-header">
     <h1>
         Bản quản lý
@@ -41,38 +48,38 @@
                                     @Html.DisplayNameFor(model => model.Alias)
                                 </th>
                                 @*<th>
-                                    @Html.DisplayNameFor(model => model.Description)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.ParentID)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.DisplayOrder)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.Image)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.HomeFlag)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.CreatedDate)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.CreatedBy)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.UpdatedDate)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.UpdatedBy)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.MetaKeyword)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.MetaDescription)
-                                </th>*@
+                                        @Html.DisplayNameFor(model => model.Description)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.ParentID)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.DisplayOrder)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Image)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.HomeFlag)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.CreatedDate)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.CreatedBy)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.UpdatedDate)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.UpdatedBy)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.MetaKeyword)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.MetaDescription)
+                                    </th>*@
                                 <th>
                                     @Html.DisplayNameFor(model => model.Status)
                                 </th>
@@ -81,48 +88,48 @@
                         </thead>
                         <tbody>
                             @foreach (var item in Model)
-    {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Name)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Alias)
-                            </td>
-                            @*<td>
-                                @Html.DisplayFor(modelItem => item.Description)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.ParentID)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.DisplayOrder)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Image)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.HomeFlag)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.CreatedDate)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.CreatedBy)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.UpdatedDate)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.UpdatedBy)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.MetaKeyword)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.MetaDescription)
-                            </td>*@
-                            <td class="text-center btn-active" data-id="@item.ID" style="cursor:pointer">
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Name)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Alias)
+                                    </td>
+                                    @*<td>
+                                            @Html.DisplayFor(modelItem => item.Description)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.ParentID)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.DisplayOrder)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Image)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.HomeFlag)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.CreatedDate)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.CreatedBy)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.UpdatedDate)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.UpdatedBy)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.MetaKeyword)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.MetaDescription)
+                                        </td>*@
+                                    <td class="text-center btn-active" data-id="@item.ID" style="cursor:pointer">
                                         @if (item.Status == true)
                                         {
                                             <span class="label label-success">Actived</span>
@@ -132,13 +139,14 @@
                                             <span class="label label-danger">Locked</span>
                                         }
                                     </td>
-                            <td class="text-center">
-                                <a href="/Admin/PostCategories/Edit/@item.ID" data-toggle="tooltip" data-placement="top" title="Sửa"><i class="fa fa-edit"></i></a> &nbsp;
-                                <a href="/Admin/PostCategories/Details/@item.ID" data-toggle="tooltip" data-placement="top" title="Chi tiết"><i class="fa fa-list-alt"></i></a> &nbsp;
-                                <span class="Delete" data-id="@item.ID" style="cursor:pointer" data-toggle="tooltip" data-placement="top" title="Xóa"><i class="fa fa-times-circle"></i></span> &nbsp;
-                            </td>
-                        </tr>
-}
+                                    <td class="text-center">
+                                        <a href="/Admin/PostCategories/Edit/@item.ID" data-toggle="tooltip" data-placement="top" title="Sửa"><i class="fa fa-edit"></i></a> &nbsp;
+                                        <a href="/Admin/PostCategories/Details/@item.ID" data-toggle="tooltip" data-placement="top" title="Chi tiết"><i class="fa fa-list-alt"></i></a> &nbsp;
+                                        <a href="/Admin/PostCategories/Delete/@item.ID" data-toggle="tooltip" data-placement="top" title="Xóa"><i class="fa fa-times-circle"></i></a> &nbsp;
+                                        @*<span class="Delete" data-id="@item.ID" style="cursor:pointer" data-toggle="tooltip" data-placement="top" title="Xóa"><i class="fa fa-times-circle"></i></span>*@ &nbsp;
+                                    </td>
+                                </tr>
+                            }
                         </tbody>
                         <tfoot>
 
@@ -154,7 +162,7 @@
     <!-- /.row -->
 </section>
 
-<script src="~/Resources/Admin/js/Delete/PostsCate.js"></script>
+@*<script src="~/Resources/Admin/js/Delete/PostsCate.js"></script>*@
 <script src="~/Resources/Admin/js/ChangesStatus/PostsCate.js"></script>
 <script src="~/Resources/Admin/js/SearchTable.js"></script>
 

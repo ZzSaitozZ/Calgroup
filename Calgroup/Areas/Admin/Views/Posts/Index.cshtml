@@ -9,6 +9,14 @@
     }
 }
 
+@{
+    if (TempData["message"] != null)
+    {
+        <script type="text/javascript">
+             alert(@Html.Raw(Json.Encode(TempData["message"])));
+        </script>
+    }
+}
 <section class="content-header">
     <h1>
         Bản quản lý
@@ -101,7 +109,7 @@
                                             <span class="label label-danger">Locked</span>
                                         }
                                     </td>
-                                    
+
                                     <td>
                                         <a href="/Admin/Posts/Edit/@item.ID" data-toggle="tooltip" data-placement="top" title="Sửa"><i class="fa fa-edit"></i></a> &nbsp;
                                         <a href="/Admin/Posts/Details/@item.ID" data-toggle="tooltip" data-placement="top" title="Chi tiết"><i class="fa fa-list-alt"></i></a> &nbsp;

@@ -23,11 +23,14 @@ namespace Model.EF
         public virtual DbSet<Color> Colors { get; set; }
         public virtual DbSet<ContactDetail> ContactDetails { get; set; }
         public virtual DbSet<Error> Errors { get; set; }
+        public virtual DbSet<FAQ> FAQs { get; set; }
         public virtual DbSet<Feedback> Feedbacks { get; set; }
         public virtual DbSet<Footer> Footers { get; set; }
         public virtual DbSet<Function> Functions { get; set; }
         public virtual DbSet<Library> Libraries { get; set; }
         public virtual DbSet<LibraryCategory> LibraryCategories { get; set; }
+        public virtual DbSet<Linhvuc> Linhvucs { get; set; }
+        public virtual DbSet<LoaiSanPham> LoaiSanPhams { get; set; }
         public virtual DbSet<Menu> Menus { get; set; }
         public virtual DbSet<MenuType> MenuTypes { get; set; }
         public virtual DbSet<News> News { get; set; }
@@ -44,10 +47,11 @@ namespace Model.EF
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<ProjectProduct> ProjectProducts { get; set; }
         public virtual DbSet<Project> Projects { get; set; }
+        public virtual DbSet<SanPham> SanPhams { get; set; }
         public virtual DbSet<Size> Sizes { get; set; }
         public virtual DbSet<Slide> Slides { get; set; }
+        public virtual DbSet<Staff> Staffs { get; set; }
         public virtual DbSet<SupportOnline> SupportOnlines { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<SystemConfig> SystemConfigs { get; set; }
         public virtual DbSet<Tag> Tags { get; set; }
         public virtual DbSet<UserAdministrator> UserAdministrators { get; set; }
@@ -119,9 +123,29 @@ namespace Model.EF
                 .HasForeignKey(e => e.ParentId);
 
             modelBuilder.Entity<LibraryCategory>()
+                .Property(e => e.AliasCat)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<LibraryCategory>()
                 .HasMany(e => e.Libraries)
                 .WithRequired(e => e.LibraryCategory)
                 .HasForeignKey(e => e.IDCategory)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<LoaiSanPham>()
+                .Property(e => e.AliasCat)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<LoaiSanPham>()
+                .HasMany(e => e.SanPhams)
+                .WithRequired(e => e.LoaiSanPham)
+                .HasForeignKey(e => e.CatID)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Linhvuc>()
+                .HasMany(e => e.LoaiSanPhams)
+                .WithRequired(e => e.Linhvuc)
+                .HasForeignKey(e => e.LinhvucID)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Page>()
@@ -159,6 +183,10 @@ namespace Model.EF
                 .HasMany(e => e.Tags1)
                 .WithMany(e => e.Products)
                 .Map(m => m.ToTable("ProductTags").MapLeftKey("ProductID").MapRightKey("TagID"));
+
+            modelBuilder.Entity<SanPham>()
+                .Property(e => e.Alias)
+                .IsUnicode(false);
 
             modelBuilder.Entity<Size>()
                 .HasMany(e => e.OrderDetails)

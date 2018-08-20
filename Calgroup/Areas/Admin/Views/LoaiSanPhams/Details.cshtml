@@ -1,4 +1,4 @@
-﻿@model Model.EF.LibraryCategory
+﻿@model Model.EF.LoaiSanPham
 
 @{
     ViewBag.Title = "Details";
@@ -38,19 +38,11 @@
         <div>
             <dl class="dl-horizontal">
                 <dt>
-                    @Html.DisplayNameFor(model => model.Name)
+                    @*@Html.DisplayNameFor(model => model.Linhvuc.Linhvuc1)*@<text>LinhVucName</text>
                 </dt>
 
                 <dd>
-                    @Html.DisplayFor(model => model.Name)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.AliasCat)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.AliasCat)
+                    @Html.DisplayFor(model => model.Linhvuc.Linhvuc1)
                 </dd>
 
                 <dt>
@@ -61,11 +53,19 @@
                     @Html.DisplayFor(model => model.Category)
                 </dd>
 
+                <dt>
+                    @Html.DisplayNameFor(model => model.AliasCat)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.AliasCat)
+                </dd>
+
             </dl>
         </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-6">
-                <p class="btn btn-default">@Html.ActionLink("Edit", "Edit", new { id = Model.ID })</p>
+                <p class="btn btn-default">@Html.ActionLink("Edit", "Edit", new { id = Model.LinhvucID })</p>
                 <p class="btn btn-default">@Html.ActionLink("Back to List", "Index")</p>
             </div>
         </div>

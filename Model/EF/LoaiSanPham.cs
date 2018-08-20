@@ -6,27 +6,28 @@ namespace Model.EF
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("LibraryCategory")]
-    public partial class LibraryCategory
+    [Table("LoaiSanPham")]
+    public partial class LoaiSanPham
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public LibraryCategory()
+        public LoaiSanPham()
         {
-            Libraries = new HashSet<Library>();
+            SanPhams = new HashSet<SanPham>();
         }
 
-        public int ID { get; set; }
+        [Key]
+        public int CatID { get; set; }
 
-        [StringLength(50)]
-        public string Name { get; set; }
+        public int? LinhvucID { get; set; }
+
+        public string Category { get; set; }
 
         [StringLength(50)]
         public string AliasCat { get; set; }
 
-        [StringLength(50)]
-        public string Category { get; set; }
+        public virtual Linhvuc Linhvuc { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Library> Libraries { get; set; }
+        public virtual ICollection<SanPham> SanPhams { get; set; }
     }
 }

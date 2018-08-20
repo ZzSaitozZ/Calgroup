@@ -8,123 +8,116 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Model.EF;
-using Calgroup.Resources.Common;
-using Model.DAO;
 
 namespace Calgroup.Areas.Admin.Controllers
 {
-    public class PostCategoriesController : Controller
+    public class LoaiSanPhamsController : Controller
     {
         private ProductsdbContext db = new ProductsdbContext();
 
-        // GET: Admin/PostCategories
+        // GET: Admin/LoaiSanPhams
         public async Task<ActionResult> Index()
         {
-            return View(await db.PostCategories.ToListAsync());
+            var loaiSanPhams = db.LoaiSanPhams.Include(l => l.Linhvuc);
+            return View(await loaiSanPhams.ToListAsync());
         }
 
-        // GET: Admin/PostCategories/Details/5
+        // GET: Admin/LoaiSanPhams/Details/5
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PostCategory postCategory = await db.PostCategories.FindAsync(id);
-            if (postCategory == null)
+            LoaiSanPham loaiSanPham = await db.LoaiSanPhams.FindAsync(id);
+            if (loaiSanPham == null)
             {
                 return HttpNotFound();
             }
-            return View(postCategory);
+            return View(loaiSanPham);
         }
 
-        // GET: Admin/PostCategories/Create
+        // GET: Admin/LoaiSanPhams/Create
         public ActionResult Create()
         {
+            ViewBag.LinhvucID = new SelectList(db.Linhvucs, "LinhvucID", "Linhvuc1");
             return View();
         }
 
-        // POST: Admin/PostCategories/Create
+        // POST: Admin/LoaiSanPhams/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "ID,Name,Alias,Description,ParentID,DisplayOrder,Image,HomeFlag,CreatedDate,CreatedBy,UpdatedDate,UpdatedBy,MetaKeyword,MetaDescription,Status")] PostCategory postCategory)
+        public async Task<ActionResult> Create([Bind(Include = "CatID,LinhvucID,Category,AliasCat")] LoaiSanPham loaiSanPham)
         {
-            postCategory.Name = StringHelper.UpperCase(postCategory.Name);
-            postCategory.Alias = StringHelper.ToUnsignString(postCategory.Alias);
             if (ModelState.IsValid)
             {
-                db.PostCategories.Add(postCategory);
+                db.LoaiSanPhams.Add(loaiSanPham);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            return View(postCategory);
+            ViewBag.LinhvucID = new SelectList(db.Linhvucs, "LinhvucID", "Linhvuc1", loaiSanPham.LinhvucID);
+            return View(loaiSanPham);
         }
 
-        // GET: Admin/PostCategories/Edit/5
+        // GET: Admin/LoaiSanPhams/Edit/5
         public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PostCategory postCategory = await db.PostCategories.FindAsync(id);
-            if (postCategory == null)
+            LoaiSanPham loaiSanPham = await db.LoaiSanPhams.FindAsync(id);
+            if (loaiSanPham == null)
             {
                 return HttpNotFound();
             }
-            return View(postCategory);
+            ViewBag.LinhvucID = new SelectList(db.Linhvucs, "LinhvucID", "Linhvuc1", loaiSanPham.LinhvucID);
+            return View(loaiSanPham);
         }
 
-        // POST: Admin/PostCategories/Edit/5
+        // POST: Admin/LoaiSanPhams/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "ID,Name,Alias,Description,ParentID,DisplayOrder,Image,HomeFlag,CreatedDate,CreatedBy,UpdatedDate,UpdatedBy,MetaKeyword,MetaDescription,Status")] PostCategory postCategory)
+        public async Task<ActionResult> Edit([Bind(Include = "CatID,LinhvucID,Category,AliasCat")] LoaiSanPham loaiSanPham)
         {
-            postCategory.Name = StringHelper.UpperCase(postCategory.Name);
-            postCategory.Alias = StringHelper.ToUnsignString(postCategory.Alias);
             if (ModelState.IsValid)
             {
-                db.Entry(postCategory).State = EntityState.Modified;
+                db.Entry(loaiSanPham).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            return View(postCategory);
+            ViewBag.LinhvucID = new SelectList(db.Linhvucs, "LinhvucID", "Linhvuc1", loaiSanPham.LinhvucID);
+            return View(loaiSanPham);
         }
 
-        // GET: Admin/PostCategories/Delete/5
-        //public JsonResult Delete(int id)
-        //{
-        //    new PostNewsDAO().Deletect(id);
-
-        //    return Json(new { redirectUrl = Url.Action("Index", "PostCategories"), isRedirect = true });
-
-        //}
+        // GET: Admin/LoaiSanPhams/Delete/5
         public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PostCategory postCategory = await db.PostCategories.FindAsync(id);
-            if (postCategory == null)
+            LoaiSanPham loaiSanPham = await db.LoaiSanPhams.FindAsync(id);
+            if (loaiSanPham == null)
             {
                 return HttpNotFound();
             }
-            return View(postCategory);
+            return View(loaiSanPham);
         }
 
-        // POST: Admin/Linhvucs/Delete/5
+        // POST: Admin/LoaiSanPhams/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            PostCategory postCategory = await db.PostCategories.FindAsync(id);
-            db.PostCategories.Remove(postCategory);
+            LoaiSanPham loaiSanPham = await db.LoaiSanPhams.FindAsync(id);
+            db.LoaiSanPhams.Remove(loaiSanPham);
+            
             try
             {
                 //code
@@ -133,7 +126,7 @@ namespace Calgroup.Areas.Admin.Controllers
             catch (Exception Exception)
             {
                 //code
-                TempData["message"] = "Không thể xóa Loại tin tức khi có tin tức";
+                TempData["message"] = "Không thể xóa loại sản phẩm đã có sản phẩm";
             }
             finally
             {
@@ -141,15 +134,6 @@ namespace Calgroup.Areas.Admin.Controllers
 
             }
             return RedirectToAction("Index");
-        }
-
-        public JsonResult ChangeStatus(int id)
-        {
-            var result = new ChangesDAO().PostsCateStatus(id);
-            return Json(new
-            {
-                status = result
-            });
         }
 
         protected override void Dispose(bool disposing)

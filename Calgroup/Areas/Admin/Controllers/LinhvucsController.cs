@@ -8,114 +8,103 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Model.EF;
-using Calgroup.Resources.Common;
 using Model.DAO;
 
 namespace Calgroup.Areas.Admin.Controllers
 {
-    public class PostCategoriesController : Controller
+    public class LinhvucsController : Controller
     {
         private ProductsdbContext db = new ProductsdbContext();
 
-        // GET: Admin/PostCategories
+        // GET: Admin/Linhvucs
         public async Task<ActionResult> Index()
         {
-            return View(await db.PostCategories.ToListAsync());
+            return View(await db.Linhvucs.ToListAsync());
         }
 
-        // GET: Admin/PostCategories/Details/5
+        // GET: Admin/Linhvucs/Details/5
         public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PostCategory postCategory = await db.PostCategories.FindAsync(id);
-            if (postCategory == null)
+            Linhvuc linhvuc = await db.Linhvucs.FindAsync(id);
+            if (linhvuc == null)
             {
                 return HttpNotFound();
             }
-            return View(postCategory);
+            return View(linhvuc);
         }
 
-        // GET: Admin/PostCategories/Create
+        // GET: Admin/Linhvucs/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Admin/PostCategories/Create
+        // POST: Admin/Linhvucs/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "ID,Name,Alias,Description,ParentID,DisplayOrder,Image,HomeFlag,CreatedDate,CreatedBy,UpdatedDate,UpdatedBy,MetaKeyword,MetaDescription,Status")] PostCategory postCategory)
+        public async Task<ActionResult> Create([Bind(Include = "LinhvucID,Linhvuc1,DisplayOrder")] Linhvuc linhvuc)
         {
-            postCategory.Name = StringHelper.UpperCase(postCategory.Name);
-            postCategory.Alias = StringHelper.ToUnsignString(postCategory.Alias);
+            linhvuc.DisplayOrder = new ProductDao().maxDisplayOrder() + 1;
             if (ModelState.IsValid)
             {
-                db.PostCategories.Add(postCategory);
+                db.Linhvucs.Add(linhvuc);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
-            return View(postCategory);
+            return View(linhvuc);
         }
 
-        // GET: Admin/PostCategories/Edit/5
+        // GET: Admin/Linhvucs/Edit/5
         public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PostCategory postCategory = await db.PostCategories.FindAsync(id);
-            if (postCategory == null)
+            Linhvuc linhvuc = await db.Linhvucs.FindAsync(id);
+            if (linhvuc == null)
             {
                 return HttpNotFound();
             }
-            return View(postCategory);
+            return View(linhvuc);
         }
 
-        // POST: Admin/PostCategories/Edit/5
+        // POST: Admin/Linhvucs/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "ID,Name,Alias,Description,ParentID,DisplayOrder,Image,HomeFlag,CreatedDate,CreatedBy,UpdatedDate,UpdatedBy,MetaKeyword,MetaDescription,Status")] PostCategory postCategory)
+        public async Task<ActionResult> Edit([Bind(Include = "LinhvucID,Linhvuc1,DisplayOrder")] Linhvuc linhvuc)
         {
-            postCategory.Name = StringHelper.UpperCase(postCategory.Name);
-            postCategory.Alias = StringHelper.ToUnsignString(postCategory.Alias);
             if (ModelState.IsValid)
             {
-                db.Entry(postCategory).State = EntityState.Modified;
+                db.Entry(linhvuc).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            return View(postCategory);
+            return View(linhvuc);
         }
 
-        // GET: Admin/PostCategories/Delete/5
-        //public JsonResult Delete(int id)
-        //{
-        //    new PostNewsDAO().Deletect(id);
-
-        //    return Json(new { redirectUrl = Url.Action("Index", "PostCategories"), isRedirect = true });
-
-        //}
+        // GET: Admin/Linhvucs/Delete/5
         public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PostCategory postCategory = await db.PostCategories.FindAsync(id);
-            if (postCategory == null)
+            Linhvuc linhvuc = await db.Linhvucs.FindAsync(id);
+            if (linhvuc == null)
             {
                 return HttpNotFound();
             }
-            return View(postCategory);
+            return View(linhvuc);
         }
 
         // POST: Admin/Linhvucs/Delete/5
@@ -123,8 +112,8 @@ namespace Calgroup.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            PostCategory postCategory = await db.PostCategories.FindAsync(id);
-            db.PostCategories.Remove(postCategory);
+            Linhvuc linhvuc = await db.Linhvucs.FindAsync(id);
+            db.Linhvucs.Remove(linhvuc);
             try
             {
                 //code
@@ -133,7 +122,7 @@ namespace Calgroup.Areas.Admin.Controllers
             catch (Exception Exception)
             {
                 //code
-                TempData["message"] = "Không thể xóa Loại tin tức khi có tin tức";
+                TempData["message"] = "Không thể xóa lĩnh vực có loại sản phẩm";
             }
             finally
             {
@@ -141,15 +130,6 @@ namespace Calgroup.Areas.Admin.Controllers
 
             }
             return RedirectToAction("Index");
-        }
-
-        public JsonResult ChangeStatus(int id)
-        {
-            var result = new ChangesDAO().PostsCateStatus(id);
-            return Json(new
-            {
-                status = result
-            });
         }
 
         protected override void Dispose(bool disposing)

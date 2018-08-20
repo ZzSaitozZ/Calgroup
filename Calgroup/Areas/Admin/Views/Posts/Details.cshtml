@@ -44,7 +44,7 @@
                     @Html.DisplayNameFor(model => model.PostCategory.Name)
                 </dt>
 
-                <dd class="detailTable">
+                <dd>
                     @Html.DisplayFor(model => model.PostCategory.Name)
                 </dd>
 
@@ -52,7 +52,7 @@
                     @Html.DisplayNameFor(model => model.Name)
                 </dt>
 
-                <dd class="detailTable">
+                <dd>
                     @Html.DisplayFor(model => model.Name)
                 </dd>
 
@@ -60,7 +60,7 @@
                     @Html.DisplayNameFor(model => model.Alias)
                 </dt>
 
-                <dd class="detailTable">
+                <dd>
                     @Html.DisplayFor(model => model.Alias)
                 </dd>
 
@@ -68,7 +68,7 @@
                     @Html.DisplayNameFor(model => model.Image)
                 </dt>
 
-                <dd class="detailTable">
+                <dd>
                     <img src="@Html.DisplayFor(model => model.Image)" alt="Alternate Text" width="200" />
                 </dd>
 
@@ -76,7 +76,7 @@
                     @Html.DisplayNameFor(model => model.Description)
                 </dt>
 
-                <dd class="detailTable">
+                <dd>
                     @Html.Raw(HttpUtility.HtmlDecode(Model.Description))
                 </dd>
 
@@ -84,7 +84,7 @@
                     @Html.DisplayNameFor(model => model.Content)
                 </dt>
 
-                <dd class="detailTable">
+                <dd>
                     @Html.Raw(HttpUtility.HtmlDecode(Model.Content))
                 </dd>
 
@@ -92,7 +92,7 @@
                     @Html.DisplayNameFor(model => model.HomeFlag)
                 </dt>
 
-                <dd class="detailTable">
+                <dd>
                     @Html.DisplayFor(model => model.HomeFlag)
                 </dd>
 
@@ -100,7 +100,7 @@
                     @Html.DisplayNameFor(model => model.HotFlag)
                 </dt>
 
-                <dd class="detailTable">
+                <dd>
                     @Html.DisplayFor(model => model.HotFlag)
                 </dd>
 
@@ -108,7 +108,7 @@
                     @Html.DisplayNameFor(model => model.ViewCount)
                 </dt>
 
-                <dd class="detailTable">
+                <dd>
                     @Html.DisplayFor(model => model.ViewCount)
                 </dd>
 
@@ -116,7 +116,7 @@
                     @Html.DisplayNameFor(model => model.CreatedDate)
                 </dt>
 
-                <dd class="detailTable">
+                <dd>
                     @Html.DisplayFor(model => model.CreatedDate)
                 </dd>
 
@@ -124,7 +124,7 @@
                     @Html.DisplayNameFor(model => model.CreatedBy)
                 </dt>
 
-                <dd class="detailTable">
+                <dd>
                     @Html.DisplayFor(model => model.CreatedBy)
                 </dd>
 
@@ -132,7 +132,7 @@
                     @Html.DisplayNameFor(model => model.UpdatedDate)
                 </dt>
 
-                <dd class="detailTable">
+                <dd>
                     @Html.DisplayFor(model => model.UpdatedDate)
                 </dd>
 
@@ -140,7 +140,7 @@
                     @Html.DisplayNameFor(model => model.UpdatedBy)
                 </dt>
 
-                <dd class="detailTable">
+                <dd>
                     @Html.DisplayFor(model => model.UpdatedBy)
                 </dd>
 
@@ -148,7 +148,7 @@
                     @Html.DisplayNameFor(model => model.MetaKeyword)
                 </dt>
 
-                <dd class="detailTable">
+                <dd>
                     @Html.DisplayFor(model => model.MetaKeyword)
                 </dd>
 
@@ -156,7 +156,7 @@
                     @Html.DisplayNameFor(model => model.MetaDescription)
                 </dt>
 
-                <dd class="detailTable">
+                <dd>
                     @Html.DisplayFor(model => model.MetaDescription)
                 </dd>
 
@@ -164,18 +164,19 @@
                     @Html.DisplayNameFor(model => model.Status)
                 </dt>
 
-                <dd class="detailTable">
+                <dd>
                     @Html.DisplayFor(model => model.Status)
                 </dd>
 
             </dl>
-        </div>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-6">
-                <p class="btn btn-default">@Html.ActionLink("Edit", "Edit", new { id = Model.ID })</p>
-                <p class="btn btn-default">@Html.ActionLink("Back to List", "Index")</p>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-6">
+                    <p class="btn btn-default">@Html.ActionLink("Edit", "Edit", new { id = Model.ID })</p>
+                    <p class="btn btn-default">@Html.ActionLink("Back to List", "Index")</p>
+                </div>
             </div>
         </div>
+       
         <br /><br />
     </div>
 

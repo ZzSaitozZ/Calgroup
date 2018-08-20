@@ -72,11 +72,14 @@
     <Compile Include="EF\Color.cs" />
     <Compile Include="EF\ContactDetail.cs" />
     <Compile Include="EF\Error.cs" />
+    <Compile Include="EF\FAQ.cs" />
     <Compile Include="EF\Feedback.cs" />
     <Compile Include="EF\Footer.cs" />
     <Compile Include="EF\Function.cs" />
     <Compile Include="EF\Library.cs" />
     <Compile Include="EF\LibraryCategory.cs" />
+    <Compile Include="EF\Linhvuc.cs" />
+    <Compile Include="EF\LoaiSanPham.cs" />
     <Compile Include="EF\Menu.cs" />
     <Compile Include="EF\MenuType.cs" />
     <Compile Include="EF\News.cs" />
@@ -94,8 +97,10 @@
     <Compile Include="EF\ProductsdbContext.cs" />
     <Compile Include="EF\Project.cs" />
     <Compile Include="EF\ProjectProduct.cs" />
+    <Compile Include="EF\SanPham.cs" />
     <Compile Include="EF\Size.cs" />
     <Compile Include="EF\Slide.cs" />
+    <Compile Include="EF\Staff.cs" />
     <Compile Include="EF\SupportOnline.cs" />
     <Compile Include="EF\sysdiagram.cs" />
     <Compile Include="EF\SystemConfig.cs" />
@@ -113,5 +118,6 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

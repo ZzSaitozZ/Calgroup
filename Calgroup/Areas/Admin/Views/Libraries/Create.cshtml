@@ -64,13 +64,28 @@
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.PDF, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.PDF, new { htmlAttributes = new { @class = "form-control" } })
+                    <div class="col-md-3">
+                        @Html.EditorFor(model => model.PDF, new { htmlAttributes = new { @class = "form-control textbox-control" } })
                         @Html.ValidationMessageFor(model => model.PDF, "", new { @class = "text-danger" })
                     </div>
+                    <div class="col-md-2">
+                        <input class="btn btn-default" id="Browse2" value="Chọn file" />
+                    </div>
+                    <script>
+                        $("#Browse2").click(function () {
+                            var finder = new CKFinder();
+                            finder.selectActionFunction = function (fileUrl) {
+                                //Lấy file ảnh cuối cùng
+                                //fileUrl = fileUrl.substring(fileUrl.lastIndexOf("/") + 1);
+                                $("#PDF").val(fileUrl);
+
+                            };
+                            finder.popup();
+                        });
+                    </script>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group hidden">
                     @Html.LabelFor(model => model.AliasName, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
                         @Html.EditorFor(model => model.AliasName, new { htmlAttributes = new { @class = "form-control" } })
@@ -82,7 +97,7 @@
                     @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
                         <div class="checkbox">
-                            @Html.EditorFor(model => model.Status)
+                            @Html.EditorFor(model => model.Status, new { @class = "checkbox" })
                             @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
                         </div>
                     </div>

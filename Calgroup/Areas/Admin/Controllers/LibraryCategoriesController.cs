@@ -47,7 +47,7 @@ namespace Calgroup.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "ID,Name")] LibraryCategory libraryCategory)
+        public async Task<ActionResult> Create([Bind(Include = "ID,Name,AliasCat,Category")] LibraryCategory libraryCategory)
         {
             if (ModelState.IsValid)
             {
@@ -79,7 +79,7 @@ namespace Calgroup.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "ID,Name")] LibraryCategory libraryCategory)
+        public async Task<ActionResult> Edit([Bind(Include = "ID,Name,AliasCat,Category")] LibraryCategory libraryCategory)
         {
             if (ModelState.IsValid)
             {
@@ -112,7 +112,21 @@ namespace Calgroup.Areas.Admin.Controllers
         {
             LibraryCategory libraryCategory = await db.LibraryCategories.FindAsync(id);
             db.LibraryCategories.Remove(libraryCategory);
-            await db.SaveChangesAsync();
+            try
+            {
+                //code
+                await db.SaveChangesAsync();
+            }
+            catch (Exception Exception)
+            {
+                //code
+                TempData["message"] = "Không thể xóa Loại thư viện có thư viện ";
+            }
+            finally
+            {
+                //Close connection
+
+            }
             return RedirectToAction("Index");
         }
 
