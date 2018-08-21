@@ -39,7 +39,14 @@ namespace Model.DAO
             // return product.ToList();
             return db.Products.OrderByDescending(x => x.CreatedDate).Where(x => x.Status == true && x.CategoryID == t).Take(top).ToList();
         }
-        
+        public int maxDisplayOrder()
+        {
+            // var product = from od in db.ProductCategories join p in db.Products on od.ID equals p.ID  group p by p.Name;
+            // return product.ToList();
+            int max = (int)db.Linhvucs.Where(x=>x.DisplayOrder < 999).Max(x => x.DisplayOrder);
+            return max;
+        }
+
         public bool Delete(int id)
         {
             try

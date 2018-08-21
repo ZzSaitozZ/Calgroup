@@ -43,9 +43,9 @@
                                 <th>
                                     @Html.DisplayNameFor(model => model.PDF)
                                 </th>
-                                <th>
+                                @*<th>
                                     @Html.DisplayNameFor(model => model.AliasName)
-                                </th>
+                                </th>*@
                                 <th>
                                     @Html.DisplayNameFor(model => model.Status)
                                 </th>
@@ -56,35 +56,43 @@
 
                             @foreach (var item in Model)
                             {
-                                <tr>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.LibraryCategory.Name)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Name)
-                                    </td>
-                                    <td>
-                                        @*@Html.DisplayFor(modelItem => item.Image)*@
-                                        <img src="@Html.DisplayFor(modelItem => item.Image)" id="img_@item.ID" class="img-thumbnail" style="cursor:pointer" alt="Alternate Text" width="100" />
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.PDF)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.AliasName)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Status)
-                                    </td>
-                                    <td>
-                                        @*@Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-        @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.ID })*@
-                                        <a href="/Admin/Libraries/Edit/@item.ID" data-toggle="tooltip" data-placement="top" title="Sửa"><i class="fa fa-edit"></i></a> &nbsp;
-                                        <a href="/Admin/Libraries/Details/@item.ID" data-toggle="tooltip" data-placement="top" title="Chi tiết"><i class="fa fa-list-alt"></i></a> &nbsp;
-                                        <a href="/Admin/Libraries/Delete/@item.ID" data-toggle="tooltip" data-placement="top" title="Xóa"><i class="fa fa-times-circle"></i></a> &nbsp;
-                                    </td>
-                                </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.LibraryCategory.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Name)
+                                </td>
+                                <td>
+                                    @*@Html.DisplayFor(modelItem => item.Image)*@
+                                    <img src="@Html.DisplayFor(modelItem => item.Image)" id="img_@item.ID" class="img-thumbnail" style="cursor:pointer" alt="Alternate Text" width="100" onclick="selectImage('/Admin/Libraries/ChangeImage/@item.ID',this.id)"/>
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PDF)
+                                </td>
+                                @*<td>
+                                    @Html.DisplayFor(modelItem => item.AliasName)
+                                </td>*@
+                                <td class="text-center btn-active" data-id="@item.ID" style="cursor:pointer">
+                                    @if (item.Status == true)
+                                    {
+                                        <span class="label label-success">Actived</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="label label-danger">Locked</span>
+                                    }
+
+                                </td>
+                                <td>
+                                    @*@Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                                    @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })*@
+                                    <a href="/Admin/Libraries/Edit/@item.ID" data-toggle="tooltip" data-placement="top" title="Sửa"><i class="fa fa-edit"></i></a> &nbsp;
+                                    <a href="/Admin/Libraries/Details/@item.ID" data-toggle="tooltip" data-placement="top" title="Chi tiết"><i class="fa fa-list-alt"></i></a> &nbsp;
+                                    <a href="/Admin/Libraries/Delete/@item.ID" data-toggle="tooltip" data-placement="top" title="Xóa"><i class="fa fa-times-circle"></i></a> &nbsp;
+                                </td>
+                            </tr>
                             }
                     </tbody>
                     <tfoot></tfoot>
@@ -98,8 +106,7 @@
     </div>
     <!-- /.row -->
 </section>
-<script src="~/Resources/Admin/js/Delete/Products.js"></script>
-<script src="~/Resources/Admin/js/ChangesStatus/Products.js"></script>
-<script src="~/Resources/Admin/js/selectImage.js"></script>
 <script src="~/Resources/Admin/js/SearchTable.js"></script>
+<script src="~/Resources/Admin/js/ChangesStatus/Libraries.js"></script>
+<script src="~/Resources/Admin/js/selectImage.js"></script>
 

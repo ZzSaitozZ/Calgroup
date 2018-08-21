@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using Model.EF;
 using Calgroup.Areas.Admin.Models.BusinessModel;
+using Model.DAO;
 
 namespace Calgroup.Areas.Admin.Controllers
 {
@@ -16,6 +17,7 @@ namespace Calgroup.Areas.Admin.Controllers
     public class CalibrationsController : Controller
     {
         private ProductsdbContext db = new ProductsdbContext();
+        private static string pic;
 
         // GET: Admin/Calibrations
         public async Task<ActionResult> Index()
@@ -119,6 +121,39 @@ namespace Calgroup.Areas.Admin.Controllers
             db.Calibrations.Remove(calibration);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
+        }
+
+        //public JsonResult Delete(int id)
+        //{
+        //    new PostNewsDAO().Delete(id);
+
+        //    return Json(new { redirectUrl = Url.Action("Index", "Posts"), isRedirect = true });
+
+        //}
+        public JsonResult ChangeStatus(int id)
+        {
+            var result = new ChangesDAO().CalibrationsStatus(id);
+            return Json(new
+            {
+                status = result
+            });
+        }
+
+        public string ChangeImage(int? id, string picture)
+        {
+            pic = picture;
+            if (id == null)
+            {
+                return "Mã không tồn tại";
+            }
+            Post user = db.Posts.Find(id);
+            if (user == null)
+            {
+                return "Mã không tồn tại";
+            }
+            user.Image = picture;
+            db.SaveChanges();
+            return "";
         }
 
         protected override void Dispose(bool disposing)

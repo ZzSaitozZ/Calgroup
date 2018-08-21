@@ -6,26 +6,19 @@ namespace Model.EF
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("Library")]
-    public partial class Library
+    public partial class FAQ
     {
         public int ID { get; set; }
 
         [Required]
-        public string Name { get; set; }
+        public string Title { get; set; }
 
         [Required]
-        public string Image { get; set; }
-
-        [Required]
-        public string PDF { get; set; }
-
-        public bool Status { get; set; }
-
-        public int IDCategory { get; set; }
-
         public string AliasName { get; set; }
 
-        public virtual LibraryCategory LibraryCategory { get; set; }
+        [Required]
+        public string Details { get; set; }
+
+        public bool Status { get; set; }
     }
 }

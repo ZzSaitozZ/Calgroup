@@ -59,5 +59,47 @@ namespace Model.DAO
             db.SaveChanges();
             return status.Status;
         }
+        public bool CalibrationsStatus(int id)
+        {
+            var status = db.Calibrations.Find(id);
+            if(status.Status == true)
+            {
+                status.Status = false;
+            }
+            else
+            {
+                status.Status = true;
+            }
+            db.SaveChanges();
+            if(status.Status == true)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public bool LibrariesStatus(int id)
+        {
+            var status = db.Libraries.Find(id);
+            if (status.Status == true)
+            {
+                status.Status = false;
+            }
+            else
+            {
+                status.Status = true;
+            }
+            db.SaveChanges();
+            if (status.Status == true)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

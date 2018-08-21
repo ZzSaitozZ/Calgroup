@@ -1,12 +1,10 @@
-﻿@model Model.EF.PostCategory
+﻿@model Model.EF.SanPham
 
 @{
     ViewBag.Title = "Delete";
-    if (Session["userID"] == null)
-    {
-        Response.Redirect("/Admin/Admin/Login");
-    }
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
+
 
 <style>
     .detailTable {
@@ -41,6 +39,14 @@
         <div>
             <dl class="dl-horizontal">
                 <dt>
+                    @Html.DisplayNameFor(model => model.LoaiSanPham.Category)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.LoaiSanPham.Category)
+                </dd>
+
+                <dt>
                     @Html.DisplayNameFor(model => model.Name)
                 </dt>
 
@@ -49,108 +55,80 @@
                 </dd>
 
                 <dt>
-                    @Html.DisplayNameFor(model => model.Alias)
+                    @Html.DisplayNameFor(model => model.Model)
                 </dt>
 
                 <dd>
-                    @Html.DisplayFor(model => model.Alias)
-                </dd>
-
-                @*<dt>
-                    @Html.DisplayNameFor(model => model.Description)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Description)
+                    @Html.DisplayFor(model => model.Model)
                 </dd>
 
                 <dt>
-                    @Html.DisplayNameFor(model => model.ParentID)
+                    @Html.DisplayNameFor(model => model.Manufacturer)
                 </dt>
 
                 <dd>
-                    @Html.DisplayFor(model => model.ParentID)
+                    @Html.DisplayFor(model => model.Manufacturer)
                 </dd>
 
                 <dt>
-                    @Html.DisplayNameFor(model => model.DisplayOrder)
+                    @Html.DisplayNameFor(model => model.ImageLink)
+                   
                 </dt>
 
                 <dd>
-                    @Html.DisplayFor(model => model.DisplayOrder)
+                    @*@Html.DisplayFor(model => model.ImageLink)*@
+                    <img src="@Html.DisplayFor(model => model.ImageLink)" alt="Alternate Text" class="img-thumbnail" width="150" />
                 </dd>
 
                 <dt>
-                    @Html.DisplayNameFor(model => model.Image)
+                    @Html.DisplayNameFor(model => model.ImageLinkDetail)
                 </dt>
 
                 <dd>
-                    @Html.DisplayFor(model => model.Image)
+                    @Html.DisplayFor(model => model.ImageLinkDetail)
                 </dd>
 
                 <dt>
-                    @Html.DisplayNameFor(model => model.HomeFlag)
+                    @Html.DisplayNameFor(model => model.ManualLink)
                 </dt>
 
                 <dd>
-                    @Html.DisplayFor(model => model.HomeFlag)
+                    @Html.DisplayFor(model => model.ManualLink)
                 </dd>
 
                 <dt>
-                    @Html.DisplayNameFor(model => model.CreatedDate)
+                    @Html.DisplayNameFor(model => model.Detail)
                 </dt>
 
                 <dd>
-                    @Html.DisplayFor(model => model.CreatedDate)
+                    @*@Html.DisplayFor(model => model.Detail)*@
+                    @Html.Raw(HttpUtility.HtmlDecode(Model.Detail))
                 </dd>
 
                 <dt>
-                    @Html.DisplayNameFor(model => model.CreatedBy)
+                    @Html.DisplayNameFor(model => model.Specification)
                 </dt>
 
                 <dd>
-                    @Html.DisplayFor(model => model.CreatedBy)
+                    @*@Html.DisplayFor(model => model.Specification)*@
+                    @Html.Raw(HttpUtility.HtmlDecode(Model.Specification))
                 </dd>
 
                 <dt>
-                    @Html.DisplayNameFor(model => model.UpdatedDate)
+                    @Html.DisplayNameFor(model => model.Price)
                 </dt>
 
                 <dd>
-                    @Html.DisplayFor(model => model.UpdatedDate)
+                    @Html.DisplayFor(model => model.Price)
                 </dd>
 
                 <dt>
-                    @Html.DisplayNameFor(model => model.UpdatedBy)
+                    @Html.DisplayNameFor(model => model.Hot)
                 </dt>
 
                 <dd>
-                    @Html.DisplayFor(model => model.UpdatedBy)
+                    @Html.DisplayFor(model => model.Hot)
                 </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.MetaKeyword)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.MetaKeyword)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.MetaDescription)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.MetaDescription)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.Status)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Status)
-                </dd>*@
 
             </dl>
 
@@ -169,3 +147,4 @@
     </div>
 
 </section>
+

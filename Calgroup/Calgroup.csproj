@@ -161,6 +161,8 @@
     <Compile Include="Areas\Admin\Controllers\CalibrationsController.cs" />
     <Compile Include="Areas\Admin\Controllers\LibrariesController.cs" />
     <Compile Include="Areas\Admin\Controllers\LibraryCategoriesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\LinhvucsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\LoaiSanPhamsController.cs" />
     <Compile Include="Areas\Admin\Controllers\MenusController.cs" />
     <Compile Include="Areas\Admin\Controllers\OrderDetailsController.cs" />
     <Compile Include="Areas\Admin\Controllers\OrdersController.cs" />
@@ -170,6 +172,7 @@
     <Compile Include="Areas\Admin\Controllers\ProductCategoriesController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductsController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProjectProductsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SanPhamsController.cs" />
     <Compile Include="Areas\Admin\Controllers\SlidesController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserAdministratorsController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserBusinessesController.cs" />
@@ -1423,6 +1426,8 @@
     <Content Include="Resources\Admin\dist\js\demo.js" />
     <Content Include="Resources\Admin\dist\js\pages\dashboard.js" />
     <Content Include="Resources\Admin\dist\js\pages\dashboard2.js" />
+    <Content Include="Resources\Admin\js\ChangesStatus\Calibration.js" />
+    <Content Include="Resources\Admin\js\ChangesStatus\Libraries.js" />
     <Content Include="Resources\Admin\js\ChangesStatus\Posts.js" />
     <Content Include="Resources\Admin\js\ChangesStatus\PostsCate.js" />
     <Content Include="Resources\Admin\js\ChangesStatus\ProductCategories.js" />
@@ -2606,11 +2611,6 @@
     <Content Include="Areas\Admin\Views\Libraries\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Libraries\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Libraries\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\LibraryCategories\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\LibraryCategories\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\LibraryCategories\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\LibraryCategories\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\LibraryCategories\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Login.cshtml" />
     <Content Include="Areas\Admin\Views\Home\NotificationAuthorize.cshtml" />
@@ -2621,6 +2621,26 @@
     <Content Include="CalgroupDB.edmx.diagram">
       <DependentUpon>CalgroupDB.edmx</DependentUpon>
     </Content>
+    <Content Include="Areas\Admin\Views\LibraryCategories\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\LibraryCategories\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\LibraryCategories\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\LibraryCategories\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\LibraryCategories\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\SanPhams\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\SanPhams\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\SanPhams\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\SanPhams\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\SanPhams\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\LoaiSanPhams\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\LoaiSanPhams\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\LoaiSanPhams\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\LoaiSanPhams\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\LoaiSanPhams\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Linhvucs\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Linhvucs\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Linhvucs\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Linhvucs\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Linhvucs\Index.cshtml" />
     <None Include="Resources\JS\Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Resources\JS\Scripts\jquery-3.3.1.js" />
     <Content Include="Resources\JS\Scripts\jquery-3.3.1.min.js" />
@@ -2667,7 +2687,9 @@
     <Content Include="Resources\Sanpham\MayHienSong\Keysight-U1604Bsm.png" />
     <Content Include="Resources\Sanpham\ThuocCapDienTu\500-507-10.png" />
     <Content Include="Resources\Sanpham\ThuocCapDienTu\500-507-10sm.png" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>

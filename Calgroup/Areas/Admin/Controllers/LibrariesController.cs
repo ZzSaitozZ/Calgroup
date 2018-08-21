@@ -8,12 +8,14 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Model.EF;
+using Model.DAO;
 
 namespace Calgroup.Areas.Admin.Controllers
 {
     public class LibrariesController : Controller
     {
         private ProductsdbContext db = new ProductsdbContext();
+        private static string pic;
 
         // GET: Admin/Libraries
         public async Task<ActionResult> Index()
@@ -119,6 +121,40 @@ namespace Calgroup.Areas.Admin.Controllers
             db.Libraries.Remove(library);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
+        }
+
+
+        //public JsonResult Delete(int id)
+        //{
+        //    new PostNewsDAO().Delete(id);
+
+        //    return Json(new { redirectUrl = Url.Action("Index", "Posts"), isRedirect = true });
+
+        //}
+        public JsonResult ChangeStatus(int id)
+        {
+            var result = new ChangesDAO().LibrariesStatus(id);
+            return Json(new
+            {
+                status = result
+            });
+        }
+
+        public string ChangeImage(int? id, string picture)
+        {
+            pic = picture;
+            if (id == null)
+            {
+                return "Mã không tồn tại";
+            }
+            Library user = db.Libraries.Find(id);
+            if (user == null)
+            {
+                return "Mã không tồn tại";
+            }
+            user.Image = picture;
+            db.SaveChanges();
+            return "";
         }
 
         protected override void Dispose(bool disposing)
