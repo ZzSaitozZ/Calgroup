@@ -27,6 +27,8 @@ namespace Calgroup
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<LibraryCategory> LibraryCategories { get; set; }
+        public virtual DbSet<LoaiSanPham> LoaiSanPhams { get; set; }
     
         public virtual ObjectResult<getProductDetail_Result> getProductDetail(string alias)
         {
@@ -44,6 +46,28 @@ namespace Calgroup
                 new ObjectParameter("aliascat", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<getProducts_Result>("getProducts", aliascatParameter);
+        }
+    
+        public virtual ObjectResult<getThuViens_Result> getThuViens(string aliascat, Nullable<int> page)
+        {
+            var aliascatParameter = aliascat != null ?
+                new ObjectParameter("aliascat", aliascat) :
+                new ObjectParameter("aliascat", typeof(string));
+    
+            var pageParameter = page.HasValue ?
+                new ObjectParameter("page", page) :
+                new ObjectParameter("page", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<getThuViens_Result>("getThuViens", aliascatParameter, pageParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<long>> getNumberThuViens(string aliascat)
+        {
+            var aliascatParameter = aliascat != null ?
+                new ObjectParameter("aliascat", aliascat) :
+                new ObjectParameter("aliascat", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<long>>("getNumberThuViens", aliascatParameter);
         }
     }
 }

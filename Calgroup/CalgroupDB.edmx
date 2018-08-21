@@ -4,36 +4,61 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Calgroup_v2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'Calgroup_v2.dbo.MenuSP' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="MenuSP">
-          <Property Name="Linhvuc" Type="nvarchar" MaxLength="50" />
+    <Schema Namespace="Calgroup_v2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="LibraryCategory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="AliasCat" Type="varchar" MaxLength="50" />
+          <Property Name="Category" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="LoaiSanPham">
+          <Key>
+            <PropertyRef Name="CatID" />
+          </Key>
+          <Property Name="CatID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LinhvucID" Type="int" />
           <Property Name="Category" Type="nvarchar(max)" />
           <Property Name="AliasCat" Type="varchar" MaxLength="50" />
-          <Property Name="DisplayOrder" Type="int" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'Calgroup_v2.dbo.ShortProducts' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        </EntityType>
+        <Function Name="getNumberThuViens" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="aliascat" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="getProductDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="alias" Type="varchar" Mode="In" />
         </Function>
         <Function Name="getProducts" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="aliascat" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="getThuViens" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="aliascat" Type="varchar" Mode="In" />
+          <Parameter Name="page" Type="int" Mode="In" />
+        </Function>
         <EntityContainer Name="Calgroup_v2ModelStoreContainer">
+          <EntitySet Name="LibraryCategory" EntityType="Self.LibraryCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LoaiSanPham" EntityType="Self.LoaiSanPham" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Calgroup_v2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="Calgroup_v2DB" annotation:LazyLoadingEnabled="true">
           <FunctionImport Name="getProductDetail" ReturnType="Collection(Calgroup_v2Model.getProductDetail_Result)">
-            <Parameter Name="alias" Mode="In" Type="String" />
+          <Parameter Name="alias" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="getProducts" ReturnType="Collection(Calgroup_v2Model.getProducts_Result)">
-            <Parameter Name="aliascat" Mode="In" Type="String" />
+          <Parameter Name="aliascat" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="getThuViens" ReturnType="Collection(Calgroup_v2Model.getThuViens_Result)">
+          <Parameter Name="aliascat" Mode="In" Type="String" />
+            <Parameter Name="page" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="LibraryCategories" EntityType="Calgroup_v2Model.LibraryCategory" />
+          <EntitySet Name="LoaiSanPhams" EntityType="Calgroup_v2Model.LoaiSanPham" />
+          <FunctionImport Name="getNumberThuViens" ReturnType="Collection(Int64)">
+          <Parameter Name="aliascat" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="getProductDetail_Result">
@@ -56,6 +81,30 @@ warning 6002: The table/view 'Calgroup_v2.dbo.ShortProducts' does not have a pri
           <Property Type="String" Name="Manufacturer" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="ImageLink" Nullable="true" />
         </ComplexType>
+        <ComplexType Name="getThuViens_Result">
+          <Property Type="String" Name="Name" Nullable="false" />
+          <Property Type="String" Name="Image" Nullable="false" />
+          <Property Type="String" Name="PDF" Nullable="false" />
+          <Property Type="String" Name="Category" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <EntityType Name="LibraryCategory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AliasCat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="LoaiSanPham">
+          <Key>
+            <PropertyRef Name="CatID" />
+          </Key>
+          <Property Name="CatID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LinhvucID" Type="Int32" />
+          <Property Name="Category" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AliasCat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -90,6 +139,37 @@ warning 6002: The table/view 'Calgroup_v2.dbo.ShortProducts' does not have a pri
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="getThuViens" FunctionName="Calgroup_v2Model.Store.getThuViens">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Calgroup_v2Model.getThuViens_Result">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="PDF" ColumnName="PDF" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="LibraryCategories">
+            <EntityTypeMapping TypeName="Calgroup_v2Model.LibraryCategory">
+              <MappingFragment StoreEntitySet="LibraryCategory">
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="AliasCat" ColumnName="AliasCat" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LoaiSanPhams">
+            <EntityTypeMapping TypeName="Calgroup_v2Model.LoaiSanPham">
+              <MappingFragment StoreEntitySet="LoaiSanPham">
+                <ScalarProperty Name="AliasCat" ColumnName="AliasCat" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="LinhvucID" ColumnName="LinhvucID" />
+                <ScalarProperty Name="CatID" ColumnName="CatID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="getNumberThuViens" FunctionName="Calgroup_v2Model.Store.getNumberThuViens" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
