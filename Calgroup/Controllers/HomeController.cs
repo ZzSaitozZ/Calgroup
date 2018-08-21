@@ -7,11 +7,13 @@ using Model.DAO;
 using Calgroup.VM;
 using Calgroup.Models;
 using System.Web.Script.Serialization;
+using Model.EF;
 
 namespace Calgroup.Controllers
 {
     public class HomeController : Controller
     {
+        private ProductsdbContext db = new ProductsdbContext();
         public ActionResult Index()
         {
             return View();
@@ -95,6 +97,25 @@ namespace Calgroup.Controllers
         {
             ViewBag.calibration = new CalibrationDAO().ListAllCalibration();
             return View();
+
+        }
+        [HttpPost]
+        //[ValidateAntiForgeryToken]
+        public ActionResult SaveContact(FormCollection collection)
+        {
+
+            String Name = Request.Form["inputName"].ToString();
+            String Email = Request.Form["inputEmail"].ToString();
+            String Address = Request.Form["inputAddress"].ToString();
+            String Message = Request.Form["comment"].ToString();
+            Customer customer = new Customer();
+            customer.Name = Name;
+            customer.Adress = Address;
+            customer.Email = Email;
+            customer.Comment = Message;
+            db.Customers.Add(customer);
+            db.SaveChanges();
+            return RedirectToAction("Index");
 
         }
     }
