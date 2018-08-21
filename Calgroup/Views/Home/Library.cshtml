@@ -3,43 +3,59 @@
     ViewBag.Title = "Library";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+@model Calgroup.VM.SanPhamPageVM
 <h2>Library</h2>
+<link href="~/Resources/CSS/simplePagination.css" rel="stylesheet" />
+<script src="~/Resources/JS/Scripts/jquery.simplePagination.js"></script>
 <style>
     #lvcontainer {
         margin-left: 10px;
         display: inline-block;
-
+        transition: left 0.5s;
+        z-index: 2;
+        cursor: pointer;
     }
 
     .linhvuccha {
-        margin-top:10px;
         width: 300px;
-        /*background-color: #0075bf;
-        border-radius: unset;*/
-        font-size: 14px;
+        padding: 10px 10px 10px 15px;
+        font-size: 16px;
         color: white;
-        background-color: #428bca;
-        border-color: #428bca;
-        border-bottom-right-radius: 0 !important;
-        border-bottom-left-radius: 0 !important;
+        background-color: #0075bf;
+        border-color: #0075bf;
+        border-radius: 0;
     }
 
     .linhvuccon {
         width: 300px;
-        /*background-color: antiquewhite;*/
-        border: 1px solid #428bca;
-        border-bottom-right-radius: 0.25rem !important;
-        border-bottom-left-radius: 0.25rem  !important;
+        background-color: white;
+        border: 1px solid #0075bf;
+        font-size: 16px;
     }
 
         .linhvuccon div {
-            /*border-top: solid 1px;*/
+            width: 100%;
+            border-bottom: solid 1px #0075bf;
+            padding: 5px 0px 5px 15px;
         }
+
+            .linhvuccon div:hover {
+                cursor: pointer;
+                background-color: rgba(0, 117, 191, 0.27058823529411763);
+            }
 
             .linhvuccon div:nth-child(1) {
                 border-top: unset;
             }
+
+    .clickable {
+        cursor: pointer;
+    }
+
+    .pull-right {
+        float: right !important;
+    }
+
 
     .buttons.active {
         /*color: white;*/
@@ -52,6 +68,7 @@
         cursor: pointer;
         border-left: 10px solid transparent;
     }
+
     .clickable {
         cursor: pointer;
     }
@@ -59,318 +76,173 @@
     .pull-right {
         float: right !important;
     }
+
     .fas fa-angle-up::before {
         content: "\f106";
     }
+
+    #P-card-container {
+        margin: 0px auto 20px auto;
+        font-size: 20px;
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    #P-Category {
+        text-align: center;
+        padding: 0 60px;
+    }
+
+    #P-card-subcontainer {
+        margin: auto;
+    }
+
+    i.fa-list-ul {
+        font-size: 30px;
+        color: white;
+        background: #0075bf;
+        padding: 7px 7px 7px 4px;
+        /*border-radius: 30px;*/
+        transition: left 0.5s;
+        display: none;
+        position: fixed;
+        left: 0;
+        z-index: 2;
+        cursor: pointer;
+    }
+
+    .Item {
+        cursor: pointer;
+    }
+
+    @@media screen and (max-width: 900px) {
+        #P-card-container {
+            width: 100%;
+        }
+
+        i.fa-list-ul {
+            display: inline-block;
+            position: fixed;
+        }
+
+        #lvcontainer {
+            position: fixed;
+            margin-left: 0;
+            left: -300px;
+        }
+    }
 </style>
 
-<div class="row2">
-    <div id="lvcontainer" class="col-md-3">
-        <div class="navbar-toggler linhvuccha" type="button" data-toggle="collapse" data-target="#lvkeysight" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-            THIÊT BỊ HÃNG KEYSIGHT
-            <span class="pull-right clickable"><i class="fas fa-angle-down"></i></span>
-        </div>
+<div style="margin-top:20px;font-size:0">
+    <div><i class="fas fa-list-ul"></i></div>
+    <div id="lvcontainer">
 
-        <div class="collapse linhvuccon" id="lvkeysight">
-
-            <div class="buttons active" data-link="product">
-                Máy hiện sóng / Oscilloscope
-            </div>
-            <div class="buttons"  data-link="detail">
-                Máy đo điện trở cách điện / Insulation Resistance Tester
-            </div>
-            <div class="buttons">
-                Thiết bị hiệu chuẩn / Multi-function Calibrator
-            </div>
-            <div class="buttons">
-                Thiết bị đo ảnh nhiệt / Thermal Imager
-            </div>
-            <div class="buttons">
-                Đồng hồ Ampe kìm / Clamp Meter
-            </div>
-            <div class="buttons">
-                Đồng hồ đa năng / Multimeter
-            </div>
-            <div class="buttons">
-                Đồng hồ đo LCR / LCR Meter
-            </div>
-        </div>
-
-        <div class="navbar-toggler linhvuccha" type="button" data-toggle="collapse" data-target="#lvcokhi" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-            LĨNH VỰC CƠ KHÍ CHÍNH XÁC
-            <span class="pull-right clickable"><i class="fas fa-angle-down"></i></span>
-        </div>
-
-        <div class="collapse linhvuccon" id="lvcokhi">
-
-            <div>
-                Thước cặp / Caliper
-            </div>
-            <div>
-                Panme đo ngoài / Outside Micrometer
-            </div>
-            <div>
-                Panme đo trong / Inside Micrometer
-            </div>
-            <div>
-                Đồng hồ so điện tử / Digital Indicator
-            </div>
-            <div>
-                Đồng hồ so cơ khí / Dial Indicator
-            </div>
-            <div>
-                Thước đo độ dày / Thickness gauge
-            </div>
-            <div>
-                Thước đo độ sâu / Depth gauge
-            </div>
-            <div>
-                Thước đo chiều cao / Height gauge
-            </div>
-            <div>
-                Đế từ gá đồng hồ so / Magnetic Stands
-            </div>
-            <div>
-                Máy đo độ nhám /  Surface Roughness Tester
-            </div>
-
+        <div class=" linhvuccha">
+            @Model.Menu[0].Name
 
         </div>
 
-        <div class="navbar-toggler linhvuccha" type="button" data-toggle="collapse" data-target="#lvnhiet" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-            LĨNH VỰC NHIỆT- NHIỆT &amp; ẨM
+        <div class="linhvuccon">
+            @foreach (var linhvuccon in Model.Menu[0].LinhVucCon)
+            {
+                <div class="buttons" data-alias="@linhvuccon[1]">
+                    @linhvuccon[0]
+                </div>
+            }
+        </div>
+        <div class=" linhvuccha" data-toggle="collapse" data-alias="@Model.Menu[1].LinhVucCon[0][1]">
+            @Model.Menu[1].Name
         </div>
 
-        <div class="collapse linhvuccon" id="lvnhiet">
-
-            <div>
-                Máy đo nhiệt độ hồng ngoại / IR Thermometer
-            </div>
-            <div>
-                Máy đo nhiệt độ / Thermometer
-            </div>
-            <div>
-                Máy độ nhiệt độ &amp; độ ẩm / Thermo Hygrometer
-            </div>
-        </div>
-
-        <div class="navbar-toggler linhvuccha" type="button" data-toggle="collapse" data-target="#lvhoaly" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-            LĨNH VỰC HOÁ-LÝ-THỂ TÍCH
-        </div>
-
-        <div class="collapse linhvuccon" id="lvhoaly">
-
-            <div>
-                Máy đo độ dẫn điện / Conductivity Meter
-            </div>
-            <div>
-                Máy đo pH / pH Meter
-            </div>
-            <div>
-                Dung dịch / Solution
-            </div>
-        </div>
-
-        <div class="navbar-toggler linhvuccha" type="button" data-toggle="collapse" data-target="#lvdocung" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-            LĨNH VỰC LỰC-ĐỘ CỨNG
-        </div>
-
-        <div class="collapse linhvuccon" id="lvdocung">
-
-            <div>
-                Máy đo độ cứng
-            </div>
-
-        </div>
-
-        <div class="navbar-toggler linhvuccha" type="button" data-toggle="collapse" data-target="#lvkhoiluong" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-            LĨNH VỰC KHỐI LƯỢNG
-        </div>
-
-        <div class="collapse linhvuccon" id="lvkhoiluong">
-
-            <div>
-                Cân kỹ thuật
-            </div>
-            <div>
-                Cân phân tích / Analytical Balance
-            </div>
-            <div>
-                Cân bàn
-            </div>
-            <div>
-                Qủa cân chuẩn / Standard Weight
-            </div>
-        </div>
-
-        <div class="navbar-toggler linhvuccha" type="button" data-toggle="collapse" data-target="#lvapsuat" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-            LĨNH VỰC ĐIỆN
-        </div>
-
-        <div class="collapse linhvuccon" id="lvapsuat">
-
-            <div>
-                Đồng hồ đa năng / Multimeter
-            </div>
-            <div>
-                Ampe kìm / Clamp Meter
-            </div>
-
-        </div>
-
-        <div class="navbar-toggler linhvuccha" type="button" data-toggle="collapse" data-target="#lvdien" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-            LĨNH VỰC KHÁC
-        </div>
-
-        <div class="collapse linhvuccon" id="lvdien">
-
-            <div>
-                Máy đo ánh sáng / Light meter
-            </div>
-
-        </div>
     </div>
-    <div id="P-container" class="col-md-8">
-        <div>
-            <div class="P-description .active" id="product">
 
-                <div class="CategoryChoice" style=" margin-top:5%">
-                    <h2>Sản phẩm được nhiều người quan tâm</h2>
-                    <div class="row justify-content-around" style="margin:1% 0% 3% 0%; padding-bottom:5%">
-                        
-                        <div class="col-md-4">
-                            <div>
-                                <img class="img-fluid" src="~/Resources/Images/Item/U1602 Oscilloscope_0.png" />
-                                <h4>Máy hiện sóng Keysight U1602B</h4>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div>
-                                <img class="img-fluid" src="~/Resources/Images/Item/U1401B Multi- Function Calibrator-Meter.png" />
-                                <h4>Thiết bị hiệu chuẩn Keysight U1401B</h4>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div>
-                                <img class="img-fluid" src="~/Resources/Images/Item/U1733C Keysight LCR Meter-.png" />
-                                <h4>Máy đo LCR cầm tay Keysight U1731C</h4>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div>
-                                <img class="img-fluid" src="~/Resources/Images/Item/Capacitance Meter.png" />
-                                <h4>Đồng hồ đo tụ điện Keysight U1701B</h4>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div>
-                                <img class="img-fluid" src="~/Resources/Images/Item/U1191A Keysight.jpg" />
-                                <h3>Ampe kìm Keysight U1192A</h3>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div>
-                                <img class="img-fluid" src="~/Resources/Images/Item/KEYSIGHT U1241B Multimeter_0.png" />
-                                <h4>Đồng hô đa năng Keysight U1241B</h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div id="P-card-container">
+        <h1 id="P-Category"></h1>
+        <div id="P-card-subcontainer" class="row"></div>
 
-            <div class="P-description" id="detail" style="display:none">
-                <div class="CategoryChoice" style=" margin-top:5%">
-                    <h2>Sản phẩm được nhiều người quan tâm</h2>
-                    <div class="row justify-content-around" style="margin:1% 0% 3% 0%; padding-bottom:5%">
-                        <div class="col-md-4">
-                            <div>
-                                <img class="img-fluid" src="~/Resources/Images/Item/thuoc cap.png" />
-                                <h4>Thước cặp điện tử 500-502-10 (1000) mm</h4>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div>
-                                <img class="img-fluid" src="~/Resources/Images/Item/thuoc cap.png" />
-                                <h4>Thước cặp điện tử 500-500-10 (0-450) mm </h4>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div>
-                                <img class="img-fluid" src="~/Resources/Images/Item/U1602 Oscilloscope_0.png" />
-                                <h4>Máy hiện sóng Keysight U1604B</h4>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div>
-                                <img class="img-fluid" src="~/Resources/Images/Item/U1602 Oscilloscope_0.png" />
-                                <h4>Máy hiện sóng Keysight U1602B</h4>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div>
-                                <img class="img-fluid" src="~/Resources/Images/Item/U1401B Multi- Function Calibrator-Meter.png" />
-                                <h4>Thiết bị hiệu chuẩn Keysight U1401B</h4>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div>
-                                <img class="img-fluid" src="~/Resources/Images/Item/U1733C Keysight LCR Meter-.png" />
-                                <h4>Máy đo LCR cầm tay Keysight U1731C</h4>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div>
-                                <img class="img-fluid" src="~/Resources/Images/Item/Capacitance Meter.png" />
-                                <h4>Đồng hồ đo tụ điện Keysight U1701B</h4>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div>
-                                <img class="img-fluid" src="~/Resources/Images/Item/U1191A Keysight.jpg" />
-                                <h3>Ampe kìm Keysight U1192A</h3>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div>
-                                <img class="img-fluid" src="~/Resources/Images/Item/KEYSIGHT U1241B Multimeter_0.png" />
-                                <h4>Đồng hô đa năng Keysight U1241B</h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="P-description" id="specification" style="display:none">
-                <p>3</p>
-            </div>
-        </div>
+    </div>
+    <div id="pagination">
 
     </div>
 </div>
 <script>
-    //TabNav
-    $('.buttons').click(function () {
-        var activeButton = $('.linhvuccon .active')[0];
+    
 
-        id = $(this)[0].dataset.link;
-        if (!$(this).hasClass('active')) {
-            activeButton.className = activeButton.className.replace(" active", "");
-            $(this)[0].className += ' active';
-            $('.P-description').hide();
-            $('#' + id).show();
+    //Ajax get product
+    function LoadData() {
+        $.ajax({
+            type: 'Post',
+            url: '/getThuVien',
+            dataType: 'json',
+            data: { aliascat: '@Model.AliasCat', page: $('#pagination').pagination('getCurrentPage') },
+            success: function (data) {
+                var content = ''; 
+                if (data.Products != null) {
+                data.Products = JSON.parse(data.Products);
+                for (var i = 0; i < data.Products.length; i++) {
+                    content += '<div class="col-md-6 col-lg-6 col-xl-4 " >' +
+                        '<div class="Item" href="' + data.Products[i].PDF + '">' +
+                        '<img class="img-fluid" src="' + data.Products[i].Image + '" />' +
+                        '<h4>' + data.Products[i].Name + '</h4>' +
+                        '</div>'+ '</div>'
+                    
+                    if (i == data.Products.length - 1) {
+                        $('#P-card-subcontainer').html(content);
+                        content = '';
+                        $('.Item').click(function () {
+                            window.location.href = $(this).attr('href')
+                        })
+                    }
+                }
+                };
+                $('#P-Category').html('' + data.CategoryVi);
+            }
+            });
+    }
+
+
+    //Responsive with fixed width
+    function setWidth() {
+        if ($(window).width() > 900) {
+            $('#P-card-container').width(($(window).width() - $('#lvcontainer').outerWidth(true)));
         }
+        else $('#P-card-container').width('100%');
+    }
+
+    //Auto icon
+    function toNavBar() {
+        $('i.fa-list-ul').css('top', $('.navbar.Topnav')[0].offsetTop + $('.navbar.Topnav').height());
+        $('#lvcontainer').css('top', $('i.fa-list-ul')[0].offsetTop);
+    }
+
+    function toNavBarOnce() {
+        toNavBar();
+        $(this).off("resize", toNavBarOnce);
+    }
+
+    //set linhvuccon click function
+    $('.buttons').click(function () {
+        window.location.href = '/ThuVien/' + $(this)[0].dataset.alias;
     });
-    //$(document).on('click', '.linhvuccha.clickable', function (e) {
-    $('.linhvuccha').click(function () {
-        var $this = $(this);
-        if (!$this.hasClass('collapsed') && $this.find('i').hasClass('fas fa-angle-down')) {
-            $this.find('i').removeClass('fas fa-angle-down').addClass('fas fa-angle-up');
-        } else if (!$this.hasClass('collapsed') && $this.find('i').hasClass('fas fa-angle-up'))
-        {
-            $this.find('i').removeClass('fas fa-angle-up').addClass('fas fa-angle-down');
-        }
-        else {
-            $this.find('i').removeClass('fas fa-angle-down').addClass('fas fa-angle-up');
-        }
+    //
+    $(window).ready(function () {
+        setWidth();
+        toNavBar();
+    });
+
+    $(window).on("resize", setWidth);
+    $(window).on("resize", toNavBarOnce);
+    $(window).scroll(toNavBar);
+    $('i.fa-list-ul').click(function () {
+        if ($(this).css('left') == '300px') { $(this).css('left', 0); $('#lvcontainer').css('left', '-300px') }
+        else { $(this).css('left', '300px'); $('#lvcontainer').css('left', 0) }
     })
+
+
+
+    $('#pagination').pagination({
+        pages: @Model.PageCount,
+        onPageClick: LoadData
+    })
+    $('#pagination').pagination('selectPage', 1);
 </script>

@@ -28,7 +28,7 @@ namespace Calgroup.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            LibraryCategory libraryCategory = await db.LibraryCategories.FindAsync(id);
+            Model.EF.LibraryCategory libraryCategory = await db.LibraryCategories.FindAsync(id);
             if (libraryCategory == null)
             {
                 return HttpNotFound();
@@ -47,7 +47,7 @@ namespace Calgroup.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "ID,Name")] LibraryCategory libraryCategory)
+        public async Task<ActionResult> Create([Bind(Include = "ID,Name")] Model.EF.LibraryCategory libraryCategory)
         {
             if (ModelState.IsValid)
             {
@@ -66,7 +66,7 @@ namespace Calgroup.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            LibraryCategory libraryCategory = await db.LibraryCategories.FindAsync(id);
+            Model.EF.LibraryCategory libraryCategory = await db.LibraryCategories.FindAsync(id);
             if (libraryCategory == null)
             {
                 return HttpNotFound();
@@ -79,7 +79,7 @@ namespace Calgroup.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "ID,Name")] LibraryCategory libraryCategory)
+        public async Task<ActionResult> Edit([Bind(Include = "ID,Name")] Model.EF.LibraryCategory libraryCategory)
         {
             if (ModelState.IsValid)
             {
@@ -97,7 +97,7 @@ namespace Calgroup.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            LibraryCategory libraryCategory = await db.LibraryCategories.FindAsync(id);
+            Model.EF.LibraryCategory libraryCategory = await db.LibraryCategories.FindAsync(id);
             if (libraryCategory == null)
             {
                 return HttpNotFound();
@@ -110,7 +110,7 @@ namespace Calgroup.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            LibraryCategory libraryCategory = await db.LibraryCategories.FindAsync(id);
+            Model.EF.LibraryCategory libraryCategory = await db.LibraryCategories.FindAsync(id);
             db.LibraryCategories.Remove(libraryCategory);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");

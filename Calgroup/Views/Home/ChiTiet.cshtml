@@ -47,6 +47,7 @@
 
     #manual {
         display: inline-block;
+        cursor:pointer;
     }
 
         #manual a {
@@ -55,6 +56,7 @@
             color: white;
             padding: 5px 10px;
             display: inline-block;
+            cursor:pointer;
         }
 
             #manual a:hover {
@@ -216,13 +218,7 @@
 <ul class="pagination pagination-lg justify-content-center"></ul>
 
 <script>
-    //Responsive with fixed width
-    function setWidth() {
-        var b = Math.floor($(window).width() / 310);
-        $('#P-card-container').width(b * 310 );
-    }
-    setWidth();
-    $(window).resize(setWidth);
+    
 
 
     //TabNav
