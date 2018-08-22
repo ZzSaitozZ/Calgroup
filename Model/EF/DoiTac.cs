@@ -6,19 +6,13 @@ namespace Model.EF
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class FAQ
+    [Table("DoiTac")]
+    public partial class DoiTac
     {
         public int ID { get; set; }
 
-        [Required]
-        public string Title { get; set; }
+        public string Name { get; set; }
 
-        [Required]
-        public string AliasName { get; set; }
-
-        [Required]
-        public string Details { get; set; }
-
-        public bool Status { get; set; }
+        public string Image { get; set; }
     }
 }

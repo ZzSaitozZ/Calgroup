@@ -1,4 +1,4 @@
-﻿@model Model.EF.Library
+﻿@model Model.EF.DoiTac
 
 @{
     ViewBag.Title = "Create";
@@ -29,6 +29,8 @@
             @Html.AntiForgeryToken()
 
             <div class="form-horizontal">
+                <h4>DoiTac</h4>
+                <hr />
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div class="form-group">
                     @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -63,55 +65,6 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.PDF, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-3">
-                        @Html.EditorFor(model => model.PDF, new { htmlAttributes = new { @class = "form-control textbox-control" } })
-                        @Html.ValidationMessageFor(model => model.PDF, "", new { @class = "text-danger" })
-                    </div>
-                    <div class="col-md-2">
-                        <input class="btn btn-default" id="Browse2" value="Chọn file" />
-                    </div>
-                    <script>
-                        $("#Browse2").click(function () {
-                            var finder = new CKFinder();
-                            finder.selectActionFunction = function (fileUrl) {
-                                //Lấy file ảnh cuối cùng
-                                //fileUrl = fileUrl.substring(fileUrl.lastIndexOf("/") + 1);
-                                $("#PDF").val(fileUrl);
-
-                            };
-                            finder.popup();
-                        });
-                    </script>
-                </div>
-
-                <div class="form-group hidden">
-                    @Html.LabelFor(model => model.AliasName, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.AliasName, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.AliasName, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        <div class="checkbox">
-                            @Html.EditorFor(model => model.Status, new { @class = "checkbox" })
-                            @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.IDCategory, "IDCategory", htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.DropDownList("IDCategory", null, htmlAttributes: new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.IDCategory, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
                         <input type="submit" value="Create" class="btn btn-success" />
                         <p class="btn btn-default">@Html.ActionLink("Cancel", "Index")</p>
@@ -119,13 +72,6 @@
                 </div>
             </div>
         }
-        <br /><br />
+     <br /><br />
     </div>
 </section>
-<script>
-    var viewModel = {
-        stringValue: ko.observable(""),
-    };
-    ko.applyBindings(viewModel);
-</script>
-

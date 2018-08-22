@@ -6,6 +6,7 @@
     <edmx:StorageModels>
     <Schema Namespace="Calgroup_v2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Question">
+        <EntityType Name="LibraryCategory">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -17,6 +18,21 @@
         </EntityType>
         <Function Name="getFAQDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="alias" Type="varchar(max)" Mode="In" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="AliasCat" Type="varchar" MaxLength="50" />
+          <Property Name="Category" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="LoaiSanPham">
+          <Key>
+            <PropertyRef Name="CatID" />
+          </Key>
+          <Property Name="CatID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LinhvucID" Type="int" />
+          <Property Name="Category" Type="nvarchar(max)" />
+          <Property Name="AliasCat" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Function Name="getNumberThuViens" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="aliascat" Type="varchar" Mode="In" />
         </Function>
         <Function Name="getProductDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="alias" Type="varchar" Mode="In" />
@@ -24,8 +40,14 @@
         <Function Name="getProducts" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="aliascat" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="getThuViens" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="aliascat" Type="varchar" Mode="In" />
+          <Parameter Name="page" Type="int" Mode="In" />
+        </Function>
         <EntityContainer Name="Calgroup_v2ModelStoreContainer">
           <EntitySet Name="Question" EntityType="Self.Question" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LibraryCategory" EntityType="Self.LibraryCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LoaiSanPham" EntityType="Self.LoaiSanPham" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -40,6 +62,14 @@
           </FunctionImport>
           <FunctionImport Name="getFAQDetail" ReturnType="Collection(String)">
           <Parameter Name="alias" Mode="In" Type="String" />
+          <FunctionImport Name="getThuViens" ReturnType="Collection(Calgroup_v2Model.getThuViens_Result)">
+          <Parameter Name="aliascat" Mode="In" Type="String" />
+            <Parameter Name="page" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="LibraryCategories" EntityType="Calgroup_v2Model.LibraryCategory" />
+          <EntitySet Name="LoaiSanPhams" EntityType="Calgroup_v2Model.LoaiSanPham" />
+          <FunctionImport Name="getNumberThuViens" ReturnType="Collection(Int64)">
+          <Parameter Name="aliascat" Mode="In" Type="String" />
           </FunctionImport>
           <EntitySet Name="Questions" EntityType="Calgroup_v2Model.Question" />
         </EntityContainer>
@@ -64,6 +94,13 @@
           <Property Type="String" Name="ImageLink" Nullable="true" />
         </ComplexType>
         <EntityType Name="Question">
+        <ComplexType Name="getThuViens_Result">
+          <Property Type="String" Name="Name" Nullable="false" />
+          <Property Type="String" Name="Image" Nullable="false" />
+          <Property Type="String" Name="PDF" Nullable="false" />
+          <Property Type="String" Name="Category" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <EntityType Name="LibraryCategory">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -72,6 +109,18 @@
           <Property Name="AliasName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Details" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Status" Type="Boolean" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AliasCat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="LoaiSanPham">
+          <Key>
+            <PropertyRef Name="CatID" />
+          </Key>
+          <Property Name="CatID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LinhvucID" Type="Int32" />
+          <Property Name="Category" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AliasCat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -115,10 +164,42 @@
                 <ScalarProperty Name="Details" ColumnName="Details" />
                 <ScalarProperty Name="AliasName" ColumnName="AliasName" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
+=======
+          <FunctionImportMapping FunctionImportName="getThuViens" FunctionName="Calgroup_v2Model.Store.getThuViens">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Calgroup_v2Model.getThuViens_Result">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="PDF" ColumnName="PDF" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="LibraryCategories">
+            <EntityTypeMapping TypeName="Calgroup_v2Model.LibraryCategory">
+              <MappingFragment StoreEntitySet="LibraryCategory">
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="AliasCat" ColumnName="AliasCat" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+>>>>>>> 7938115d3d3f729a4655099777e46756d2729b86
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+<<<<<<< HEAD
+=======
+          <EntitySetMapping Name="LoaiSanPhams">
+            <EntityTypeMapping TypeName="Calgroup_v2Model.LoaiSanPham">
+              <MappingFragment StoreEntitySet="LoaiSanPham">
+                <ScalarProperty Name="AliasCat" ColumnName="AliasCat" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="LinhvucID" ColumnName="LinhvucID" />
+                <ScalarProperty Name="CatID" ColumnName="CatID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="getNumberThuViens" FunctionName="Calgroup_v2Model.Store.getNumberThuViens" />
+>>>>>>> 7938115d3d3f729a4655099777e46756d2729b86
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

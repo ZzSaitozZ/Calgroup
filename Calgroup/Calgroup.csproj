@@ -160,6 +160,9 @@
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\CalibrationsController.cs" />
     <Compile Include="Areas\Admin\Controllers\FAQController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ContactDetailsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CustomersController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DoiTacsController.cs" />
     <Compile Include="Areas\Admin\Controllers\LibrariesController.cs" />
     <Compile Include="Areas\Admin\Controllers\LibraryCategoriesController.cs" />
     <Compile Include="Areas\Admin\Controllers\LinhvucsController.cs" />
@@ -216,8 +219,17 @@
     <Compile Include="getProducts_Result.cs">
       <DependentUpon>CalgroupDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="getThuViens_Result.cs">
+      <DependentUpon>CalgroupDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="LibraryCategory.cs">
+      <DependentUpon>CalgroupDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LoaiSanPham.cs">
+      <DependentUpon>CalgroupDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Menu.cs" />
     <Compile Include="Models\ShortProduct.cs" />
@@ -1179,6 +1191,7 @@
     <Content Include="Areas\Admin\Content\ckfinder\skins\v1\skin.js" />
     <Content Include="Areas\Admin\Content\ckfinder\skins\v1\uipanel.css" />
     <Content Include="Areas\Admin\Content\ckfinder\translations.txt" />
+    <Content Include="Areas\Admin\Content\images\Book.png" />
     <Content Include="Areas\Admin\Content\images\Products\03_800800_08801_236x236.jpg" />
     <Content Include="Areas\Admin\Content\images\Products\1.jpg" />
     <Content Include="Areas\Admin\Content\images\Products\11.jpg" />
@@ -2261,6 +2274,7 @@
     <Content Include="Resources\CSS\Layout\PC.css" />
     <Content Include="Resources\CSS\Layout\Phone.css" />
     <Content Include="Resources\CSS\Layout\Tablet.css" />
+    <Content Include="Resources\CSS\simplePagination.css" />
     <Content Include="Resources\Icons\css\fa-brands.css" />
     <Content Include="Resources\Icons\css\fa-brands.min.css" />
     <Content Include="Resources\Icons\css\fa-regular.css" />
@@ -2641,6 +2655,21 @@
     <Content Include="Areas\Admin\Views\FAQ\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\FAQ\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\FAQ\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Customers\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Customers\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Customers\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Customers\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Customers\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ContactDetails\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\ContactDetails\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\ContactDetails\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\ContactDetails\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ContactDetails\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\DoiTacs\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\DoiTacs\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\DoiTacs\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\DoiTacs\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\DoiTacs\Index.cshtml" />
     <None Include="Resources\JS\Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Resources\JS\Scripts\jquery-3.3.1.js" />
     <Content Include="Resources\JS\Scripts\jquery-3.3.1.min.js" />
@@ -2649,6 +2678,7 @@
     <Content Include="Resources\JS\Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Resources\JS\Scripts\jquery-3.3.1.min.map" />
     <None Include="Resources\JS\Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Resources\JS\Scripts\jquery.simplePagination.js" />
     <Content Include="Resources\JS\Scripts\jquery.validate.js" />
     <Content Include="Resources\JS\Scripts\jquery.validate.min.js" />
     <Content Include="Resources\JS\Scripts\jquery.validate.unobtrusive.js" />

@@ -34,6 +34,9 @@ namespace Calgroup.VM
             }
         }
 
+        public List<LinhVucCha> Menu;
+        public string AliasCat;
+        public int PageCount;
     }
     public class getSanPhamVM
     {             

@@ -7,11 +7,13 @@ using Model.DAO;
 using Calgroup.VM;
 using Calgroup.Models;
 using System.Web.Script.Serialization;
+using Model.EF;
 
 namespace Calgroup.Controllers
 {
     public class HomeController : Controller
     {
+        private ProductsdbContext db = new ProductsdbContext();
         public ActionResult Index()
         {
             return View();
@@ -34,7 +36,7 @@ namespace Calgroup.Controllers
         public ActionResult SanPham(string aliascat)
         {
             Calgroup_v2DB cgi = new Calgroup_v2DB();
-            var a = cgi.Database.SqlQuery<Menu>("Select Linhvuc,Category,AliasCat from dbo.MenuSP order by DisplayOrder ASC").ToList();
+            var a = cgi.Database.SqlQuery<Menu>("Select Linhvuc,Category,AliasCat from dbo.MenuSP order by DisplayOrder asc").ToList();
             SanPhamPageVM pageVM = new SanPhamPageVM(a);
             pageVM.AliasCat = aliascat;
             return View(pageVM);
@@ -42,26 +44,55 @@ namespace Calgroup.Controllers
         [HttpPost]
         public JsonResult getSanPham(string aliascat)
         {
+            Calgroup_v2DB cgi = new Calgroup_v2DB();         
+            getSanPhamVM pageVM = new getSanPhamVM();
+
+            if(aliascat == null || aliascat == "")
+            {               
+                pageVM.Products = new JavaScriptSerializer().Serialize(cgi.Database.SqlQuery<ShortProduct>("Select Name,Alias,Category,Model,Manufacturer,ImageLink FROM dbo.ShortProducts where Hot is not null  order by Hot asc").ToList());
+                pageVM.CategoryVi = "Sản phẩm đang hot";
+            }
+            else
+            {
+               var Category = cgi.LoaiSanPhams.Where(x => x.AliasCat == aliascat).ToList();
+                if(Category.Any())
+                {
+                    var temp = cgi.getProducts(aliascat).ToList();
+                    pageVM.Products = new JavaScriptSerializer().Serialize(temp);
+                    pageVM.CategoryVi = Category[0].Category.Substring(0, Category[0].Category.IndexOf("/"));
+                }
+                else
+                {
+                    pageVM.CategoryVi = "Hiện chưa có loại sản phẩm này";
+                }
+            }
+            return Json(pageVM, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public JsonResult getThuVien(string aliascat,int page)
+        {
             Calgroup_v2DB cgi = new Calgroup_v2DB();
-            var temp = cgi.getProducts(aliascat).ToList();
+            var temp = cgi.getThuViens(aliascat,page).ToList();
             getSanPhamVM pageVM = new getSanPhamVM();
 
             if (temp.Any())
             {
                 pageVM.Products = new JavaScriptSerializer().Serialize(temp);
-                pageVM.CategoryVi = temp[0].Category.Substring(0, temp[0].Category.IndexOf("/"));
+                pageVM.CategoryVi = temp[0].Category;
             }
             else
             {
                 if (aliascat == "" || aliascat == null)
                 {
-                    pageVM.Products = new JavaScriptSerializer().Serialize(cgi.Database.SqlQuery<ShortProduct>("Select Name,Alias,Category,Model,Manufacturer,ImageLink FROM dbo.ShortProducts where Hot is not null  order by Hot asc").ToList());
-                    pageVM.CategoryVi = "Sản phẩm đang hot";
+                    pageVM.Products = new JavaScriptSerializer().Serialize(cgi.getThuViens("catalog",1).ToList());
+                    pageVM.CategoryVi = "Catalog";
                 }
-                else pageVM.CategoryVi = "Hiện chưa có loại sản phẩm này";
+                else pageVM.CategoryVi = "Hiện chưa có loại này";
             }
             return Json(pageVM, JsonRequestBehavior.AllowGet);
         }
+
+
         public ActionResult ChiTiet(string alias)
         {
             Calgroup_v2DB cgi = new Calgroup_v2DB();
@@ -86,15 +117,39 @@ namespace Calgroup.Controllers
         {
             return View();
         }
-        public ActionResult Library()
+        public ActionResult Library(string aliascat)
         {
-            return View();
-
+                Calgroup_v2DB cgi = new Calgroup_v2DB();
+                var b = cgi.getNumberThuViens(aliascat).FirstOrDefault();
+            if (b == null) return RedirectToRoute("Library", new {aliascat = "catalog" });
+                var a = cgi.Database.SqlQuery<Menu>("Select Name as Category,Category as Linhvuc,AliasCat from dbo.LibraryCategory order by Linhvuc DESC").ToList();                
+                SanPhamPageVM pageVM = new SanPhamPageVM(a);            
+                pageVM.PageCount = (int)Math.Ceiling((double)b/6);          
+                pageVM.AliasCat = aliascat;
+                return View(pageVM);
         }
         public ActionResult Calibration()
         {
             ViewBag.calibration = new CalibrationDAO().ListAllCalibration();
             return View();
+        }
+        [HttpPost]
+        //[ValidateAntiForgeryToken]
+        public ActionResult SaveContact(FormCollection collection)
+        {
+
+            String Name = Request.Form["inputName"].ToString();
+            String Email = Request.Form["inputEmail"].ToString();
+            String Address = Request.Form["inputAddress"].ToString();
+            String Message = Request.Form["comment"].ToString();
+            Customer customer = new Customer();
+            customer.Name = Name;
+            customer.Adress = Address;
+            customer.Email = Email;
+            customer.Comment = Message;
+            db.Customers.Add(customer);
+            db.SaveChanges();
+            return RedirectToAction("Index");
 
         }
     }

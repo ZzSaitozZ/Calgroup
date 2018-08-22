@@ -38,7 +38,7 @@
 
             .linhvuccon div:hover {
                 cursor: pointer;
-                background-color: #0075bf45;
+                background-color: rgba(0, 117, 191, 0.27058823529411763);
             }
             .linhvuccon div:nth-child(1) {
                 border-top: unset;
@@ -273,31 +273,16 @@
                 $('#P-Category').html('' + data.CategoryVi);
             }
             });
-
     }
-
-
-
 
 
     //Responsive with fixed width (SanPham)
     function setWidth() {
-        if ($(window).width() > 900) {
-            //var b = Math.floor(($(window).width() - $('#lvcontainer').outerWidth(true)) / 330);
-            //$('#P-card-container').width(b * 310-20);
+        if ($(window).width() > 900) {            
             $('#P-card-container').width(($(window).width() - $('#lvcontainer').outerWidth(true)));
         }
         else $('#P-card-container').width('100%');
     }
-    function toPage() {
-        if ($('li.active').find(a).html() != number) {
-
-        }
-    }
-
-
-
-
 
     //Cho Down JS Collapse
     $('.linhvuccha').click(function () {
@@ -316,7 +301,6 @@
             }
 
     })
-
 
     //Auto icon
     function toNavBar() {
