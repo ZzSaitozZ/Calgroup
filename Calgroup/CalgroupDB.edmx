@@ -4,17 +4,20 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Calgroup_v2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'Calgroup_v2.dbo.MenuSP' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="MenuSP">
-          <Property Name="Linhvuc" Type="nvarchar" MaxLength="50" />
-          <Property Name="Category" Type="nvarchar(max)" />
-          <Property Name="AliasCat" Type="varchar" MaxLength="50" />
-          <Property Name="DisplayOrder" Type="int" />
-        </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'Calgroup_v2.dbo.ShortProducts' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+    <Schema Namespace="Calgroup_v2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Question">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="AliasName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Details" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+        </EntityType>
+        <Function Name="getFAQDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="alias" Type="varchar(max)" Mode="In" />
+        </Function>
         <Function Name="getProductDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="alias" Type="varchar" Mode="In" />
         </Function>
@@ -22,19 +25,23 @@ warning 6002: The table/view 'Calgroup_v2.dbo.ShortProducts' does not have a pri
           <Parameter Name="aliascat" Type="varchar" Mode="In" />
         </Function>
         <EntityContainer Name="Calgroup_v2ModelStoreContainer">
+          <EntitySet Name="Question" EntityType="Self.Question" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Calgroup_v2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="Calgroup_v2DB" annotation:LazyLoadingEnabled="true">
           <FunctionImport Name="getProductDetail" ReturnType="Collection(Calgroup_v2Model.getProductDetail_Result)">
-            <Parameter Name="alias" Mode="In" Type="String" />
+          <Parameter Name="alias" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="getProducts" ReturnType="Collection(Calgroup_v2Model.getProducts_Result)">
-            <Parameter Name="aliascat" Mode="In" Type="String" />
+          <Parameter Name="aliascat" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="getFAQDetail" ReturnType="Collection(String)">
+          <Parameter Name="alias" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="Questions" EntityType="Calgroup_v2Model.Question" />
         </EntityContainer>
         <ComplexType Name="getProductDetail_Result">
           <Property Type="String" Name="Name" Nullable="true" />
@@ -56,6 +63,16 @@ warning 6002: The table/view 'Calgroup_v2.dbo.ShortProducts' does not have a pri
           <Property Type="String" Name="Manufacturer" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="ImageLink" Nullable="true" />
         </ComplexType>
+        <EntityType Name="Question">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AliasName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Details" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -90,6 +107,18 @@ warning 6002: The table/view 'Calgroup_v2.dbo.ShortProducts' does not have a pri
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="getFAQDetail" FunctionName="Calgroup_v2Model.Store.getFAQDetail" />
+          <EntitySetMapping Name="Questions">
+            <EntityTypeMapping TypeName="Calgroup_v2Model.Question">
+              <MappingFragment StoreEntitySet="Question">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Details" ColumnName="Details" />
+                <ScalarProperty Name="AliasName" ColumnName="AliasName" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

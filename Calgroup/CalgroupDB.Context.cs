@@ -27,6 +27,7 @@ namespace Calgroup
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Question> Questions { get; set; }
     
         public virtual ObjectResult<getProductDetail_Result> getProductDetail(string alias)
         {
@@ -44,6 +45,15 @@ namespace Calgroup
                 new ObjectParameter("aliascat", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<getProducts_Result>("getProducts", aliascatParameter);
+        }
+    
+        public virtual ObjectResult<string> getFAQDetail(string alias)
+        {
+            var aliasParameter = alias != null ?
+                new ObjectParameter("alias", alias) :
+                new ObjectParameter("alias", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("getFAQDetail", aliasParameter);
         }
     }
 }

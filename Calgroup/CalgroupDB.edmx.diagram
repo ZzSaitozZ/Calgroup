@@ -5,6 +5,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="67bf510515d84d359323038114a1d404" Name="Diagram1">
+        <EntityTypeShape EntityType="Calgroup_v2Model.Question" Width="1.5" PointX="0.75" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

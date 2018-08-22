@@ -40,7 +40,6 @@
                 cursor: pointer;
                 background-color: #0075bf45;
             }
-
             .linhvuccon div:nth-child(1) {
                 border-top: unset;
             }
@@ -71,17 +70,15 @@
     }
 
     i.fa-list-ul {
-        font-size: 30px;
+        font-size: 25px;
         color: white;
         background: #0075bf;
-        padding: 7px 7px 7px 4px;
-        /*border-radius: 30px;*/
+        padding: 7px 15px 10px 7px;
+        border-radius: 0 0 30px 0;
         transition: left 0.5s;
         display: none;
         position: fixed;
         left: 0;
-        z-index: 2;
-        cursor: pointer;
     }
 
     .Item {
@@ -171,6 +168,7 @@
         i.fa-list-ul {
             display: inline-block;
             position: fixed;
+            z-index: 1000;
         }
 
         #lvcontainer {
@@ -190,8 +188,10 @@
 </style>
 
 <div style="font-size:0px;margin-top:20px;">
+    <h1 style="text-align:center;color:#0075bf;margin-bottom:20px">Danh sách sản phẩm</h1>
+    <hr style="border: 0; height: 1px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));" />
     <div><i class="fas fa-list-ul"></i></div>
-    <div id="lvcontainer">
+    <div id="lvcontainer" style="margin:unset">
         @foreach (var linhvuccha in Model.Menu)
         {
             <div class=" linhvuccha" data-toggle="collapse" data-target="#@linhvuccha.LinhVucCon[0][1]" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -208,11 +208,9 @@
                 }
             </div>
         }
-
     </div>
-
     <div id="P-card-container">
-        <h1 id="P-Category"></h1>
+        <h2 id="P-Category"></h2>
         <div id="P-card-subcontainer" class="row"></div>
 
     </div>
@@ -325,11 +323,6 @@
         $('i.fa-list-ul').css('top', $('.navbar.Topnav')[0].offsetTop + $('.navbar.Topnav').height());
         $('#lvcontainer').css('top', $('i.fa-list-ul')[0].offsetTop);
     }
-
-
-
-
-
     function toNavBarOnce(){
         toNavBar();
         $(this).off("resize", toNavBarOnce);
