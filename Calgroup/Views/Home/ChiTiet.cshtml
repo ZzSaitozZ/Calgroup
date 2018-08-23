@@ -1,7 +1,7 @@
 ﻿
 @model List<Calgroup.getProductDetail_Result>
-
-
+<link href="~/Resources/CSS/simplePagination.css" rel="stylesheet" />
+<script src="~/Resources/JS/Scripts/jquery.simplePagination.js"></script>
 <style>
     #P-container {
         width: 1000px;
@@ -215,10 +215,12 @@
     </div>
 </div>
 
-<ul class="pagination pagination-lg justify-content-center"></ul>
+<div id="pagination" style="display:flex;justify-content:center"></div>
 
 <script>
-    
+    function SwitchPage() {
+        $('#P-card-container').html(page[$('#pagination').pagination('getCurrentPage') - 1]);
+    }
 
 
     //TabNav
@@ -234,10 +236,10 @@
         }
     });
 
-   
+
 
     var page = [];
-     function LoadData() {
+    function LoadData() {
         $.ajax({
             type: 'Post',
             url: '/getSanPham',
@@ -246,52 +248,55 @@
             success: function (data) {
                 var content = ''; var Count = 0; var subtracted = false;
                 if (data.Products != null) {
-                data.Products = JSON.parse(data.Products);
-                for (var i = 0; i < data.Products.length; i++) {
-                    if (subtracted || data.Products[i].Name != $('#P-Name').html()) {
-                        content += '<div class="col-md-6 col-lg-6 col-xl-4 " >' +
-                            '<div class="Item" data-alias="' + data.Products[i].Alias + '">' +
-                            '<img class="img-fluid" src="' + data.Products[i].ImageLink + '" />' +
-                            '<h4>' + data.Products[i].Name + '</h4>' +
-                            '<ul>' +
-                            '<li>' + data.Products[i].Category + '</li>' +
-                            '<li>' + data.Products[i].Model + '</li>' +
-                            '<li>' + data.Products[i].Manufacturer + '</li>' +
-                            '</ul>' +
-                            '</div>' +
-                            '</div>';
-                    } else subtracted = true;
-                    Count++;
-                    if (Count == 8 || i == data.Products.length - 1) {
-                        page.push(content);
-                        content = '';
-                        Count = 0;
-                    }
-                }
-                $('#P-card-container').append(page[0]);
-                if (page.length > 1) {
-                    for (let x = 0; x < page.length; x++) {
-                        let pagecontent = '<li class="page-item" data-page="' + (x + 1) + '"><a class="page-link" href="#">' + (x + 1) + '</a></li>';
-                        $('ul.pagination').append(pagecontent);
-                        $('.pagination li').first().addClass('active');
-                    }
-                    $('.pagination li').click(function () {
-                        if (!$(this).hasClass('active')) {
-                            $('.pagination li.active').removeClass('active');
-                            $(this).addClass('active');
-                            $('#P-card-subcontainer').empty();
-                            $('#P-card-subcontainer').append(page[$(this)[0].dataset.page - 1]);
+                    data.Products = JSON.parse(data.Products);
+                    for (var i = 0; i < data.Products.length; i++) {
+                        if (subtracted || data.Products[i].Name != $('#P-Name').html()) {
+                            content += '<div class="col-md-6 col-lg-6 col-xl-4 " >' +
+                                '<div class="Item" data-alias="' + data.Products[i].Alias + '">' +
+                                '<img class="img-fluid" src="' + data.Products[i].ImageLink + '" />' +
+                                '<h4>' + data.Products[i].Name + '</h4>' +
+                                '<ul>' +
+                                '<li>' + data.Products[i].Category + '</li>' +
+                                '<li>' + data.Products[i].Model + '</li>' +
+                                '<li>' + data.Products[i].Manufacturer + '</li>' +
+                                '</ul>' +
+                                '</div>' +
+                                '</div>';
+                            Count++;
+                        } else subtracted = true;
+                        
+                        if (Count == 1 || !subtracted && i == data.Products.length - 1) {
+                            page.push(content);
+                            content = '';
+                            Count = 0;
                         }
+                    }
+                    $('#P-card-container').append(page[0]);
+                    if (page.length > 1) {
+                        //for (let x = 0; x < page.length; x++) {
+                        //    let pagecontent = '<li class="page-item" data-page="' + (x + 1) + '"><a class="page-link" href="#">' + (x + 1) + '</a></li>';
+                        //    $('ul.pagination').append(pagecontent);
+                        //    $('.pagination li').first().addClass('active');
+                        //}
+                        //$('.pagination li').click(function () {
+                        //    if (!$(this).hasClass('active')) {
+                        //        $('.pagination li.active').removeClass('active');
+                        //        $(this).addClass('active');
+                        //        $('#P-card-subcontainer').empty();
+                        //        $('#P-card-subcontainer').append(page[$(this)[0].dataset.page - 1]);
+                        //    }
+                        $('#pagination').pagination({
+                            pages: page.length,
+                            onPageClick: SwitchPage
+                        });
+                    };
+                    $('.Item').click(function () {
+                        window.location.href = '/ChiTiet/' + $(this)[0].dataset.alias;
                     });
-                };
-                $('.Item').click(function () {
-                    window.location.href = '/ChiTiet/' + $(this)[0].dataset.alias;
-                });
                 }
 
-            }
-            });
-
-    };
+            },
+        });
+    }
     LoadData();
 </script>

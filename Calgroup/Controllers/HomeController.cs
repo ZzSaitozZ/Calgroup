@@ -122,7 +122,7 @@ namespace Calgroup.Controllers
             if (b == null) return RedirectToRoute("Library", new {aliascat = "catalog" });
                 var a = cgi.Database.SqlQuery<Menu>("Select Name as Category,Category as Linhvuc,AliasCat from dbo.LibraryCategory order by Linhvuc DESC").ToList();                
                 SanPhamPageVM pageVM = new SanPhamPageVM(a);            
-                pageVM.PageCount = (int)Math.Ceiling((double)b/6);          
+                pageVM.PageCount = (int)Math.Ceiling((double)b/12);          
                 pageVM.AliasCat = aliascat;
                 return View(pageVM);
         }

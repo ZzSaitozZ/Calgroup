@@ -8,6 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Model.EF;
+using Calgroup.Resources.Common;
 
 namespace Calgroup.Areas.Admin.Controllers
 {
@@ -41,6 +42,7 @@ namespace Calgroup.Areas.Admin.Controllers
         public ActionResult Create()
         {
             ViewBag.CatID = new SelectList(db.LoaiSanPhams, "CatID", "Category");
+            var a = ViewBag.CatID;
             return View();
         }
 
@@ -53,6 +55,7 @@ namespace Calgroup.Areas.Admin.Controllers
         {
             sanPham.Detail = HttpUtility.HtmlDecode(sanPham.Detail);
             sanPham.Specification = HttpUtility.HtmlDecode(sanPham.Specification);
+            sanPham.Alias = StringHelper.ToAlias(sanPham.Name);
             if (ModelState.IsValid)
             {
                 db.SanPhams.Add(sanPham);
@@ -85,10 +88,11 @@ namespace Calgroup.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Alias,Name,CatID,Model,Manufacturer,ImageLink,ImageLinkDetail,ManualLink,Detail,Specification,Price,Hot")] SanPham sanPham)
+        public async Task<ActionResult> Edit([Bind(Include = "Name,CatID,Model,Manufacturer,ImageLink,ImageLinkDetail,ManualLink,Detail,Specification,Price,Hot")] SanPham sanPham)
         {
             sanPham.Detail = HttpUtility.HtmlDecode(sanPham.Detail);
             sanPham.Specification = HttpUtility.HtmlDecode(sanPham.Specification);
+            sanPham.Alias = StringHelper.ToAlias(sanPham.Name);
             if (ModelState.IsValid)
             {
              

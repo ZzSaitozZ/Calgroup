@@ -24,7 +24,7 @@ namespace Calgroup.Resources.Common
             input = input.Replace(",", "-");
             input = input.Replace(";", "-");
             input = input.Replace(":", "-");
-            input = input.Replace("  ", "-");
+            input = input.Replace(" ", "-");
             Regex regex = new Regex(@"\p{IsCombiningDiacriticalMarks}+");
             string str = input.Normalize(NormalizationForm.FormD);
             string str2 = regex.Replace(str, string.Empty).Replace('đ', 'd').Replace('Đ', 'D');
@@ -95,5 +95,18 @@ namespace Calgroup.Resources.Common
             }
             
             return result.Trim();
+        }
+
+        public static string ToAlias(string input)
+        {
+            input = input.Replace(" ", "-");
+            Regex regex = new Regex(@"\p{IsCombiningDiacriticalMarks}+");
+            string str = input.Normalize(NormalizationForm.FormD);
+            string str2 = regex.Replace(str, string.Empty).Replace('đ', 'd').Replace('Đ', 'D').ToLower();
+            string str3 = Regex.Replace(str2, @"([^0-9a-z-])", "");
+            str3 = Regex.Replace(str3, @"([-]{2,})", "-");
+            while (str3[0] == '-') { str3=str3.Remove(0, 1); }
+            while (str3[str3.Length - 1] == '-') { str3=str3.Remove(str3.Length - 1, 1); }
+            return str3;
         }
     }}
