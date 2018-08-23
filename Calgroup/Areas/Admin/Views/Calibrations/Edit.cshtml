@@ -55,12 +55,12 @@
                     </div>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group hidden">
                     @Html.LabelFor(model => model.Category, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
                         @*@Html.EditorFor(model => model.Category, new { htmlAttributes = new { @class = "form-control" } })*@
                         @Html.DropDownListFor(model => model.Category, new[] {
-                           new SelectListItem { Text = "Hiệu chuẩn lĩnh vực cơ khí - Mechanical Calibration", Value = "Hiệu chuẩn lĩnh vực cơ khí - Mechanical Calibration" },
+                          new SelectListItem { Text = "Hiệu chuẩn lĩnh vực cơ khí - Mechanical Calibration", Value = "Hiệu chuẩn lĩnh vực cơ khí - Mechanical Calibration" },
                           new SelectListItem { Text = "Hiệu chuẩn lĩnh vực điện - Electrical Calibration", Value = "Hiệu chuẩn lĩnh vực điện - Electrical Calibration" },
                           new SelectListItem { Text = "Hiệu chuẩn lĩnh vực độ dài - Dimensional Calibration", Value = "Hiệu chuẩn lĩnh vực độ dài - Dimensional Calibration" },
                           new SelectListItem { Text = "Hiệu chuẩn lĩnh vực hóa lý - Chemical Calibration", Value = "Hiệu chuẩn lĩnh vực hóa lý - Chemical Calibration" },

@@ -303,3 +303,14 @@ h2.Question-title {
     text-align:center;
     padding-left:unset;
 }
+
+/*FAQ*/
+.FAQ{
+    display:flex;
+    flex-direction:column;
+}
+.FAQ-button{
+    text-align:left;
+    font-weight: 500;
+    border-radius:unset;
+}

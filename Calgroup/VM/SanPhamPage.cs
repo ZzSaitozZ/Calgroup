@@ -20,6 +20,7 @@ namespace Calgroup.VM
     {
         public List<LinhVucCha> Menu;
         public string AliasCat;
+        public int PageCount;
         public SanPhamPageVM(List<Menu> a)
         {
             this.Menu = new List<LinhVucCha>();
@@ -33,10 +34,6 @@ namespace Calgroup.VM
                 else this.Menu.Add(new LinhVucCha { LinhVucCon = new List<string[]> { new string[2] { a[i].Category, a[i].AliasCat } }, Name = a[i].Linhvuc });
             }
         }
-
-        public List<LinhVucCha> Menu;
-        public string AliasCat;
-        public int PageCount;
     }
     public class getSanPhamVM
     {             

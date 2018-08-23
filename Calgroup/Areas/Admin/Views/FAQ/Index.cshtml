@@ -1,10 +1,14 @@
-﻿@model IEnumerable<Model.EF.Calibration>
+﻿@model IEnumerable<Calgroup.Question>
 @using Calgroup.Resources.Common;
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
-}
+    if (Session["userID"] == null)
+    {
+        Response.Redirect("/Admin/Admin/Login");
+    }
+}  
 
 <section class="content-header">
     <h1>
@@ -15,17 +19,16 @@
         <li class="active"><i class="fa fa-dashboard"></i> @(Convert.ToInt32(Session["isAdmin"].ToString()) == 1 ? "Quản trị viên" : "Thành viên")</li>
     </ol>
 </section>
-
 <section class="content">
     <div class="row">
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-header">
                     <h3 class="box-title"></h3>
-                    @*<a href="/Admin/Calibrations/Create" class="btn btn-success btn-lg" style="cursor: pointer">
+                    <a href="/Admin/FAQ/Create" class="btn btn-success btn-lg" style="cursor: pointer">
                         Thêm mới
-                        @Html.ActionLink("Thêm mới", "Create")
-                    </a>*@
+                        @*@Html.ActionLink("Thêm mới", "Create")*@
+                    </a>
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
@@ -33,13 +36,16 @@
                         <thead>
                             <tr>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Detail)
+                                    @Html.DisplayNameFor(model => model.Title)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.AliasName)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Details)
                                 </th>
                                 <th>
                                     @Html.DisplayNameFor(model => model.Status)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.Category)
                                 </th>
                                 <th></th>
                             </tr>
@@ -49,11 +55,16 @@
                             @foreach (var item in Model)
                             {
                                 <tr>
-                                    <td >
-                                        @*@Html.DisplayFor(modelItem => item.Detail)*@
-                                        @Html.Raw(StringHelper.ShortArticle(item.Detail, 5))
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Title)
                                     </td>
-                                        @*@Html.DisplayFor(modelItem => item.Status)*@
+                                    <th>
+                                        @Html.DisplayFor(modelItem => item.AliasName)
+                                    </th>
+                                    <td>
+                                        @Html.Raw(StringHelper.ShortArticle(item.Details, 5))
+                                    </td>
+                                    @*@Html.DisplayFor(modelItem => item.Status)*@
                                     <td class="text-center btn-active" data-id="@item.ID" style="cursor:pointer">
                                         @if (item.Status == true)
                                         {
@@ -66,18 +77,10 @@
 
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Category)
-                                    </td>
-                                    @*<td>
-                                        @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                                        @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-                                        @Html.ActionLink("Delete", "Delete", new { id = item.ID })
-                                    </td>*@
-                                    <td>
-                                        <a href="/Admin/Calibrations/Edit/@item.ID" data-toggle="tooltip" data-placement="top" title="Sửa"><i class="fa fa-edit"></i></a> &nbsp;
-                                        <a href="/Admin/Calibrations/Details/@item.ID" data-toggle="tooltip" data-placement="top" title="Chi tiết"><i class="fa fa-list-alt"></i></a> &nbsp;
-                                        @*<a href="/Admin/Calibrations/Delete/@item.ID" data-toggle="tooltip" data-placement="top" title="Xóa"><i class="fa fa-times-circle"></i></a>*@ &nbsp;
-                                        @*<span class="Delete" data-id="@item.ID" style="cursor:pointer" data-toggle="tooltip" data-placement="top" title="Xóa"><i class="fa fa-times-circle"></i></span> &nbsp;*@
+                                        <a href="/Admin/FAQ/Edit/@item.ID" data-toggle="tooltip" data-placement="top" title="Sửa"><i class="fa fa-edit"></i></a> &nbsp;
+                                        <a href="/Admin/FAQ/Details/@item.ID" data-toggle="tooltip" data-placement="top" title="Chi tiết"><i class="fa fa-list-alt"></i></a> &nbsp;
+                                        <a href="/Admin/FAQ/Delete/@item.ID" data-toggle="tooltip" data-placement="top" title="Xoá"><i class="fa fa-times-circle"></i></a> &nbsp;
+                                        @*<span class="Delete" data-id="@item.ID" style="cursor:pointer" data-toggle="tooltip" data-placement="top" title="Xóa"><i class="fa fa-times-circle"></i></span>*@ &nbsp;
                                     </td>
                                 </tr>
                             }
@@ -98,5 +101,4 @@
     <!-- /.row -->
 </section>
 <script src="~/Resources/Admin/js/SearchTable.js"></script>
-<script src="~/Resources/Admin/js/ChangesStatus/Calibration.js"></script>
-
+<script src="~/Resources/Admin/js/ChangesStatus/FAQ.js"></script>

@@ -178,6 +178,7 @@
     <Compile Include="Areas\Admin\Controllers\ProjectProductsController.cs" />
     <Compile Include="Areas\Admin\Controllers\SanPhamsController.cs" />
     <Compile Include="Areas\Admin\Controllers\SlidesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\StaffsController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserAdministratorsController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserBusinessesController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserCategoriesController.cs" />
@@ -210,7 +211,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CalgroupDB.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\FAQController.cs" />
+    <Compile Include="Controllers\FAQwebController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="getProductDetail_Result.cs">
@@ -228,6 +229,9 @@
     <Compile Include="LibraryCategory.cs">
       <DependentUpon>CalgroupDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="LibraryView.cs">
+      <DependentUpon>CalgroupDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="LoaiSanPham.cs">
       <DependentUpon>CalgroupDB.tt</DependentUpon>
     </Compile>
@@ -243,6 +247,12 @@
     <Compile Include="Resources\Common\Encryptor.cs" />
     <Compile Include="Resources\Common\Encryptors.cs" />
     <Compile Include="Resources\Common\StringHelper.cs" />
+    <Compile Include="ShortProduct.cs">
+      <DependentUpon>CalgroupDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Staff.cs">
+      <DependentUpon>CalgroupDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="VM\SameCategoryProduct.cs" />
     <Compile Include="VM\SanPhamPage.cs" />
   </ItemGroup>
@@ -2623,13 +2633,6 @@
     <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Home\Login.cshtml" />
     <Content Include="Areas\Admin\Views\Home\NotificationAuthorize.cshtml" />
-    <EntityDeploy Include="CalgroupDB.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>CalgroupDB.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="CalgroupDB.edmx.diagram">
-      <DependentUpon>CalgroupDB.edmx</DependentUpon>
-    </Content>
     <Content Include="Areas\Admin\Views\LibraryCategories\Create.cshtml" />
     <Content Include="Areas\Admin\Views\LibraryCategories\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\LibraryCategories\Details.cshtml" />
@@ -2670,6 +2673,13 @@
     <Content Include="Areas\Admin\Views\DoiTacs\Details.cshtml" />
     <Content Include="Areas\Admin\Views\DoiTacs\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\DoiTacs\Index.cshtml" />
+    <EntityDeploy Include="CalgroupDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>CalgroupDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="CalgroupDB.edmx.diagram">
+      <DependentUpon>CalgroupDB.edmx</DependentUpon>
+    </Content>
     <None Include="Resources\JS\Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Resources\JS\Scripts\jquery-3.3.1.js" />
     <Content Include="Resources\JS\Scripts\jquery-3.3.1.min.js" />
@@ -2753,12 +2763,13 @@
     <Content Include="Views\Home\Library.cshtml" />
     <Content Include="Views\News\Index.cshtml" />
     <Content Include="Views\News\NewsDetail.cshtml" />
-    <Content Include="Views\FAQ\Index.cshtml" />
+    <Content Include="Views\FAQweb\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Content\files\" />
     <Folder Include="Areas\Admin\Content\flash\" />
+    <Folder Include="Areas\Admin\Views\Staffs\" />
     <Folder Include="obj\Debug\edmxResourcesToEmbed\" />
     <Folder Include="Resources\Admin\gentelella-master\build\css\" />
     <Folder Include="Resources\Admin\gentelella-master\build\js\" />

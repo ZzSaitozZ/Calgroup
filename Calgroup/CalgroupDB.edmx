@@ -5,19 +5,11 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="Calgroup_v2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Question">
         <EntityType Name="LibraryCategory">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="AliasName" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Details" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Status" Type="bit" Nullable="false" />
-        </EntityType>
-        <Function Name="getFAQDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="alias" Type="varchar(max)" Mode="In" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
           <Property Name="AliasCat" Type="varchar" MaxLength="50" />
           <Property Name="Category" Type="nvarchar" MaxLength="50" />
@@ -31,6 +23,69 @@
           <Property Name="Category" Type="nvarchar(max)" />
           <Property Name="AliasCat" Type="varchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="Question">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="AliasName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Details" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Staffs">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Role" Type="bit" />
+          <Property Name="Skype" Type="nvarchar" MaxLength="50" />
+          <Property Name="Zalo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="Image" Type="nvarchar(max)" />
+          <Property Name="Status" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Calgroup_v2.dbo.LibraryView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="LibraryView">
+          <Key>
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Image" />
+            <PropertyRef Name="PDF" />
+            <PropertyRef Name="Status" />
+          </Key>
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Image" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="PDF" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+          <Property Name="AliasCat" Type="varchar" MaxLength="50" />
+          <Property Name="Category" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Calgroup_v2.dbo.ShortProducts' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ShortProducts">
+          <Key>
+            <PropertyRef Name="Alias" />
+          </Key>
+          <Property Name="Category" Type="nvarchar(max)" />
+          <Property Name="AliasCat" Type="varchar" MaxLength="50" />
+          <Property Name="Alias" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Model" Type="nvarchar" MaxLength="50" />
+          <Property Name="Manufacturer" Type="nvarchar" MaxLength="50" />
+          <Property Name="ImageLink" Type="nvarchar(max)" />
+          <Property Name="ImageLinkDetail" Type="nvarchar(max)" />
+          <Property Name="ManualLink" Type="nvarchar(max)" />
+          <Property Name="Detail" Type="nvarchar(max)" />
+          <Property Name="Specification" Type="nvarchar(max)" />
+          <Property Name="Price" Type="nvarchar" MaxLength="50" />
+          <Property Name="Hot" Type="int" />
+          <Property Name="Expr1" Type="nvarchar(max)" />
+        </EntityType>
+        <Function Name="getFAQDetail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="alias" Type="varchar(max)" Mode="In" />
+        </Function>
         <Function Name="getNumberThuViens" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="aliascat" Type="varchar" Mode="In" />
         </Function>
@@ -45,33 +100,118 @@
           <Parameter Name="page" Type="int" Mode="In" />
         </Function>
         <EntityContainer Name="Calgroup_v2ModelStoreContainer">
-          <EntitySet Name="Question" EntityType="Self.Question" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LibraryCategory" EntityType="Self.LibraryCategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LoaiSanPham" EntityType="Self.LoaiSanPham" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Question" EntityType="Self.Question" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Staffs" EntityType="Self.Staffs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LibraryView" EntityType="Self.LibraryView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [LibraryView].[Name] AS [Name], 
+    [LibraryView].[Image] AS [Image], 
+    [LibraryView].[PDF] AS [PDF], 
+    [LibraryView].[Status] AS [Status], 
+    [LibraryView].[AliasCat] AS [AliasCat], 
+    [LibraryView].[Category] AS [Category]
+    FROM [dbo].[LibraryView] AS [LibraryView]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ShortProducts" EntityType="Self.ShortProducts" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ShortProducts].[Category] AS [Category], 
+    [ShortProducts].[AliasCat] AS [AliasCat], 
+    [ShortProducts].[Alias] AS [Alias], 
+    [ShortProducts].[Name] AS [Name], 
+    [ShortProducts].[Model] AS [Model], 
+    [ShortProducts].[Manufacturer] AS [Manufacturer], 
+    [ShortProducts].[ImageLink] AS [ImageLink], 
+    [ShortProducts].[ImageLinkDetail] AS [ImageLinkDetail], 
+    [ShortProducts].[ManualLink] AS [ManualLink], 
+    [ShortProducts].[Detail] AS [Detail], 
+    [ShortProducts].[Specification] AS [Specification], 
+    [ShortProducts].[Price] AS [Price], 
+    [ShortProducts].[Hot] AS [Hot], 
+    [ShortProducts].[Expr1] AS [Expr1]
+    FROM [dbo].[ShortProducts] AS [ShortProducts]</DefiningQuery>
+          </EntitySet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Calgroup_v2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="LibraryCategory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AliasCat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Question">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AliasName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Details" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LibraryView">
+          <Key>
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Image" />
+            <PropertyRef Name="PDF" />
+            <PropertyRef Name="Status" />
+          </Key>
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PDF" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <Property Name="AliasCat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ShortProduct">
+          <Key>
+            <PropertyRef Name="Alias" />
+          </Key>
+          <Property Name="Category" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AliasCat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Alias" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Model" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Manufacturer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ImageLink" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ImageLinkDetail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ManualLink" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Detail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Specification" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Hot" Type="Int32" />
+          <Property Name="Expr1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
         <EntityContainer Name="Calgroup_v2DB" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="LibraryCategories" EntityType="Self.LibraryCategory" />
+          <EntitySet Name="Questions" EntityType="Self.Question" />
+          <EntitySet Name="LibraryViews" EntityType="Self.LibraryView" />
+          <EntitySet Name="ShortProducts" EntityType="Self.ShortProduct" />
+          <FunctionImport Name="getFAQDetail" ReturnType="Collection(String)">
+          <Parameter Name="alias" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="getNumberThuViens" ReturnType="Collection(Int64)">
+          <Parameter Name="aliascat" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="getProductDetail" ReturnType="Collection(Calgroup_v2Model.getProductDetail_Result)">
           <Parameter Name="alias" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="getProducts" ReturnType="Collection(Calgroup_v2Model.getProducts_Result)">
           <Parameter Name="aliascat" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="getFAQDetail" ReturnType="Collection(String)">
-          <Parameter Name="alias" Mode="In" Type="String" />
           <FunctionImport Name="getThuViens" ReturnType="Collection(Calgroup_v2Model.getThuViens_Result)">
-          <Parameter Name="aliascat" Mode="In" Type="String" />
+            <Parameter Name="aliascat" Mode="In" Type="String" />
             <Parameter Name="page" Mode="In" Type="Int32" />
           </FunctionImport>
-          <EntitySet Name="LibraryCategories" EntityType="Calgroup_v2Model.LibraryCategory" />
           <EntitySet Name="LoaiSanPhams" EntityType="Calgroup_v2Model.LoaiSanPham" />
-          <FunctionImport Name="getNumberThuViens" ReturnType="Collection(Int64)">
-          <Parameter Name="aliascat" Mode="In" Type="String" />
-          </FunctionImport>
-          <EntitySet Name="Questions" EntityType="Calgroup_v2Model.Question" />
+          <EntitySet Name="Staffs" EntityType="Calgroup_v2Model.Staff" />
         </EntityContainer>
         <ComplexType Name="getProductDetail_Result">
           <Property Type="String" Name="Name" Nullable="true" />
@@ -93,26 +233,12 @@
           <Property Type="String" Name="Manufacturer" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="ImageLink" Nullable="true" />
         </ComplexType>
-        <EntityType Name="Question">
         <ComplexType Name="getThuViens_Result">
           <Property Type="String" Name="Name" Nullable="false" />
           <Property Type="String" Name="Image" Nullable="false" />
           <Property Type="String" Name="PDF" Nullable="false" />
           <Property Type="String" Name="Category" Nullable="true" MaxLength="50" />
         </ComplexType>
-        <EntityType Name="LibraryCategory">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Title" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="AliasName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Details" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Status" Type="Boolean" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="AliasCat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
         <EntityType Name="LoaiSanPham">
           <Key>
             <PropertyRef Name="CatID" />
@@ -122,12 +248,80 @@
           <Property Name="Category" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="AliasCat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="Staff">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Role" Type="Boolean" />
+          <Property Name="Skype" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Zalo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Boolean" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="Calgroup_v2ModelStoreContainer" CdmEntityContainer="Calgroup_v2DB">
+          <EntitySetMapping Name="LibraryCategories">
+            <EntityTypeMapping TypeName="Calgroup_v2Model.LibraryCategory">
+              <MappingFragment StoreEntitySet="LibraryCategory">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="AliasCat" ColumnName="AliasCat" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Questions">
+            <EntityTypeMapping TypeName="Calgroup_v2Model.Question">
+              <MappingFragment StoreEntitySet="Question">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="AliasName" ColumnName="AliasName" />
+                <ScalarProperty Name="Details" ColumnName="Details" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LibraryViews">
+            <EntityTypeMapping TypeName="Calgroup_v2Model.LibraryView">
+              <MappingFragment StoreEntitySet="LibraryView">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="PDF" ColumnName="PDF" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="AliasCat" ColumnName="AliasCat" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ShortProducts">
+            <EntityTypeMapping TypeName="Calgroup_v2Model.ShortProduct">
+              <MappingFragment StoreEntitySet="ShortProducts">
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="AliasCat" ColumnName="AliasCat" />
+                <ScalarProperty Name="Alias" ColumnName="Alias" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="Manufacturer" ColumnName="Manufacturer" />
+                <ScalarProperty Name="ImageLink" ColumnName="ImageLink" />
+                <ScalarProperty Name="ImageLinkDetail" ColumnName="ImageLinkDetail" />
+                <ScalarProperty Name="ManualLink" ColumnName="ManualLink" />
+                <ScalarProperty Name="Detail" ColumnName="Detail" />
+                <ScalarProperty Name="Specification" ColumnName="Specification" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Hot" ColumnName="Hot" />
+                <ScalarProperty Name="Expr1" ColumnName="Expr1" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="getFAQDetail" FunctionName="Calgroup_v2Model.Store.getFAQDetail" />
+          <FunctionImportMapping FunctionImportName="getNumberThuViens" FunctionName="Calgroup_v2Model.Store.getNumberThuViens" />
           <FunctionImportMapping FunctionImportName="getProductDetail" FunctionName="Calgroup_v2Model.Store.getProductDetail">
             <ResultMapping>
               <ComplexTypeMapping TypeName="Calgroup_v2Model.getProductDetail_Result">
@@ -156,15 +350,6 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="getFAQDetail" FunctionName="Calgroup_v2Model.Store.getFAQDetail" />
-          <EntitySetMapping Name="Questions">
-            <EntityTypeMapping TypeName="Calgroup_v2Model.Question">
-              <MappingFragment StoreEntitySet="Question">
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="Details" ColumnName="Details" />
-                <ScalarProperty Name="AliasName" ColumnName="AliasName" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-=======
           <FunctionImportMapping FunctionImportName="getThuViens" FunctionName="Calgroup_v2Model.Store.getThuViens">
             <ResultMapping>
               <ComplexTypeMapping TypeName="Calgroup_v2Model.getThuViens_Result">
@@ -175,19 +360,6 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <EntitySetMapping Name="LibraryCategories">
-            <EntityTypeMapping TypeName="Calgroup_v2Model.LibraryCategory">
-              <MappingFragment StoreEntitySet="LibraryCategory">
-                <ScalarProperty Name="Category" ColumnName="Category" />
-                <ScalarProperty Name="AliasCat" ColumnName="AliasCat" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
->>>>>>> 7938115d3d3f729a4655099777e46756d2729b86
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-<<<<<<< HEAD
-=======
           <EntitySetMapping Name="LoaiSanPhams">
             <EntityTypeMapping TypeName="Calgroup_v2Model.LoaiSanPham">
               <MappingFragment StoreEntitySet="LoaiSanPham">
@@ -198,8 +370,20 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="getNumberThuViens" FunctionName="Calgroup_v2Model.Store.getNumberThuViens" />
->>>>>>> 7938115d3d3f729a4655099777e46756d2729b86
+          <EntitySetMapping Name="Staffs">
+            <EntityTypeMapping TypeName="Calgroup_v2Model.Staff">
+              <MappingFragment StoreEntitySet="Staffs">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Zalo" ColumnName="Zalo" />
+                <ScalarProperty Name="Skype" ColumnName="Skype" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

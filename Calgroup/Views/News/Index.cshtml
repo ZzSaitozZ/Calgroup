@@ -7,7 +7,8 @@
     var news = (List<Model.EF.Post>)ViewBag.news;
 }
 @using Calgroup.Resources.Common;
-<h2 style="text-transform: uppercase;text-align: center;font-weight: bold;font-size: 50px;color: #0075bf;margin: 0;">Tin Tức</h2>
+<h2 style="text-transform: uppercase;text-align: center;font-weight: bold;font-size: 50px;color: #0075bf;margin: 20px 0px;">Tin Tức</h2>
+<hr style="border: 0; height: 1px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));" />
 <div id="P-card-container">
     @foreach (var i in news)
     {
@@ -26,10 +27,6 @@
                                 </div>
                                 <div class="news-cats">
                                     <ul class="list-unstyled list-inline mb-1">
-                                        <li class="list-inline-item">
-                                            <i class="fa fa-folder-open text-danger"></i>
-                                            <a href="#"><small>Advertisment</small> </a>
-                                        </li>
                                         <li class="list-inline-item">
                                             <i class="fa fa-folder-open text-danger"></i>
                                             <a href="#"><small>@i.ViewCount</small> </a>

@@ -47,11 +47,8 @@ namespace Calgroup.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-<<<<<<< HEAD
+
         public async Task<ActionResult> Create([Bind(Include = "ID,Name")] Model.EF.LibraryCategory libraryCategory)
-=======
-        public async Task<ActionResult> Create([Bind(Include = "ID,Name,AliasCat,Category")] LibraryCategory libraryCategory)
->>>>>>> e02ffee548e174a74bc186fb8f2761fe2bf9fcbe
         {
             if (ModelState.IsValid)
             {
@@ -83,11 +80,7 @@ namespace Calgroup.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-<<<<<<< HEAD
         public async Task<ActionResult> Edit([Bind(Include = "ID,Name")] Model.EF.LibraryCategory libraryCategory)
-=======
-        public async Task<ActionResult> Edit([Bind(Include = "ID,Name,AliasCat,Category")] LibraryCategory libraryCategory)
->>>>>>> e02ffee548e174a74bc186fb8f2761fe2bf9fcbe
         {
             if (ModelState.IsValid)
             {

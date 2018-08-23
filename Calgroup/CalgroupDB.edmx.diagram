@@ -4,10 +4,13 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="67bf510515d84d359323038114a1d404" Name="Diagram1">
-        <EntityTypeShape EntityType="Calgroup_v2Model.Question" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="Calgroup_v2Model.LibraryCategory" Width="1.5" PointX="0.75" PointY="0.75" />
+      <Diagram DiagramId="a89c0f937840443ab582282d42aa3b46" Name="Diagram1">
+        <EntityTypeShape EntityType="Calgroup_v2Model.LibraryCategory" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Calgroup_v2Model.Question" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Calgroup_v2Model.LibraryView" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Calgroup_v2Model.ShortProduct" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Calgroup_v2Model.LoaiSanPham" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Calgroup_v2Model.Staff" Width="1.5" PointX="5.375" PointY="5.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

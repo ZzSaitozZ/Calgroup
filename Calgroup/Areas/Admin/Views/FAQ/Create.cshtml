@@ -1,0 +1,109 @@
+﻿@model Calgroup.Question
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    if (Session["userID"] == null)
+    {
+        Response.Redirect("/Admin/Admin/Login");
+    }
+}
+
+<section class="content-header">
+    <h1>
+        Bản quản lý
+        <small>@Session["fullName"] - Member since - @Convert.ToDateTime(Session["createdDate"].ToString()).ToShortDateString()</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li class="active"><i class="fa fa-dashboard"></i> @(Convert.ToInt32(Session["isAdmin"].ToString()) == 1 ? "Quản trị viên" : "Thành viên")</li>
+    </ol>
+</section>
+
+<section class="content">
+    <!-- COLOR PALETTE -->
+    <div class="box box-default color-palette-box">
+        <div class="box-header with-border">
+            <h3 class="box-title">
+                <i class="fa fa-tag"></i> Thêm mới
+            </h3>
+        </div>
+        <br />
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control", @onchange = "myfunction()", id= "Title" } })
+                    @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group" >
+                @Html.LabelFor(model => model.AliasName, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.AliasName, new { htmlAttributes = new { @class = "form-control", id = "Alias" } })
+                    @Html.ValidationMessageFor(model => model.AliasName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Details, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @*@Html.EditorFor(model => model.Detail, new { htmlAttributes = new { @class = "form-control" } })*@
+                    @Html.TextAreaFor(model => model.Details, new { htmlAttributes = new { @class = "form-control" }, id = "txtContent" })
+                    @Html.ValidationMessageFor(model => model.Details, "", new { @class = "text-danger" })
+                </div>
+                <script>
+                    CKEDITOR.replace("txtContent", {
+                        htmlEncodeOutput: true,
+                    });
+                </script>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.Status, new { @class = "checkbox" })
+                        @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-success" />
+                    <p class="btn btn-default">@Html.ActionLink("FAQ", "Index")</p>
+                </div>
+            </div>
+        </div>
+        }
+        <br /><br />
+    </div>
+</section>
+<script>
+    var viewModel = {
+        stringValue: ko.observable(""),
+    };
+    ko.applyBindings(viewModel);
+    
+    function myfunction() {
+        var str = document.getElementById("Title").value;
+        str = str.toLowerCase();
+        str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, "a");
+        str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, "e");
+        str = str.replace(/ì|í|ị|ỉ|ĩ/g, "i");
+        str = str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g, "o");
+        str = str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g, "u");
+        str = str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g, "y");
+        str = str.replace(/đ/g, "d");
+        str = str.replace(/!|%|\^|\*|\(|\)|\+|\=|\<|\>|\?|\/|,|\.|\:|\;|\'|\"|\&|\#|\[|\]|~|\$|_|`|-|{|}|\||\\/g, "");
+        str = str.replace(/ + /g, " ");
+        str = str.replace(/ /g, "-");
+        str = str.trim();
+        document.getElementById("Alias").value = str;
+    }
+</script>

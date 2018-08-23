@@ -17,12 +17,12 @@
     @*<link href="~/Resources/CSS/bootstrap/bootstrap.min.css" rel="stylesheet" />*@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-    @*<link href="~/Resources/Icons/css/fontawesome-all.css" rel="stylesheet" />*
+    @*<link href="~/Resources/Icons/css/fontawesome-all.css" rel="stylesheet" />*@
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-    <link rel="stylesheet" href="/Resources/Admin/plugins/datatables/dataTables.bootstrap.css">
-    <!-- jQuery 2.2.3 -->
-    @*<script src="/Resources/Admin/plugins/jQuery/jquery-2.2.3.min.js"></script>*@
+    @*<link rel="stylesheet" href="/Resources/Admin/plugins/datatables/dataTables.bootstrap.css">
+        <!-- jQuery 2.2.3 -->
+        <script src="/Resources/Admin/plugins/jQuery/jquery-2.2.3.min.js"></script>*@
     <script src="~/Resources/JS/Scripts/jquery-3.3.1.min.js"></script>
     <!-- Theme style -->
     <link rel="stylesheet" href="/Resources/Admin/dist/css/AdminLTE.min.css">
@@ -57,7 +57,6 @@
         <header class="main-header">
             <!-- Logo -->
             <a href="/Admin/Admin/Index" class="logo">
-            <a href="/Admin/Main" class="logo">
                 <!-- mini logo for sidebar mini 50x50 pixels -->
                 <span class="logo-mini"><b></b>Ewon</span>
                 <!-- logo for regular state and mobile devices -->
@@ -71,7 +70,7 @@
                 </a>
                 <div class="navbar-custom-menu">
                     <ul class="nav navbar-nav">
-                        
+
                         <!-- Messages: style can be found in dropdown.less-->
                         <li class="dropdown messages-menu hidden">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -283,10 +282,10 @@
                                     <p>
                                         @Session["fullName"] -
                                         @if (Session["fullName"] != null)
-                                        {
-                                            @(Convert.ToInt32(Session["isAdmin"].ToString()) == 1 ? "Quản trị viên" : "Thành viên");
-                                            <small>Member since - @Convert.ToDateTime(Session["createdDate"].ToString()).ToShortDateString()</small>
-                                        }
+                                {
+                                    @(Convert.ToInt32(Session["isAdmin"].ToString()) == 1 ? "Quản trị viên" : "Thành viên");
+                            <small>Member since - @Convert.ToDateTime(Session["createdDate"].ToString()).ToShortDateString()</small>
+                }
                                     </p>
                                 </li>
                                 <!-- Menu Body -->
@@ -359,18 +358,36 @@
                             </strong>
                         </h4>
                     </li>
-                    @*<li class="active treeview">
-                            <a href="#">
-                                <i class="fa fa-gears "></i> <span>Quản lý hệ thống</span>
-                                <span class="pull-right-container">
-                                    <i class="fa fa-angle-left pull-right"></i>
-                                </span>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li class="active"><a href="Admin/UserAdministrators"><i class="fa fa-user"></i> Quản lý người dùng</a></li>
-                                <li><a href="/Admin/UserBusinesses"><i class="fa fa-cubes"></i> Quản lý nghiệp vụ</a></li>
-                            </ul>
-                        </li>*@
+                    <li class="active treeview">
+                        <a href="#">
+                            <i class="fa fa-gears "></i> <span>Quản lý Chung</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="/Admin/ContactDetails"><i class="fa fa-globe"></i> Quản lý liên lạc</a></li>
+                            <li><a href="/Admin/DoiTacs"><i class="fa fa-users"></i> Quản lý đối tác</a></li>
+                            <li><a href="/Admin/Staff"><i class="fa fa-user"></i> Quản lý nhân viên</a></li>
+                            <li><a href="/Admin/FAQ"><i class="fa fa-question"></i> Quản lý FAQ</a></li>
+                            <li><a href="/Admin/Calibrations"><i class="fa fa-bookmark"></i> Quản lý hiệu chuẩn</a></li>
+                            <li><a href="/Admin/Posts"><i class="fa fa-newspaper-o"></i> Quản lý tin tức</a></li>
+                            <li><a href="/Admin/Customers"><i class="fa fa-weixin"></i> Ý kiến phản hồi</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-book"></i>
+                            <span>Quản lý thư viện</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="/Admin/LibraryCategories"><i class="fa fa-circle-o"></i> Danh mục</a></li>
+                            <li><a href="/Admin/Libraries"><i class="fa fa-circle-o"></i>Thư viện</a></li>
+                        </ul>
+                    </li>
                     <li class="treeview">
                         <a href="#">
                             <i class="fa fa-th"></i>
@@ -380,160 +397,37 @@
                             </span>
                         </a>
                         <ul class="treeview-menu">
+                            <li><a href="/Admin/Linhvucs/Index"><i class="fa fa-circle-o"></i> Lĩnh Vực</a></li>
                             <li><a href="/Admin/LoaiSanPhams/Index"><i class="fa fa-circle-o"></i> Nhóm sản phẩm</a></li>
                             <li><a href="/Admin/SanPhams/Index"><i class="fa fa-circle-o"></i> Sản phẩm</a></li>
-                            <li><a href="/Admin/Linhvucs/Index"><i class="fa fa-circle-o"></i> Lĩnh Vực</a></li>
-                            @*<li><a href="#"><i class="fa fa-circle-o"></i> Kích thước</a></li>
-                            <li><a href="#"><i class="fa fa-circle-o"></i> Nhãn hiệu</a></li>*@
-                        </ul>
-                    </li>
-                    <li class="treeview">
-                        <a href="#">
-                            <i class="fa fa-tasks"></i>
-                            <span>Quản lý hiệu chuẩn</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="/Admin/Calibrations/Index"><i class="fa fa-circle-o"></i>Hiệu chuẩn</a></li>
-                        </ul>
-                    </li>
-                    <li class="treeview">
-                        <a href="#">
-<<<<<<< HEAD
-                            <i class="fa fa-book"></i>
-=======
-                            <i class="fa fa-laptop"></i>
-<<<<<<< HEAD
-                            <span>Quản lý hiệu chuẩn</span>
-=======
->>>>>>> 7938115d3d3f729a4655099777e46756d2729b86
-                            <span>Quản lý thư viện</span>
->>>>>>> e02ffee548e174a74bc186fb8f2761fe2bf9fcbe
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </span>
-                        </a>
-                        <ul class="treeview-menu">
-<<<<<<< HEAD
-                            <li><a href="/Admin/Calibrations/Index"><i class="fa fa-circle-o"></i> Hiệu chuẩn</a></li>
-                            <li><a href="#"><i class="fa fa-circle-o"></i> Icons</a></li>
-=======
-                            <li><a href="/Admin/Libraries/Index"><i class="fa fa-circle-o"></i> Thư viện</a></li>
-                            <li><a href="/Admin/LibraryCategories/Index"><i class="fa fa-circle-o"></i> Danh mục thư viện</a></li>
-<<<<<<< HEAD
-                            @*<li><a href="#"><i class="fa fa-circle-o"></i> Buttons</a></li>
-=======
->>>>>>> e02ffee548e174a74bc186fb8f2761fe2bf9fcbe
-                            <li><a href="#"><i class="fa fa-circle-o"></i> Buttons</a></li>
->>>>>>> 7938115d3d3f729a4655099777e46756d2729b86
-                            <li><a href="#"><i class="fa fa-circle-o"></i> Sliders</a></li>
-                            <li><a href="#"><i class="fa fa-circle-o"></i> Timeline</a></li>
-                            <li><a href="#"><i class="fa fa-circle-o"></i> Modals</a></li>*@
-                        </ul>
-                    </li>
-                    <li class="treeview">
-                        <a href="#">
-<<<<<<< HEAD
-                            <i class="fa fa-question"></i> <span>Quản lý FAQ</span>
-=======
-                            <i class="fa fa-users"></i> <span>Quản lý thư viện</span>
->>>>>>> 7938115d3d3f729a4655099777e46756d2729b86
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </span>
-                        </a>
-                        <ul class="treeview-menu">
-<<<<<<< HEAD
-                            <li><a href="#"><i class="fa fa-circle-o"></i> Câu hỏi thường gặp</a></li>
-                            @*<li><a href="#"><i class="fa fa-circle-o"></i> Advanced Elements</a></li>
-                            <li><a href="#"><i class="fa fa-circle-o"></i> Editors</a></li>*@
-=======
-                            <li><a href="/Admin/Libraries/Index"><i class="fa fa-circle-o"></i> Thư viện</a></li>
-                            <li><a href="/Admin/LibraryCategories/Index"><i class="fa fa-circle-o"></i> Danh mục thư viện</a></li>
-                            <li><a href="#"><i class="fa fa-circle-o"></i> Editors</a></li>
->>>>>>> 7938115d3d3f729a4655099777e46756d2729b86
-                        </ul>
-                    </li>
-                    <li class="treeview">
-                        <a href="#">
-                            <i class="fa fa-hand-holding"></i> <span>Quản lý đối tác</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="#"><i class="fa fa-circle-o"></i> Danh sách dối tác</a></li>
-                            @*<li><a href="#"><i class="fa fa-circle-o"></i> Advanced Elements</a></li>
-                            <li><a href="#"><i class="fa fa-circle-o"></i> Editors</a></li>*@
-                        </ul>
-                    </li>
-                    @*<li class="treeview">
-                        <a href="#">
-                            <i class="fa fa-tasks"></i>
-                            <span>Quản lý dự án</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="/Admin/ProjectProducts/Index"><i class="fa fa-circle-o"></i>Dự án</a></li>
 
                         </ul>
-                    </li>*@
-                    <li class="treeview">
-                        <a href="#">
-                            <i class="fa fa-table"></i> <span>Ý kiến phản hồi</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="#"><i class="fa fa-circle-o"></i> Simple tables</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="fa fa-calendar"></i> <span>Tin tức</span>
-                            <span class="pull-right-container" style="margin-right:30px;">
-                                @*<small class="label pull-right bg-red">3</small>
-                                <small class="label pull-right bg-blue">17</small>*@
-                            </span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            @*<li><a href="/Admin/PostCategories"><i class="fa fa-circle-o"></i> Danh mục</a></li>*@
-                            <li><a href="/Admin/Posts"><i class="fa fa-circle-o"></i> Bài viết </a></li>
-                        </ul>
-                    </li>
+                    </li>                                       
                     @*<li>
-                        <a href="#">
-                            <i class="fa fa-envelope"></i> <span>Ảnh trình chiếu</span>
-                            <span class="pull-right-container">
-                                <small class="label pull-right bg-yellow">12</small>
-                                <small class="label pull-right bg-green">16</small>
-                                <small class="label pull-right bg-red">5</small>
-                            </span>
-                        </a>
-                    </li>*@
+            <a href="#">
+                <i class="fa fa-envelope"></i> <span>Ảnh trình chiếu</span>
+                <span class="pull-right-container">
+                    <small class="label pull-right bg-yellow">12</small>
+                    <small class="label pull-right bg-green">16</small>
+                    <small class="label pull-right bg-red">5</small>
+                </span>
+            </a>
+        </li>*@
                     @*<li class="treeview">
-                        <a href="#">
-                            <i class="fa fa-folder"></i> <span>Quản lý chung</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="/Admin/Pages"><i class="fa fa-circle-o"></i> Giới thiệu</a></li>
-                            <li><a href="/Admin/Menus"><i class="fa fa-circle-o"></i> Menu</a></li>
-                            <li><a href="#"><i class="fa fa-circle-o"></i> Footer</a></li>
-                            <li><a href="/Admin/Slides"><i class="fa fa-circle-o"></i> Slide</a></li>
-                            <li><a href="#"><i class="fa fa-circle-o"></i> Phản hồi</a></li>
-                        </ul>
-                    </li>*@
+            <a href="#">
+                <i class="fa fa-folder"></i> <span>Quản lý chung</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <li><a href="/Admin/Pages"><i class="fa fa-circle-o"></i> Giới thiệu</a></li>
+                <li><a href="/Admin/Menus"><i class="fa fa-circle-o"></i> Menu</a></li>
+                <li><a href="#"><i class="fa fa-circle-o"></i> Footer</a></li>
+                <li><a href="/Admin/Slides"><i class="fa fa-circle-o"></i> Slide</a></li>
+                <li><a href="#"><i class="fa fa-circle-o"></i> Phản hồi</a></li>
+            </ul>
+        </li>*@
                     <li class="header"><h4><i class="fa fa-gears text-red"></i><strong class="text-yellow"> &nbsp; QUẢN LÝ HỆ THỐNG</strong></h4></li>
                     <li><a href="/Admin/UserAdministrators"><i class="fa fa-circle-o text-red"></i> <span>Quản lý người dùng</span></a></li>
                     @*<li><a href="/Admin/UserBusinesses"><i class="fa fa-circle-o text-yellow"></i> <span>Quản lý nghiệp vụ</span></a></li>*@

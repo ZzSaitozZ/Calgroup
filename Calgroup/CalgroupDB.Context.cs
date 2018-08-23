@@ -27,9 +27,30 @@ namespace Calgroup
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Question> Questions { get; set; }
         public virtual DbSet<LibraryCategory> LibraryCategories { get; set; }
+        public virtual DbSet<Question> Questions { get; set; }
+        public virtual DbSet<LibraryView> LibraryViews { get; set; }
+        public virtual DbSet<ShortProduct> ShortProducts { get; set; }
         public virtual DbSet<LoaiSanPham> LoaiSanPhams { get; set; }
+        public virtual DbSet<Staff> Staffs { get; set; }
+    
+        public virtual ObjectResult<string> getFAQDetail(string alias)
+        {
+            var aliasParameter = alias != null ?
+                new ObjectParameter("alias", alias) :
+                new ObjectParameter("alias", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("getFAQDetail", aliasParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<long>> getNumberThuViens(string aliascat)
+        {
+            var aliascatParameter = aliascat != null ?
+                new ObjectParameter("aliascat", aliascat) :
+                new ObjectParameter("aliascat", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<long>>("getNumberThuViens", aliascatParameter);
+        }
     
         public virtual ObjectResult<getProductDetail_Result> getProductDetail(string alias)
         {
@@ -49,13 +70,6 @@ namespace Calgroup
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<getProducts_Result>("getProducts", aliascatParameter);
         }
     
-        public virtual ObjectResult<string> getFAQDetail(string alias)
-        {
-            var aliasParameter = alias != null ?
-                new ObjectParameter("alias", alias) :
-                new ObjectParameter("alias", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("getFAQDetail", aliasParameter);
         public virtual ObjectResult<getThuViens_Result> getThuViens(string aliascat, Nullable<int> page)
         {
             var aliascatParameter = aliascat != null ?
@@ -67,15 +81,6 @@ namespace Calgroup
                 new ObjectParameter("page", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<getThuViens_Result>("getThuViens", aliascatParameter, pageParameter);
-        }
-    
-        public virtual ObjectResult<Nullable<long>> getNumberThuViens(string aliascat)
-        {
-            var aliascatParameter = aliascat != null ?
-                new ObjectParameter("aliascat", aliascat) :
-                new ObjectParameter("aliascat", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<long>>("getNumberThuViens", aliascatParameter);
         }
     }
 }

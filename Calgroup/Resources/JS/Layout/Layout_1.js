@@ -33,8 +33,6 @@ function myFunction() {
     } else {
         navbar.classList.remove("sticky");
     }
-    $('i.fa-list-ul').css('top', $('.navbar.Topnav')[0].offsetTop + $('.navbar.Topnav').height());
-    $('#lvcontainer').css('top', $('i.fa-list-ul')[0].offsetTop);
 }
 
 function Resize() {

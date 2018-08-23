@@ -7,13 +7,13 @@ using Model.DAO;
 using Calgroup.VM;
 using Calgroup.Models;
 using System.Web.Script.Serialization;
-using Model.EF;
+
 
 namespace Calgroup.Controllers
 {
     public class HomeController : Controller
     {
-        private ProductsdbContext db = new ProductsdbContext();
+        private Model.EF.ProductsdbContext db = new Model.EF.ProductsdbContext();
         public ActionResult Index()
         {
             return View();
@@ -36,7 +36,7 @@ namespace Calgroup.Controllers
         public ActionResult SanPham(string aliascat)
         {
             Calgroup_v2DB cgi = new Calgroup_v2DB();
-            var a = cgi.Database.SqlQuery<Menu>("Select Linhvuc,Category,AliasCat from dbo.MenuSP order by DisplayOrder asc").ToList();
+            var a = cgi.Database.SqlQuery<Calgroup.Models.Menu>("Select Linhvuc,Category,AliasCat from dbo.MenuSP order by DisplayOrder asc").ToList();
             SanPhamPageVM pageVM = new SanPhamPageVM(a);
             pageVM.AliasCat = aliascat;
             return View(pageVM);
@@ -46,8 +46,7 @@ namespace Calgroup.Controllers
         {
             Calgroup_v2DB cgi = new Calgroup_v2DB();         
             getSanPhamVM pageVM = new getSanPhamVM();
-
-            if(aliascat == null || aliascat == "")
+            if (aliascat == null || aliascat == "")
             {               
                 pageVM.Products = new JavaScriptSerializer().Serialize(cgi.Database.SqlQuery<ShortProduct>("Select Name,Alias,Category,Model,Manufacturer,ImageLink FROM dbo.ShortProducts where Hot is not null  order by Hot asc").ToList());
                 pageVM.CategoryVi = "Sản phẩm đang hot";
@@ -122,7 +121,7 @@ namespace Calgroup.Controllers
                 Calgroup_v2DB cgi = new Calgroup_v2DB();
                 var b = cgi.getNumberThuViens(aliascat).FirstOrDefault();
             if (b == null) return RedirectToRoute("Library", new {aliascat = "catalog" });
-                var a = cgi.Database.SqlQuery<Menu>("Select Name as Category,Category as Linhvuc,AliasCat from dbo.LibraryCategory order by Linhvuc DESC").ToList();                
+                var a = cgi.Database.SqlQuery<Calgroup.Models.Menu>("Select Name as Category,Category as Linhvuc,AliasCat from dbo.LibraryCategory order by Linhvuc DESC").ToList();                
                 SanPhamPageVM pageVM = new SanPhamPageVM(a);            
                 pageVM.PageCount = (int)Math.Ceiling((double)b/6);          
                 pageVM.AliasCat = aliascat;
@@ -142,7 +141,7 @@ namespace Calgroup.Controllers
             String Email = Request.Form["inputEmail"].ToString();
             String Address = Request.Form["inputAddress"].ToString();
             String Message = Request.Form["comment"].ToString();
-            Customer customer = new Customer();
+            Model.EF.Customer customer = new Model.EF.Customer();
             customer.Name = Name;
             customer.Adress = Address;
             customer.Email = Email;
