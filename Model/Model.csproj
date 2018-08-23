@@ -71,8 +71,9 @@
     <Compile Include="EF\Calibration.cs" />
     <Compile Include="EF\Color.cs" />
     <Compile Include="EF\ContactDetail.cs" />
+    <Compile Include="EF\Customer.cs" />
+    <Compile Include="EF\DoiTac.cs" />
     <Compile Include="EF\Error.cs" />
-    <Compile Include="EF\FAQ.cs" />
     <Compile Include="EF\Feedback.cs" />
     <Compile Include="EF\Footer.cs" />
     <Compile Include="EF\Function.cs" />
@@ -97,6 +98,7 @@
     <Compile Include="EF\ProductsdbContext.cs" />
     <Compile Include="EF\Project.cs" />
     <Compile Include="EF\ProjectProduct.cs" />
+    <Compile Include="EF\Question.cs" />
     <Compile Include="EF\SanPham.cs" />
     <Compile Include="EF\Size.cs" />
     <Compile Include="EF\Slide.cs" />

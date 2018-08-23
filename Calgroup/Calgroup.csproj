@@ -159,6 +159,10 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\CalibrationsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\FAQController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ContactDetailsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CustomersController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DoiTacsController.cs" />
     <Compile Include="Areas\Admin\Controllers\LibrariesController.cs" />
     <Compile Include="Areas\Admin\Controllers\LibraryCategoriesController.cs" />
     <Compile Include="Areas\Admin\Controllers\LinhvucsController.cs" />
@@ -206,6 +210,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CalgroupDB.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\FAQController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="getProductDetail_Result.cs">
@@ -232,6 +237,9 @@
     <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Question.cs">
+      <DependentUpon>CalgroupDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Resources\Common\Encryptor.cs" />
     <Compile Include="Resources\Common\Encryptors.cs" />
     <Compile Include="Resources\Common\StringHelper.cs" />
@@ -1426,6 +1434,7 @@
     <Content Include="Resources\Admin\dist\js\demo.js" />
     <Content Include="Resources\Admin\dist\js\pages\dashboard.js" />
     <Content Include="Resources\Admin\dist\js\pages\dashboard2.js" />
+    <Content Include="Resources\Admin\js\ChangesStatus\FAQ.js" />
     <Content Include="Resources\Admin\js\ChangesStatus\Calibration.js" />
     <Content Include="Resources\Admin\js\ChangesStatus\Libraries.js" />
     <Content Include="Resources\Admin\js\ChangesStatus\Posts.js" />
@@ -2641,6 +2650,26 @@
     <Content Include="Areas\Admin\Views\Linhvucs\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Linhvucs\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Linhvucs\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\FAQ\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\FAQ\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\FAQ\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\FAQ\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\FAQ\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Customers\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Customers\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Customers\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Customers\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Customers\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ContactDetails\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\ContactDetails\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\ContactDetails\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\ContactDetails\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ContactDetails\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\DoiTacs\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\DoiTacs\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\DoiTacs\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\DoiTacs\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\DoiTacs\Index.cshtml" />
     <None Include="Resources\JS\Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Resources\JS\Scripts\jquery-3.3.1.js" />
     <Content Include="Resources\JS\Scripts\jquery-3.3.1.min.js" />
@@ -2717,8 +2746,6 @@
     <Content Include="Resources\Sanpham\MayDoNhietDoIR\Extech-42515.pdf" />
     <Content Include="Resources\Sanpham\MayHienSong\U1604B-U1602B.pdf" />
     <Content Include="Resources\Sanpham\ThuocCapDienTu\Mitutoyo-Caliper%28500 Series%29.pdf" />
-    <Content Include="Views\Home\News.cshtml" />
-    <Content Include="Views\Home\NewsDetail.cshtml" />
     <Content Include="Views\Home\Question.cshtml" />
     <Content Include="Views\Home\Services.cshtml" />
     <Content Include="Views\Home\SanPham.cshtml" />
@@ -2726,6 +2753,7 @@
     <Content Include="Views\Home\Library.cshtml" />
     <Content Include="Views\News\Index.cshtml" />
     <Content Include="Views\News\NewsDetail.cshtml" />
+    <Content Include="Views\FAQ\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

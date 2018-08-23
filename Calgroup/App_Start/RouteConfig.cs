@@ -51,6 +51,11 @@ namespace Calgroup
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+            routes.MapRoute(
+                name: "FAQ",
+                url: "{controller}/{alias}",
+                defaults: new { controller = "FAQ", action = "Index", aias = UrlParameter.Optional }
+            );
         }
     }
 }

@@ -22,8 +22,9 @@ namespace Model.EF
         public virtual DbSet<Calibration> Calibrations { get; set; }
         public virtual DbSet<Color> Colors { get; set; }
         public virtual DbSet<ContactDetail> ContactDetails { get; set; }
+        public virtual DbSet<Customer> Customers { get; set; }
+        public virtual DbSet<DoiTac> DoiTacs { get; set; }
         public virtual DbSet<Error> Errors { get; set; }
-        public virtual DbSet<FAQ> FAQs { get; set; }
         public virtual DbSet<Feedback> Feedbacks { get; set; }
         public virtual DbSet<Footer> Footers { get; set; }
         public virtual DbSet<Function> Functions { get; set; }
@@ -47,6 +48,7 @@ namespace Model.EF
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<ProjectProduct> ProjectProducts { get; set; }
         public virtual DbSet<Project> Projects { get; set; }
+        public virtual DbSet<Question> Questions { get; set; }
         public virtual DbSet<SanPham> SanPhams { get; set; }
         public virtual DbSet<Size> Sizes { get; set; }
         public virtual DbSet<Slide> Slides { get; set; }

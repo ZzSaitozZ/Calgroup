@@ -27,6 +27,7 @@ namespace Calgroup
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Question> Questions { get; set; }
         public virtual DbSet<LibraryCategory> LibraryCategories { get; set; }
         public virtual DbSet<LoaiSanPham> LoaiSanPhams { get; set; }
     
@@ -48,6 +49,13 @@ namespace Calgroup
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<getProducts_Result>("getProducts", aliascatParameter);
         }
     
+        public virtual ObjectResult<string> getFAQDetail(string alias)
+        {
+            var aliasParameter = alias != null ?
+                new ObjectParameter("alias", alias) :
+                new ObjectParameter("alias", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("getFAQDetail", aliasParameter);
         public virtual ObjectResult<getThuViens_Result> getThuViens(string aliascat, Nullable<int> page)
         {
             var aliascatParameter = aliascat != null ?
