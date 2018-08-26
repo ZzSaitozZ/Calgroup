@@ -83,13 +83,13 @@ namespace Calgroup
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<getThuViens_Result>("getThuViens", aliascatParameter, pageParameter);
         }
     
-        public virtual ObjectResult<searchProducts_Result> searchProducts(string aliascat)
+        public virtual ObjectResult<searchProducts_Result> searchProducts(string alias)
         {
-            var aliascatParameter = aliascat != null ?
-                new ObjectParameter("aliascat", aliascat) :
-                new ObjectParameter("aliascat", typeof(string));
+            var aliasParameter = alias != null ?
+                new ObjectParameter("alias", alias) :
+                new ObjectParameter("alias", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<searchProducts_Result>("searchProducts", aliascatParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<searchProducts_Result>("searchProducts", aliasParameter);
         }
     }
 }

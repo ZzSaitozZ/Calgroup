@@ -225,7 +225,7 @@
     function LoadData() {
         $.ajax({
             type: 'Post',
-            url: '/getSanPham',
+            url: '/searchSanPham',
             dataType: 'json',
             data: { searchString: '@Model.AliasCat' },
             success: function (data) {

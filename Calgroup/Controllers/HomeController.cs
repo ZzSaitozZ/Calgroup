@@ -7,6 +7,7 @@ using Model.DAO;
 using Calgroup.VM;
 using Calgroup.Models;
 using System.Web.Script.Serialization;
+using Calgroup.Resources.Common;
 
 
 namespace Calgroup.Controllers
@@ -172,6 +173,7 @@ namespace Calgroup.Controllers
         [HttpPost]
         public JsonResult searchSanPham(string searchString)
         {
+            searchString = StringHelper.ToAlias(searchString);
             Calgroup_v2DB cgi = new Calgroup_v2DB();
             getSanPhamVM pageVM = new getSanPhamVM();
             var temp = cgi.searchProducts(searchString).ToList();

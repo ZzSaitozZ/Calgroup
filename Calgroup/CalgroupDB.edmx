@@ -100,7 +100,7 @@ warning 6002: The table/view 'Calgroup_v2.dbo.ShortProducts' does not have a pri
           <Parameter Name="page" Type="int" Mode="In" />
         </Function>
         <Function Name="searchProducts" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="aliascat" Type="varchar" Mode="In" />
+          <Parameter Name="alias" Type="varchar" Mode="In" />
         </Function>
         <EntityContainer Name="Calgroup_v2ModelStoreContainer">
           <EntitySet Name="LibraryCategory" EntityType="Self.LibraryCategory" Schema="dbo" store:Type="Tables" />
@@ -216,7 +216,7 @@ warning 6002: The table/view 'Calgroup_v2.dbo.ShortProducts' does not have a pri
           <EntitySet Name="LoaiSanPhams" EntityType="Calgroup_v2Model.LoaiSanPham" />
           <EntitySet Name="Staffs" EntityType="Calgroup_v2Model.Staff" />
           <FunctionImport Name="searchProducts" ReturnType="Collection(Calgroup_v2Model.searchProducts_Result)">
-            <Parameter Name="aliascat" Mode="In" Type="String" />
+          <Parameter Name="alias" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="getProductDetail_Result">
