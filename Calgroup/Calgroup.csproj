@@ -1444,6 +1444,7 @@
     <Content Include="Resources\Admin\dist\js\demo.js" />
     <Content Include="Resources\Admin\dist\js\pages\dashboard.js" />
     <Content Include="Resources\Admin\dist\js\pages\dashboard2.js" />
+    <Content Include="Resources\Admin\js\ChangesStatus\Staffs.js" />
     <Content Include="Resources\Admin\js\ChangesStatus\FAQ.js" />
     <Content Include="Resources\Admin\js\ChangesStatus\Calibration.js" />
     <Content Include="Resources\Admin\js\ChangesStatus\Libraries.js" />
@@ -2680,6 +2681,11 @@
     <Content Include="CalgroupDB.edmx.diagram">
       <DependentUpon>CalgroupDB.edmx</DependentUpon>
     </Content>
+    <Content Include="Areas\Admin\Views\Staffs\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Staffs\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Staffs\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Staffs\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Staffs\Delete.cshtml" />
     <None Include="Resources\JS\Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Resources\JS\Scripts\jquery-3.3.1.js" />
     <Content Include="Resources\JS\Scripts\jquery-3.3.1.min.js" />
@@ -2769,7 +2775,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Content\files\" />
     <Folder Include="Areas\Admin\Content\flash\" />
-    <Folder Include="Areas\Admin\Views\Staffs\" />
     <Folder Include="obj\Debug\edmxResourcesToEmbed\" />
     <Folder Include="Resources\Admin\gentelella-master\build\css\" />
     <Folder Include="Resources\Admin\gentelella-master\build\js\" />

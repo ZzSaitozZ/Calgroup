@@ -39,7 +39,7 @@ namespace Calgroup.Areas.Admin.Controllers
                 Session["avatar"] = user.Avatar;
                 Session["isAdmin"] = user.IsAdmin;
                 Session["createdDate"] = user.CreatedDate;
-                return RedirectToAction("Index");
+                return Redirect("/Admin/Sanphams");
             }
             ViewBag.error = "Đăng nhập sai hoặc bạn không có quyền vào";
             return View();

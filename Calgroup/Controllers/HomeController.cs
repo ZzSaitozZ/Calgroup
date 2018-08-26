@@ -47,14 +47,14 @@ namespace Calgroup.Controllers
             Calgroup_v2DB cgi = new Calgroup_v2DB();         
             getSanPhamVM pageVM = new getSanPhamVM();
             if (aliascat == null || aliascat == "")
-            {               
-                pageVM.Products = new JavaScriptSerializer().Serialize(cgi.Database.SqlQuery<ShortProduct>("Select Name,Alias,Category,Model,Manufacturer,ImageLink FROM dbo.ShortProducts where Hot is not null  order by Hot asc").ToList());
+            {
+                pageVM.Products = new JavaScriptSerializer().Serialize(cgi.Database.SqlQuery<Calgroup.Models.ShortProduct>("Select Name,Alias,Category,Model,Manufacturer,ImageLink FROM dbo.ShortProducts where Hot is not null  order by Hot asc").ToList());
                 pageVM.CategoryVi = "Sản phẩm đang hot";
             }
             else
             {
-               var Category = cgi.LoaiSanPhams.Where(x => x.AliasCat == aliascat).ToList();
-                if(Category.Any())
+                var Category = cgi.LoaiSanPhams.Where(x => x.AliasCat == aliascat).ToList();
+                if (Category.Any())
                 {
                     var temp = cgi.getProducts(aliascat).ToList();
                     pageVM.Products = new JavaScriptSerializer().Serialize(temp);

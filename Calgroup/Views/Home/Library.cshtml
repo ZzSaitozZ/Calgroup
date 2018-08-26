@@ -4,12 +4,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @model Calgroup.VM.SanPhamPageVM
-<h2>Library</h2>
 <link href="~/Resources/CSS/simplePagination.css" rel="stylesheet" />
 <script src="~/Resources/JS/Scripts/jquery.simplePagination.js"></script>
 <style>
     #lvcontainer {
-        margin-left: 10px;
         display: inline-block;
         transition: left 0.5s;
         z-index: 2;
@@ -57,30 +55,6 @@
     }
 
 
-    .buttons.active {
-        /*color: white;*/
-        border-left: 10px solid #428bca;
-    }
-
-    .buttons {
-        display: inline-block;
-        padding: 5px;
-        cursor: pointer;
-        border-left: 10px solid transparent;
-    }
-
-    .clickable {
-        cursor: pointer;
-    }
-
-    .pull-right {
-        float: right !important;
-    }
-
-    .fas fa-angle-up::before {
-        content: "\f106";
-    }
-
     #P-card-container {
         margin: 0px auto 20px auto;
         font-size: 20px;
@@ -98,23 +72,96 @@
     }
 
     i.fa-list-ul {
-        font-size: 30px;
+        font-size: 25px;
         color: white;
         background: #0075bf;
-        padding: 7px 7px 7px 4px;
-        /*border-radius: 30px;*/
+        padding: 10px 15px 10px 7px;
+        border-radius: 0 0 30px 0;
         transition: left 0.5s;
         display: none;
         position: fixed;
         left: 0;
-        z-index: 2;
-        cursor: pointer;
     }
 
     .Item {
         cursor: pointer;
     }
+    /*.P-card {
+        display: inline-block;
+        text-align: center;
+        margin-bottom: 15px;
+        margin-top: 15px
+    }
+    .P-card img {
+            width: 100%;
+        }
 
+        .P-card p {
+            font-size: 18px;
+            font-weight: bold;
+            width:100%;
+            margin-bottom: 0;
+            background-color: whitesmoke;
+        }
+
+        .P-card div {
+            font-size: 14px;
+            width: 100%;
+            background-color: ghostwhite;
+        }*/
+
+    .buttons.active {
+        /*color: white;*/
+        border-left: 10px solid #428bca;
+    }
+
+    .buttons {
+        display: inline-block;
+        padding: 5px;
+        cursor: pointer;
+        border-left: 10px solid transparent;
+    }
+
+    /*@@media screen and (min-width: 1400px)
+    {
+        .P-card{
+            width:22.75%;
+            margin-left:1.8%;
+        }
+        .P-card:nth-child(4n+4)
+        {
+            margin-right:1.8%;
+        }
+    }*/
+    /*@@media screen and (max-width: 1400px) and (min-width:1024px) {
+        .P-card {
+            width: 31%;
+        }
+
+            .P-card:nth-child(3n+1), .P-card:nth-child(3n+3) {
+                margin-left: 1.75%;
+                margin-right: 1.75%
+            }
+
+            .P-card:nth-child(3n+2) {
+                margin-left: 0;
+                margin-right: 0;
+            }
+    }*/
+    /*@@media screen and (max-width: 1024px)  {
+        .P-card {
+            width: 41%;
+        }
+
+            .P-card:nth-child(2n+1) {
+                margin-left: 6%;
+            }
+
+            .P-card:nth-child(2n+1) {
+                margin-left: 6%;
+                margin-right: 6%;
+            }
+    }*/
     @@media screen and (max-width: 900px) {
         #P-card-container {
             width: 100%;
@@ -123,6 +170,7 @@
         i.fa-list-ul {
             display: inline-block;
             position: fixed;
+            z-index: 1000;
         }
 
         #lvcontainer {
@@ -131,9 +179,18 @@
             left: -300px;
         }
     }
+    /*@@media screen and (max-width:500px) {
+        .P-card p {
+            font-size: 14px;
+        }
+        .P-card div{
+            font-size:12px;
+        }
+    }*/
 </style>
 
 <div style="margin-top:20px;font-size:0">
+    <h1 style="text-align:center;color:#0075bf;margin-bottom:20px">Thư viện</h1>
     <div><i class="fas fa-list-ul"></i></div>
     <div id="lvcontainer">
 
@@ -151,8 +208,8 @@
             }
         </div>
         @*<div class=" linhvuccha" data-toggle="collapse" data-alias="@Model.Menu[1].LinhVucCon[0][1]">
-            @Model.Menu[1].Name
-        </div>*@
+                @Model.Menu[1].Name
+            </div>*@
 
     </div>
 
@@ -166,7 +223,7 @@
     </div>
 </div>
 <script>
-    
+
 
     //Ajax get product
     function LoadData() {
@@ -176,16 +233,16 @@
             dataType: 'json',
             data: { aliascat: '@Model.AliasCat', page: $('#pagination').pagination('getCurrentPage') },
             success: function (data) {
-                var content = ''; 
+                var content = '';
                 if (data.Products != null) {
                 data.Products = JSON.parse(data.Products);
                 for (var i = 0; i < data.Products.length; i++) {
-                    content += '<div class="col-md-6 col-lg-6 col-xl-4 " >' +
+                    content += '<div class="col-md-6 col-lg-6 col-xl-4 " style="margin-bottom:20px" >' +
                         '<div class="Item" href="' + data.Products[i].PDF + '">' +
                         '<img class="img-fluid" src="' + data.Products[i].Image + '" />' +
                         '<h4>' + data.Products[i].Name + '</h4>' +
                         '</div>'+ '</div>'
-                    
+
                     if (i == data.Products.length - 1) {
                         $('#P-card-subcontainer').html(content);
                         content = '';

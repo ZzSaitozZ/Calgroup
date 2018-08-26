@@ -47,13 +47,13 @@
                                     @Html.DisplayNameFor(model => model.ImageLink)
                                    
                                 </th>
-                                <th>
+                                @*<th>
                                     @Html.DisplayNameFor(model => model.ImageLinkDetail)
                                 </th>
                                 <th>
                                     @Html.DisplayNameFor(model => model.ManualLink)
                                 </th>
-                                @*<th>
+                                <th>
                                         @Html.DisplayNameFor(model => model.Detail)
                                     </th>
                                     <th>
@@ -87,15 +87,15 @@
                                     </td>
                                     <td>
                                         @*@Html.DisplayFor(modelItem => item.ImageLink)*@
-                                        <img src="@Html.DisplayFor(modelItem => item.ImageLink)" id="img_@item.Alias" class="img-thumbnail" style="cursor:pointer" alt="Alternate Text" width="100" onclick="selectImage('/Admin/Libraries/ChangeImage/@item.Alias',this.id)" />
+                                        <img src="@Html.DisplayFor(modelItem => item.ImageLink)" id="img_@item.Alias" class="img-thumbnail" @*style="cursor:pointer"*@ alt="Alternate Text" width="100" @*onclick="selectImage('/Admin/Libraries/ChangeImage/@item.Alias',this.id)"*@ />
                                     </td>
-                                    <td>
+                                    @*<td>
                                         @Html.DisplayFor(modelItem => item.ImageLinkDetail)
                                     </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.ManualLink)
                                     </td>
-                                    @*<td>
+                                    <td>
                                             @Html.DisplayFor(modelItem => item.Detail)
                                         </td>
                                         <td>
