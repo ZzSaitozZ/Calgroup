@@ -41,14 +41,12 @@
                         <thead>
                             <tr>
                                 <th>
-                                    @*@Html.DisplayNameFor(model => model.Linhvuc.Linhvuc1)*@<text>LinhVucName</text>
+                                    @*@Html.DisplayNameFor(model => model.Linhvuc.Linhvuc1)*@<text>LinhVuc</text>
                                 </th>
                                 <th>
                                     @Html.DisplayNameFor(model => model.Category)
                                 </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.AliasCat)
-                                </th>
+                               
                                 <th></th>
                             </tr>
                         </thead>
@@ -63,9 +61,7 @@
                                     <td>
                                         @Html.DisplayFor(modelItem => item.Category)
                                     </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.AliasCat)
-                                    </td>
+                                    
                                     <td>
                                         @*@Html.ActionLink("Edit", "Edit", new { id = item.CatID }) |
                                             @Html.ActionLink("Details", "Details", new { id = item.CatID }) |

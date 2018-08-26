@@ -8,6 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Model.EF;
+using Calgroup.Resources.Common;
 
 namespace Calgroup.Areas.Admin.Controllers
 {
@@ -53,6 +54,7 @@ namespace Calgroup.Areas.Admin.Controllers
         {
             sanPham.Detail = HttpUtility.HtmlDecode(sanPham.Detail);
             sanPham.Specification = HttpUtility.HtmlDecode(sanPham.Specification);
+            sanPham.Alias = StringHelper.ToAlias(sanPham.Name);
             if (ModelState.IsValid)
             {
                 db.SanPhams.Add(sanPham);
@@ -89,6 +91,7 @@ namespace Calgroup.Areas.Admin.Controllers
         {
             sanPham.Detail = HttpUtility.HtmlDecode(sanPham.Detail);
             sanPham.Specification = HttpUtility.HtmlDecode(sanPham.Specification);
+            sanPham.Alias = StringHelper.ToAlias(sanPham.Name);
             if (ModelState.IsValid)
             {
              

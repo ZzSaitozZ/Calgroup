@@ -151,5 +151,42 @@ namespace Calgroup.Controllers
             return RedirectToAction("Index");
 
         }
+
+
+
+        public ActionResult Search(string searchString)
+        {
+            if (searchString == "" || searchString == null)
+            {
+                return RedirectToRoute("Category", new { });
+            }
+            else
+            {
+                Calgroup_v2DB cgi = new Calgroup_v2DB();
+                var a = cgi.Database.SqlQuery<Calgroup.Models.Menu>("Select Linhvuc,Category,AliasCat from dbo.MenuSP order by DisplayOrder asc").ToList();
+                SanPhamPageVM pageVM = new SanPhamPageVM(a);
+                pageVM.AliasCat = searchString;
+                return View(pageVM);
+            }
+        }
+        [HttpPost]
+        public JsonResult searchSanPham(string searchString)
+        {
+            Calgroup_v2DB cgi = new Calgroup_v2DB();
+            getSanPhamVM pageVM = new getSanPhamVM();
+            var temp = cgi.searchProducts(searchString).ToList();
+            if (temp.Any())
+            {
+                pageVM.Products = new JavaScriptSerializer().Serialize(temp);
+                pageVM.CategoryVi = "Kết quả tìm kiếm";
+            }
+            else
+            {
+                pageVM.CategoryVi = "Không tìm thấy kết quả";
+            }
+
+            return Json(pageVM, JsonRequestBehavior.AllowGet);
+
+        }
     }
 }

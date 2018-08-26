@@ -247,6 +247,9 @@
     <Compile Include="Resources\Common\Encryptor.cs" />
     <Compile Include="Resources\Common\Encryptors.cs" />
     <Compile Include="Resources\Common\StringHelper.cs" />
+    <Compile Include="searchProducts_Result.cs">
+      <DependentUpon>CalgroupDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="ShortProduct.cs">
       <DependentUpon>CalgroupDB.tt</DependentUpon>
     </Compile>
@@ -2764,6 +2767,7 @@
     <Content Include="Views\News\Index.cshtml" />
     <Content Include="Views\News\NewsDetail.cshtml" />
     <Content Include="Views\FAQweb\Index.cshtml" />
+    <Content Include="Views\Home\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

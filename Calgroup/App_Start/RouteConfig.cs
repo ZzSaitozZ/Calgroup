@@ -13,6 +13,16 @@ namespace Calgroup
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             routes.MapRoute(
+               name: "Search",
+               url: "Search/{searchString}",
+               defaults: new { controller = "Home", action = "Search",searchString = UrlParameter.Optional }
+               );
+            routes.MapRoute(
+               name: "getSearch",
+               url: "searchSanPham/{searchString}",
+               defaults: new { controller = "Home", action = "searchSanPham", searchString = UrlParameter.Optional }
+               );
+            routes.MapRoute(
                name: "Library",
                url: "ThuVien/{aliascat}",
                defaults: new { controller = "Home", action = "Library", aliascat = UrlParameter.Optional }

@@ -48,7 +48,7 @@ namespace Calgroup.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "LinhvucID,Linhvuc1,DisplayOrder")] Linhvuc linhvuc)
+        public async Task<ActionResult> Create([Bind(Include = "Linhvuc1,DisplayOrder")] Linhvuc linhvuc)
         {
             linhvuc.DisplayOrder = new ProductDao().maxDisplayOrder() + 1;
             if (ModelState.IsValid)
@@ -81,7 +81,7 @@ namespace Calgroup.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "LinhvucID,Linhvuc1,DisplayOrder")] Linhvuc linhvuc)
+        public async Task<ActionResult> Edit([Bind(Include = "Linhvuc1,DisplayOrder")] Linhvuc linhvuc)
         {
             if (ModelState.IsValid)
             {
@@ -122,7 +122,7 @@ namespace Calgroup.Areas.Admin.Controllers
             catch (Exception Exception)
             {
                 //code
-                TempData["message"] = "Không thể xóa lĩnh vực có loại sản phẩm";
+                TempData["message"] = "Không thể xóa lĩnh vực đang có loại sản phẩm";
             }
             finally
             {

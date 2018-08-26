@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Calgroup.Resources.Common;
 
 namespace Calgroup.Areas.Admin.Controllers
 {
@@ -48,10 +49,11 @@ namespace Calgroup.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "CatID,LinhvucID,Category,AliasCat")] Model.EF.LoaiSanPham loaiSanPham)
+        public async Task<ActionResult> Create([Bind(Include = "CatID,LinhvucID,Category")] Model.EF.LoaiSanPham loaiSanPham)
         {
             if (ModelState.IsValid)
             {
+                loaiSanPham.AliasCat = StringHelper.ToAlias(loaiSanPham.Category);
                 db.LoaiSanPhams.Add(loaiSanPham);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
@@ -82,10 +84,11 @@ namespace Calgroup.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "CatID,LinhvucID,Category,AliasCat")]Model.EF.LoaiSanPham loaiSanPham)
+        public async Task<ActionResult> Edit([Bind(Include = "CatID,LinhvucID,Category")]Model.EF.LoaiSanPham loaiSanPham)
         {
             if (ModelState.IsValid)
             {
+                loaiSanPham.AliasCat = StringHelper.ToAlias(loaiSanPham.Category);
                 db.Entry(loaiSanPham).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
