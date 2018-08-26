@@ -33,13 +33,13 @@
                         <thead>
                             <tr>
                                 <th>
+                                    @Html.DisplayNameFor(model => model.Category)
+                                </th>
+                                <th>
                                     @Html.DisplayNameFor(model => model.Detail)
                                 </th>
                                 <th>
                                     @Html.DisplayNameFor(model => model.Status)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.Category)
                                 </th>
                                 <th></th>
                             </tr>
@@ -49,6 +49,9 @@
                             @foreach (var item in Model)
                             {
                                 <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Category)
+                                    </td>
                                     <td >
                                         @*@Html.DisplayFor(modelItem => item.Detail)*@
                                         @Html.Raw(StringHelper.ShortArticle(item.Detail, 5))
@@ -64,10 +67,7 @@
                                             <span class="label label-danger">Locked</span>
                                         }
 
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Category)
-                                    </td>
+                                    </td>                                    
                                     @*<td>
                                         @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
                                         @Html.ActionLink("Details", "Details", new { id = item.ID }) |

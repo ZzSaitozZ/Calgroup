@@ -10,7 +10,7 @@
         <EntityTypeShape EntityType="Calgroup_v2Model.LibraryView" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Calgroup_v2Model.ShortProduct" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Calgroup_v2Model.LoaiSanPham" Width="1.5" PointX="2.75" PointY="0.75" />
-        <EntityTypeShape EntityType="Calgroup_v2Model.Staff" Width="1.5" PointX="5.375" PointY="5.75" />
+        <EntityTypeShape EntityType="Calgroup_v2Model.Staff" Width="1.5" PointX="4.75" PointY="4.875" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

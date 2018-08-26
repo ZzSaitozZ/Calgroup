@@ -25,13 +25,18 @@ window.onscroll = function () { myFunction() };
 window.onresize = function () { Resize() };
 var navbar = document.getElementById("navbar");
 var sticky = navbar.offsetTop;
+var body = document.getElementById("Body");
 
 function myFunction() {
     $("#Another").height($("#Origin").height())
     if (window.pageYOffset >= sticky) {
-        navbar.classList.add("sticky")
+        navbar.classList.add("sticky");
+        var h = $("#navbar").height() + 30;
+        $("#Body").css('margin-top', h );
     } else {
         navbar.classList.remove("sticky");
+
+        $("#Body").css('margin-top', 'unset');
     }
 }
 

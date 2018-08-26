@@ -218,8 +218,6 @@
 </div>
 <script>
     var page = [];
-
-
     //Ajax get product
     function LoadData() {
         $.ajax({
@@ -232,7 +230,7 @@
                 if (data.Products != null) {
                 data.Products = JSON.parse(data.Products);
                 for (var i = 0; i < data.Products.length; i++) {
-                    content += '<div class="col-md-6 col-lg-6 col-xl-4 " >' +
+                    content += '<div class="col-md-6 col-lg-6 col-xl-4 " style="margin-bottom:20px">' +
                         '<div class="Item" data-alias="' + data.Products[i].Alias + '">' +
                         '<img class="img-fluid" src="' + data.Products[i].ImageLink + '" />' +
                         '<h4>' + data.Products[i].Name + '</h4>' +
