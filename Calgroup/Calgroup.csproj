@@ -211,9 +211,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CalgroupDB.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\FAQwebController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\NewsController.cs" />
+    <Compile Include="DoiTac.cs">
+      <DependentUpon>CalgroupDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="getProductDetail_Result.cs">
       <DependentUpon>CalgroupDB.tt</DependentUpon>
     </Compile>
@@ -2339,6 +2340,13 @@
     <Content Include="Resources\Images\Item\U1733C Keysight LCR Meter-.png" />
     <Content Include="Resources\Images\Light-Bulb-question_background_banner.jpg" />
     <Content Include="Resources\Images\skype.png" />
+    <Content Include="Resources\Images\TEST\Hiệu chuẩn lĩnh vực cơ khí - Mechanical Calibration.jpg" />
+    <Content Include="Resources\Images\TEST\Hiệu chuẩn lĩnh vực hóa lý - Chemical Calibration.jpg" />
+    <Content Include="Resources\Images\TEST\Hiệu chuẩn lĩnh vực nhiệt động học - Thermodynamic Calibration.jpg" />
+    <Content Include="Resources\Images\TEST\Hiệu chuẩn lĩnh vực quang học - Optical Calibration.jpg" />
+    <Content Include="Resources\Images\TEST\Hiệu chuẩn lĩnh vực thể tích.jpg" />
+    <Content Include="Resources\Images\TEST\Hiệu chuẩn lĩnh vực điện - Electrical Calibration.jpg" />
+    <Content Include="Resources\Images\TEST\Hiệu chuẩn lĩnh vực độ dài - Dimensional Calibration.jpg" />
     <Content Include="Resources\Images\zalo.png" />
     <Content Include="Resources\JS\Layout\Layout_1.js" />
     <Content Include="Resources\JS\Scripts\bootstrap.bundle.js" />
@@ -2770,9 +2778,9 @@
     <Content Include="Views\Home\SanPham.cshtml" />
     <Content Include="Views\Home\Calibration.cshtml" />
     <Content Include="Views\Home\Library.cshtml" />
-    <Content Include="Views\News\Index.cshtml" />
-    <Content Include="Views\News\NewsDetail.cshtml" />
-    <Content Include="Views\FAQweb\Index.cshtml" />
+    <Content Include="Views\Home\News.cshtml" />
+    <Content Include="Views\Home\NewsDetail.cshtml" />
+    <Content Include="Views\Home\FAQ.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>

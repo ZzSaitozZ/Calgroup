@@ -32,6 +32,7 @@ namespace Calgroup
         public virtual DbSet<LibraryView> LibraryViews { get; set; }
         public virtual DbSet<ShortProduct> ShortProducts { get; set; }
         public virtual DbSet<LoaiSanPham> LoaiSanPhams { get; set; }
+        public virtual DbSet<DoiTac> DoiTacs { get; set; }
         public virtual DbSet<Staff> Staffs { get; set; }
     
         public virtual ObjectResult<string> getFAQDetail(string alias)

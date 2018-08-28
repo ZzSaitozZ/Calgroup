@@ -1,4 +1,7 @@
 ﻿<!DOCTYPE html>
+@{ 
+    var layout = (Calgroup.VM.Layoutmodel)ViewBag.Mymodel;
+}
 <html>
 <head>
     <meta charset="utf-8" />
@@ -19,148 +22,88 @@
             <h3>CÔNG TY TNHH THƯƠNG MẠI DỊCH VỤ</h3>
             <h3>HIỆU CHUẨN CAL-GROUP</h3>
         </div>
-        <div class="d-inline-block hotline" id="hotline">
-            <p>Dương Hoàng Hải</p>
-            <p>Hotline 1: 0909 0909</p>
-            <p>Dương Hoàng Hải</p>
-            <p>Hotline 1: 0909 0909</p>
+        <div class="d-inline-block hotline" id="hotline" style="font-weight:bold">
+            <p>Mr. Long</p>
+            <p>Hotline: 0911 910 913</p>
+            <p>Mr. Hải</p>
+            <p>Hotline: 0937 600 702</p>
         </div>
     </div>
     <nav class="navbar Topnav navbar-expand-md navbar-dark fixed-top" id="navbar">
-        <a class="Topnav-item icon fa fa-home Left" href="/Home/Index"></a>
+        <a class="Topnav-item icon fa fa-home Left" href="/Index"></a>
         <form action="/Search" class="form-inline Search">
             <input name="searchString" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-light my-2 my-sm-0" type="submit" ><i class="fas fa-search"></i></button>
+            <button class="btn btn-outline-light my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
         </form>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <div class="Bar">
-                <a class="Topnav-item" href="/Home/About">Giới thiệu</a>
-                <a class="Topnav-item" href="/Home/Calibration">Hiệu chuẩn</a>
-                <a class="Topnav-item" href="/Sanpham" >Sản phẩm</a>
-                <a class="Topnav-item" href="/News/Index">Tin tức</a>
-                <a class="Topnav-item" href="/Home/Contact">Liên lạc</a>
-                <a class="Topnav-item" href="/Home/Library">Thư viện</a>
-                <a class="Topnav-item" href="/FAQweb/Index">FAQ</a>
+                <a class="Topnav-item" href="/About">Giới thiệu</a>
+                <a class="Topnav-item" href="/Calibration">Hiệu chuẩn</a>
+                <a class="Topnav-item" href="/Sanpham">Sản phẩm</a>
+                <a class="Topnav-item" href="/News">Tin tức</a>
+                <a class="Topnav-item" href="/Contact">Liên lạc</a>
+                <a class="Topnav-item" href="/Library">Thư viện</a>
+                <a class="Topnav-item" href="/FAQ">FAQ</a>
             </div>
         </div>
     </nav>
     <div id="Body">
         @RenderBody()
     </div>
-    
+
     <hr style="border: 0; height: 1px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));" />
     <footer>
-        <div class="container-fluid">
+        <div class="container-fluid text-center" style="vertical-align:middle">
             <h2 style="text-align:center;color:#0075bf">Đối tác chiến lược</h2>
-            <div class="row justify-content-center" style="margin:unset">
-                <div class="col-sm-2">
-                    <div style="text-align:center">
-                        <img class="img-fluid logo-sub" src="~/Resources/Images/Banners/honda-logo.png" />
-                    </div>
-                </div>
-                <div class="col-sm-2">
-                    <div style="text-align:center">
-                        <img class="img-fluid logo-sub" style="margin-top:25%" src="~/Resources/Images/Banners/panasonic-logo.png" />
-                    </div>
-                </div>
-                <div class="col-sm-2">
-                    <div style="text-align:center">
-                        <img class="img-fluid logo-sub" style="margin-top:15%" src="~/Resources/Images/Banners/samsung-logo.png" />
-                    </div>
-                </div>
-                <div class="col-sm-2">
-                    <div style="text-align:center">
-                        <img class="img-fluid logo-sub" style="margin-top:30%" src="~/Resources/Images/Banners/sony-logo.png" />
-                    </div>
-                </div>
-                <div class="col-sm-2">
-                    <div style="text-align:center">
-                        <img class="img-fluid logo-sub" style="margin-top:10%" src="~/Resources/Images/Banners/Toyota-logo.png" />
-                    </div>
-                </div>
-            </div>
-        </div>        
+            @foreach (var Doitac in layout.Doitac.Take(3))
+                        {
+                            <div class="d-inline" >
+                                <img class="Doitac" src="@Doitac.Image" />
+                            </div>
+                        }
+        </div>
         <br />
         <div class="container-fluid" style="padding-top:20px;position:relative;background-color: #0075bf;color:white">
+            <h2 style="text-align:center">Hỗ trợ khách hàng</h2>
             <div class="row MenuBT justify-content-center">
-                <div class="col-md-3 text-center">
-                    <img style="height:100px;width:auto" src="~/Resources/Images/zalo.png" />
-                    <h6>Sale</h6>
-                    <h5>Nguyen Van teo</h5>
-                    <h6><i class="fas fa-phone"></i> 0909 555 555</h6>
-                    <ul class="list-unstyled list-inline text-center">
-                        <li class="list-inline-item">
-                            <img class="icons" style="height:42px;width:auto" src="~/Resources/Images/skype.png" />
-                            <img class="icons" style="height:42px;width:auto" src="~/Resources/Images/zalo.png" />
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-md-3 text-center">
-                    <img style="height:100px;width:auto" src="~/Resources/Images/zalo.png" />
-                    <h6>Sale</h6>
-                    <h5>Nguyen Van teo</h5>
-                    <h6><i class="fas fa-phone"></i> 0909 555 555</h6>
-                    <ul class="list-unstyled list-inline text-center">
-                        <li class="list-inline-item">
-                            <img class="icons" style="height:42px;width:auto" src="~/Resources/Images/skype.png" />
-                            <img class="icons" style="height:42px;width:auto" src="~/Resources/Images/zalo.png" />
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-md-3 text-center">
-                    <img style="height:100px;width:auto" src="~/Resources/Images/zalo.png" />
-                    <h6>Sale</h6>
-                    <h5>Nguyen Van teo</h5>
-                    <h6><i class="fas fa-phone"></i> 0909 555 555</h6>
-                    <ul class="list-unstyled list-inline text-center">
-                        <li class="list-inline-item">
-                            <img class="icons" style="height:42px;width:auto" src="~/Resources/Images/skype.png" />
-                            <img class="icons" style="height:42px;width:auto" src="~/Resources/Images/zalo.png" />
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-md-3 text-center">
-                    <img style="height:100px;width:auto" src="~/Resources/Images/zalo.png" />
-                    <h6>Sale</h6>
-                    <h5>Nguyen Van teo</h5>
-                    <h6><i class="fas fa-phone"></i> 0909 555 555</h6>
-                    <ul class="list-unstyled list-inline text-center">
-                        <li class="list-inline-item">
-                            <img class="icons" style="height:42px;width:auto" src="~/Resources/Images/skype.png" />
-                            <img class="icons" style="height:42px;width:auto" src="~/Resources/Images/zalo.png" />
-                        </li>
-                    </ul>
-                </div>
+                @foreach (var NV in layout.Nhanvien.Take(4))
+                {
+            <div class="col-md-3 text-center">
+                <img style="height:100px;width:auto" src="@NV.Image" />
+                <h6>@NV.Role</h6>
+                <h5>@NV.Name</h5>
+                <h6><i class="fas fa-phone"></i> @NV.Phone</h6>
+                <h6>@NV.Email</h6>                
+                <h6><a href="https://zalo.me/@NV.Zalo.Replace(" ","")"><img class="icons" style="height:42px;width:auto" src="~/Resources/Images/zalo.png" /></a> @NV.Zalo</h6>
+                <h6><a href="skype:@NV.Skype"><img class="icons" style="height:42px;width:auto" src="~/Resources/Images/skype.png" /></a> @NV.Skype</h6>
+               
+            </div>
+}
             </div>
             <hr style="border: 0; height: 1px; background-image: linear-gradient(to right, #0075bf, white, #0075bf);" />
             <div class="row MenuBT justify-content-center">
                 <div class="col-md-2">
-                    <h5 class="text-uppercase font-weight-bold" style="border-bottom:solid">Contact Us</h5>
-                    <p class="Footercontent"> EWONS</p>
-                    <p class="Footercontent"><a class="Footeractive">Văn Phòng chính</a></p>
-                    <p class="Footercontent">Địa chỉ: BLABLA Q.BT, TP.HCM.</p>
-                    <p class="Footercontent">Điện thoại: 0909123456</p>
-                    <p class="Footercontent">Fax: 202020202</p>
-                    <p class="Footercontent">E-Mail: sagosoft@gmail.com </p>
+                    @foreach (var Lienlac in layout.Lienlac.Take(1))
+                     {
+                        <h5 class="text-uppercase font-weight-bold" style="border-bottom:solid">Contact Us</h5>
+                        <p class="Footercontent"> @Lienlac.Name </p>
+                        <p class="Footercontent">Địa chỉ: @Lienlac.Address</p>
+                        <p class="Footercontent">Điện thoại: @Lienlac.Phone</p>
+                        <p class="Footercontent">E-Mail: @Lienlac.Email </p>
+                     }
                 </div>
                 <div class="col-md-3">
                     <h5 class="text-uppercase font-weight-bold" style="border-bottom:solid">Kiến thức cần biết</h5>
                     <ul class="list-unstyled">
-                        <li>
-                            <a class="Footerlink" href="/Home/Question">Hiệu chuẩn là gì?</a>
-                        </li>
-                        <li>
-                            <a class="Footerlink" href="#">Kiểm định là gì?</a>
-                        </li>
-                        <li>
-                            <a class="Footerlink" href="#">Phân biệt hiệu chuẩn và kiểm định?</a>
-                        </li>
-                        <li>
-                            <a class="Footerlink" href="#">Độ không đảm bảo đo là gì?</a>
-                        </li>
+                        @foreach (var Cauhoi in layout.FAQ.Take(3))
+                {
+                    <li>
+                        <a class="Footerlink FAQ-button" data-toggle="modal" data-target="#exampleModalLong" data-alias="@Cauhoi.AliasName" value="@Cauhoi.Title">@Cauhoi.Title</a>
+                    </li>
+        }
                     </ul>
                 </div>
                 <div class="col-md-3">
@@ -190,7 +133,45 @@
             </div>
         </div>
     </footer>
+    <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog" role="document" style="max-width:800px">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
     @Scripts.Render("~/bundles/JavaScript")
     @RenderSection("scripts", required: false)
 </body>
 </html>
+<script>
+
+    $('.FAQ-button').click(function () {
+        $('.modal-title').text($(this).prop("value"))
+        $.ajax({
+            type: 'Post',
+            url: '/getDetail',
+            dataType: 'json',
+            data: { alias: $(this).attr("data-alias") },
+            success: function (data) {
+                var content = '<div class="container" >' + data + '</div>';
+                $('.modal-body').html(content);
+            }
+
+        });
+
+    })
+
+
+</script>

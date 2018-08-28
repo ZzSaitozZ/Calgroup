@@ -35,6 +35,14 @@ namespace Calgroup.VM
             }
         }
     }
+    public class Layoutmodel
+    {
+        public List<Staff> Nhanvien;
+        public List<Question> FAQ;
+        public List<DoiTac> Doitac;
+        public List<Model.EF.ContactDetail> Lienlac;
+
+    }
     public class getSanPhamVM
     {             
         public string Products;

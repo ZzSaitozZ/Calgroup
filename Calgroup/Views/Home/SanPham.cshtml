@@ -242,7 +242,7 @@
                         '</div>' +
                         '</div>';
                     Count++;
-                    if (Count == 12 || i == data.Products.length - 1) {
+                    if (Count == 15 || i == data.Products.length - 1) {
                         page.push(content);
                         content = '';
                         Count = 0;
@@ -255,7 +255,8 @@
                         $('ul.pagination').append(pagecontent);
                         $('.pagination li').first().addClass('active');
                     }
-                    $('.pagination li').click(function () {
+                    $('.pagination li').click(function (event) {
+                        event.preventDefault();
                         if (!$(this).hasClass('active')) {
                             $('.pagination li.active').removeClass('active');
                             $(this).addClass('active');

@@ -36,7 +36,8 @@ body {
 }
     .hotline p {
         margin: unset;
-        color: #F79119;
+        font-weight: bold;
+        color: red;
     }
 .sticky {
     position: fixed !important;
@@ -150,6 +151,11 @@ a.Topnav-item {
 .logo-sub {
     width: 100%;
     height: auto;
+}
+.Doitac{
+    width: 100%;
+    max-width:100px;
+    max-height: 100px;
 }
 .Service {
     margin: 0px 15px 0px 15px;

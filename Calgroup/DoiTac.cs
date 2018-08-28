@@ -12,16 +12,10 @@ namespace Calgroup
     using System;
     using System.Collections.Generic;
     
-    public partial class Staff
+    public partial class DoiTac
     {
         public int ID { get; set; }
         public string Name { get; set; }
-        public string Role { get; set; }
-        public string Skype { get; set; }
-        public string Zalo { get; set; }
-        public string Phone { get; set; }
         public string Image { get; set; }
-        public bool Status { get; set; }
-        public string Email { get; set; }
     }
 }

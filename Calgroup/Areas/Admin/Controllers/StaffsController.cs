@@ -46,7 +46,7 @@ namespace Calgroup.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Name,Role,Skype,Zalo,Phone,Image,Status")] Staff NV)
+        public async Task<ActionResult> Create([Bind(Include = "Name,Role,Skype,Zalo,Phone,Image,Status,Email")] Staff NV)
         {
             //FAQ.Details = HttpUtility.HtmlDecode(FAQ.Details);
             if (ModelState.IsValid)
@@ -80,7 +80,7 @@ namespace Calgroup.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "ID,Name,Role,Skype,Zalo,Phone,Image,Status")] Staff NV)
+        public async Task<ActionResult> Edit([Bind(Include = "ID,Name,Role,Skype,Zalo,Phone,Image,Status,Email")] Staff NV)
         {
             //faq.Details = HttpUtility.HtmlDecode(faq.Details);
             if (ModelState.IsValid)

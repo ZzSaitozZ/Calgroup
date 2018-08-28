@@ -7,13 +7,12 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using Model.EF;
 
 namespace Calgroup.Areas.Admin.Controllers
 {
     public class DoiTacsController : Controller
     {
-        private ProductsdbContext db = new ProductsdbContext();
+        private Model.EF.ProductsdbContext db = new Model.EF.ProductsdbContext();
 
         // GET: Admin/DoiTacs
         public async Task<ActionResult> Index()
@@ -28,7 +27,7 @@ namespace Calgroup.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DoiTac doiTac = await db.DoiTacs.FindAsync(id);
+            Model.EF.DoiTac doiTac = await db.DoiTacs.FindAsync(id);
             if (doiTac == null)
             {
                 return HttpNotFound();
@@ -47,7 +46,7 @@ namespace Calgroup.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "ID,Name,Image")] DoiTac doiTac)
+        public async Task<ActionResult> Create([Bind(Include = "ID,Name,Image")] Model.EF.DoiTac doiTac)
         {
             if (ModelState.IsValid)
             {
@@ -66,7 +65,7 @@ namespace Calgroup.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DoiTac doiTac = await db.DoiTacs.FindAsync(id);
+            Model.EF.DoiTac doiTac = await db.DoiTacs.FindAsync(id);
             if (doiTac == null)
             {
                 return HttpNotFound();
@@ -79,7 +78,7 @@ namespace Calgroup.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "ID,Name,Image")] DoiTac doiTac)
+        public async Task<ActionResult> Edit([Bind(Include = "ID,Name,Image")] Model.EF.DoiTac doiTac)
         {
             if (ModelState.IsValid)
             {
@@ -97,7 +96,7 @@ namespace Calgroup.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DoiTac doiTac = await db.DoiTacs.FindAsync(id);
+            Model.EF.DoiTac doiTac = await db.DoiTacs.FindAsync(id);
             if (doiTac == null)
             {
                 return HttpNotFound();
@@ -110,7 +109,7 @@ namespace Calgroup.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            DoiTac doiTac = await db.DoiTacs.FindAsync(id);
+            Model.EF.DoiTac doiTac = await db.DoiTacs.FindAsync(id);
             db.DoiTacs.Remove(doiTac);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");

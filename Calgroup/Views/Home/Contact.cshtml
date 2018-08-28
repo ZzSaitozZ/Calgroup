@@ -1,11 +1,12 @@
 ﻿@{
+    var layout = (Calgroup.VM.Layoutmodel)ViewBag.Mymodel;
     ViewBag.Title = "Contact";
 }
 <div class="row justify-content-around" style="padding: 2% 5% 2% 5%;">
     <div class="ContactUs col-md-6 col-sm-12" id="ContactUs">
         <h2>Get in touch with us</h2>
         <br />
-        <form action="/Home/SaveContact" method="post" class="contact_form">
+        <form action="/SaveContact" method="post" class="contact_form">
             <div class="form-group">
                 <label for="inputAddress">Name</label>
                 <input type="text" class="form-control" id="inputName" name="inputName" placeholder="Hiraga Saito">
@@ -30,30 +31,46 @@
         <div id="map" style="width:100%"></div>
     </div>
 </div>
-<script>
-    function initMap() {
-        var map = new google.maps.Map(document.getElementById('map'), {
+<div class="hidden" style="display:none">
+    @foreach (var Lienlac in layout.Lienlac.Take(1))
+    {
+        <input id="Name" value="@Lienlac.Name"/>
+
+        <input id="Address" value="@Lienlac.Address"/>
+
+        <input id="Phone" value="@Lienlac.Phone"/>
+
+        <input id="Email" value="@Lienlac.Email"/>
+
+        <input id="Lat" value="@Lienlac.Lat"/>
+
+        <input id="Lng" value="@Lienlac.Lng"/>
+    }
+</div>
+            <script>
+                function initMap() {
+                    var Lat = document.getElementById("Lat").value;
+                    var Lng = document.getElementById("Lng").value;
+                    console.log(Lat)
+                    var map = new google.maps.Map(document.getElementById('map'), {
             zoom: 16,
             center: {
-                lat: 10.811045, lng: 106.684557
+                lat: parseFloat(Lat), lng: parseFloat(Lng)
             },
             scrollwheel: false,
             mapTypeId: google.maps.MapTypeId.ROADMAP
-        });
-        var marker = new google.maps.Marker({
-            position: new google.maps.LatLng(10.811045, 106.684557),
+                    });
+                var marker = new google.maps.Marker({
+                    position: new google.maps.LatLng( parseFloat(Lat), parseFloat(Lng)),
             map: map,
             title: 'Hello World!'
         });
-        marker.setMap(map);
-
-        var contentString = '<h5>Công ty Ewons</h5>' +
-            '<h5>Ewons Co.,Ltd.</h5>' +
-            '<p><strong><em style="text-decoration:underline"> VĂN PHÒNG CHÍNH</em></strong></p>' +
-            '<p>Địa chỉ: bla bla bla,Q.Bình Thạnh,TPHCM</p>' +
-            '<p>Điện thoại: 0909 123 560 co</p>' +
-            '<p>Fax: Fax là gì</p>' +
-            '<p>Email: <a href="#"> sagosoft@gmail.com </a> || <a href="#">sagosoft@ewons.com</a></p>'
+            marker.setMap(map);
+            console.log(Lat)
+            var contentString = '<h5>' + document.getElementById("Name").value + '</h5>' +
+                '<p>Địa chỉ: ' + document.getElementById("Address").value +'</p>' +
+                '<p>Điện thoại: ' + document.getElementById("Phone").value +'</p>' +
+                '<p>Email: <a href="#">' + document.getElementById("Email").value +'</a></p>'
         var infowindow = new google.maps.InfoWindow({
             content: contentString
         });

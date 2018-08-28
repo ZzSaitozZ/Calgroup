@@ -41,6 +41,9 @@
                                     @Html.DisplayNameFor(model => model.Role)
                                 </th>
                                 <th>
+                                    @Html.DisplayNameFor(model => model.Email)
+                                </th>
+                                <th>
                                     @Html.DisplayNameFor(model => model.Skype)
                                 </th>
                                 <th>
@@ -70,6 +73,9 @@
                                     @Html.DisplayFor(modelItem => item.Role)
                                 </td>
                                 <td>
+                                    @Html.DisplayFor(modelItem => item.Email)
+                                </td>
+                                <td>
                                     @Html.DisplayFor(modelItem => item.Skype)
                                 </td>
                                 <td>
@@ -85,13 +91,13 @@
                                 </td>
                                 <td>
                                     @if (item.Status == true)
-                                        {
-                                            <span class="label label-success">Actived</span>
-                                        }
-                                        else
-                                        {
-                                            <span class="label label-danger">Locked</span>
-                                        }
+        {
+                            <span class="label label-success">Actived</span>
+}
+else
+{
+                            <span class="label label-danger">Locked</span>
+}
                                 </td>
                                 <td>
                                     <a href="/Admin/Staffs/Edit/@item.ID" data-toggle="tooltip" data-placement="top" title="Sửa"><i class="fa fa-edit"></i></a> &nbsp;

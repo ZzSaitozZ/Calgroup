@@ -5,6 +5,14 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="Calgroup_v2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DoiTac">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Image" Type="nvarchar(max)" />
+        </EntityType>
         <EntityType Name="LibraryCategory">
           <Key>
             <PropertyRef Name="ID" />
@@ -45,6 +53,7 @@
           <Property Name="Phone" Type="nvarchar" MaxLength="50" />
           <Property Name="Image" Type="nvarchar(max)" />
           <Property Name="Status" Type="bit" Nullable="false" />
+          <Property Name="Email" Type="nvarchar(max)" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'Calgroup_v2.dbo.LibraryView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -103,6 +112,7 @@ warning 6002: The table/view 'Calgroup_v2.dbo.ShortProducts' does not have a pri
           <Parameter Name="alias" Type="varchar" Mode="In" />
         </Function>
         <EntityContainer Name="Calgroup_v2ModelStoreContainer">
+          <EntitySet Name="DoiTac" EntityType="Self.DoiTac" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LibraryCategory" EntityType="Self.LibraryCategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LoaiSanPham" EntityType="Self.LoaiSanPham" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Question" EntityType="Self.Question" Schema="dbo" store:Type="Tables" />
@@ -214,10 +224,11 @@ warning 6002: The table/view 'Calgroup_v2.dbo.ShortProducts' does not have a pri
             <Parameter Name="page" Mode="In" Type="Int32" />
           </FunctionImport>
           <EntitySet Name="LoaiSanPhams" EntityType="Calgroup_v2Model.LoaiSanPham" />
-          <EntitySet Name="Staffs" EntityType="Calgroup_v2Model.Staff" />
           <FunctionImport Name="searchProducts" ReturnType="Collection(Calgroup_v2Model.searchProducts_Result)">
           <Parameter Name="alias" Mode="In" Type="String" />
           </FunctionImport>
+          <EntitySet Name="DoiTacs" EntityType="Calgroup_v2Model.DoiTac" />
+          <EntitySet Name="Staffs" EntityType="Calgroup_v2Model.Staff" />
         </EntityContainer>
         <ComplexType Name="getProductDetail_Result">
           <Property Type="String" Name="Name" Nullable="true" />
@@ -254,6 +265,22 @@ warning 6002: The table/view 'Calgroup_v2.dbo.ShortProducts' does not have a pri
           <Property Name="Category" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="AliasCat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
+        <ComplexType Name="searchProducts_Result">
+          <Property Type="String" Name="Name" Nullable="true" />
+          <Property Type="String" Name="Alias" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Category" Nullable="true" />
+          <Property Type="String" Name="Model" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Manufacturer" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ImageLink" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="DoiTac">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
         <EntityType Name="Staff">
           <Key>
             <PropertyRef Name="ID" />
@@ -266,15 +293,8 @@ warning 6002: The table/view 'Calgroup_v2.dbo.ShortProducts' does not have a pri
           <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Status" Type="Boolean" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
-        <ComplexType Name="searchProducts_Result">
-          <Property Type="String" Name="Name" Nullable="true" />
-          <Property Type="String" Name="Alias" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="Category" Nullable="true" />
-          <Property Type="String" Name="Model" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="Manufacturer" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="ImageLink" Nullable="true" />
-        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -384,20 +404,6 @@ warning 6002: The table/view 'Calgroup_v2.dbo.ShortProducts' does not have a pri
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Staffs">
-            <EntityTypeMapping TypeName="Calgroup_v2Model.Staff">
-              <MappingFragment StoreEntitySet="Staffs">
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="Image" ColumnName="Image" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="Zalo" ColumnName="Zalo" />
-                <ScalarProperty Name="Skype" ColumnName="Skype" />
-                <ScalarProperty Name="Role" ColumnName="Role" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="searchProducts" FunctionName="Calgroup_v2Model.Store.searchProducts">
             <ResultMapping>
               <ComplexTypeMapping TypeName="Calgroup_v2Model.searchProducts_Result">
@@ -410,6 +416,30 @@ warning 6002: The table/view 'Calgroup_v2.dbo.ShortProducts' does not have a pri
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="DoiTacs">
+            <EntityTypeMapping TypeName="Calgroup_v2Model.DoiTac">
+              <MappingFragment StoreEntitySet="DoiTac">
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Staffs">
+            <EntityTypeMapping TypeName="Calgroup_v2Model.Staff">
+              <MappingFragment StoreEntitySet="Staffs">
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Zalo" ColumnName="Zalo" />
+                <ScalarProperty Name="Skype" ColumnName="Skype" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

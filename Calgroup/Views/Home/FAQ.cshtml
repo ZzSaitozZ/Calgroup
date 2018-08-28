@@ -44,7 +44,7 @@
         $('.modal-title').text($(this).prop("value"))
         $.ajax({
             type: 'Post',
-            url: '/FAQweb/getDetail',
+            url: '/getDetail',
             dataType: 'json',
             data: { alias: $(this).attr("data-alias") },
             success: function (data) {

@@ -1,7 +1,17 @@
-﻿@*@{
+﻿@{
     ViewBag.Title = "Home Page";
-}*@
+}
+@model Calgroup.VM.SanPhamPageVM
+@using Calgroup.Resources.Common;
 
+@{
+    var news = (List<Model.EF.Post>)ViewBag.news;
+}
+<style>
+    .Item {
+        cursor: pointer;
+    }
+</style>
 <div id="carouselTitle" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
         <li data-target="#carouselTitle" data-slide-to="0" class="active"></li>
@@ -35,12 +45,9 @@
     </a>
 </div>
 <div class="Certificate">
-    <h2>Chứng chỉ quốc tế</h2>
-    <div class="row justify-content-center" style="margin:3% 0% 3% 0%">
-        <div class="col-md-4">
-            <img />
-            <h4>Certificate</h4>
-        </div>
+    <h2>Chứng chỉ đã đạt được</h2>
+    <div class="row justify-content-center" style="margin:3% 0% 3% 0%" id="CC">
+
     </div>
 
 </div>
@@ -49,19 +56,19 @@
     <div class="row justify-content-around" style="margin:unset;padding:unset">
         <div class="col-md-4">
             <div class="Service">
-                <img class="img-fluid" src="~/Resources/Images/Banners/LĨNH VỰC CƠ KHÍ_2.png" />
+                <img class="img-fluid" src="~/Resources/Images/TEST/Hiệu chuẩn lĩnh vực cơ khí - Mechanical Calibration.jpg" />
                 <h4 class="Services">Lĩnh vực kích thước - cơ khí chính xác</h4>
             </div>
         </div>
         <div class="col-md-4">
             <div class="Service">
-                <img class="img-fluid" src="~/Resources/Images/Banners/LĨNH VỰC ĐIỆN_1.png" />
+                <img class="img-fluid" src="~/Resources/Images/TEST/Hiệu chuẩn lĩnh vực điện - Electrical Calibration.jpg" />
                 <h4 class="Services line">Lĩnh vực điện - tần số</h4>
             </div>
         </div>
         <div class="col-md-4">
             <div class="Service">
-                <img class="img-fluid" src="~/Resources/Images/Banners/LĨNH VỰC NHIỆT ĐỘ-ĐỘ ẨM_1.png" />
+                <img class="img-fluid" src="~/Resources/Images/TEST/Hiệu chuẩn lĩnh vực nhiệt động học - Thermodynamic Calibration.jpg" />
                 <h4 class="Services">Lĩnh vực nhiệt - nhiệt & nhiệt ẩm</h4>
             </div>
         </div>
@@ -73,7 +80,7 @@
         </div>
         <div class="col-md-4">
             <div class="Service">
-                <img class="img-fluid" src="~/Resources/Images/Banners/LĨNH VỰC KHỐI LƯỢNG_1.png" />
+                <img class="img-fluid" src="~/Resources/Images/TEST/Hiệu chuẩn lĩnh vực cơ khí - Mechanical Calibration.jpg" />
                 <h4 class="Services line">Lĩnh vực khối lượng</h4>
             </div>
         </div>
@@ -85,13 +92,13 @@
         </div>
         <div class="col-md-4">
             <div class="Service">
-                <img class="img-fluid" src="~/Resources/Images/Banners/LĨNH VỰC HOÁ HỌC-THỂ TÍCH_3.png" />
+                <img class="img-fluid" src="~/Resources/Images/TEST/Hiệu chuẩn lĩnh vực thể tích.jpg" />
                 <h4 class="Services line">Lĩnh vực hoá lý - thể tích</h4>
             </div>
         </div>
         <div class="col-md-4">
             <div class="Service">
-                <img class="img-fluid" id="Origin" src="~/Resources/Images/Banners/CÁC LĨNH VỰC KHÁC_1.png" />
+                <img class="img-fluid" id="Origin" src="~/Resources/Images/TEST/Hiệu chuẩn lĩnh vực quang học - Optical Calibration.jpg" />
                 <h4 class="Services line">Lĩnh vực khác</h4>
             </div>
         </div>
@@ -104,152 +111,149 @@
     </div>
 </div>
 <div class="CategoryChoice" style=" margin-top:4%">
-    <h2>Sản phẩm được nhiều người quan tâm</h2>
-    <div class="row justify-content-around" style="margin:1% 0% 3% 0%; padding-bottom:5%">
-        <div class="col-md-4">
-            <div class="Item">
-                <img class="img-fluid" src="~/Resources/Images/Item/thuoc cap.png" />
-                <h4>Thước cặp điện tử 500-502-10 (1000) mm</h4>
-            </div>
+    <div id="P-card-container">
+        <h2 id="P-Category"></h2>
+        <div id="P-card-subcontainer" class="row" style="margin:1% 0% 3% 0%">
+
         </div>
-        <div class="col-md-4">
-            <div class="Item">
-                <img class="img-fluid" src="~/Resources/Images/Item/thuoc cap.png" />
-                <h4>Thước cặp điện tử 500-500-10 (0-450) mm </h4>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="Item">
-                <img class="img-fluid" src="~/Resources/Images/Item/U1602 Oscilloscope_0.png" />
-                <h4>Máy hiện sóng Keysight U1604B</h4>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="Item">
-                <img class="img-fluid" src="~/Resources/Images/Item/U1602 Oscilloscope_0.png" />
-                <h4>Máy hiện sóng</h4>
-                <ul>
-                    <li>Loại: Máy hiện sóng</li>
-                    <li>Model: FUCK</li>
-                    <li>Xuất xứ: TQ</li>
-                </ul>
-            </div>            
-        </div>
-        <div class="col-md-4">
-            <div class="Item">
-                <img class="img-fluid" src="~/Resources/Images/Item/U1401B Multi- Function Calibrator-Meter.png" />
-                <h4>Thiết bị hiệu chuẩn Keysight U1401B</h4>
-                <ul>
-                    <li>Loại: Máy hiện sóng</li>
-                    <li>Model: FUCK</li>
-                    <li>Xuất xứ: TQ</li>
-                </ul>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="Item">
-                <img class="img-fluid" src="~/Resources/Images/Item/U1733C Keysight LCR Meter-.png" />
-                <h4>Máy đo LCR cầm tay Keysight U1731C</h4>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="Item">
-                <img class="img-fluid" src="~/Resources/Images/Item/Capacitance Meter.png" />
-                <h4>Đồng hồ đo tụ điện Keysight U1701B</h4>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="Item">
-                <img class="img-fluid" src="~/Resources/Images/Item/U1191A Keysight.jpg" />
-                <h4>Ampe kìm Keysight U1192A</h4>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="Item">
-                <img class="img-fluid" src="~/Resources/Images/Item/KEYSIGHT U1241B Multimeter_0.png" />
-                <h4>Đồng hô đa năng Keysight U1241B</h4>
-            </div>
-        </div>
+
     </div>
+    <ul class="pagination justify-content-center" style="font-size:18px;"></ul>
 </div>
 <hr style="border: 0; height: 1px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));" />
 <h2 style="text-align:center;color:#0075bf;margin-top:1%">Tin tức</h2>
-<div class="row2 mb-2" style="padding-top:10px;">
-    <div class="col-md-6">
-        <div class="card">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-md-4">
-                        <img src="http://www.3forty.media/cannix/wp-content/uploads/2018/03/clem-onojeghuo-127166-unsplash-1-500x333.jpg " style="width:100%;">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="news-title">
-                            <a href="#"><h5>Uneasy no settle whence nature narrow in afraid</h5></a>
-                        </div>
-                        <div class="news-cats">
-                            <ul class="list-unstyled list-inline mb-1">
-                                <li class="list-inline-item">
-                                    <i class="fa fa-folder-open text-danger"></i>
-                                    <a href="#"><small>Advertisment</small> </a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <i class="fa fa-folder-open text-danger"></i>
-                                    <a href="#"><small>Author</small> </a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <i class="fa fa-folder-open text-danger"></i>
-                                    <a href="#"><small>4th July 2018</small></a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="news-content">
-                            <p>Particular unaffected projection sentiments no my. Music marry as at cause party worth weeks. S... </p>
-                        </div>
-                        <div class="news-buttons">
+<div id="P-card-container">
+    <div class="row mb-2 justify-content-around" style="padding-top:10px; margin:unset">
 
-                            <a href="~/Home/NewsDetail" class="btn btn-outline-danger btn-sm">Read More</a>
+        @foreach (var i in news.Take(4))
+        {
+            var link = "/News/" + @i.Alias + "-" + @i.ID;
+            <div class="col-md-5 card" style="margin:10px 0px 10px 0px; padding:unset">
+                <div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4 text-center">
+                                <img src=@i.Image style="width:100%;height:100%;max-height:167px">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="news-title">
+                                    <a href="#"><h5>@i.Name</h5></a>
+                                </div>
+                                <div class="news-cats">
+                                    <ul class="list-unstyled list-inline mb-1">
+                                        <li class="list-inline-item">
+                                            <i class="fa fa-folder-open text-danger"></i>
+                                            <a href="#"><small>@i.ViewCount</small> </a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <i class="fa fa-folder-open text-danger"></i>
+                                            <a href="#"><small>@i.CreatedDate</small></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="news-content">
+                                    <p>  @Html.Raw(StringHelper.ShortArticle(i.Description, 19))</p>
+                                </div>
+                                <div class="news-buttons">
+
+                                    <a href=@link class="btn btn-outline-danger btn-sm">Read More</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        }
     </div>
-    <div class="col-md-6">
-        <div class="card">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-md-4">
-                        <img src="http://www.3forty.media/cannix/wp-content/uploads/2018/03/clem-onojeghuo-127166-unsplash-1-500x333.jpg " style="width:100%;">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="news-title">
-                            <a href="#"><h5>Uneasy no settle whence nature narrow in afraid</h5></a>
-                        </div>
-                        <div class="news-cats">
-                            <ul class="list-unstyled list-inline mb-1">
-                                <li class="list-inline-item">
-                                    <i class="fa fa-folder-open text-danger"></i>
-                                    <a href="#"><small>Advertisment</small> </a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <i class="fa fa-folder-open text-danger"></i>
-                                    <a href="#"><small>Author</small> </a>
-                                </li>
-                                <li class="list-inline-item">
-                                    <i class="fa fa-folder-open text-danger"></i>
-                                    <a href="#"><small>4th July 2018</small></a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="news-content">
-                            <p>Particular unaffected projection sentiments no my. Music marry as at cause party worth weeks. S... </p>
-                        </div>
-                        <div class="news-buttons">
-                            <a href="~/Home/NewsDetail" class="btn btn-outline-danger btn-sm">Read More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+
 </div>
+<script>
+    var page = [];
+    function LoadData_SP() {
+        $.ajax({
+            type: 'Post',
+            url: '/getSanPham',
+            dataType: 'json',
+            data: { aliascat: null },
+            success: function (data) {
+                var content = ''; var Count = 0;
+                if (data.Products != null) {
+                    data.Products = JSON.parse(data.Products);
+                    for (var i = 0; i < data.Products.length; i++) {
+                        content += '<div class="col-md-6 col-lg-6 col-xl-4 " style="margin-bottom:20px">' +
+                            '<div class="Item" data-alias="' + data.Products[i].Alias + '">' +
+                            '<img class="img-fluid" src="' + data.Products[i].ImageLink + '" />' +
+                            '<h4>' + data.Products[i].Name + '</h4>' +
+                            '<ul>' +
+                            '<li>' + data.Products[i].Category + '</li>' +
+                            '<li>' + data.Products[i].Model + '</li>' +
+                            '<li>' + data.Products[i].Manufacturer + '</li>' +
+                            '</ul>' +
+                            '</div>' +
+                            '</div>';
+                        Count++;
+                        if (Count == 6 || i == data.Products.length - 1) {
+                            page.push(content);
+                            content = '';
+                            Count = 0;
+                        }
+                    }
+                    $('#P-card-subcontainer').append(page[0]);
+                    if (page.length > 1) {
+                        for (let x = 0; x < page.length; x++) {
+                            let pagecontent = '<li class="page-item" data-page="' + (x + 1) + '"><a class="page-link" href="#">' + (x + 1) + '</a></li>';
+                            $('ul.pagination').append(pagecontent);
+                            $('.pagination li').first().addClass('active');
+                        }
+                        $('.pagination li').click(function (event) {
+                            event.preventDefault();
+                            if (!$(this).hasClass('active')) {
+                                $('.pagination li.active').removeClass('active');
+                                $(this).addClass('active');
+                                $('#P-card-subcontainer').empty();
+                                $('#P-card-subcontainer').append(page[$(this)[0].dataset.page - 1]);
+                            }
+                        });
+                    };
+                    $('.Item').click(function () {
+                        window.location.href = '/ChiTiet/' + $(this)[0].dataset.alias;
+                    });
+                }
+                $('#P-Category').html('' + data.CategoryVi);
+            }
+        });
+    }
+    function LoadData_CC() {
+        $.ajax({
+            type: 'Post',
+            url: '/getThuVien',
+            dataType: 'json',
+            data: { aliascat: 'chung-chi', page: 1 },
+            success: function (data) {
+                var content = '';
+                if (data.Products != null) {
+                    data.Products = JSON.parse(data.Products);
+                    for (var i = 0; i < data.Products.length; i++) {
+                        content += '<div class="col-md-6 col-lg-6 col-xl-4 " style="margin-bottom:20px" >' +
+                            '<div class="Item" style="background-image:unset" href="' + data.Products[i].PDF + '">' +
+                            '<img class="img-fluid" src="' + data.Products[i].Image + '" />' +
+                            '<h5>' + data.Products[i].Name + '</h5>' +
+                            '</div>' + '</div>'
+
+                        if (i == data.Products.length - 1) {
+                            $('#CC').html(content);
+                            content = '';
+                            $('.Item').click(function () {
+                                window.location.href = $(this).attr('href')
+                            })
+                        }
+                    }
+                };
+            }
+        });
+    }
+    $(window).ready(function () {
+        LoadData_SP();
+        LoadData_CC();
+    });
+</script>

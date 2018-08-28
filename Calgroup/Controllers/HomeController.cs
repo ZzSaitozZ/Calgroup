@@ -15,8 +15,23 @@ namespace Calgroup.Controllers
     public class HomeController : Controller
     {
         private Model.EF.ProductsdbContext db = new Model.EF.ProductsdbContext();
+        public Layoutmodel Layout { get; set; }
+        public HomeController()
+        {
+            Calgroup_v2DB db = new Calgroup_v2DB();
+            Model.EF.ProductsdbContext cgi = new Model.EF.ProductsdbContext();
+            this.Layout = new Layoutmodel();
+            Layout.Nhanvien = db.Staffs.ToList();
+            Layout.Doitac = db.DoiTacs.ToList();
+            Layout.FAQ = db.Questions.ToList();
+            Layout.Lienlac = cgi.ContactDetails.ToList();
+            ViewBag.Mymodel = Layout;            
+        }
         public ActionResult Index()
         {
+            ViewBag.news = new PostNewsDAO().ListByGroupAll();
+            ViewBag.FAQ = new HomeController().Getquestions();
+            ViewBag.Staff = new HomeController().Getnhanvien();
             return View();
         }
 
@@ -104,19 +119,6 @@ namespace Calgroup.Controllers
             return RedirectToRoute("Category", new { });
         }
         // Downy-Code
-        public ActionResult News()
-        {
-            return View();
-        }
-
-        public ActionResult NewsDetail()
-        {
-            return View();
-        }
-        public ActionResult Question()
-        {
-            return View();
-        }
         public ActionResult Library(string aliascat)
         {
                 Calgroup_v2DB cgi = new Calgroup_v2DB();
@@ -188,7 +190,39 @@ namespace Calgroup.Controllers
             }
 
             return Json(pageVM, JsonRequestBehavior.AllowGet);
-
+        }
+        public ActionResult News()
+        {
+            ViewBag.news = new PostNewsDAO().ListByGroupAll();
+            return View();
+        }
+        public ActionResult NewsDetail(long id)
+        {
+            ViewBag.newsdetail = new PostNewsDAO().ViewDetail(id);
+            return View();
+        }
+        public ActionResult FAQ(string alias)
+        {
+            Calgroup_v2DB cgi = new Calgroup_v2DB();
+            var mymodel = cgi.Questions.ToList();
+            return View(mymodel);
+        }
+        public IEnumerable<Question> Getquestions()
+        {
+            Calgroup_v2DB db = new Calgroup_v2DB();
+            return db.Questions.Where(x => x.Status == true).ToList();
+        }
+        public IEnumerable<Staff> Getnhanvien()
+        {
+            Calgroup_v2DB db = new Calgroup_v2DB();
+            return db.Staffs.Where(x => x.Status == true).ToList();
+        }
+        [HttpPost]
+        public JsonResult getDetail(string alias)
+        {
+            Calgroup_v2DB cgi = new Calgroup_v2DB();
+            var Detail = cgi.getFAQDetail(alias);
+            return Json(Detail, JsonRequestBehavior.AllowGet);
         }
     }
 }
