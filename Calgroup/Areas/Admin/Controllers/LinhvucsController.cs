@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using Model.EF;
-using Model.DAO;
+ 
+using  Calgroup.Models.DAO;
 
 namespace Calgroup.Areas.Admin.Controllers
 {
     public class LinhvucsController : Controller
     {
-        private ProductsdbContext db = new ProductsdbContext();
+        private Calgroup_v2DB db = new Calgroup_v2DB();
 
         // GET: Admin/Linhvucs
         public async Task<ActionResult> Index()

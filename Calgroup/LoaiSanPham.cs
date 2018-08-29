@@ -14,9 +14,19 @@ namespace Calgroup
     
     public partial class LoaiSanPham
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public LoaiSanPham()
+        {
+            this.SanPhams = new HashSet<SanPham>();
+        }
+    
         public int CatID { get; set; }
         public Nullable<int> LinhvucID { get; set; }
         public string Category { get; set; }
         public string AliasCat { get; set; }
+    
+        public virtual Linhvuc Linhvuc { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SanPham> SanPhams { get; set; }
     }
 }

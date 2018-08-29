@@ -1,5 +1,5 @@
 ﻿using Calgroup.Areas.Admin.Models.BusinessModel;
-using Model.EF;
+ 
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +11,7 @@ namespace Calgroup.Areas.Admin.Models.DaoModel
     public class UserDaoModel
     {
         private AdminDbContext db = new AdminDbContext();
-        private ProductsdbContext db123 = new ProductsdbContext();
+        private Calgroup_v2DB db1 = new Calgroup_v2DB();
         public bool ChangeStatus(int id)
         {
             var user = db.Administrators.Find(id);
@@ -50,7 +50,7 @@ namespace Calgroup.Areas.Admin.Models.DaoModel
 
         public int CountOder()
         {
-            return db123.Orders.Count();
+            return db1.Orders.Count();
         }
     }
 }

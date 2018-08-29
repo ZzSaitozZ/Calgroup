@@ -17,12 +17,12 @@ namespace Calgroup.Areas.Admin.Controllers
     [AuthorizeBusiness]
     public class UserAdministratorsController : Controller
     {
-        private AdminDbContext db = new AdminDbContext();
+        private Calgroup_v2DB db = new Calgroup_v2DB();
         
         // GET: Admin/UserAdministrators
         public async Task<ActionResult> Index()
         {
-            return View(await db.Administrators.ToListAsync());
+            return View(await db.UserAdministrators.ToListAsync());
         }
 
         // GET: Admin/UserAdministrators/Details/5
@@ -32,7 +32,7 @@ namespace Calgroup.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            UserAdministrator userAdministrator = await db.Administrators.FindAsync(id);
+            UserAdministrator userAdministrator = await db.UserAdministrators.FindAsync(id);
             if (userAdministrator == null)
             {
                 return HttpNotFound();
@@ -53,9 +53,9 @@ namespace Calgroup.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include = "UserId,UserName,Password,FullName,Email,Avatar,IsAdmin,Allowed,CreatedDate")] UserAdministrator userAdministrator)
         {
-            var user = db.Administrators.SingleOrDefault(x => x.UserName == userAdministrator.UserName);
+            var user = db.UserAdministrators.SingleOrDefault(x => x.UserName == userAdministrator.UserName);
 
-            var email = db.Administrators.SingleOrDefault(x => x.Email == userAdministrator.Email);
+            var email = db.UserAdministrators.SingleOrDefault(x => x.Email == userAdministrator.Email);
 
             string passMD5 = Encryptor.MD5Hash(userAdministrator.UserName + userAdministrator.Password);
 
@@ -68,7 +68,7 @@ namespace Calgroup.Areas.Admin.Controllers
                 {
                     if (email == null)
                     {
-                        db.Administrators.Add(userAdministrator);
+                        db.UserAdministrators.Add(userAdministrator);
                         await db.SaveChangesAsync();
                         return RedirectToAction("Index");
                     }
@@ -96,8 +96,8 @@ namespace Calgroup.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            UserAdministrator userAdministrator = await db.Administrators.FindAsync(id);
-            pass = db.Administrators.SingleOrDefault(x => x.Password == userAdministrator.Password).Password;
+            UserAdministrator userAdministrator = await db.UserAdministrators.FindAsync(id);
+            pass = db.UserAdministrators.SingleOrDefault(x => x.Password == userAdministrator.Password).Password;
             
             if (userAdministrator == null)
             {
@@ -160,7 +160,7 @@ namespace Calgroup.Areas.Admin.Controllers
             {
                 return "Mã không tồn tại";
             }
-            UserAdministrator user = db.Administrators.Find(id);
+            UserAdministrator user = db.UserAdministrators.Find(id);
             if (user == null)
             {
                 return "Mã không tồn tại";

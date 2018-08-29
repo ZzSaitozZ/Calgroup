@@ -14,9 +14,18 @@ namespace Calgroup
     
     public partial class LibraryCategory
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public LibraryCategory()
+        {
+            this.Libraries = new HashSet<Library>();
+        }
+    
         public int ID { get; set; }
         public string Name { get; set; }
         public string AliasCat { get; set; }
         public string Category { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Library> Libraries { get; set; }
     }
 }

@@ -153,6 +153,27 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Announcement.cs">
+      <DependentUpon>CalgroupDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AnnouncementUser.cs">
+      <DependentUpon>CalgroupDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AppRole.cs">
+      <DependentUpon>CalgroupDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AppUser.cs">
+      <DependentUpon>CalgroupDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AppUserClaim.cs">
+      <DependentUpon>CalgroupDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AppUserLogin.cs">
+      <DependentUpon>CalgroupDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AppUserRole.cs">
+      <DependentUpon>CalgroupDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -190,12 +211,6 @@
     <Compile Include="Areas\Admin\Models\BusinessModel\ReflectionController.cs" />
     <Compile Include="Areas\Admin\Models\DaoModel\UserDaoModel.cs" />
     <Compile Include="Areas\Admin\Models\DataModel\PermissionAction.cs" />
-    <Compile Include="Areas\Admin\Models\DataModel\UserAdministrator.cs" />
-    <Compile Include="Areas\Admin\Models\DataModel\UserBusiness.cs" />
-    <Compile Include="Areas\Admin\Models\DataModel\UserCategory.cs" />
-    <Compile Include="Areas\Admin\Models\DataModel\UserGrantPermission.cs" />
-    <Compile Include="Areas\Admin\Models\DataModel\UserPermission.cs" />
-    <Compile Include="Areas\Admin\Models\DataModel\UserPost.cs" />
     <Compile Include="CalgroupDB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -211,8 +226,32 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CalgroupDB.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Calibration.cs">
+      <DependentUpon>CalgroupDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Color.cs">
+      <DependentUpon>CalgroupDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ContactDetail.cs">
+      <DependentUpon>CalgroupDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Customer.cs">
+      <DependentUpon>CalgroupDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="DoiTac.cs">
+      <DependentUpon>CalgroupDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Error.cs">
+      <DependentUpon>CalgroupDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Feedback.cs">
+      <DependentUpon>CalgroupDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Footer.cs">
+      <DependentUpon>CalgroupDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Function.cs">
       <DependentUpon>CalgroupDB.tt</DependentUpon>
     </Compile>
     <Compile Include="getProductDetail_Result.cs">
@@ -227,20 +266,86 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Library.cs">
+      <DependentUpon>CalgroupDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="LibraryCategory.cs">
       <DependentUpon>CalgroupDB.tt</DependentUpon>
     </Compile>
     <Compile Include="LibraryView.cs">
       <DependentUpon>CalgroupDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Linhvuc.cs">
+      <DependentUpon>CalgroupDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="LoaiSanPham.cs">
       <DependentUpon>CalgroupDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Menu.cs">
+      <DependentUpon>CalgroupDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MenuType.cs">
+      <DependentUpon>CalgroupDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DAO\CalibrationDAO.cs" />
+    <Compile Include="Models\DAO\ChangesDAO.cs" />
+    <Compile Include="Models\DAO\MenuDAO.cs" />
+    <Compile Include="Models\DAO\PostNewsDAO.cs" />
+    <Compile Include="Models\DAO\ProductCategoriesDAO.cs" />
+    <Compile Include="Models\DAO\ProductDao.cs" />
+    <Compile Include="Models\DAO\ProductDetailsDao.cs" />
+    <Compile Include="Models\DAO\ProjectDao.cs" />
+    <Compile Include="Models\DAO\ProjectMenuDao.cs" />
+    <Compile Include="Models\DAO\ProjectProductDao.cs" />
+    <Compile Include="Models\DAO\SlideDAO.cs" />
+    <Compile Include="Models\DAO\SlideDaoChanges.cs" />
     <Compile Include="Models\Menu.cs" />
     <Compile Include="Models\ShortProduct.cs" />
+    <Compile Include="News.cs">
+      <DependentUpon>CalgroupDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="Order.cs">
+      <DependentUpon>CalgroupDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OrderDetail.cs">
+      <DependentUpon>CalgroupDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Page.cs">
+      <DependentUpon>CalgroupDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PartnerLogo.cs">
+      <DependentUpon>CalgroupDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Permission.cs">
+      <DependentUpon>CalgroupDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Post.cs">
+      <DependentUpon>CalgroupDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PostCategory.cs">
+      <DependentUpon>CalgroupDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Product.cs">
+      <DependentUpon>CalgroupDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProductCategory.cs">
+      <DependentUpon>CalgroupDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProductImage.cs">
+      <DependentUpon>CalgroupDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProductQuantity.cs">
+      <DependentUpon>CalgroupDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Project.cs">
+      <DependentUpon>CalgroupDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectProduct.cs">
+      <DependentUpon>CalgroupDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Question.cs">
       <DependentUpon>CalgroupDB.tt</DependentUpon>
@@ -248,13 +353,61 @@
     <Compile Include="Resources\Common\Encryptor.cs" />
     <Compile Include="Resources\Common\Encryptors.cs" />
     <Compile Include="Resources\Common\StringHelper.cs" />
+    <Compile Include="SanPham.cs">
+      <DependentUpon>CalgroupDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="searchProducts_Result.cs">
       <DependentUpon>CalgroupDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ShortProduct.cs">
       <DependentUpon>CalgroupDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Size.cs">
+      <DependentUpon>CalgroupDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Slide.cs">
+      <DependentUpon>CalgroupDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>CalgroupDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagrams_Result.cs">
+      <DependentUpon>CalgroupDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Staff.cs">
+      <DependentUpon>CalgroupDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SupportOnline.cs">
+      <DependentUpon>CalgroupDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>CalgroupDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SystemConfig.cs">
+      <DependentUpon>CalgroupDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tag.cs">
+      <DependentUpon>CalgroupDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserAdministrator.cs">
+      <DependentUpon>CalgroupDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserBusiness.cs">
+      <DependentUpon>CalgroupDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserCategory.cs">
+      <DependentUpon>CalgroupDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserGrantPermission.cs">
+      <DependentUpon>CalgroupDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserPermission.cs">
+      <DependentUpon>CalgroupDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserPost.cs">
+      <DependentUpon>CalgroupDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="VisitorStatistic.cs">
       <DependentUpon>CalgroupDB.tt</DependentUpon>
     </Compile>
     <Compile Include="VM\SameCategoryProduct.cs" />

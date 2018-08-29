@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Model.DAO;
+using  Calgroup.Models.DAO;
 using Calgroup.VM;
 using Calgroup.Models;
 using System.Web.Script.Serialization;
@@ -14,17 +14,16 @@ namespace Calgroup.Controllers
 {
     public class HomeController : Controller
     {
-        private Model.EF.ProductsdbContext db = new Model.EF.ProductsdbContext();
+        private  Calgroup_v2DB db = new  Calgroup_v2DB();
         public Layoutmodel Layout { get; set; }
         public HomeController()
         {
             Calgroup_v2DB db = new Calgroup_v2DB();
-            Model.EF.ProductsdbContext cgi = new Model.EF.ProductsdbContext();
             this.Layout = new Layoutmodel();
             Layout.Nhanvien = db.Staffs.ToList();
             Layout.Doitac = db.DoiTacs.ToList();
             Layout.FAQ = db.Questions.ToList();
-            Layout.Lienlac = cgi.ContactDetails.ToList();
+            Layout.Lienlac = db.ContactDetails.ToList();
             ViewBag.Mymodel = Layout;            
         }
         public ActionResult Index()
@@ -144,7 +143,7 @@ namespace Calgroup.Controllers
             String Email = Request.Form["inputEmail"].ToString();
             String Address = Request.Form["inputAddress"].ToString();
             String Message = Request.Form["comment"].ToString();
-            Model.EF.Customer customer = new Model.EF.Customer();
+             Customer customer = new  Customer();
             customer.Name = Name;
             customer.Adress = Address;
             customer.Email = Email;

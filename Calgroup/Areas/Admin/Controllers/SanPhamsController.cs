@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using Model.EF;
+ 
 using Calgroup.Resources.Common;
 
 namespace Calgroup.Areas.Admin.Controllers
 {
     public class SanPhamsController : Controller
     {
-        private ProductsdbContext db = new ProductsdbContext();
+        private Calgroup_v2DB db = new Calgroup_v2DB();
 
         // GET: Admin/SanPhams
         public async Task<ActionResult> Index()

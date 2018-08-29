@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using Model.EF;
+ 
 using Calgroup.Areas.Admin.Models.BusinessModel;
-using Model.DAO;
+using  Calgroup.Models.DAO;
 using Calgroup.Resources.Common;
 
 namespace Calgroup.Areas.Admin.Controllers
@@ -17,7 +17,7 @@ namespace Calgroup.Areas.Admin.Controllers
     [AuthorizeBusiness]
     public class ProductCategoriesController : Controller
     {
-        private ProductsdbContext db = new ProductsdbContext();
+        private Calgroup_v2DB db = new Calgroup_v2DB();
         private static string pic;
         // GET: Admin/ProductCategories
         public async Task<ActionResult> Index()

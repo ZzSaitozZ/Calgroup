@@ -8,8 +8,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Model;
-using Model.EF;
-using Model.DAO;
+ 
+using  Calgroup.Models.DAO;
 using Calgroup.Resources.Common;
 using Calgroup.Areas.Admin.Models.BusinessModel;
 
@@ -18,7 +18,7 @@ namespace Calgroup.Areas.Admin.Controllers
     [AuthorizeBusiness]
     public class ProjectProductsController : Controller
     {
-        private ProductsdbContext db = new ProductsdbContext();
+        private Calgroup_v2DB db = new Calgroup_v2DB();
         private static string pic;
         // GET: Admin/ProjectProducts
         public async Task<ActionResult> Index()

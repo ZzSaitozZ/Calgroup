@@ -20,7 +20,7 @@ namespace Calgroup.Areas.Admin.Controllers
         // GET: Admin/UserPosts
         public async Task<ActionResult> Index()
         {
-            var posts = db.Posts.Include(u => u.UserAdministrator).Include(u => u.UserCatrgory);
+            var posts = db.Posts.Include(u => u.UserAdministrator).Include(u => u.UserCategory);
             return View(await posts.ToListAsync());
         }
 

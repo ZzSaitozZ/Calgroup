@@ -5,7 +5,7 @@ namespace Calgroup.Areas.Admin.Models.BusinessModel
 {
     public class AdminDbContext : DbContext
     {
-        public AdminDbContext() : base("name =ProductsdbContext")
+        public AdminDbContext() : base("name =Calgroup_v2DB")
         {
 
         }

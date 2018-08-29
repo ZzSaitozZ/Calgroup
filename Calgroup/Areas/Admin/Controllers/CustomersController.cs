@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using Model.EF;
+ 
 
 namespace Calgroup.Areas.Admin.Controllers
 {
     public class CustomersController : Controller
     {
-        private ProductsdbContext db = new ProductsdbContext();
+        private Calgroup_v2DB db = new Calgroup_v2DB();
 
         // GET: Admin/Customers
         public async Task<ActionResult> Index()

@@ -45,7 +45,7 @@ namespace Calgroup.Areas.Admin.Models.DataModel
         public string Avatar { get; set; }
 
         [Display(Name = "Là quản trị")]
-        public byte? IsAdmin { get; set; }
+        public Nullable<byte> IsAdmin { get; set; }
 
         [Display(Name = "Kích hoạt")]
         public bool Allowed { get; set; }

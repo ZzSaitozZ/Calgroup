@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using Model.EF;
+ 
 using Calgroup.Areas.Admin.Models.BusinessModel;
 
 namespace Calgroup.Areas.Admin.Controllers
@@ -16,7 +16,7 @@ namespace Calgroup.Areas.Admin.Controllers
     public class PagesController : Controller
     {
         
-        private ProductsdbContext db = new ProductsdbContext();
+        private Calgroup_v2DB db = new Calgroup_v2DB();
 
         // GET: Admin/Pages
         public async Task<ActionResult> Index()

@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using Model.EF;
+ 
 using Calgroup.Resources.Common;
-using Model.DAO;
+using  Calgroup.Models.DAO;
 
 namespace Calgroup.Areas.Admin.Controllers
 {
     public class PostCategoriesController : Controller
     {
-        private ProductsdbContext db = new ProductsdbContext();
+        private Calgroup_v2DB db = new Calgroup_v2DB();
 
         // GET: Admin/PostCategories
         public async Task<ActionResult> Index()

@@ -21,7 +21,7 @@ namespace Calgroup.VM
         public List<LinhVucCha> Menu;
         public string AliasCat;
         public int PageCount;
-        public SanPhamPageVM(List<Menu> a)
+        public SanPhamPageVM(List<Calgroup.Models.Menu> a)
         {
             this.Menu = new List<LinhVucCha>();
             this.Menu.Add(new LinhVucCha { LinhVucCon = new List<string[]> { new string[2] { a[0].Category, a[0].AliasCat } }, Name = a[0].Linhvuc });
@@ -40,7 +40,7 @@ namespace Calgroup.VM
         public List<Staff> Nhanvien;
         public List<Question> FAQ;
         public List<DoiTac> Doitac;
-        public List<Model.EF.ContactDetail> Lienlac;
+        public List< ContactDetail> Lienlac;
 
     }
     public class getSanPhamVM

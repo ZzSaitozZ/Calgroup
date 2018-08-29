@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using Model.EF;
+ 
 using Calgroup.Areas.Admin.Models.BusinessModel;
 using Calgroup.Resources.Common;
 
@@ -16,7 +16,7 @@ namespace Calgroup.Areas.Admin.Controllers
     [AuthorizeBusiness]
     public class MenusController : Controller
     {
-        private ProductsdbContext db = new ProductsdbContext();
+        private Calgroup_v2DB db = new Calgroup_v2DB();
 
         // GET: Admin/Menus
         public async Task<ActionResult> Index()

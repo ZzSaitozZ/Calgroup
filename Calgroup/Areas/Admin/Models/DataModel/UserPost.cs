@@ -39,7 +39,7 @@ namespace Calgroup.Areas.Admin.Models.DataModel
 
         [Display(Name = "Ngày tạo")]
         [DataType(DataType.DateTime)]
-        public DateTime? CreateDate { get; set; }
+        public Nullable<System.DateTime> CreateDate { get; set; }
 
         [Display(Name = "Thẻ tìm kiếm")]
         [StringLength(128)]
@@ -50,14 +50,14 @@ namespace Calgroup.Areas.Admin.Models.DataModel
         public int CategoryId { get; set; }
 
         [Display(Name = "Số lần xem")]
-        public int? ViewNo { get; set; }
+        public Nullable<int> ViewNo { get; set; }
 
         [Display(Name = "Trạng thái")]
         [StringLength(32)]
         public string Status { get; set; }
 
         [Display(Name = "Mã người dùng")]
-        public int? UserId { get; set; }
+        public Nullable<int> UserId { get; set; }
 
         public virtual UserCategory UserCatrgory { get; set; }
 

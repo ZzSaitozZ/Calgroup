@@ -29,7 +29,7 @@ namespace Calgroup.Areas.Admin.Models.DataModel
         public string Status { get; set; }
 
         [Display(Name = "Mã người dùng")]
-        public int? UserId { get; set; }
+        public Nullable<int> UserId { get; set; }
 
         public virtual UserAdministrator UserAdministrator { get; set; }
         public virtual ICollection<UserPost> UserPosts { get; set; }

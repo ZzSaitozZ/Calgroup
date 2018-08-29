@@ -13,7 +13,7 @@ namespace Calgroup.Areas.Admin.Controllers
 {
     public class LoaiSanPhamsController : Controller
     {
-        private Model.EF.ProductsdbContext db = new Model.EF.ProductsdbContext();
+        private  Calgroup_v2DB db = new  Calgroup_v2DB();
 
         // GET: Admin/LoaiSanPhams
         public async Task<ActionResult> Index()
@@ -29,7 +29,7 @@ namespace Calgroup.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Model.EF.LoaiSanPham loaiSanPham = await db.LoaiSanPhams.FindAsync(id);
+             LoaiSanPham loaiSanPham = await db.LoaiSanPhams.FindAsync(id);
             if (loaiSanPham == null)
             {
                 return HttpNotFound();
@@ -49,7 +49,7 @@ namespace Calgroup.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "CatID,LinhvucID,Category")] Model.EF.LoaiSanPham loaiSanPham)
+        public async Task<ActionResult> Create([Bind(Include = "CatID,LinhvucID,Category")]  LoaiSanPham loaiSanPham)
         {
             if (ModelState.IsValid)
             {
@@ -70,7 +70,7 @@ namespace Calgroup.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Model.EF.LoaiSanPham loaiSanPham = await db.LoaiSanPhams.FindAsync(id);
+             LoaiSanPham loaiSanPham = await db.LoaiSanPhams.FindAsync(id);
             if (loaiSanPham == null)
             {
                 return HttpNotFound();
@@ -84,7 +84,7 @@ namespace Calgroup.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "CatID,LinhvucID,Category")]Model.EF.LoaiSanPham loaiSanPham)
+        public async Task<ActionResult> Edit([Bind(Include = "CatID,LinhvucID,Category")] LoaiSanPham loaiSanPham)
         {
             if (ModelState.IsValid)
             {
@@ -104,7 +104,7 @@ namespace Calgroup.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Model.EF.LoaiSanPham loaiSanPham = await db.LoaiSanPhams.FindAsync(id);
+             LoaiSanPham loaiSanPham = await db.LoaiSanPhams.FindAsync(id);
             if (loaiSanPham == null)
             {
                 return HttpNotFound();
@@ -117,7 +117,7 @@ namespace Calgroup.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Model.EF.LoaiSanPham loaiSanPham = await db.LoaiSanPhams.FindAsync(id);
+             LoaiSanPham loaiSanPham = await db.LoaiSanPhams.FindAsync(id);
             db.LoaiSanPhams.Remove(loaiSanPham);
             
             try

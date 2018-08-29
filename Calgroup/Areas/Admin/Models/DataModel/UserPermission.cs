@@ -33,7 +33,7 @@ namespace Calgroup.Areas.Admin.Models.DataModel
         public string BusinessId { get; set; }
 
         [Display(Name = "Kích hoạt")]
-        public bool? Status { get; set; }
+        public Nullable<bool> Status { get; set; }
 
         //Thuộc tinh Navigation
         public virtual UserBusiness UserBusinesses { get; set; }
