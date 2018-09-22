@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Trang chủ";
 }
 @model Calgroup.VM.SanPhamPageVM
 @using Calgroup.Resources.Common;
@@ -9,6 +9,9 @@
 }
 <style>
     .Item {
+        cursor: pointer;
+    }
+	.ItemSP {
         cursor: pointer;
     }
 </style>
@@ -45,66 +48,66 @@
     </a>
 </div>
 <div class="Certificate">
-    <h2>Chứng chỉ đã đạt được</h2>
+    <h2>Phạm vi công nhận</h2>
     <div class="row justify-content-center" style="margin:3% 0% 3% 0%" id="CC">
 
     </div>
 
 </div>
 <div class="CategoryChoice" style="margin-top:4%">
-    <h2>Dịch vụ hiệu chuẩn chúng tôi đang cung cấp theo các lĩnh vực</h2>
+    <h2>Lĩnh vực hiệu chuẩn</h2>
     <div class="row justify-content-around" style="margin:unset;padding:unset">
         <div class="col-md-4">
-            <div class="Service">
-                <img class="img-fluid" src="~/Resources/Images/TEST/Hiệu chuẩn lĩnh vực cơ khí - Mechanical Calibration.jpg" />
+            <div class="Service" style="cursor:pointer">
+                <img class="img-fluid row1son" src="~/Resources/Images/Banners/Hiệu chuẩn kích thước - Dimensional Calibration.png" />
                 <h4 class="Services">Lĩnh vực kích thước - cơ khí chính xác</h4>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4" style="cursor:pointer">
             <div class="Service">
-                <img class="img-fluid" src="~/Resources/Images/TEST/Hiệu chuẩn lĩnh vực điện - Electrical Calibration.jpg" />
+                <img class="img-fluid row1son" src="~/Resources/Images/Banners/Hiệu chuẩn điện - Electronic Calibration.png" />
                 <h4 class="Services line">Lĩnh vực điện - tần số</h4>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4" style="cursor:pointer">
             <div class="Service">
-                <img class="img-fluid" src="~/Resources/Images/TEST/Hiệu chuẩn lĩnh vực nhiệt động học - Thermodynamic Calibration.jpg" />
+                <img class="img-fluid" src="~/Resources/Images/Banners/Hiệu chuẩn nhiệt động học - Thermodynamic Calibration.png" id="row1"/>
                 <h4 class="Services">Lĩnh vực nhiệt - nhiệt & nhiệt ẩm</h4>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4" style="cursor:pointer">
             <div class="Service">
-                <img class="img-fluid" src="~/Resources/Images/Banners/LĨNH VỰC LỰC ĐỘ CỨNG_1.png" />
+                <img class="img-fluid" src="~/Resources/Images/Banners/Hiệu chuẩn lực - Force Calibration.png" />
                 <h4 class="Services line">Lĩnh vực lực - độ cứng</h4>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4" style="cursor:pointer">
             <div class="Service">
-                <img class="img-fluid" src="~/Resources/Images/TEST/Hiệu chuẩn lĩnh vực cơ khí - Mechanical Calibration.jpg" />
+                <img class="img-fluid" src="~/Resources/Images/Banners/Hiệu chuẩn khối lượng - Calibration Weights.png" />
                 <h4 class="Services line">Lĩnh vực khối lượng</h4>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4" style="cursor:pointer">
             <div class="Service">
-                <img class="img-fluid" src="~/Resources/Images/Banners/LĨNH VỰC ÁP SUẤT_1.png" />
+                <img class="img-fluid" src="~/Resources/Images/Banners/Hiệu chuẩn áp suất - Pressure Calibration.png" />
                 <h4 class="Services line">Lĩnh vực áp suất</h4>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4" style="cursor:pointer">
             <div class="Service">
-                <img class="img-fluid" src="~/Resources/Images/TEST/Hiệu chuẩn lĩnh vực thể tích.jpg" />
+                <img class="img-fluid row3son" src="~/Resources/Images/Banners/Hiệu chuẩn hóa lý - Chemical Calibration.png"/>
                 <h4 class="Services line">Lĩnh vực hoá lý - thể tích</h4>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4" style="cursor:pointer">
             <div class="Service">
-                <img class="img-fluid" id="Origin" src="~/Resources/Images/TEST/Hiệu chuẩn lĩnh vực quang học - Optical Calibration.jpg" />
+                <img class="img-fluid" id="row3" src="~/Resources/Images/Banners/Hiệu chuẩn khác - Other Calibration.png" />
                 <h4 class="Services line">Lĩnh vực khác</h4>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4" style="cursor:pointer">
             <div class="Service">
-                <img class="img-fluid" id="Another" src="~/Resources/Images/Banners/Tận nơi.jpg" />
+                <img class="img-fluid row3son"  src="~/Resources/Images/Banners/Tận nơi.jpg" />
                 <h4 class="Services">Hiệu chuẩn và sửa chữa thiết bị tận nơi</h4>
             </div>
         </div>
@@ -137,17 +140,17 @@
                             </div>
                             <div class="col-md-8">
                                 <div class="news-title">
-                                    <a href="#"><h5>@i.Name</h5></a>
+                                    <a href=@link><h5>@i.Name</h5></a>
                                 </div>
                                 <div class="news-cats">
                                     <ul class="list-unstyled list-inline mb-1">
                                         <li class="list-inline-item">
                                             <i class="fa fa-folder-open text-danger"></i>
-                                            <a href="#"><small>@i.ViewCount</small> </a>
+                                            <small>@i.ViewCount</small>
                                         </li>
                                         <li class="list-inline-item">
                                             <i class="fa fa-folder-open text-danger"></i>
-                                            <a href="#"><small>@i.CreatedDate</small></a>
+                                            <small>@i.CreatedDate</small>
                                         </li>
                                     </ul>
                                 </div>
@@ -212,11 +215,15 @@
                                 $(this).addClass('active');
                                 $('#P-card-subcontainer').empty();
                                 $('#P-card-subcontainer').append(page[$(this)[0].dataset.page - 1]);
+								$('.Item').click(function () {
+                        window.location.href = '/ChiTiet/' + $(this)[0].dataset.alias;
+                    });
                             }
                         });
                     };
                     $('.Item').click(function () {
-                        window.location.href = '/ChiTiet/' + $(this)[0].dataset.alias;
+						var win = window.open('/ChiTiet/' + $(this)[0].dataset.alias, '_blank');
+  						win.focus();
                     });
                 }
                 $('#P-Category').html('' + data.CategoryVi);
@@ -235,7 +242,7 @@
                     data.Products = JSON.parse(data.Products);
                     for (var i = 0; i < data.Products.length; i++) {
                         content += '<div class="col-md-6 col-lg-6 col-xl-2 " style="margin-bottom:20px" >' +
-                            '<div class="Item" style="background-image:unset" href="' + data.Products[i].PDF + '">' +
+                            '<div class="ItemSP" href="' + data.Products[i].PDF + '">' +
                             '<img class="img-fluid" src="' + data.Products[i].Image + '" />' +
                             '<h5>' + data.Products[i].Name + '</h5>' +
                             '</div>' + '</div>'
@@ -243,12 +250,13 @@
                         if (i == data.Products.length - 1) {
                             $('#CC').html(content);
                             content = '';
-                            $('.Item').click(function () {
-                                window.location.href = $(this).attr('href')
-                            })
                         }
+						
                     }
                 };
+				$('.ItemSP').click(function () {
+                	window.location.href = $(this).attr('href')
+             	});
             }
         });
     }
@@ -256,4 +264,7 @@
         LoadData_SP();
         LoadData_CC();
     });
+	$('.Service').click(function() {
+	window.location.href = '/Calibration'
+	});
 </script>

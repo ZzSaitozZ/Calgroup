@@ -5,9 +5,10 @@
     $("#carouselTitle").height(h - 155)
     $(".Baner-img").height($("#carouselTitle").height())
     $("#map").height($("#ContactUs").height())
-    $("#Another").height($("#Origin").height())
     $("#logo").height($("#Company").height())
     $("#top").height($("#logo").height())
+    $(".row1son").height($("#row1").height())
+    $(".row3son").height($("#row3").height())
     var k = 1;
 
     //$(window).scroll(function () {
@@ -28,7 +29,8 @@ var sticky = navbar.offsetTop;
 var body = document.getElementById("Body");
 
 function myFunction() {
-    $("#Another").height($("#Origin").height())
+    $(".row1son").height($("#row1").height())
+    $(".row3son").height($("#row3").height())
     if (window.pageYOffset >= sticky) {
         navbar.classList.add("sticky");
         var h = $("#navbar").height() + 30;
@@ -43,5 +45,6 @@ function myFunction() {
 function Resize() {
     $("#top").height($("#logo").height())
     $("#logo").height($("#Company").height())
-    $("#Another").height($("#Origin").height())
+    $(".row1son").height($("#row1").height())
+    $(".row3son").height($("#row3").height())
 }

@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "SanPham";
+    ViewBag.Title = "Sản phẩm";
 }
 @model Calgroup.VM.SanPhamPageVM
 
@@ -263,10 +263,15 @@
                             $('#P-card-subcontainer').empty();
                             $('#P-card-subcontainer').append(page[$(this)[0].dataset.page - 1]);
                         }
+						$('.Item').click(function () {
+					var win = window.open('/ChiTiet/' + $(this)[0].dataset.alias, '_blank');
+  					win.focus();
+                });
                     });
                 };
                 $('.Item').click(function () {
-                    window.location.href = '/ChiTiet/' + $(this)[0].dataset.alias;
+					var win = window.open('/ChiTiet/' + $(this)[0].dataset.alias, '_blank');
+  					win.focus();
                 });
                 }
                 $('#P-Category').html('' + data.CategoryVi);

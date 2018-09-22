@@ -66,7 +66,6 @@ namespace Calgroup
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<ProjectProduct> ProjectProducts { get; set; }
         public virtual DbSet<Project> Projects { get; set; }
-        public virtual DbSet<SanPham> SanPhams { get; set; }
         public virtual DbSet<Size> Sizes { get; set; }
         public virtual DbSet<Slide> Slides { get; set; }
         public virtual DbSet<SupportOnline> SupportOnlines { get; set; }
@@ -81,6 +80,7 @@ namespace Calgroup
         public virtual DbSet<UserGrantPermission> UserGrantPermissions { get; set; }
         public virtual DbSet<UserPermission> UserPermissions { get; set; }
         public virtual DbSet<UserPost> UserPosts { get; set; }
+        public virtual DbSet<SanPham> SanPhams { get; set; }
     
         public virtual ObjectResult<string> getFAQDetail(string alias)
         {

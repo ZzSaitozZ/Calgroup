@@ -501,9 +501,10 @@
         </EntityType>
         <EntityType Name="SanPham">
           <Key>
-            <PropertyRef Name="Alias" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="Alias" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Alias" Type="varchar" MaxLength="50" />
           <Property Name="Name" Type="nvarchar(max)" />
           <Property Name="CatID" Type="int" />
           <Property Name="Model" Type="nvarchar" MaxLength="50" />
@@ -1536,7 +1537,6 @@ warning 6002: The table/view 'Calgroup_v2.dbo.ShortProducts' does not have a pri
           <EntitySet Name="Products" EntityType="Calgroup_v2Model.Product" />
           <EntitySet Name="ProjectProducts" EntityType="Calgroup_v2Model.ProjectProduct" />
           <EntitySet Name="Projects" EntityType="Calgroup_v2Model.Project" />
-          <EntitySet Name="SanPhams" EntityType="Calgroup_v2Model.SanPham" />
           <EntitySet Name="Sizes" EntityType="Calgroup_v2Model.Size" />
           <EntitySet Name="Slides" EntityType="Calgroup_v2Model.Slide" />
           <EntitySet Name="SupportOnlines" EntityType="Calgroup_v2Model.SupportOnline" />
@@ -1595,10 +1595,6 @@ warning 6002: The table/view 'Calgroup_v2.dbo.ShortProducts' does not have a pri
           <AssociationSet Name="FK_LoaiSanPham_Linhvuc" Association="Calgroup_v2Model.FK_LoaiSanPham_Linhvuc">
             <End Role="Linhvuc" EntitySet="Linhvucs" />
             <End Role="LoaiSanPham" EntitySet="LoaiSanPhams" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SanPham_LoaiSanPham1" Association="Calgroup_v2Model.FK_SanPham_LoaiSanPham1">
-            <End Role="LoaiSanPham" EntitySet="LoaiSanPhams" />
-            <End Role="SanPham" EntitySet="SanPhams" />
           </AssociationSet>
           <AssociationSet Name="FK_dbo_OrderDetails_dbo_Orders_OrderID" Association="Calgroup_v2Model.FK_dbo_OrderDetails_dbo_Orders_OrderID">
             <End Role="Order" EntitySet="Orders" />
@@ -1708,6 +1704,11 @@ warning 6002: The table/view 'Calgroup_v2.dbo.ShortProducts' does not have a pri
           <AssociationSet Name="FK_dbo_UserGrantPermission_dbo_UserPermission_PermissionId" Association="Calgroup_v2Model.FK_dbo_UserGrantPermission_dbo_UserPermission_PermissionId">
             <End Role="UserPermission" EntitySet="UserPermissions" />
             <End Role="UserGrantPermission" EntitySet="UserGrantPermissions" />
+          </AssociationSet>
+          <EntitySet Name="SanPhams" EntityType="Calgroup_v2Model.SanPham" />
+          <AssociationSet Name="FK_SanPham_LoaiSanPham1" Association="Calgroup_v2Model.FK_SanPham_LoaiSanPham1">
+            <End Role="LoaiSanPham" EntitySet="LoaiSanPhams" />
+            <End Role="SanPham" EntitySet="SanPhams" />
           </AssociationSet>
           </EntityContainer>
         <ComplexType Name="getProductDetail_Result">
@@ -2249,24 +2250,6 @@ warning 6002: The table/view 'Calgroup_v2.dbo.ShortProducts' does not have a pri
           <Property Name="MetaDescription" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="Status" Type="Boolean" Nullable="false" />
         </EntityType>
-        <EntityType Name="SanPham">
-          <Key>
-            <PropertyRef Name="Alias" />
-          </Key>
-          <Property Name="Alias" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="CatID" Type="Int32" />
-          <Property Name="Model" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Manufacturer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ImageLink" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="ImageLinkDetail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="ManualLink" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Detail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Specification" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Price" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Hot" Type="Int32" />
-          <NavigationProperty Name="LoaiSanPham" Relationship="Calgroup_v2Model.FK_SanPham_LoaiSanPham1" FromRole="SanPham" ToRole="LoaiSanPham" />
-        </EntityType>
         <EntityType Name="Size">
           <Key>
             <PropertyRef Name="ID" />
@@ -2502,18 +2485,6 @@ warning 6002: The table/view 'Calgroup_v2.dbo.ShortProducts' does not have a pri
             </Principal>
             <Dependent Role="LoaiSanPham">
               <PropertyRef Name="LinhvucID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_SanPham_LoaiSanPham1">
-          <End Type="Calgroup_v2Model.LoaiSanPham" Role="LoaiSanPham" Multiplicity="0..1" />
-          <End Type="Calgroup_v2Model.SanPham" Role="SanPham" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="LoaiSanPham">
-              <PropertyRef Name="CatID" />
-            </Principal>
-            <Dependent Role="SanPham">
-              <PropertyRef Name="CatID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2840,6 +2811,37 @@ warning 6002: The table/view 'Calgroup_v2.dbo.ShortProducts' does not have a pri
             </Principal>
             <Dependent Role="UserGrantPermission">
               <PropertyRef Name="PermissionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="SanPham">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Alias" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CatID" Type="Int32" />
+          <Property Name="Model" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Manufacturer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ImageLink" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ImageLinkDetail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ManualLink" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Detail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Specification" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Hot" Type="Int32" />
+          <NavigationProperty Name="LoaiSanPham" Relationship="Calgroup_v2Model.FK_SanPham_LoaiSanPham1" FromRole="SanPham" ToRole="LoaiSanPham" />
+        </EntityType>
+        <Association Name="FK_SanPham_LoaiSanPham1">
+          <End Type="Calgroup_v2Model.LoaiSanPham" Role="LoaiSanPham" Multiplicity="0..1" />
+          <End Type="Calgroup_v2Model.SanPham" Role="SanPham" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoaiSanPham">
+              <PropertyRef Name="CatID" />
+            </Principal>
+            <Dependent Role="SanPham">
+              <PropertyRef Name="CatID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -3445,24 +3447,6 @@ warning 6002: The table/view 'Calgroup_v2.dbo.ShortProducts' does not have a pri
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="SanPhams">
-            <EntityTypeMapping TypeName="Calgroup_v2Model.SanPham">
-              <MappingFragment StoreEntitySet="SanPham">
-                <ScalarProperty Name="Hot" ColumnName="Hot" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="Specification" ColumnName="Specification" />
-                <ScalarProperty Name="Detail" ColumnName="Detail" />
-                <ScalarProperty Name="ManualLink" ColumnName="ManualLink" />
-                <ScalarProperty Name="ImageLinkDetail" ColumnName="ImageLinkDetail" />
-                <ScalarProperty Name="ImageLink" ColumnName="ImageLink" />
-                <ScalarProperty Name="Manufacturer" ColumnName="Manufacturer" />
-                <ScalarProperty Name="Model" ColumnName="Model" />
-                <ScalarProperty Name="CatID" ColumnName="CatID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Alias" ColumnName="Alias" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Sizes">
             <EntityTypeMapping TypeName="Calgroup_v2Model.Size">
               <MappingFragment StoreEntitySet="Sizes">
@@ -3662,6 +3646,25 @@ warning 6002: The table/view 'Calgroup_v2.dbo.ShortProducts' does not have a pri
                 <ScalarProperty Name="Brief" ColumnName="Brief" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="PostId" ColumnName="PostId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SanPhams">
+            <EntityTypeMapping TypeName="Calgroup_v2Model.SanPham">
+              <MappingFragment StoreEntitySet="SanPham">
+                <ScalarProperty Name="Hot" ColumnName="Hot" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Specification" ColumnName="Specification" />
+                <ScalarProperty Name="Detail" ColumnName="Detail" />
+                <ScalarProperty Name="ManualLink" ColumnName="ManualLink" />
+                <ScalarProperty Name="ImageLinkDetail" ColumnName="ImageLinkDetail" />
+                <ScalarProperty Name="ImageLink" ColumnName="ImageLink" />
+                <ScalarProperty Name="Manufacturer" ColumnName="Manufacturer" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="CatID" ColumnName="CatID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Alias" ColumnName="Alias" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -8,7 +8,7 @@
         margin: 10px auto;
     }
 
-    #P-image {
+    #P-img {
         width: 400px;
         display: inline-block;
     }
@@ -156,9 +156,21 @@
             width: inherit;
             background-color: ghostwhite;
         }
+		        @@media only screen and (max-width: 1000px ) {
+            #P-container{
+                width:100%;
+				text-align:center;
+            }
+            #P-img{
+                width:35%;
+            }
+            #P-wrapper{
+                width:100%;
+				text-align:left;
+            }
 </style>
 <div id="P-container">
-    <img id="P-image" src="@Model[0].ImageLinkDetail" />
+    <img id="P-img" src="@Model[0].ImageLinkDetail" />
     <div id="P-wrapper">
         <h3 id="P-Name">@Model[0].Name</h3>
         <div id="P-buttonwrapper">
@@ -219,7 +231,7 @@
 
 <script>
     
-
+	document.title = 'CalgroupVN - ' +  $('#P-Name').html();
 
     //TabNav
     $('.buttons').click(function () {

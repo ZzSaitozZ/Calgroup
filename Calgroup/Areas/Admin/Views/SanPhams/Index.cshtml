@@ -3,6 +3,10 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    if (Session["userID"] == null)
+    {
+        Response.Redirect("/Admin/Admin/Login");
+    }
 }
 <style>
     th {
@@ -156,9 +160,9 @@
                                         @Html.ActionLink("Details", "Details", new { id = item.Alias }) |
                                         @Html.ActionLink("Delete", "Delete", new { id = item.Alias })*@
                                          
-                                        <a href="/Admin/SanPhams/Edit/@item.Alias" data-toggle="tooltip" data-placement="top" title="Sửa"><i class="fa fa-edit"></i></a> &nbsp;
-                                        <a href="/Admin/SanPhams/Details/@item.Alias" data-toggle="tooltip" data-placement="top" title="Chi tiết"><i class="fa fa-list-alt"></i></a> &nbsp;
-                                        <a href="/Admin/SanPhams/Delete/@item.Alias" data-toggle="tooltip" data-placement="top" title="Xóa"><i class="fa fa-times-circle"></i></a> &nbsp;
+                                        <a href="/Admin/SanPhams/Edit/@item.ID" data-toggle="tooltip" data-placement="top" title="Sửa"><i class="fa fa-edit"></i></a> &nbsp;
+                                        <a href="/Admin/SanPhams/Details/@item.ID" data-toggle="tooltip" data-placement="top" title="Chi tiết"><i class="fa fa-list-alt"></i></a> &nbsp;
+                                        <a href="/Admin/SanPhams/Delete/@item.ID" data-toggle="tooltip" data-placement="top" title="Xóa"><i class="fa fa-times-circle"></i></a> &nbsp;
                                         @*<span class="Delete" data-id="@item.ID" style="cursor:pointer" data-toggle="tooltip" data-placement="top" title="Xóa"><i class="fa fa-times-circle"></i></span> &nbsp;*@
                                     
                                     </td>

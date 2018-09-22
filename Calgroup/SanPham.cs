@@ -14,6 +14,7 @@ namespace Calgroup
     
     public partial class SanPham
     {
+        public int ID { get; set; }
         public string Alias { get; set; }
         public string Name { get; set; }
         public Nullable<int> CatID { get; set; }

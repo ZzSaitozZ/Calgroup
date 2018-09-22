@@ -24,19 +24,19 @@ namespace Calgroup
                       "~/Resources/JS/Scripts/respond.js",
                       "~/Resources/JS/Scripts/umd/popper.js"));
 
-            bundles.Add(new StyleBundle("~/Content/bootstrap").Include(
+            bundles.Add(new StyleBundle("~/bundles/bootstrapcss").Include(
                       "~/Resources/CSS/bootstrap/bootstrap.css",
                       "~/Resources/CSS/bootstrap/bootstrap-grid.css",
                       "~/Resources/CSS/bootstrap/bootstrap-reboot.css",
                       "~/Resources/CSS/bootstrap/site.css"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include(
+            bundles.Add(new StyleBundle("~/bundles/css").Include(
                       "~/Resources/CSS/Layout/PC.css",
                       "~/Resources/CSS/Layout/Tablet.css",
                       "~/Resources/CSS/Layout/Phone.css",
                       "~/Resources/CSS/Website/WebsitePC.css"));
 
-            bundles.Add(new StyleBundle("~/Content/Icon").Include(
+            bundles.Add(new StyleBundle("~/bundles/Icon").Include(
                       "~/Resources/Icons/css/fontawesome-all.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/JavaScript").Include(

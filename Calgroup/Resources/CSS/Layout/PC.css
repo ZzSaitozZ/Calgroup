@@ -2,6 +2,10 @@
     font-family: 'fontawesome';
     src: url('../../Icons/webfonts/fa-brands-400.ttf') format('truetype');
 }
+@font-face {
+    font-family: 'fa-brands-400';
+    src: url('../../Icons/webfonts/fa-brands-400.ttf') format('truetype'), url('../../Icons/webfonts/fa-brands-400.woff') format('woff'), url('../../Icons/webfonts/fa-brands-400.woff2') format('woff2'), url('../../Icons/webfonts/fa-regular-400.ttf') format('truetype'), url('../../Icons/webfonts/fa-regular-400.woff') format('woff'), url('../../Icons/webfonts/fa-regular-400.woff2') format('woff2'), url('../../Icons/webfonts/fa-solid-900.ttf') format('truetype'), url('../../Icons/webfonts/fa-solid-900.woff') format('woff'), url('../../Icons/webfonts/fa-solid-900.woff2') format('woff2');
+}
 body {
     position: relative;
     min-height: 100%;
@@ -164,9 +168,7 @@ a.Topnav-item {
     border-radius: 1rem;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-    .Service img {
-        border-radius: 1rem;
-    }
+
     .Service h4 {
         text-align: center;
         height: 56px;

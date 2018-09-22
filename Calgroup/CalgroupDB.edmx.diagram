@@ -44,7 +44,6 @@
         <EntityTypeShape EntityType="Calgroup_v2Model.Product" Width="1.5" PointX="10" PointY="24.125" />
         <EntityTypeShape EntityType="Calgroup_v2Model.ProjectProduct" Width="1.5" PointX="16.75" PointY="21.375" />
         <EntityTypeShape EntityType="Calgroup_v2Model.Project" Width="1.5" PointX="18.75" PointY="21.375" />
-        <EntityTypeShape EntityType="Calgroup_v2Model.SanPham" Width="1.5" PointX="5.375" PointY="11.75" />
         <EntityTypeShape EntityType="Calgroup_v2Model.Size" Width="1.5" PointX="10" PointY="21.625" />
         <EntityTypeShape EntityType="Calgroup_v2Model.Slide" Width="1.5" PointX="20.75" PointY="10.375" />
         <EntityTypeShape EntityType="Calgroup_v2Model.SupportOnline" Width="1.5" PointX="20.75" PointY="18.375" />
@@ -65,7 +64,6 @@
         <AssociationConnector Association="Calgroup_v2Model.FK_dbo_Functions_dbo_Functions_ParentId" />
         <AssociationConnector Association="Calgroup_v2Model.FK_Library_LibraryCategory" />
         <AssociationConnector Association="Calgroup_v2Model.FK_LoaiSanPham_Linhvuc" />
-        <AssociationConnector Association="Calgroup_v2Model.FK_SanPham_LoaiSanPham1" />
         <AssociationConnector Association="Calgroup_v2Model.FK_dbo_OrderDetails_dbo_Orders_OrderID" />
         <AssociationConnector Association="Calgroup_v2Model.FK_dbo_OrderDetails_dbo_Products_ProductID" />
         <AssociationConnector Association="Calgroup_v2Model.FK_dbo_OrderDetails_dbo_Sizes_SizeId" />
@@ -91,6 +89,8 @@
         <AssociationConnector Association="Calgroup_v2Model.FK_dbo_UserPermission_dbo_UserBusiness_BusinessId" />
         <AssociationConnector Association="Calgroup_v2Model.FK_dbo_UserPost_dbo_UserCategory_CategoryId" />
         <AssociationConnector Association="Calgroup_v2Model.FK_dbo_UserGrantPermission_dbo_UserPermission_PermissionId" />
+        <EntityTypeShape EntityType="Calgroup_v2Model.SanPham" Width="1.5" PointX="5" PointY="9.25" />
+        <AssociationConnector Association="Calgroup_v2Model.FK_SanPham_LoaiSanPham1" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

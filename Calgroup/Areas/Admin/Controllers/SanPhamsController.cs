@@ -24,7 +24,7 @@ namespace Calgroup.Areas.Admin.Controllers
         }
 
         // GET: Admin/SanPhams/Details/5
-        public async Task<ActionResult> Details(string id)
+        public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {
@@ -54,7 +54,6 @@ namespace Calgroup.Areas.Admin.Controllers
         {
             sanPham.Detail = HttpUtility.HtmlDecode(sanPham.Detail);
             sanPham.Specification = HttpUtility.HtmlDecode(sanPham.Specification);
-            sanPham.Alias = StringHelper.ToAlias(sanPham.Name);
             if (ModelState.IsValid)
             {
                 db.SanPhams.Add(sanPham);
@@ -67,7 +66,7 @@ namespace Calgroup.Areas.Admin.Controllers
         }
 
         // GET: Admin/SanPhams/Edit/5
-        public async Task<ActionResult> Edit(string id)
+        public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
             {
@@ -87,14 +86,12 @@ namespace Calgroup.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Alias,Name,CatID,Model,Manufacturer,ImageLink,ImageLinkDetail,ManualLink,Detail,Specification,Price,Hot")] SanPham sanPham)
+        public async Task<ActionResult> Edit([Bind(Include = "ID,Alias,Name,CatID,Model,Manufacturer,ImageLink,ImageLinkDetail,ManualLink,Detail,Specification,Price,Hot")] SanPham sanPham)
         {
             sanPham.Detail = HttpUtility.HtmlDecode(sanPham.Detail);
             sanPham.Specification = HttpUtility.HtmlDecode(sanPham.Specification);
-            sanPham.Alias = StringHelper.ToAlias(sanPham.Name);
             if (ModelState.IsValid)
-            {
-             
+            {             
                 db.Entry(sanPham).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
@@ -104,7 +101,7 @@ namespace Calgroup.Areas.Admin.Controllers
         }
 
         // GET: Admin/SanPhams/Delete/5
-        public async Task<ActionResult> Delete(string id)
+        public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
             {
@@ -121,7 +118,7 @@ namespace Calgroup.Areas.Admin.Controllers
         // POST: Admin/SanPhams/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(string id)
+        public async Task<ActionResult> DeleteConfirmed(int? id)
         {
             SanPham sanPham = await db.SanPhams.FindAsync(id);
             db.SanPhams.Remove(sanPham);
