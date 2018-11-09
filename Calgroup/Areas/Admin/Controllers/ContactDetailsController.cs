@@ -81,6 +81,7 @@ namespace Calgroup.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit([Bind(Include = "ID,Name,Phone,Email,Website,Address,Other,Lat,Lng,Status")] ContactDetail contactDetail)
         {
+            contactDetail.Other = HttpUtility.HtmlDecode(contactDetail.Other);
             if (ModelState.IsValid)
             {
                 db.Entry(contactDetail).State = EntityState.Modified;

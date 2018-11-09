@@ -1,0 +1,12 @@
+E:\PROJECT_SAGO\Project_GIT\Calgroup\Model\bin\Debug\Model.dll.config
+E:\PROJECT_SAGO\Project_GIT\Calgroup\Model\bin\Debug\Model.dll
+E:\PROJECT_SAGO\Project_GIT\Calgroup\Model\bin\Debug\Model.pdb
+E:\PROJECT_SAGO\Project_GIT\Calgroup\Model\bin\Debug\EntityFramework.dll
+E:\PROJECT_SAGO\Project_GIT\Calgroup\Model\bin\Debug\EntityFramework.SqlServer.dll
+E:\PROJECT_SAGO\Project_GIT\Calgroup\Model\bin\Debug\EntityFramework.xml
+E:\PROJECT_SAGO\Project_GIT\Calgroup\Model\bin\Debug\EntityFramework.SqlServer.xml
+E:\PROJECT_SAGO\Project_GIT\Calgroup\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
+E:\PROJECT_SAGO\Project_GIT\Calgroup\Model\obj\Debug\Model.csproj.CopyComplete
+E:\PROJECT_SAGO\Project_GIT\Calgroup\Model\obj\Debug\Model.dll
+E:\PROJECT_SAGO\Project_GIT\Calgroup\Model\obj\Debug\Model.pdb
+E:\PROJECT_SAGO\Project_GIT\Calgroup\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache

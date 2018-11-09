@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a89c0f937840443ab582282d42aa3b46" Name="Diagram1" ZoomLevel="61">
+        <EntityTypeShape EntityType="Calgroup_v2Model.LibraryCategory" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Calgroup_v2Model.Question" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Calgroup_v2Model.LibraryView" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Calgroup_v2Model.ShortProduct" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Calgroup_v2Model.LoaiSanPham" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Calgroup_v2Model.DoiTac" Width="1.5" PointX="0.75" PointY="6.75" />
+        <EntityTypeShape EntityType="Calgroup_v2Model.Staff" Width="1.5" PointX="5.375" PointY="5.75" />
+        <EntityTypeShape EntityType="Calgroup_v2Model.Announcement" Width="1.5" PointX="10" PointY="7.625" />
+        <EntityTypeShape EntityType="Calgroup_v2Model.AnnouncementUser" Width="1.5" PointX="12.25" PointY="9.75" />
+        <EntityTypeShape EntityType="Calgroup_v2Model.AppRole" Width="1.5" PointX="7.75" PointY="15" />
+        <EntityTypeShape EntityType="Calgroup_v2Model.AppUserClaim" Width="1.5" PointX="10" PointY="4.75" />
+        <EntityTypeShape EntityType="Calgroup_v2Model.AppUserLogin" Width="1.5" PointX="10" PointY="18.375" />
+        <EntityTypeShape EntityType="Calgroup_v2Model.AppUserRole" Width="1.5" PointX="10" PointY="11" />
+        <EntityTypeShape EntityType="Calgroup_v2Model.AppUser" Width="1.5" PointX="7.75" PointY="8.25" />
+        <EntityTypeShape EntityType="Calgroup_v2Model.Calibration" Width="1.5" PointX="14.75" PointY="11.375" />
+        <EntityTypeShape EntityType="Calgroup_v2Model.Color" Width="1.5" PointX="10" PointY="1.875" />
+        <EntityTypeShape EntityType="Calgroup_v2Model.ContactDetail" Width="1.5" PointX="5.75" PointY="18.375" />
+        <EntityTypeShape EntityType="Calgroup_v2Model.Customer" Width="1.5" PointX="16.75" PointY="11.375" />
+        <EntityTypeShape EntityType="Calgroup_v2Model.Error" Width="1.5" PointX="14.75" PointY="18.375" />
+        <EntityTypeShape EntityType="Calgroup_v2Model.Feedback" Width="1.5" PointX="16.75" PointY="18.375" />
+        <EntityTypeShape EntityType="Calgroup_v2Model.Footer" Width="1.5" PointX="2.75" PointY="16.375" />
+        <EntityTypeShape EntityType="Calgroup_v2Model.Function" Width="1.5" PointX="0.75" PointY="14.625" />
+        <EntityTypeShape EntityType="Calgroup_v2Model.Library" Width="1.5" PointX="3.375" PointY="24.75" />
+        <EntityTypeShape EntityType="Calgroup_v2Model.Linhvuc" Width="1.5" PointX="0.875" PointY="11.625" />
+        <EntityTypeShape EntityType="Calgroup_v2Model.Menu" Width="1.5" PointX="17.75" PointY="14.375" />
+        <EntityTypeShape EntityType="Calgroup_v2Model.MenuType" Width="1.5" PointX="18.75" PointY="11.375" />
+        <EntityTypeShape EntityType="Calgroup_v2Model.News" Width="1.5" PointX="18.75" PointY="18.375" />
+        <EntityTypeShape EntityType="Calgroup_v2Model.OrderDetail" Width="1.5" PointX="12.25" PointY="14.25" />
+        <EntityTypeShape EntityType="Calgroup_v2Model.Order" Width="1.5" PointX="10" PointY="13.875" />
+        <EntityTypeShape EntityType="Calgroup_v2Model.Page" Width="1.5" PointX="19.75" PointY="14.375" />
+        <EntityTypeShape EntityType="Calgroup_v2Model.PartnerLogo" Width="1.5" PointX="14.75" PointY="21.375" />
+        <EntityTypeShape EntityType="Calgroup_v2Model.PostCategory" Width="1.5" PointX="0.75" PointY="19" />
+        <EntityTypeShape EntityType="Calgroup_v2Model.Post" Width="1.5" PointX="3" PointY="18.75" />
+        <EntityTypeShape EntityType="Calgroup_v2Model.ProductCategory" Width="1.5" PointX="7.75" PointY="25.25" />
+        <EntityTypeShape EntityType="Calgroup_v2Model.ProductImage" Width="1.5" PointX="12.25" PointY="27.375" />
+        <EntityTypeShape EntityType="Calgroup_v2Model.ProductQuantity" Width="1.5" PointX="12.25" PointY="18" />
+        <EntityTypeShape EntityType="Calgroup_v2Model.Product" Width="1.5" PointX="10" PointY="24.125" />
+        <EntityTypeShape EntityType="Calgroup_v2Model.ProjectProduct" Width="1.5" PointX="16.75" PointY="21.375" />
+        <EntityTypeShape EntityType="Calgroup_v2Model.Project" Width="1.5" PointX="18.75" PointY="21.375" />
+        <EntityTypeShape EntityType="Calgroup_v2Model.Size" Width="1.5" PointX="10" PointY="21.625" />
+        <EntityTypeShape EntityType="Calgroup_v2Model.Slide" Width="1.5" PointX="20.75" PointY="10.375" />
+        <EntityTypeShape EntityType="Calgroup_v2Model.SupportOnline" Width="1.5" PointX="20.75" PointY="18.375" />
+        <EntityTypeShape EntityType="Calgroup_v2Model.sysdiagram" Width="1.5" PointX="7.625" PointY="1.875" />
+        <EntityTypeShape EntityType="Calgroup_v2Model.SystemConfig" Width="1.5" PointX="5.75" PointY="22.375" />
+        <EntityTypeShape EntityType="Calgroup_v2Model.Tag" Width="1.5" PointX="12.25" PointY="23.625" />
+        <EntityTypeShape EntityType="Calgroup_v2Model.VisitorStatistic" Width="1.5" PointX="20.75" PointY="22.375" />
+        <AssociationConnector Association="Calgroup_v2Model.FK_dbo_Announcements_dbo_AppUsers_AppUser_Id" />
+        <AssociationConnector Association="Calgroup_v2Model.FK_dbo_AnnouncementUsers_dbo_Announcements_AnnouncementId" />
+        <AssociationConnector Association="Calgroup_v2Model.FK_dbo_AnnouncementUsers_dbo_AppUsers_UserId" />
+        <AssociationConnector Association="Calgroup_v2Model.FK_dbo_AppUserRoles_dbo_AppRoles_IdentityRole_Id" />
+        <AssociationConnector Association="Calgroup_v2Model.FK_dbo_AppUserClaims_dbo_AppUsers_AppUser_Id" />
+        <AssociationConnector Association="Calgroup_v2Model.FK_dbo_AppUserLogins_dbo_AppUsers_AppUser_Id" />
+        <AssociationConnector Association="Calgroup_v2Model.FK_dbo_AppUserRoles_dbo_AppUsers_AppUser_Id" />
+        <AssociationConnector Association="Calgroup_v2Model.FK_dbo_Orders_dbo_AppUsers_CustomerId" />
+        <AssociationConnector Association="Calgroup_v2Model.FK_dbo_OrderDetails_dbo_Colors_ColorId" />
+        <AssociationConnector Association="Calgroup_v2Model.FK_dbo_ProductQuantities_dbo_Colors_ColorId" />
+        <AssociationConnector Association="Calgroup_v2Model.FK_dbo_Functions_dbo_Functions_ParentId" />
+        <AssociationConnector Association="Calgroup_v2Model.FK_Library_LibraryCategory" />
+        <AssociationConnector Association="Calgroup_v2Model.FK_LoaiSanPham_Linhvuc" />
+        <AssociationConnector Association="Calgroup_v2Model.FK_dbo_OrderDetails_dbo_Orders_OrderID" />
+        <AssociationConnector Association="Calgroup_v2Model.FK_dbo_OrderDetails_dbo_Products_ProductID" />
+        <AssociationConnector Association="Calgroup_v2Model.FK_dbo_OrderDetails_dbo_Sizes_SizeId" />
+        <AssociationConnector Association="Calgroup_v2Model.FK_dbo_Posts_dbo_PostCategories_CategoryID" />
+        <AssociationConnector Association="Calgroup_v2Model.FK_dbo_Products_dbo_ProductCategories_CategoryID" />
+        <AssociationConnector Association="Calgroup_v2Model.FK_dbo_ProductImages_dbo_Products_ProductId" />
+        <AssociationConnector Association="Calgroup_v2Model.FK_dbo_ProductQuantities_dbo_Products_ProductId" />
+        <AssociationConnector Association="Calgroup_v2Model.FK_dbo_ProductQuantities_dbo_Sizes_SizeId" />
+        <AssociationConnector Association="Calgroup_v2Model.PostTags" />
+        <AssociationConnector Association="Calgroup_v2Model.ProductTags" />
+        <EntityTypeShape EntityType="Calgroup_v2Model.Permission" Width="1.5" PointX="15" PointY="14.75" />
+        <AssociationConnector Association="Calgroup_v2Model.FK_dbo_Permissions_dbo_AppRoles_RoleId" />
+        <AssociationConnector Association="Calgroup_v2Model.FK_dbo_Permissions_dbo_Functions_FunctionId" />
+        <EntityTypeShape EntityType="Calgroup_v2Model.UserAdministrator" Width="1.5" PointX="12.375" PointY="2.625" />
+        <EntityTypeShape EntityType="Calgroup_v2Model.UserBusiness" Width="1.5" PointX="10.125" PointY="32.375" />
+        <EntityTypeShape EntityType="Calgroup_v2Model.UserCategory" Width="1.5" PointX="14.625" PointY="5.75" />
+        <EntityTypeShape EntityType="Calgroup_v2Model.UserGrantPermission" Width="1.5" PointX="14.625" PointY="2.25" />
+        <EntityTypeShape EntityType="Calgroup_v2Model.UserPermission" Width="1.5" PointX="12.375" PointY="32.125" />
+        <EntityTypeShape EntityType="Calgroup_v2Model.UserPost" Width="1.5" PointX="16.875" PointY="3.625" />
+        <AssociationConnector Association="Calgroup_v2Model.FK_dbo_UserCategory_dbo_UserAdministrator_UserId" />
+        <AssociationConnector Association="Calgroup_v2Model.FK_dbo_UserGrantPermission_dbo_UserAdministrator_UserId" />
+        <AssociationConnector Association="Calgroup_v2Model.FK_dbo_UserPost_dbo_UserAdministrator_UserId" />
+        <AssociationConnector Association="Calgroup_v2Model.FK_dbo_UserPermission_dbo_UserBusiness_BusinessId" />
+        <AssociationConnector Association="Calgroup_v2Model.FK_dbo_UserPost_dbo_UserCategory_CategoryId" />
+        <AssociationConnector Association="Calgroup_v2Model.FK_dbo_UserGrantPermission_dbo_UserPermission_PermissionId" />
+        <EntityTypeShape EntityType="Calgroup_v2Model.SanPham" Width="1.5" PointX="5" PointY="9.25" />
+        <AssociationConnector Association="Calgroup_v2Model.FK_SanPham_LoaiSanPham1" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

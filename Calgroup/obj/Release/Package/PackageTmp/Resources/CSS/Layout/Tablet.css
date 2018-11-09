@@ -1,0 +1,193 @@
+﻿@media only screen and (max-width: 1200px ) {
+    .Title {
+        text-align: center;
+        height: 100px !important;
+    }
+
+    .logo {
+        position: absolute;
+        left: 1%;
+        width: auto;
+    }
+
+    .Company {
+        position: relative;
+    }
+
+        .Company h3 {
+            padding-top:10px;
+            font-size: 25px;
+            transition: all 0.5s;
+        }
+    .hotline {        
+        position: absolute;
+        right: 1%;
+        width: auto;
+    }
+    .Topnav div div.Bar {
+        display: inline-flex    !important ;
+        flex-direction:row !important;
+    }
+
+    .Topnav {
+        width: 100%;
+        display: flex;
+        overflow: hidden;
+        height: auto;
+        position: relative;
+        z-index: 2;
+        background-color: #0075bf;
+        color: white;
+        width: 100%;
+        padding: 0;
+        letter-spacing: 1px;
+        font-family: "Segoe UI",Arial,sans-serif;
+    }
+    .icon {
+        padding: 18px 10px !important;
+        margin-right: 0px;
+        font-size: 20px !important;
+    }
+    a.Topnav-item {
+        padding: 17px 5px;
+        width: auto;
+        border: none;
+        display: block;
+        outline: 0;
+        font-size: 15px;
+    }
+    .Search {
+        padding: unset;
+        display: inline-flex;
+        outline: 0;
+        font-size: 20px;
+    }
+        .Search input {
+            width: auto;
+            max-width: 150px;
+        }
+    .Introduce {
+        width:100%;
+        text-align:center !important;
+    }
+    .slide {
+        max-height: 400px !important;
+    }
+    .Baner-img {
+        width: 100%;
+        max-height: 400px;
+    }
+    .CategoryChoice {
+        text-align: center;
+    }
+
+        .CategoryChoice h2 {
+            margin-top: 1%;
+            color: #0075bf;
+        }
+
+        .CategoryChoice .row .col-md-4 {
+            margin: 4% 0 0 0;
+        }
+    .Service {
+        margin: 0px 15px 0px 15px;
+        height: 100%;
+        text-align: center;
+        border-radius: 1rem;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+
+
+        .Service h4 {
+            text-align: center;
+            height: 56px;
+            letter-spacing: 1px;
+            font-size:larger;
+            background-color: #0075bf;
+            color: white;
+            margin: unset;
+            border-radius: 0 0 1rem 1rem;
+        }
+
+    .Services.line {
+        padding-top: 12px;
+        padding-bottom: 11px;
+    }
+    .Item {
+        margin: 0px 15px 0px 15px;
+        height: 100%;
+        background-color: white;
+        text-align: center;
+        transition: all 0.2s linear;
+        border-radius: 0 0 1rem 1rem;
+        background-image: linear-gradient(0deg, #ECECEC 0%, white 35%);
+    }
+
+        .Item h4 {
+            text-align: center;
+            height: 56px;
+            font-size:larger;
+            letter-spacing: 1px;
+            background-image: linear-gradient(white, #F79119);
+            color: black;
+            margin: unset;
+            border-radius: 0 0 1rem 1rem;
+        }
+
+        .Item ul {
+            text-align: left;
+            margin: unset;
+            height: auto;
+            margin-bottom: unset;
+            font-size: 20px
+        }
+
+    .logo-sub {
+        width: 100%;
+        height: auto;
+    }
+
+    
+    .Caroselfix1 h2 {
+        top: 100px;
+        right: 50px;
+        font-size:16px;
+        text-align: left;
+        color: #ffffffb3;
+        text-shadow: 0px 0px 20px white;
+    }
+    .Caroselfix2 h2 {
+        top: 100px;
+        right: 50px;
+        font-size: 16px;
+        text-align: right;
+        color: #ffffffb3;
+        text-shadow: 0px 0px 20px white;
+    }
+    .Caroselfix3 h2 {
+        top: 100px;
+        right: 50px;
+        font-size: 16px;
+        color: #ffffffb3;
+        text-shadow: 0px 0px 20px white;
+    }
+
+    /*Question*/
+    .title_news_detail {
+        text-transform: uppercase;
+        text-align: center;
+        font-weight: bold;
+        color: #00609c;
+        margin: 0;
+        background-size: 100% 100%;
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+
+    h2.Question-title {
+        font-size: 2rem !important;
+        text-align: center;
+        padding-left:unset  ;
+    }
+}
+

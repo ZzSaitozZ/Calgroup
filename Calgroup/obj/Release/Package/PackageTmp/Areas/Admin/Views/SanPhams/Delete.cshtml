@@ -1,0 +1,150 @@
+﻿@model  SanPham
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<style>
+    .detailTable {
+        transition: box-shadow .3s;
+        width: auto;
+        height: auto;
+        margin: 5px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        background: #fff;
+        padding: 5px;
+    }
+</style>
+<section class="content-header">
+    <h1>
+        Bản quản lý
+        <small>@Session["fullName"] - Member since - @Convert.ToDateTime(Session["createdDate"].ToString()).ToShortDateString()</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li class="active"><i class="fa fa-dashboard"></i> @(Convert.ToInt32(Session["isAdmin"].ToString()) == 1 ? "Quản trị viên" : "Thành viên")</li>
+    </ol>
+</section>
+<section class="content">
+    <!-- COLOR PALETTE -->
+    <div class="box box-default color-palette-box">
+        <div class="box-header with-border">
+            <h3 class="box-title">
+                <i class="fa fa-tag"></i> Xóa
+            </h3>
+        </div>
+        <br />
+        <div>
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.LoaiSanPham.Category)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.LoaiSanPham.Category)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Model)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Model)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Manufacturer)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Manufacturer)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ImageLink)
+                   
+                </dt>
+
+                <dd>
+                    @*@Html.DisplayFor(model => model.ImageLink)*@
+                    <img src="@Html.DisplayFor(model => model.ImageLink)" alt="Alternate Text" class="img-thumbnail" width="150" />
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ImageLinkDetail)
+                </dt>
+
+                <dd>
+                    <img src="@Html.DisplayFor(model => model.ImageLinkDetail)" alt="Alternate Text" class="img-thumbnail" width="150" />
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.ManualLink)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ManualLink)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Detail)
+                </dt>
+
+                <dd>
+                    @*@Html.DisplayFor(model => model.Detail)*@
+                    @Html.Raw(HttpUtility.HtmlDecode(Model.Detail))
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Specification)
+                </dt>
+
+                <dd>
+                    @*@Html.DisplayFor(model => model.Specification)*@
+                    @Html.Raw(HttpUtility.HtmlDecode(Model.Specification))
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Price)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Price)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Hot)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Hot)
+                </dd>
+
+            </dl>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-actions no-color col-md-offset-2 col-md-10">
+                    <input type="submit" value="Delete" class="btn btn-danger" /> |
+                    <p class="btn btn-default">@Html.ActionLink("Back to List", "Index")</p>
+
+                </div>
+            }
+        </div>
+        <br /><br />
+    </div>
+
+</section>
+

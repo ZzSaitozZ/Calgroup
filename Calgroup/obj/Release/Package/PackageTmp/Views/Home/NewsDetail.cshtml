@@ -1,0 +1,22 @@
+﻿
+@{
+     Post newsdetail = ( Post)ViewBag.newsdetail;
+	 ViewBag.Title = newsdetail.Name;
+     Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .images {
+        border: 0;
+        font-size: 0;
+        line-height: 0;
+        max-width: 100%;
+    }
+</style>
+<h2 style="text-align:center;color:#0075bf;margin-top:1%">@newsdetail.Name</h2>
+<div class="row2 mb-2 justify-content-center" style="padding-top:10px;">
+    <div class="col-md-8">
+        @Html.Raw(newsdetail.Content)
+    </div>
+</div>
+

@@ -1,0 +1,109 @@
+﻿@model Calgroup.Staff
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        Bản quản lý
+        <small>@Session["fullName"] - Member since - @Convert.ToDateTime(Session["createdDate"].ToString()).ToShortDateString()</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li class="active"><i class="fa fa-dashboard"></i> @(Convert.ToInt32(Session["isAdmin"].ToString()) == 1 ? "Quản trị viên" : "Thành viên")</li>
+    </ol>
+</section>
+<section class="content">
+    <!-- COLOR PALETTE -->
+    <div class="box box-default color-palette-box">
+        <div class="box-header with-border">
+            <h3 class="box-title">
+                <i class="fa fa-tag"></i> Xóa
+            </h3>
+        </div>
+        <br />
+        <div>
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Role)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Role)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Email)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Email)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Skype)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Skype)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Zalo)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Zalo)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Phone)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Phone)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Image)
+                </dt>
+
+                <dd>
+                    @*@Html.DisplayFor(model => model.Image)*@
+                    <img src="@Html.DisplayFor(model => model.Image)" alt="Alternate Text" class="img-thumbnail" width="150" />
+
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Status)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Status)
+                </dd>
+
+            </dl>
+            @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color col-md-offset-2 col-md-10">
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            <p class="btn btn-default">@Html.ActionLink("Back to List", "Index")</p>
+        </div>
+}
+        </div>
+        
+        <br /><br />
+    </div>
+
+</section>

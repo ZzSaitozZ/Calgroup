@@ -1,0 +1,78 @@
+﻿@model  Calibration
+
+@{
+                /**/
+
+                ViewBag.Title = "Details";
+                Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .detailTable {
+        transition: box-shadow .3s;
+        width: auto;
+        height: auto;
+        margin: 5px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        background: #fff;
+        padding: 5px;
+    }
+</style>
+<section class="content-header">
+    <h1>
+        Bản quản lý
+        <small>@Session["fullName"] - Member since - @Convert.ToDateTime(Session["createdDate"].ToString()).ToShortDateString()</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li class="active"><i class="fa fa-dashboard"></i> @(Convert.ToInt32(Session["isAdmin"].ToString()) == 1 ? "Quản trị viên" : "Thành viên")</li>
+    </ol>
+</section>
+<section class="content">
+    <!-- COLOR PALETTE -->
+    <div class="box box-default color-palette-box">
+        <div class="box-header with-border">
+            <h3 class="box-title">
+                <i class="fa fa-tag"></i> Xem chi tiết
+            </h3>
+        </div>
+        <br />
+        <div>
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Detail)
+                </dt>
+
+                <dd>
+                    @*@Html.DisplayFor(model => model.Detail)*@
+                    @Html.Raw(HttpUtility.HtmlDecode(Model.Detail))
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Status)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Status)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Category)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Category)
+                </dd>
+
+            </dl>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-6">
+                <p class="btn btn-default">@Html.ActionLink("Edit", "Edit", new { id = Model.ID })</p>
+                <p class="btn btn-default">@Html.ActionLink("Back to List", "Index")</p>
+            </div>
+        </div>
+        <br /><br />
+    </div>
+
+</section>

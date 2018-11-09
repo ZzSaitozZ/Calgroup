@@ -1,0 +1,309 @@
+﻿
+@model List<Calgroup.getProductDetail_Result>
+
+
+<style>
+    #P-container {
+        width: 1000px;
+        margin: 10px auto;
+    }
+
+    #P-img {
+        width: 400px;
+        display: inline-block;
+    }
+
+    #P-wrapper {
+        width: 590px;
+        display: inline-block;
+        vertical-align: top;
+        margin-left: 5px;
+        margin-top: 10px;
+    }
+
+    #P-buttonwrapper {
+        background-color: #F79119;
+        width: 100%;
+    }
+
+    .P-description {
+        margin-top: 10px
+    }
+
+    .buttons {
+        display: inline-block;
+        padding: 5px;
+        cursor: pointer;
+    }
+
+        .buttons.active {
+            background-color: #ab691b;
+            color: white;
+        }
+
+    #P-container #product p {
+        line-height: 16px;
+    }
+
+    #manual {
+        display: inline-block;
+        cursor:pointer;
+    }
+
+        #manual a {
+            background-color: #1abf1a;
+            border-radius: 5px;
+            color: white;
+            padding: 5px 10px;
+            display: inline-block;
+            cursor:pointer;
+        }
+
+            #manual a:hover {
+                background-color: #7a7a7a;
+                text-decoration: none;
+            }
+
+    .tags {
+        padding: 0;
+        list-style: none;
+    }
+
+        .tags li, .tags a {
+            margin-left: 5px;
+            position: relative;
+        }
+
+        .tags a {
+            padding: 5px 12px;
+            background: #0089e0;
+            color: #fff;
+            text-decoration: none;
+            -moz-border-radius-bottomleft: 4px;
+            -webkit-border-bottom-left-radius: 4px;
+            border-bottom-left-radius: 4px;
+            -moz-border-radius-topleft: 4px;
+            -webkit-border-top-left-radius: 4px;
+            border-top-left-radius: 4px;
+        }
+
+            .tags a:before {
+                content: "";
+                float: left;
+                position: absolute;
+                top: 0;
+                right: -12px;
+                width: 0;
+                height: 0;
+                border-color: transparent transparent transparent #0089e0;
+                border-style: solid;
+                border-width: 15.5px 0px 15.5px 12px;
+            }
+
+            .tags a:after {
+                content: "";
+                position: absolute;
+                top: 14px;
+                right: 0;
+                float: left;
+                width: 4px;
+                height: 4px;
+                -moz-border-radius: 2px;
+                -webkit-border-radius: 2px;
+                border-radius: 2px;
+                background: #fff;
+                -moz-box-shadow: -1px -1px 2px #004977;
+                -webkit-box-shadow: -1px -1px 2px #004977;
+                box-shadow: -1px -1px 2px #004977;
+            }
+
+            .tags a:hover {
+                background: #555;
+            }
+
+                .tags a:hover:before {
+                    border-color: transparent transparent transparent #555;
+                }
+
+    #P-card-container {
+        margin: 5px auto 20px auto;
+        /*font-size: 0;*/
+        /*background-color: rgb(227, 227, 247);*/
+        padding: 10px;
+    }
+
+    .P-card {
+        display: inline-block;
+        text-align: center;
+        width: 300px;
+        margin: 5px 5px;
+    }
+
+        .P-card img {
+            width: inherit;
+        }
+
+        .P-card p {
+            font-size: 18px;
+            font-weight: bold;
+            width: inherit;
+            margin-bottom: 0;
+            background-color: whitesmoke;
+        }
+
+        .P-card div {
+            font-size: 14px;
+            width: inherit;
+            background-color: ghostwhite;
+        }
+		        @@media only screen and (max-width: 1000px ) {
+            #P-container{
+                width:100%;
+				text-align:center;
+            }
+            #P-img{
+                width:35%;
+            }
+            #P-wrapper{
+                width:100%;
+				text-align:left;
+            }
+</style>
+<div id="P-container">
+    <img id="P-img" src="@Model[0].ImageLinkDetail" />
+    <div id="P-wrapper">
+        <h3 id="P-Name">@Model[0].Name</h3>
+        <div id="P-buttonwrapper">
+            <div class="buttons active" data-link="product">
+                Sản phẩm
+            </div>
+            @if (Model[0].Detail != null)
+            {
+                <div class="buttons" data-link="detail">
+                    Chi tiết sản phẩm
+                </div>
+            }
+            @if (Model[0].Specification != null)
+            {
+                <div class="buttons" data-link="specification">
+                    Thông số kĩ thuật
+                </div>
+            }
+        </div>
+
+        <div>
+            <div class="P-description" id="product">
+                <p>Loại: @Model[0].Name</p>
+                <p>Model: @Model[0].Model</p>
+                <p>Hãng sản xuất: @Model[0].Manufacturer</p>
+                <div id="manual"><a href="@Model[0].ManualLink">Hướng dẫn sử dụng</a></div>
+                <div style="display:inline-block">
+                    <ul class="tags">
+                        <li><a href="#">Liên hệ</a></li>
+
+
+                    </ul>
+                </div>
+                <hr />
+
+            </div>
+
+            <div class="P-description" id="detail" style="display:none">
+                @Html.Raw(Model[0].Detail)
+            </div>
+
+            <div class="P-description" id="specification" style="display:none">
+                @Html.Raw(Model[0].Specification)
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div>
+    <h1 style="text-align:center;background-color:#0075bf;color:white;padding:10px 0;margin:5px 0;">Các sản phẩm liên quan</h1>
+    <div id="P-card-container" class="row">
+
+    </div>
+</div>
+
+<ul class="pagination pagination-lg justify-content-center"></ul>
+
+<script>
+    
+	document.title = 'CalgroupVN - ' +  $('#P-Name').html();
+
+    //TabNav
+    $('.buttons').click(function () {
+        var activeButton = $('#P-container .active')[0];
+
+        id = $(this)[0].dataset.link;
+        if (!$(this).hasClass('active')) {
+            activeButton.className = activeButton.className.replace(" active", "");
+            $(this)[0].className += ' active';
+            $('.P-description').hide();
+            $('#' + id).show();
+        }
+    });
+
+   
+
+    var page = [];
+     function LoadData() {
+        $.ajax({
+            type: 'Post',
+            url: '/getSanPham',
+            dataType: 'json',
+            data: { aliascat: '@Model[0].AliasCat' },
+            success: function (data) {
+                var content = ''; var Count = 0; var subtracted = false;
+                if (data.Products != null) {
+                data.Products = JSON.parse(data.Products);
+                for (var i = 0; i < data.Products.length; i++) {
+                    if (subtracted || data.Products[i].Name != $('#P-Name').html()) {
+                        content += '<div class="col-md-6 col-lg-6 col-xl-4 " >' +
+                            '<div class="Item" data-alias="' + data.Products[i].Alias + '">' +
+                            '<img class="img-fluid" src="' + data.Products[i].ImageLink + '" />' +
+                            '<h4>' + data.Products[i].Name + '</h4>' +
+                            '<ul>' +
+                            '<li>' + data.Products[i].Category + '</li>' +
+                            '<li>' + data.Products[i].Model + '</li>' +
+                            '<li>' + data.Products[i].Manufacturer + '</li>' +
+                            '</ul>' +
+                            '</div>' +
+                            '</div>';
+                    } else subtracted = true;
+                    Count++;
+                    if (Count == 8 || i == data.Products.length - 1) {
+                        page.push(content);
+                        content = '';
+                        Count = 0;
+                    }
+                }
+                $('#P-card-container').append(page[0]);
+                if (page.length > 1) {
+                    for (let x = 0; x < page.length; x++) {
+                        let pagecontent = '<li class="page-item" data-page="' + (x + 1) + '"><a class="page-link" href="#">' + (x + 1) + '</a></li>';
+                        $('ul.pagination').append(pagecontent);
+                        $('.pagination li').first().addClass('active');
+                    }
+                    $('.pagination li').click(function () {
+                        if (!$(this).hasClass('active')) {
+                            $('.pagination li.active').removeClass('active');
+                            $(this).addClass('active');
+                            $('#P-card-subcontainer').empty();
+                            $('#P-card-subcontainer').append(page[$(this)[0].dataset.page - 1]);
+                        }
+                    });
+                };
+                $('.Item').click(function () {
+                    window.location.href = '/ChiTiet/' + $(this)[0].dataset.alias;
+                });
+                }
+
+            }
+            });
+
+    };
+    LoadData();
+</script>

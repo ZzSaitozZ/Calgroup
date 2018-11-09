@@ -1,0 +1,93 @@
+﻿@model  Calibration
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        Bản quản lý
+        <small>@Session["fullName"] - Member since - @Convert.ToDateTime(Session["createdDate"].ToString()).ToShortDateString()</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li class="active"><i class="fa fa-dashboard"></i> @(Convert.ToInt32(Session["isAdmin"].ToString()) == 1 ? "Quản trị viên" : "Thành viên")</li>
+    </ol>
+</section>
+
+<section class="content">
+    <!-- COLOR PALETTE -->
+    <div class="box box-default color-palette-box">
+        <div class="box-header with-border">
+            <h3 class="box-title">
+                <i class="fa fa-tag"></i> Thêm mới
+            </h3>
+        </div>
+        <br />
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Detail, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @*@Html.EditorFor(model => model.Detail, new { htmlAttributes = new { @class = "form-control" } })*@
+                        @Html.TextAreaFor(model => model.Detail, new { htmlAttributes = new { @class = "form-control" }, id = "txtContent" })
+                        @Html.ValidationMessageFor(model => model.Detail, "", new { @class = "text-danger" })
+                    </div>
+                    <script>
+                        CKEDITOR.replace("txtContent", {
+                            htmlEncodeOutput: true,
+                        });
+                    </script>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <div class="checkbox">
+                            @Html.EditorFor(model => model.Status, new { @class = "checkbox" })
+                            @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Category, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @*@Html.EditorFor(model => model.Category, new { htmlAttributes = new { @class = "form-control" } })*@
+                        @Html.DropDownListFor(model => model.Category, new[] {
+                            new SelectListItem { Text = "Hiệu chuẩn lĩnh vực cơ khí - Mechanical Calibration", Value = "Hiệu chuẩn lĩnh vực cơ khí - Mechanical Calibration" },
+                           new SelectListItem { Text = "Hiệu chuẩn lĩnh vực điện - Electrical Calibration", Value = "Hiệu chuẩn lĩnh vực điện - Electrical Calibration" },
+                           new SelectListItem { Text = "Hiệu chuẩn lĩnh vực độ dài - Dimensional Calibration", Value = "Hiệu chuẩn lĩnh vực độ dài - Dimensional Calibration" },
+                           new SelectListItem { Text = "Hiệu chuẩn lĩnh vực hóa lý - Chemical Calibration", Value = "Hiệu chuẩn lĩnh vực hóa lý - Chemical Calibration" },
+                           new SelectListItem { Text = "Hiệu chuẩn lĩnh vực nhiệt động học - Thermodynamic Calibration", Value = "Hiệu chuẩn lĩnh vực nhiệt động học - Thermodynamic Calibration" },
+                           new SelectListItem { Text = "Hiệu chuẩn lĩnh vực quang học - Optical Calibration", Value = "Hiệu chuẩn lĩnh vực quang học - Optical Calibration" },
+                           new SelectListItem { Text = "Hiệu chuẩn lĩnh vực thể tích", Value = "Hiệu chuẩn lĩnh vực thể tích" },
+                           new SelectListItem { Text = "Hiệu chuẩn tận nơi và tại phòng thí nghiệm", Value = "Hiệu chuẩn tận nơi và tại phòng thí nghiệm" },
+                           new SelectListItem { Text = "Sửa chữa thiết bị", Value = "Sửa chữa thiết bị" }
+                        })
+                        @Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Create" class="btn btn-success" />
+                        <p class="btn btn-default">@Html.ActionLink("Cancel", "Index")</p>
+                    </div>
+                </div>
+            </div>
+        }
+        <br /><br />
+    </div>
+</section>
+<script>
+    var viewModel = {
+        stringValue: ko.observable(""),
+    };
+    ko.applyBindings(viewModel);
+</script>

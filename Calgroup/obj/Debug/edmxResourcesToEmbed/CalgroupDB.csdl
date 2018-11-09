@@ -1,0 +1,1423 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Calgroup_v2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="LibraryCategory">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AliasCat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Libraries" Relationship="Calgroup_v2Model.FK_Library_LibraryCategory" FromRole="LibraryCategory" ToRole="Library" />
+  </EntityType>
+  <EntityType Name="Question">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="AliasName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Details" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Status" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LibraryView">
+    <Key>
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="Image" />
+      <PropertyRef Name="PDF" />
+      <PropertyRef Name="Status" />
+    </Key>
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PDF" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Status" Type="Boolean" Nullable="false" />
+    <Property Name="AliasCat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ShortProduct">
+    <Key>
+      <PropertyRef Name="Alias" />
+    </Key>
+    <Property Name="Category" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="AliasCat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Alias" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Model" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Manufacturer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ImageLink" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ImageLinkDetail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ManualLink" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Detail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Specification" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Price" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Hot" Type="Int32" />
+    <Property Name="Expr1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityContainer Name="Calgroup_v2DB" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="LibraryCategories" EntityType="Self.LibraryCategory" />
+    <EntitySet Name="Questions" EntityType="Self.Question" />
+    <EntitySet Name="LibraryViews" EntityType="Self.LibraryView" />
+    <EntitySet Name="ShortProducts" EntityType="Self.ShortProduct" />
+    <FunctionImport Name="getFAQDetail" ReturnType="Collection(String)">
+      <Parameter Name="alias" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="getNumberThuViens" ReturnType="Collection(Int64)">
+      <Parameter Name="aliascat" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="getProductDetail" ReturnType="Collection(Calgroup_v2Model.getProductDetail_Result)">
+      <Parameter Name="alias" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="getProducts" ReturnType="Collection(Calgroup_v2Model.getProducts_Result)">
+      <Parameter Name="aliascat" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="getThuViens" ReturnType="Collection(Calgroup_v2Model.getThuViens_Result)">
+      <Parameter Name="aliascat" Mode="In" Type="String" />
+      <Parameter Name="page" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="LoaiSanPhams" EntityType="Calgroup_v2Model.LoaiSanPham" />
+    <FunctionImport Name="searchProducts" ReturnType="Collection(Calgroup_v2Model.searchProducts_Result)">
+      <Parameter Name="alias" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="DoiTacs" EntityType="Calgroup_v2Model.DoiTac" />
+    <EntitySet Name="Staffs" EntityType="Calgroup_v2Model.Staff" />
+    <EntitySet Name="Announcements" EntityType="Calgroup_v2Model.Announcement" />
+    <EntitySet Name="AnnouncementUsers" EntityType="Calgroup_v2Model.AnnouncementUser" />
+    <EntitySet Name="AppRoles" EntityType="Calgroup_v2Model.AppRole" />
+    <EntitySet Name="AppUserClaims" EntityType="Calgroup_v2Model.AppUserClaim" />
+    <EntitySet Name="AppUserLogins" EntityType="Calgroup_v2Model.AppUserLogin" />
+    <EntitySet Name="AppUserRoles" EntityType="Calgroup_v2Model.AppUserRole" />
+    <EntitySet Name="AppUsers" EntityType="Calgroup_v2Model.AppUser" />
+    <EntitySet Name="Calibrations" EntityType="Calgroup_v2Model.Calibration" />
+    <EntitySet Name="Colors" EntityType="Calgroup_v2Model.Color" />
+    <EntitySet Name="ContactDetails" EntityType="Calgroup_v2Model.ContactDetail" />
+    <EntitySet Name="Customers" EntityType="Calgroup_v2Model.Customer" />
+    <EntitySet Name="Errors" EntityType="Calgroup_v2Model.Error" />
+    <EntitySet Name="Feedbacks" EntityType="Calgroup_v2Model.Feedback" />
+    <EntitySet Name="Footers" EntityType="Calgroup_v2Model.Footer" />
+    <EntitySet Name="Functions" EntityType="Calgroup_v2Model.Function" />
+    <EntitySet Name="Libraries" EntityType="Calgroup_v2Model.Library" />
+    <EntitySet Name="Linhvucs" EntityType="Calgroup_v2Model.Linhvuc" />
+    <EntitySet Name="Menus" EntityType="Calgroup_v2Model.Menu" />
+    <EntitySet Name="MenuTypes" EntityType="Calgroup_v2Model.MenuType" />
+    <EntitySet Name="News" EntityType="Calgroup_v2Model.News" />
+    <EntitySet Name="OrderDetails" EntityType="Calgroup_v2Model.OrderDetail" />
+    <EntitySet Name="Orders" EntityType="Calgroup_v2Model.Order" />
+    <EntitySet Name="Pages" EntityType="Calgroup_v2Model.Page" />
+    <EntitySet Name="PartnerLogoes" EntityType="Calgroup_v2Model.PartnerLogo" />
+    <EntitySet Name="PostCategories" EntityType="Calgroup_v2Model.PostCategory" />
+    <EntitySet Name="Posts" EntityType="Calgroup_v2Model.Post" />
+    <EntitySet Name="ProductCategories" EntityType="Calgroup_v2Model.ProductCategory" />
+    <EntitySet Name="ProductImages" EntityType="Calgroup_v2Model.ProductImage" />
+    <EntitySet Name="ProductQuantities" EntityType="Calgroup_v2Model.ProductQuantity" />
+    <EntitySet Name="Products" EntityType="Calgroup_v2Model.Product" />
+    <EntitySet Name="ProjectProducts" EntityType="Calgroup_v2Model.ProjectProduct" />
+    <EntitySet Name="Projects" EntityType="Calgroup_v2Model.Project" />
+    <EntitySet Name="Sizes" EntityType="Calgroup_v2Model.Size" />
+    <EntitySet Name="Slides" EntityType="Calgroup_v2Model.Slide" />
+    <EntitySet Name="SupportOnlines" EntityType="Calgroup_v2Model.SupportOnline" />
+    <EntitySet Name="sysdiagrams" EntityType="Calgroup_v2Model.sysdiagram" />
+    <EntitySet Name="SystemConfigs" EntityType="Calgroup_v2Model.SystemConfig" />
+    <EntitySet Name="Tags" EntityType="Calgroup_v2Model.Tag" />
+    <EntitySet Name="VisitorStatistics" EntityType="Calgroup_v2Model.VisitorStatistic" />
+    <AssociationSet Name="FK_dbo_Announcements_dbo_AppUsers_AppUser_Id" Association="Calgroup_v2Model.FK_dbo_Announcements_dbo_AppUsers_AppUser_Id">
+      <End Role="AppUser" EntitySet="AppUsers" />
+      <End Role="Announcement" EntitySet="Announcements" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AnnouncementUsers_dbo_Announcements_AnnouncementId" Association="Calgroup_v2Model.FK_dbo_AnnouncementUsers_dbo_Announcements_AnnouncementId">
+      <End Role="Announcement" EntitySet="Announcements" />
+      <End Role="AnnouncementUser" EntitySet="AnnouncementUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AnnouncementUsers_dbo_AppUsers_UserId" Association="Calgroup_v2Model.FK_dbo_AnnouncementUsers_dbo_AppUsers_UserId">
+      <End Role="AppUser" EntitySet="AppUsers" />
+      <End Role="AnnouncementUser" EntitySet="AnnouncementUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AppUserRoles_dbo_AppRoles_IdentityRole_Id" Association="Calgroup_v2Model.FK_dbo_AppUserRoles_dbo_AppRoles_IdentityRole_Id">
+      <End Role="AppRole" EntitySet="AppRoles" />
+      <End Role="AppUserRole" EntitySet="AppUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AppUserClaims_dbo_AppUsers_AppUser_Id" Association="Calgroup_v2Model.FK_dbo_AppUserClaims_dbo_AppUsers_AppUser_Id">
+      <End Role="AppUser" EntitySet="AppUsers" />
+      <End Role="AppUserClaim" EntitySet="AppUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AppUserLogins_dbo_AppUsers_AppUser_Id" Association="Calgroup_v2Model.FK_dbo_AppUserLogins_dbo_AppUsers_AppUser_Id">
+      <End Role="AppUser" EntitySet="AppUsers" />
+      <End Role="AppUserLogin" EntitySet="AppUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AppUserRoles_dbo_AppUsers_AppUser_Id" Association="Calgroup_v2Model.FK_dbo_AppUserRoles_dbo_AppUsers_AppUser_Id">
+      <End Role="AppUser" EntitySet="AppUsers" />
+      <End Role="AppUserRole" EntitySet="AppUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Orders_dbo_AppUsers_CustomerId" Association="Calgroup_v2Model.FK_dbo_Orders_dbo_AppUsers_CustomerId">
+      <End Role="AppUser" EntitySet="AppUsers" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_OrderDetails_dbo_Colors_ColorId" Association="Calgroup_v2Model.FK_dbo_OrderDetails_dbo_Colors_ColorId">
+      <End Role="Color" EntitySet="Colors" />
+      <End Role="OrderDetail" EntitySet="OrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_ProductQuantities_dbo_Colors_ColorId" Association="Calgroup_v2Model.FK_dbo_ProductQuantities_dbo_Colors_ColorId">
+      <End Role="Color" EntitySet="Colors" />
+      <End Role="ProductQuantity" EntitySet="ProductQuantities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Functions_dbo_Functions_ParentId" Association="Calgroup_v2Model.FK_dbo_Functions_dbo_Functions_ParentId">
+      <End Role="Function" EntitySet="Functions" />
+      <End Role="Function1" EntitySet="Functions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Library_LibraryCategory" Association="Calgroup_v2Model.FK_Library_LibraryCategory">
+      <End Role="LibraryCategory" EntitySet="LibraryCategories" />
+      <End Role="Library" EntitySet="Libraries" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LoaiSanPham_Linhvuc" Association="Calgroup_v2Model.FK_LoaiSanPham_Linhvuc">
+      <End Role="Linhvuc" EntitySet="Linhvucs" />
+      <End Role="LoaiSanPham" EntitySet="LoaiSanPhams" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_OrderDetails_dbo_Orders_OrderID" Association="Calgroup_v2Model.FK_dbo_OrderDetails_dbo_Orders_OrderID">
+      <End Role="Order" EntitySet="Orders" />
+      <End Role="OrderDetail" EntitySet="OrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_OrderDetails_dbo_Products_ProductID" Association="Calgroup_v2Model.FK_dbo_OrderDetails_dbo_Products_ProductID">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="OrderDetail" EntitySet="OrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_OrderDetails_dbo_Sizes_SizeId" Association="Calgroup_v2Model.FK_dbo_OrderDetails_dbo_Sizes_SizeId">
+      <End Role="Size" EntitySet="Sizes" />
+      <End Role="OrderDetail" EntitySet="OrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Posts_dbo_PostCategories_CategoryID" Association="Calgroup_v2Model.FK_dbo_Posts_dbo_PostCategories_CategoryID">
+      <End Role="PostCategory" EntitySet="PostCategories" />
+      <End Role="Post" EntitySet="Posts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Products_dbo_ProductCategories_CategoryID" Association="Calgroup_v2Model.FK_dbo_Products_dbo_ProductCategories_CategoryID">
+      <End Role="ProductCategory" EntitySet="ProductCategories" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_ProductImages_dbo_Products_ProductId" Association="Calgroup_v2Model.FK_dbo_ProductImages_dbo_Products_ProductId">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="ProductImage" EntitySet="ProductImages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_ProductQuantities_dbo_Products_ProductId" Association="Calgroup_v2Model.FK_dbo_ProductQuantities_dbo_Products_ProductId">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="ProductQuantity" EntitySet="ProductQuantities" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_ProductQuantities_dbo_Sizes_SizeId" Association="Calgroup_v2Model.FK_dbo_ProductQuantities_dbo_Sizes_SizeId">
+      <End Role="Size" EntitySet="Sizes" />
+      <End Role="ProductQuantity" EntitySet="ProductQuantities" />
+    </AssociationSet>
+    <AssociationSet Name="PostTags" Association="Calgroup_v2Model.PostTags">
+      <End Role="Post" EntitySet="Posts" />
+      <End Role="Tag" EntitySet="Tags" />
+    </AssociationSet>
+    <AssociationSet Name="ProductTags" Association="Calgroup_v2Model.ProductTags">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="Tag" EntitySet="Tags" />
+    </AssociationSet>
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(Calgroup_v2Model.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(Calgroup_v2Model.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <EntitySet Name="Permissions" EntityType="Calgroup_v2Model.Permission" />
+    <AssociationSet Name="FK_dbo_Permissions_dbo_AppRoles_RoleId" Association="Calgroup_v2Model.FK_dbo_Permissions_dbo_AppRoles_RoleId">
+      <End Role="AppRole" EntitySet="AppRoles" />
+      <End Role="Permission" EntitySet="Permissions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Permissions_dbo_Functions_FunctionId" Association="Calgroup_v2Model.FK_dbo_Permissions_dbo_Functions_FunctionId">
+      <End Role="Function" EntitySet="Functions" />
+      <End Role="Permission" EntitySet="Permissions" />
+    </AssociationSet>
+    <EntitySet Name="UserAdministrators" EntityType="Calgroup_v2Model.UserAdministrator" />
+    <EntitySet Name="UserBusinesses" EntityType="Calgroup_v2Model.UserBusiness" />
+    <EntitySet Name="UserCategories" EntityType="Calgroup_v2Model.UserCategory" />
+    <EntitySet Name="UserGrantPermissions" EntityType="Calgroup_v2Model.UserGrantPermission" />
+    <EntitySet Name="UserPermissions" EntityType="Calgroup_v2Model.UserPermission" />
+    <EntitySet Name="UserPosts" EntityType="Calgroup_v2Model.UserPost" />
+    <AssociationSet Name="FK_dbo_UserCategory_dbo_UserAdministrator_UserId" Association="Calgroup_v2Model.FK_dbo_UserCategory_dbo_UserAdministrator_UserId">
+      <End Role="UserAdministrator" EntitySet="UserAdministrators" />
+      <End Role="UserCategory" EntitySet="UserCategories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_UserGrantPermission_dbo_UserAdministrator_UserId" Association="Calgroup_v2Model.FK_dbo_UserGrantPermission_dbo_UserAdministrator_UserId">
+      <End Role="UserAdministrator" EntitySet="UserAdministrators" />
+      <End Role="UserGrantPermission" EntitySet="UserGrantPermissions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_UserPost_dbo_UserAdministrator_UserId" Association="Calgroup_v2Model.FK_dbo_UserPost_dbo_UserAdministrator_UserId">
+      <End Role="UserAdministrator" EntitySet="UserAdministrators" />
+      <End Role="UserPost" EntitySet="UserPosts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_UserPermission_dbo_UserBusiness_BusinessId" Association="Calgroup_v2Model.FK_dbo_UserPermission_dbo_UserBusiness_BusinessId">
+      <End Role="UserBusiness" EntitySet="UserBusinesses" />
+      <End Role="UserPermission" EntitySet="UserPermissions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_UserPost_dbo_UserCategory_CategoryId" Association="Calgroup_v2Model.FK_dbo_UserPost_dbo_UserCategory_CategoryId">
+      <End Role="UserCategory" EntitySet="UserCategories" />
+      <End Role="UserPost" EntitySet="UserPosts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_UserGrantPermission_dbo_UserPermission_PermissionId" Association="Calgroup_v2Model.FK_dbo_UserGrantPermission_dbo_UserPermission_PermissionId">
+      <End Role="UserPermission" EntitySet="UserPermissions" />
+      <End Role="UserGrantPermission" EntitySet="UserGrantPermissions" />
+    </AssociationSet>
+    <EntitySet Name="SanPhams" EntityType="Calgroup_v2Model.SanPham" />
+    <AssociationSet Name="FK_SanPham_LoaiSanPham1" Association="Calgroup_v2Model.FK_SanPham_LoaiSanPham1">
+      <End Role="LoaiSanPham" EntitySet="LoaiSanPhams" />
+      <End Role="SanPham" EntitySet="SanPhams" />
+    </AssociationSet>
+  </EntityContainer>
+  <ComplexType Name="getProductDetail_Result">
+    <Property Type="String" Name="Name" Nullable="true" />
+    <Property Type="String" Name="AliasCat" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Category" Nullable="true" />
+    <Property Type="String" Name="Model" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Manufacturer" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ImageLinkDetail" Nullable="true" />
+    <Property Type="String" Name="ManualLink" Nullable="true" />
+    <Property Type="String" Name="Detail" Nullable="true" />
+    <Property Type="String" Name="Specification" Nullable="true" />
+    <Property Type="String" Name="Price" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="getProducts_Result">
+    <Property Type="String" Name="Name" Nullable="true" />
+    <Property Type="String" Name="Alias" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Category" Nullable="true" />
+    <Property Type="String" Name="Model" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Manufacturer" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ImageLink" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="getThuViens_Result">
+    <Property Type="String" Name="Name" Nullable="false" />
+    <Property Type="String" Name="Image" Nullable="false" />
+    <Property Type="String" Name="PDF" Nullable="false" />
+    <Property Type="String" Name="Category" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <EntityType Name="LoaiSanPham">
+    <Key>
+      <PropertyRef Name="CatID" />
+    </Key>
+    <Property Name="CatID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LinhvucID" Type="Int32" />
+    <Property Name="Category" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="AliasCat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Linhvuc" Relationship="Calgroup_v2Model.FK_LoaiSanPham_Linhvuc" FromRole="LoaiSanPham" ToRole="Linhvuc" />
+    <NavigationProperty Name="SanPhams" Relationship="Calgroup_v2Model.FK_SanPham_LoaiSanPham1" FromRole="LoaiSanPham" ToRole="SanPham" />
+  </EntityType>
+  <ComplexType Name="searchProducts_Result">
+    <Property Type="String" Name="Name" Nullable="true" />
+    <Property Type="String" Name="Alias" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Category" Nullable="true" />
+    <Property Type="String" Name="Model" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Manufacturer" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ImageLink" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="DoiTac">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Staff">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Role" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Skype" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Zalo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Boolean" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Announcement">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Status" Type="Boolean" Nullable="false" />
+    <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AppUser" Relationship="Calgroup_v2Model.FK_dbo_Announcements_dbo_AppUsers_AppUser_Id" FromRole="Announcement" ToRole="AppUser" />
+    <NavigationProperty Name="AnnouncementUsers" Relationship="Calgroup_v2Model.FK_dbo_AnnouncementUsers_dbo_Announcements_AnnouncementId" FromRole="Announcement" ToRole="AnnouncementUser" />
+  </EntityType>
+  <EntityType Name="AnnouncementUser">
+    <Key>
+      <PropertyRef Name="AnnouncementId" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="AnnouncementId" Type="Int32" Nullable="false" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="HasRead" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Announcement" Relationship="Calgroup_v2Model.FK_dbo_AnnouncementUsers_dbo_Announcements_AnnouncementId" FromRole="AnnouncementUser" ToRole="Announcement" />
+    <NavigationProperty Name="AppUser" Relationship="Calgroup_v2Model.FK_dbo_AnnouncementUsers_dbo_AppUsers_UserId" FromRole="AnnouncementUser" ToRole="AppUser" />
+  </EntityType>
+  <EntityType Name="AppRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Discriminator" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AppUserRoles" Relationship="Calgroup_v2Model.FK_dbo_AppUserRoles_dbo_AppRoles_IdentityRole_Id" FromRole="AppRole" ToRole="AppUserRole" />
+    <NavigationProperty Name="Permissions" Relationship="Calgroup_v2Model.FK_dbo_Permissions_dbo_AppRoles_RoleId" FromRole="AppRole" ToRole="Permission" />
+  </EntityType>
+  <EntityType Name="AppUserClaim">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="AppUser_Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AppUser" Relationship="Calgroup_v2Model.FK_dbo_AppUserClaims_dbo_AppUsers_AppUser_Id" FromRole="AppUserClaim" ToRole="AppUser" />
+  </EntityType>
+  <EntityType Name="AppUserLogin">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="LoginProvider" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ProviderKey" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="AppUser_Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AppUser" Relationship="Calgroup_v2Model.FK_dbo_AppUserLogins_dbo_AppUsers_AppUser_Id" FromRole="AppUserLogin" ToRole="AppUser" />
+  </EntityType>
+  <EntityType Name="AppUserRole">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="RoleId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="AppUser_Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="IdentityRole_Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AppRole" Relationship="Calgroup_v2Model.FK_dbo_AppUserRoles_dbo_AppRoles_IdentityRole_Id" FromRole="AppUserRole" ToRole="AppRole" />
+    <NavigationProperty Name="AppUser" Relationship="Calgroup_v2Model.FK_dbo_AppUserRoles_dbo_AppUsers_AppUser_Id" FromRole="AppUserRole" ToRole="AppUser" />
+  </EntityType>
+  <EntityType Name="AppUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="FullName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Avatar" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="BirthDay" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="Boolean" />
+    <Property Name="Gender" Type="Boolean" />
+    <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Announcements" Relationship="Calgroup_v2Model.FK_dbo_Announcements_dbo_AppUsers_AppUser_Id" FromRole="AppUser" ToRole="Announcement" />
+    <NavigationProperty Name="AnnouncementUsers" Relationship="Calgroup_v2Model.FK_dbo_AnnouncementUsers_dbo_AppUsers_UserId" FromRole="AppUser" ToRole="AnnouncementUser" />
+    <NavigationProperty Name="AppUserClaims" Relationship="Calgroup_v2Model.FK_dbo_AppUserClaims_dbo_AppUsers_AppUser_Id" FromRole="AppUser" ToRole="AppUserClaim" />
+    <NavigationProperty Name="AppUserLogins" Relationship="Calgroup_v2Model.FK_dbo_AppUserLogins_dbo_AppUsers_AppUser_Id" FromRole="AppUser" ToRole="AppUserLogin" />
+    <NavigationProperty Name="AppUserRoles" Relationship="Calgroup_v2Model.FK_dbo_AppUserRoles_dbo_AppUsers_AppUser_Id" FromRole="AppUser" ToRole="AppUserRole" />
+    <NavigationProperty Name="Orders" Relationship="Calgroup_v2Model.FK_dbo_Orders_dbo_AppUsers_CustomerId" FromRole="AppUser" ToRole="Order" />
+  </EntityType>
+  <EntityType Name="Calibration">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Detail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Boolean" />
+    <Property Name="Category" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Color">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Code" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="OrderDetails" Relationship="Calgroup_v2Model.FK_dbo_OrderDetails_dbo_Colors_ColorId" FromRole="Color" ToRole="OrderDetail" />
+    <NavigationProperty Name="ProductQuantities" Relationship="Calgroup_v2Model.FK_dbo_ProductQuantities_dbo_Colors_ColorId" FromRole="Color" ToRole="ProductQuantity" />
+  </EntityType>
+  <EntityType Name="ContactDetail">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Website" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Other" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Lat" Type="Double" />
+    <Property Name="Lng" Type="Double" />
+    <Property Name="Status" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Adress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Error">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="StackTrace" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="Feedback">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Message" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Status" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Footer">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Content" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Function">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="URL" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+    <Property Name="ParentId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="Boolean" Nullable="false" />
+    <Property Name="IconCss" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Functions1" Relationship="Calgroup_v2Model.FK_dbo_Functions_dbo_Functions_ParentId" FromRole="Function" ToRole="Function1" />
+    <NavigationProperty Name="Function1" Relationship="Calgroup_v2Model.FK_dbo_Functions_dbo_Functions_ParentId" FromRole="Function1" ToRole="Function" />
+    <NavigationProperty Name="Permissions" Relationship="Calgroup_v2Model.FK_dbo_Permissions_dbo_Functions_FunctionId" FromRole="Function" ToRole="Permission" />
+  </EntityType>
+  <EntityType Name="Library">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Image" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PDF" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Boolean" Nullable="false" />
+    <Property Name="IDCategory" Type="Int32" Nullable="false" />
+    <Property Name="AliasName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="LibraryCategory" Relationship="Calgroup_v2Model.FK_Library_LibraryCategory" FromRole="Library" ToRole="LibraryCategory" />
+  </EntityType>
+  <EntityType Name="Linhvuc">
+    <Key>
+      <PropertyRef Name="LinhvucID" />
+    </Key>
+    <Property Name="LinhvucID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Linhvuc1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DisplayOrder" Type="Int32" />
+    <NavigationProperty Name="LoaiSanPhams" Relationship="Calgroup_v2Model.FK_LoaiSanPham_Linhvuc" FromRole="Linhvuc" ToRole="LoaiSanPham" />
+  </EntityType>
+  <EntityType Name="Menu">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Text" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Link" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="ParentID" Type="Int32" />
+    <Property Name="DisplayOrder" Type="Int32" />
+    <Property Name="Target" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Boolean" />
+    <Property Name="TypeID" Type="Int32" />
+  </EntityType>
+  <EntityType Name="MenuType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="News">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Image" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="AliasName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Detail" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OrderDetail">
+    <Key>
+      <PropertyRef Name="OrderID" />
+      <PropertyRef Name="ProductID" />
+    </Key>
+    <Property Name="OrderID" Type="Int32" Nullable="false" />
+    <Property Name="ProductID" Type="Int32" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" />
+    <Property Name="Price" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="ColorId" Type="Int32" />
+    <Property Name="SizeId" Type="Int32" />
+    <NavigationProperty Name="Color" Relationship="Calgroup_v2Model.FK_dbo_OrderDetails_dbo_Colors_ColorId" FromRole="OrderDetail" ToRole="Color" />
+    <NavigationProperty Name="Order" Relationship="Calgroup_v2Model.FK_dbo_OrderDetails_dbo_Orders_OrderID" FromRole="OrderDetail" ToRole="Order" />
+    <NavigationProperty Name="Product" Relationship="Calgroup_v2Model.FK_dbo_OrderDetails_dbo_Products_ProductID" FromRole="OrderDetail" ToRole="Product" />
+    <NavigationProperty Name="Size" Relationship="Calgroup_v2Model.FK_dbo_OrderDetails_dbo_Sizes_SizeId" FromRole="OrderDetail" ToRole="Size" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="CustomerAddress" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="CustomerEmail" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="CustomerMobile" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CustomerMessage" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="PaymentMethod" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PaymentStatus" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Boolean" Nullable="false" />
+    <Property Name="CustomerId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AppUser" Relationship="Calgroup_v2Model.FK_dbo_Orders_dbo_AppUsers_CustomerId" FromRole="Order" ToRole="AppUser" />
+    <NavigationProperty Name="OrderDetails" Relationship="Calgroup_v2Model.FK_dbo_OrderDetails_dbo_Orders_OrderID" FromRole="Order" ToRole="OrderDetail" />
+  </EntityType>
+  <EntityType Name="Page">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Alias" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="MetaKeyword" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="MetaDescription" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PartnerLogo">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Image" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PostCategory">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Alias" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="ParentID" Type="Int32" />
+    <Property Name="DisplayOrder" Type="Int32" />
+    <Property Name="Image" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="HomeFlag" Type="Boolean" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="MetaKeyword" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="MetaDescription" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Posts" Relationship="Calgroup_v2Model.FK_dbo_Posts_dbo_PostCategories_CategoryID" FromRole="PostCategory" ToRole="Post" />
+  </EntityType>
+  <EntityType Name="Post">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="512" FixedLength="false" Unicode="true" />
+    <Property Name="Alias" Type="String" Nullable="false" MaxLength="512" FixedLength="false" Unicode="false" />
+    <Property Name="CategoryID" Type="Int32" Nullable="false" />
+    <Property Name="Image" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="HomeFlag" Type="Boolean" />
+    <Property Name="HotFlag" Type="Boolean" />
+    <Property Name="ViewCount" Type="Int32" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="MetaKeyword" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="MetaDescription" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="PostCategory" Relationship="Calgroup_v2Model.FK_dbo_Posts_dbo_PostCategories_CategoryID" FromRole="Post" ToRole="PostCategory" />
+    <NavigationProperty Name="Tags" Relationship="Calgroup_v2Model.PostTags" FromRole="Post" ToRole="Tag" />
+  </EntityType>
+  <EntityType Name="ProductCategory">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Alias" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="ParentID" Type="Int32" />
+    <Property Name="DisplayOrder" Type="Int32" />
+    <Property Name="HomeOrder" Type="Int32" />
+    <Property Name="Image" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="HomeFlag" Type="Boolean" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="MetaKeyword" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="MetaDescription" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Products" Relationship="Calgroup_v2Model.FK_dbo_Products_dbo_ProductCategories_CategoryID" FromRole="ProductCategory" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="ProductImage">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductId" Type="Int32" Nullable="false" />
+    <Property Name="Path" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Caption" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Product" Relationship="Calgroup_v2Model.FK_dbo_ProductImages_dbo_Products_ProductId" FromRole="ProductImage" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="ProductQuantity">
+    <Key>
+      <PropertyRef Name="ProductId" />
+      <PropertyRef Name="SizeId" />
+      <PropertyRef Name="ColorId" />
+    </Key>
+    <Property Name="ProductId" Type="Int32" Nullable="false" />
+    <Property Name="SizeId" Type="Int32" Nullable="false" />
+    <Property Name="ColorId" Type="Int32" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Color" Relationship="Calgroup_v2Model.FK_dbo_ProductQuantities_dbo_Colors_ColorId" FromRole="ProductQuantity" ToRole="Color" />
+    <NavigationProperty Name="Product" Relationship="Calgroup_v2Model.FK_dbo_ProductQuantities_dbo_Products_ProductId" FromRole="ProductQuantity" ToRole="Product" />
+    <NavigationProperty Name="Size" Relationship="Calgroup_v2Model.FK_dbo_ProductQuantities_dbo_Sizes_SizeId" FromRole="ProductQuantity" ToRole="Size" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Alias" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="CategoryID" Type="Int32" Nullable="false" />
+    <Property Name="ThumbnailImage" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Price" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="OriginalPrice" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="PromotionPrice" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="IncludedVAT" Type="Boolean" Nullable="false" />
+    <Property Name="Warranty" Type="Int32" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="HomeFlag" Type="Boolean" />
+    <Property Name="HotFlag" Type="Boolean" />
+    <Property Name="ViewCount" Type="Int32" />
+    <Property Name="Tags" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="MetaKeyword" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="MetaDescription" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="OrderDetails" Relationship="Calgroup_v2Model.FK_dbo_OrderDetails_dbo_Products_ProductID" FromRole="Product" ToRole="OrderDetail" />
+    <NavigationProperty Name="ProductCategory" Relationship="Calgroup_v2Model.FK_dbo_Products_dbo_ProductCategories_CategoryID" FromRole="Product" ToRole="ProductCategory" />
+    <NavigationProperty Name="ProductImages" Relationship="Calgroup_v2Model.FK_dbo_ProductImages_dbo_Products_ProductId" FromRole="Product" ToRole="ProductImage" />
+    <NavigationProperty Name="ProductQuantities" Relationship="Calgroup_v2Model.FK_dbo_ProductQuantities_dbo_Products_ProductId" FromRole="Product" ToRole="ProductQuantity" />
+    <NavigationProperty Name="Tags1" Relationship="Calgroup_v2Model.ProductTags" FromRole="Product" ToRole="Tag" />
+  </EntityType>
+  <EntityType Name="ProjectProduct">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Alias" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="CategoryID" Type="Int32" Nullable="false" />
+    <Property Name="ThumbnailImage" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Price" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="OriginalPrice" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="PromotionPrice" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="IncludedVAT" Type="Boolean" Nullable="false" />
+    <Property Name="Warranty" Type="Int32" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="HomeFlag" Type="Boolean" />
+    <Property Name="HotFlag" Type="Boolean" />
+    <Property Name="ViewCount" Type="Int32" />
+    <Property Name="Tags" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="MetaKeyword" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="MetaDescription" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Project">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Alias" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="ParentID" Type="Int32" />
+    <Property Name="DisplayOrder" Type="Int32" />
+    <Property Name="HomeOrder" Type="Int32" />
+    <Property Name="Image" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="HomeFlag" Type="Boolean" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedBy" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="MetaKeyword" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="MetaDescription" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Size">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="OrderDetails" Relationship="Calgroup_v2Model.FK_dbo_OrderDetails_dbo_Sizes_SizeId" FromRole="Size" ToRole="OrderDetail" />
+    <NavigationProperty Name="ProductQuantities" Relationship="Calgroup_v2Model.FK_dbo_ProductQuantities_dbo_Sizes_SizeId" FromRole="Size" ToRole="ProductQuantity" />
+  </EntityType>
+  <EntityType Name="Slide">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Image" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Url" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="DisplayOrder" Type="Int32" />
+    <Property Name="Status" Type="Boolean" Nullable="false" />
+    <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="SupportOnline">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Department" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Skype" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Yahoo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Facebook" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Boolean" Nullable="false" />
+    <Property Name="DisplayOrder" Type="Int32" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="SystemConfig">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Code" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ValueString" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ValueInt" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Tag">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Posts" Relationship="Calgroup_v2Model.PostTags" FromRole="Tag" ToRole="Post" />
+    <NavigationProperty Name="Products" Relationship="Calgroup_v2Model.ProductTags" FromRole="Tag" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="VisitorStatistic">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Guid" Nullable="false" />
+    <Property Name="VisitedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IPAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK_dbo_Announcements_dbo_AppUsers_AppUser_Id">
+    <End Type="Calgroup_v2Model.AppUser" Role="AppUser" Multiplicity="0..1" />
+    <End Type="Calgroup_v2Model.Announcement" Role="Announcement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AppUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Announcement">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AnnouncementUsers_dbo_Announcements_AnnouncementId">
+    <End Type="Calgroup_v2Model.Announcement" Role="Announcement" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="Calgroup_v2Model.AnnouncementUser" Role="AnnouncementUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Announcement">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="AnnouncementUser">
+        <PropertyRef Name="AnnouncementId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AnnouncementUsers_dbo_AppUsers_UserId">
+    <End Type="Calgroup_v2Model.AppUser" Role="AppUser" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="Calgroup_v2Model.AnnouncementUser" Role="AnnouncementUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AppUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AnnouncementUser">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AppUserRoles_dbo_AppRoles_IdentityRole_Id">
+    <End Type="Calgroup_v2Model.AppRole" Role="AppRole" Multiplicity="0..1" />
+    <End Type="Calgroup_v2Model.AppUserRole" Role="AppUserRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AppRole">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AppUserRole">
+        <PropertyRef Name="IdentityRole_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AppUserClaims_dbo_AppUsers_AppUser_Id">
+    <End Type="Calgroup_v2Model.AppUser" Role="AppUser" Multiplicity="0..1" />
+    <End Type="Calgroup_v2Model.AppUserClaim" Role="AppUserClaim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AppUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AppUserClaim">
+        <PropertyRef Name="AppUser_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AppUserLogins_dbo_AppUsers_AppUser_Id">
+    <End Type="Calgroup_v2Model.AppUser" Role="AppUser" Multiplicity="0..1" />
+    <End Type="Calgroup_v2Model.AppUserLogin" Role="AppUserLogin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AppUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AppUserLogin">
+        <PropertyRef Name="AppUser_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AppUserRoles_dbo_AppUsers_AppUser_Id">
+    <End Type="Calgroup_v2Model.AppUser" Role="AppUser" Multiplicity="0..1" />
+    <End Type="Calgroup_v2Model.AppUserRole" Role="AppUserRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AppUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AppUserRole">
+        <PropertyRef Name="AppUser_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Orders_dbo_AppUsers_CustomerId">
+    <End Type="Calgroup_v2Model.AppUser" Role="AppUser" Multiplicity="0..1" />
+    <End Type="Calgroup_v2Model.Order" Role="Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AppUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_OrderDetails_dbo_Colors_ColorId">
+    <End Type="Calgroup_v2Model.Color" Role="Color" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="Calgroup_v2Model.OrderDetail" Role="OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Color">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="OrderDetail">
+        <PropertyRef Name="ColorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_ProductQuantities_dbo_Colors_ColorId">
+    <End Type="Calgroup_v2Model.Color" Role="Color" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="Calgroup_v2Model.ProductQuantity" Role="ProductQuantity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Color">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ProductQuantity">
+        <PropertyRef Name="ColorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Functions_dbo_Functions_ParentId">
+    <End Type="Calgroup_v2Model.Function" Role="Function" Multiplicity="0..1" />
+    <End Type="Calgroup_v2Model.Function" Role="Function1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Function">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Function1">
+        <PropertyRef Name="ParentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Library_LibraryCategory">
+    <End Type="Calgroup_v2Model.LibraryCategory" Role="LibraryCategory" Multiplicity="1" />
+    <End Type="Calgroup_v2Model.Library" Role="Library" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LibraryCategory">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Library">
+        <PropertyRef Name="IDCategory" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LoaiSanPham_Linhvuc">
+    <End Type="Calgroup_v2Model.Linhvuc" Role="Linhvuc" Multiplicity="0..1" />
+    <End Type="Calgroup_v2Model.LoaiSanPham" Role="LoaiSanPham" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Linhvuc">
+        <PropertyRef Name="LinhvucID" />
+      </Principal>
+      <Dependent Role="LoaiSanPham">
+        <PropertyRef Name="LinhvucID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_OrderDetails_dbo_Orders_OrderID">
+    <End Type="Calgroup_v2Model.Order" Role="Order" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="Calgroup_v2Model.OrderDetail" Role="OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="OrderDetail">
+        <PropertyRef Name="OrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_OrderDetails_dbo_Products_ProductID">
+    <End Type="Calgroup_v2Model.Product" Role="Product" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="Calgroup_v2Model.OrderDetail" Role="OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="OrderDetail">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_OrderDetails_dbo_Sizes_SizeId">
+    <End Type="Calgroup_v2Model.Size" Role="Size" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="Calgroup_v2Model.OrderDetail" Role="OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Size">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="OrderDetail">
+        <PropertyRef Name="SizeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Posts_dbo_PostCategories_CategoryID">
+    <End Type="Calgroup_v2Model.PostCategory" Role="PostCategory" Multiplicity="1" />
+    <End Type="Calgroup_v2Model.Post" Role="Post" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PostCategory">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Post">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Products_dbo_ProductCategories_CategoryID">
+    <End Type="Calgroup_v2Model.ProductCategory" Role="ProductCategory" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="Calgroup_v2Model.Product" Role="Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductCategory">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_ProductImages_dbo_Products_ProductId">
+    <End Type="Calgroup_v2Model.Product" Role="Product" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="Calgroup_v2Model.ProductImage" Role="ProductImage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ProductImage">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_ProductQuantities_dbo_Products_ProductId">
+    <End Type="Calgroup_v2Model.Product" Role="Product" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="Calgroup_v2Model.ProductQuantity" Role="ProductQuantity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ProductQuantity">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_ProductQuantities_dbo_Sizes_SizeId">
+    <End Type="Calgroup_v2Model.Size" Role="Size" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="Calgroup_v2Model.ProductQuantity" Role="ProductQuantity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Size">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ProductQuantity">
+        <PropertyRef Name="SizeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PostTags">
+    <End Type="Calgroup_v2Model.Post" Role="Post" Multiplicity="*" />
+    <End Type="Calgroup_v2Model.Tag" Role="Tag" Multiplicity="*" />
+  </Association>
+  <Association Name="ProductTags">
+    <End Type="Calgroup_v2Model.Product" Role="Product" Multiplicity="*" />
+    <End Type="Calgroup_v2Model.Tag" Role="Tag" Multiplicity="*" />
+  </Association>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <EntityType Name="Permission">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="FunctionId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CanCreate" Type="Boolean" Nullable="false" />
+    <Property Name="CanRead" Type="Boolean" Nullable="false" />
+    <Property Name="CanUpdate" Type="Boolean" Nullable="false" />
+    <Property Name="CanDelete" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="AppRole" Relationship="Calgroup_v2Model.FK_dbo_Permissions_dbo_AppRoles_RoleId" FromRole="Permission" ToRole="AppRole" />
+    <NavigationProperty Name="Function" Relationship="Calgroup_v2Model.FK_dbo_Permissions_dbo_Functions_FunctionId" FromRole="Permission" ToRole="Function" />
+  </EntityType>
+  <Association Name="FK_dbo_Permissions_dbo_AppRoles_RoleId">
+    <End Type="Calgroup_v2Model.AppRole" Role="AppRole" Multiplicity="0..1" />
+    <End Type="Calgroup_v2Model.Permission" Role="Permission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AppRole">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Permission">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Permissions_dbo_Functions_FunctionId">
+    <End Type="Calgroup_v2Model.Function" Role="Function" Multiplicity="0..1" />
+    <End Type="Calgroup_v2Model.Permission" Role="Permission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Function">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Permission">
+        <PropertyRef Name="FunctionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="UserAdministrator">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="FullName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="Avatar" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="IsAdmin" Type="Byte" />
+    <Property Name="Allowed" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="UserCategories" Relationship="Calgroup_v2Model.FK_dbo_UserCategory_dbo_UserAdministrator_UserId" FromRole="UserAdministrator" ToRole="UserCategory" />
+    <NavigationProperty Name="UserGrantPermissions" Relationship="Calgroup_v2Model.FK_dbo_UserGrantPermission_dbo_UserAdministrator_UserId" FromRole="UserAdministrator" ToRole="UserGrantPermission" />
+    <NavigationProperty Name="UserPosts" Relationship="Calgroup_v2Model.FK_dbo_UserPost_dbo_UserAdministrator_UserId" FromRole="UserAdministrator" ToRole="UserPost" />
+  </EntityType>
+  <EntityType Name="UserBusiness">
+    <Key>
+      <PropertyRef Name="BusinessId" />
+    </Key>
+    <Property Name="BusinessId" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="BusinessName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Boolean" />
+    <NavigationProperty Name="UserPermissions" Relationship="Calgroup_v2Model.FK_dbo_UserPermission_dbo_UserBusiness_BusinessId" FromRole="UserBusiness" ToRole="UserPermission" />
+  </EntityType>
+  <EntityType Name="UserCategory">
+    <Key>
+      <PropertyRef Name="CategoryId" />
+    </Key>
+    <Property Name="CategoryId" Type="Int32" Nullable="false" />
+    <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="OrderNo" Type="Int32" Nullable="false" />
+    <Property Name="Status" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="UserId" Type="Int32" />
+    <NavigationProperty Name="UserAdministrator" Relationship="Calgroup_v2Model.FK_dbo_UserCategory_dbo_UserAdministrator_UserId" FromRole="UserCategory" ToRole="UserAdministrator" />
+    <NavigationProperty Name="UserPosts" Relationship="Calgroup_v2Model.FK_dbo_UserPost_dbo_UserCategory_CategoryId" FromRole="UserCategory" ToRole="UserPost" />
+  </EntityType>
+  <EntityType Name="UserGrantPermission">
+    <Key>
+      <PropertyRef Name="PermissionId" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="PermissionId" Type="Int32" Nullable="false" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="UserAdministrator" Relationship="Calgroup_v2Model.FK_dbo_UserGrantPermission_dbo_UserAdministrator_UserId" FromRole="UserGrantPermission" ToRole="UserAdministrator" />
+    <NavigationProperty Name="UserPermission" Relationship="Calgroup_v2Model.FK_dbo_UserGrantPermission_dbo_UserPermission_PermissionId" FromRole="UserGrantPermission" ToRole="UserPermission" />
+  </EntityType>
+  <EntityType Name="UserPermission">
+    <Key>
+      <PropertyRef Name="PermissionId" />
+    </Key>
+    <Property Name="PermissionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PermissionName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="BusinessId" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="Boolean" />
+    <NavigationProperty Name="UserBusiness" Relationship="Calgroup_v2Model.FK_dbo_UserPermission_dbo_UserBusiness_BusinessId" FromRole="UserPermission" ToRole="UserBusiness" />
+    <NavigationProperty Name="UserGrantPermissions" Relationship="Calgroup_v2Model.FK_dbo_UserGrantPermission_dbo_UserPermission_PermissionId" FromRole="UserPermission" ToRole="UserGrantPermission" />
+  </EntityType>
+  <EntityType Name="UserPost">
+    <Key>
+      <PropertyRef Name="PostId" />
+    </Key>
+    <Property Name="PostId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="512" FixedLength="false" Unicode="true" />
+    <Property Name="Brief" Type="String" Nullable="false" MaxLength="1024" FixedLength="false" Unicode="true" />
+    <Property Name="Content" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Picture" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="Tags" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="CategoryId" Type="Int32" Nullable="false" />
+    <Property Name="ViewNo" Type="Int32" />
+    <Property Name="Status" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="UserId" Type="Int32" />
+    <NavigationProperty Name="UserAdministrator" Relationship="Calgroup_v2Model.FK_dbo_UserPost_dbo_UserAdministrator_UserId" FromRole="UserPost" ToRole="UserAdministrator" />
+    <NavigationProperty Name="UserCategory" Relationship="Calgroup_v2Model.FK_dbo_UserPost_dbo_UserCategory_CategoryId" FromRole="UserPost" ToRole="UserCategory" />
+  </EntityType>
+  <Association Name="FK_dbo_UserCategory_dbo_UserAdministrator_UserId">
+    <End Type="Calgroup_v2Model.UserAdministrator" Role="UserAdministrator" Multiplicity="0..1" />
+    <End Type="Calgroup_v2Model.UserCategory" Role="UserCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserAdministrator">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="UserCategory">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_UserGrantPermission_dbo_UserAdministrator_UserId">
+    <End Type="Calgroup_v2Model.UserAdministrator" Role="UserAdministrator" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="Calgroup_v2Model.UserGrantPermission" Role="UserGrantPermission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserAdministrator">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="UserGrantPermission">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_UserPost_dbo_UserAdministrator_UserId">
+    <End Type="Calgroup_v2Model.UserAdministrator" Role="UserAdministrator" Multiplicity="0..1" />
+    <End Type="Calgroup_v2Model.UserPost" Role="UserPost" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserAdministrator">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="UserPost">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_UserPermission_dbo_UserBusiness_BusinessId">
+    <End Type="Calgroup_v2Model.UserBusiness" Role="UserBusiness" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="Calgroup_v2Model.UserPermission" Role="UserPermission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserBusiness">
+        <PropertyRef Name="BusinessId" />
+      </Principal>
+      <Dependent Role="UserPermission">
+        <PropertyRef Name="BusinessId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_UserPost_dbo_UserCategory_CategoryId">
+    <End Type="Calgroup_v2Model.UserCategory" Role="UserCategory" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="Calgroup_v2Model.UserPost" Role="UserPost" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserCategory">
+        <PropertyRef Name="CategoryId" />
+      </Principal>
+      <Dependent Role="UserPost">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_UserGrantPermission_dbo_UserPermission_PermissionId">
+    <End Type="Calgroup_v2Model.UserPermission" Role="UserPermission" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="Calgroup_v2Model.UserGrantPermission" Role="UserGrantPermission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserPermission">
+        <PropertyRef Name="PermissionId" />
+      </Principal>
+      <Dependent Role="UserGrantPermission">
+        <PropertyRef Name="PermissionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="SanPham">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Alias" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CatID" Type="Int32" />
+    <Property Name="Model" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Manufacturer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ImageLink" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ImageLinkDetail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ManualLink" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Detail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Specification" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Price" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Hot" Type="Int32" />
+    <NavigationProperty Name="LoaiSanPham" Relationship="Calgroup_v2Model.FK_SanPham_LoaiSanPham1" FromRole="SanPham" ToRole="LoaiSanPham" />
+  </EntityType>
+  <Association Name="FK_SanPham_LoaiSanPham1">
+    <End Type="Calgroup_v2Model.LoaiSanPham" Role="LoaiSanPham" Multiplicity="0..1" />
+    <End Type="Calgroup_v2Model.SanPham" Role="SanPham" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LoaiSanPham">
+        <PropertyRef Name="CatID" />
+      </Principal>
+      <Dependent Role="SanPham">
+        <PropertyRef Name="CatID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

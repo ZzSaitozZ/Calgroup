@@ -54,6 +54,14 @@ namespace Calgroup.Controllers
             var a = cgi.Database.SqlQuery<Calgroup.Models.Menu>("Select Linhvuc,Category,AliasCat from dbo.MenuSP order by DisplayOrder asc").ToList();
             SanPhamPageVM pageVM = new SanPhamPageVM(a);
             pageVM.AliasCat = aliascat;
+            if (string.IsNullOrEmpty(aliascat))
+            {
+                ViewBag.LinkSP = cgi.Database.SqlQuery<Calgroup.Models.ShortProduct>("Select Alias FROM dbo.ShortProducts where Hot is not null  order by Hot asc").Select(x=>x.Alias).ToList();
+            }
+            else
+            {
+                ViewBag.LinkSP = cgi.getProducts(aliascat).Select(x => x.Alias).ToList();
+            }
             return View(pageVM);
         }
         [HttpPost]

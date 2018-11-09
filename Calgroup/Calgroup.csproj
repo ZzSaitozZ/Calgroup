@@ -352,6 +352,7 @@
     </Compile>
     <Compile Include="Resources\Common\Encryptor.cs" />
     <Compile Include="Resources\Common\Encryptors.cs" />
+    <Compile Include="Resources\Common\Resizeimage.cs" />
     <Compile Include="Resources\Common\StringHelper.cs" />
     <Compile Include="SanPham.cs">
       <DependentUpon>CalgroupDB.tt</DependentUpon>
@@ -1434,6 +1435,29 @@
     <Content Include="Areas\Admin\Content\images\Products\P_20170123_182801.jpg" />
     <Content Include="Areas\Admin\Content\images\Slide\banner4.jpg" />
     <Content Include="Areas\Admin\Content\images\User\hung.jpg" />
+    <Content Include="Areas\Admin\Content\Library\PDF\Lamduthach.jpg" />
+    <Content Include="Areas\Admin\Content\Sanpham\DeTuGaDongHoSo\Images\7002-10.png" />
+    <Content Include="Areas\Admin\Content\Sanpham\DeTuGaDongHoSo\Images\7002-10sm.png" />
+    <Content Include="Areas\Admin\Content\Sanpham\DeTuGaDongHoSo\Images\7011S-10.png" />
+    <Content Include="Areas\Admin\Content\Sanpham\DeTuGaDongHoSo\Images\7011S-10sm.png" />
+    <Content Include="Areas\Admin\Content\Sanpham\DeTuGaDongHoSo\Images\7012-10.jpg" />
+    <Content Include="Areas\Admin\Content\Sanpham\DeTuGaDongHoSo\Images\7012-10sm.jpg" />
+    <Content Include="Areas\Admin\Content\Sanpham\DeTuGaDongHoSo\Images\7014.png" />
+    <Content Include="Areas\Admin\Content\Sanpham\DeTuGaDongHoSo\Images\7014sm.png" />
+    <Content Include="Areas\Admin\Content\Sanpham\DeTuGaDongHoSo\Images\7032B.png" />
+    <Content Include="Areas\Admin\Content\Sanpham\DeTuGaDongHoSo\Images\7032Bsm.png" />
+    <Content Include="Areas\Admin\Content\Sanpham\DeTuGaDongHoSo\Images\7033B.jpg" />
+    <Content Include="Areas\Admin\Content\Sanpham\DeTuGaDongHoSo\Images\7033Bsm.jpg" />
+    <Content Include="Areas\Admin\Content\Sanpham\DongHoDaNang\Images\FLUKE-17B.JPG" />
+    <Content Include="Areas\Admin\Content\Sanpham\DongHoDaNang\Images\FLUKE-17Bsm.JPG" />
+    <Content Include="Areas\Admin\Content\Sanpham\MayDoDoDan\Images\Fivego-f3.jpg" />
+    <Content Include="Areas\Admin\Content\Sanpham\MayDoDoDan\Images\Fivego-f3sm.jpg" />
+    <Content Include="Areas\Admin\Content\Sanpham\MayDoNhietDoIR\Images\42515.png" />
+    <Content Include="Areas\Admin\Content\Sanpham\MayDoNhietDoIR\Images\42515sm.png" />
+    <Content Include="Areas\Admin\Content\Sanpham\MayHienSong\Images\Keysight-U1604B.png" />
+    <Content Include="Areas\Admin\Content\Sanpham\MayHienSong\Images\Keysight-U1604Bsm.png" />
+    <Content Include="Areas\Admin\Content\Sanpham\ThuocCapDienTu\Images\500-507-10.png" />
+    <Content Include="Areas\Admin\Content\Sanpham\ThuocCapDienTu\Images\500-507-10sm.png" />
     <Content Include="Areas\Admin\Content\_thumbs\Images\Products\03_800800_08801_236x236.jpg" />
     <Content Include="Areas\Admin\Content\_thumbs\Images\Products\1.jpg" />
     <Content Include="Areas\Admin\Content\_thumbs\Images\Products\11.jpg" />
@@ -2462,13 +2486,6 @@
     <Content Include="Resources\Images\Banners\logo.png" />
     <Content Include="Resources\Images\Banners\home-banner-2.png" />
     <Content Include="Resources\Images\Banners\home-banner-3.png" />
-    <Content Include="Resources\Images\Banners\LĨNH VỰC CƠ KHÍ_2.png" />
-    <Content Include="Resources\Images\Banners\LĨNH VỰC HOÁ HỌC-THỂ TÍCH_3.png" />
-    <Content Include="Resources\Images\Banners\LĨNH VỰC KHỐI LƯỢNG_1.png" />
-    <Content Include="Resources\Images\Banners\LĨNH VỰC LỰC ĐỘ CỨNG_1.png" />
-    <Content Include="Resources\Images\Banners\LĨNH VỰC NHIỆT ĐỘ-ĐỘ ẨM_1.png" />
-    <Content Include="Resources\Images\Banners\LĨNH VỰC ÁP SUẤT_1.png" />
-    <Content Include="Resources\Images\Banners\LĨNH VỰC ĐIỆN_1.png" />
     <Content Include="Resources\Images\Banners\panasonic-logo.png" />
     <Content Include="Resources\Images\Banners\samsung-logo.png" />
     <Content Include="Resources\Images\Banners\sony-logo.png" />
@@ -2493,13 +2510,15 @@
     <Content Include="Resources\Images\Item\U1733C Keysight LCR Meter-.png" />
     <Content Include="Resources\Images\Light-Bulb-question_background_banner.jpg" />
     <Content Include="Resources\Images\skype.png" />
-    <Content Include="Resources\Images\TEST\Hiệu chuẩn lĩnh vực cơ khí - Mechanical Calibration.jpg" />
-    <Content Include="Resources\Images\TEST\Hiệu chuẩn lĩnh vực hóa lý - Chemical Calibration.jpg" />
-    <Content Include="Resources\Images\TEST\Hiệu chuẩn lĩnh vực nhiệt động học - Thermodynamic Calibration.jpg" />
-    <Content Include="Resources\Images\TEST\Hiệu chuẩn lĩnh vực quang học - Optical Calibration.jpg" />
-    <Content Include="Resources\Images\TEST\Hiệu chuẩn lĩnh vực thể tích.jpg" />
-    <Content Include="Resources\Images\TEST\Hiệu chuẩn lĩnh vực điện - Electrical Calibration.jpg" />
-    <Content Include="Resources\Images\TEST\Hiệu chuẩn lĩnh vực độ dài - Dimensional Calibration.jpg" />
+    <Content Include="Resources\Images\Banners\dangkybocongthuong.png" />
+    <Content Include="Resources\Images\Banners\Hiệu chuẩn hóa lý - Chemical Calibration.png" />
+    <Content Include="Resources\Images\Banners\Hiệu chuẩn khác - Other Calibration.png" />
+    <Content Include="Resources\Images\Banners\Hiệu chuẩn khối lượng - Calibration Weights.png" />
+    <Content Include="Resources\Images\Banners\Hiệu chuẩn kích thước - Dimensional Calibration.png" />
+    <Content Include="Resources\Images\Banners\Hiệu chuẩn lực - Force Calibration.png" />
+    <Content Include="Resources\Images\Banners\Hiệu chuẩn nhiệt động học - Thermodynamic Calibration.png" />
+    <Content Include="Resources\Images\Banners\Hiệu chuẩn áp suất - Pressure Calibration.png" />
+    <Content Include="Resources\Images\Banners\Hiệu chuẩn điện - Electronic Calibration.png" />
     <Content Include="Resources\Images\zalo.png" />
     <Content Include="Resources\JS\Layout\Layout_1.js" />
     <Content Include="Resources\JS\Scripts\bootstrap.bundle.js" />
@@ -2572,10 +2591,6 @@
     <Content Include="Areas\Admin\Content\ckeditor\.htaccess" />
     <Content Include="Areas\Admin\Content\ckfinder\plugins\fileeditor\codemirror\LICENSE" />
     <Content Include="Areas\Admin\Content\ckfinder\userfiles\.htaccess" />
-    <Content Include="obj\Debug\Calgroup.csproj.CoreCompileInputs.cache" />
-    <Content Include="obj\Debug\Calgroup.csprojResolveAssemblyReference.cache" />
-    <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
-    <Content Include="obj\Debug\Tsc.out" />
     <Content Include="Areas\Admin\Views\Admin\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\Login.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\NotificationAuthorize.cshtml" />
@@ -2787,17 +2802,11 @@
     <Content Include="Areas\Admin\Views\Calibrations\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Calibrations\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Calibrations\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Main\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Main\Login.cshtml" />
-    <Content Include="Areas\Admin\Views\Main\NotificationAuthorize.cshtml" />
     <Content Include="Areas\Admin\Views\Libraries\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Libraries\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Libraries\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Libraries\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Libraries\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Home\Login.cshtml" />
-    <Content Include="Areas\Admin\Views\Home\NotificationAuthorize.cshtml" />
     <Content Include="Areas\Admin\Views\LibraryCategories\Create.cshtml" />
     <Content Include="Areas\Admin\Views\LibraryCategories\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\LibraryCategories\Details.cshtml" />
@@ -2850,6 +2859,35 @@
     <Content Include="Areas\Admin\Views\Staffs\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Staffs\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Staffs\Delete.cshtml" />
+    <Content Include="Areas\Admin\Content\Library\PDF\Catalog\All Indicator.pdf" />
+    <Content Include="Areas\Admin\Content\Library\PDF\Catalog\All Micrometer.pdf" />
+    <Content Include="Areas\Admin\Content\Library\PDF\Catalog\Gauge Blocks.pdf" />
+    <Content Include="Areas\Admin\Content\Library\PDF\Catalog\Mitutoyo General Catalog.pdf" />
+    <Content Include="Areas\Admin\Content\Library\PDF\Company\Mẫu con dấu.pdf" />
+    <Content Include="Areas\Admin\Content\Library\PDF\Company\thong bao ngan hang1 .pdf" />
+    <Content Include="Areas\Admin\Content\Library\PDF\QuyTrinh\Hiệu chuẩn Ap kế Chuẩn Kiểu Chỉ Thị Số và Tương Tự QTHC DLVN-288.pdf" />
+    <Content Include="Areas\Admin\Content\Library\PDF\QuyTrinh\Hiệu chuẩn biến dòng DLVN-295.pdf" />
+    <Content Include="Areas\Admin\Content\Library\PDF\QuyTrinh\hiệu chuẩn cân phân tích DLVN_0284_2015-1.pdf" />
+    <Content Include="Areas\Admin\Content\Library\PDF\QuyTrinh\Hiệu chuẩn cảm biến quang đo xung DLVN-324.pdf" />
+    <Content Include="Areas\Admin\Content\Library\PDF\QuyTrinh\Hiệu chuẩn do dan dien DLVN-277.pdf" />
+    <Content Include="Areas\Admin\Content\Library\PDF\QuyTrinh\Hiệu chuẩn Dung dich Ph chuan DLVN-280-.pdf" />
+    <Content Include="Areas\Admin\Content\Library\PDF\QuyTrinh\Hiệu chuẩn máy phân tích phổ DLVN-321.pdf" />
+    <Content Include="Areas\Admin\Content\Library\PDF\QuyTrinh\Hiệu chuẩn máy tạo sóng DLVN-322.pdf" />
+    <Content Include="Areas\Admin\Content\Library\PDF\QuyTrinh\Hiệu chuẩn nhiệt kế thủy tinh ĐLVN-1592017.pdf" />
+    <Content Include="Areas\Admin\Content\Library\PDF\QuyTrinh\Hiệu Chuẩn Nhiệt Kế điện Trở Platin  DLVN-302.pdf" />
+    <Content Include="Areas\Admin\Content\Library\PDF\QuyTrinh\Hiệu chuẩn quả cân chuẩn DLVN_0286_2015-1.pdf" />
+    <Content Include="Areas\Admin\Content\Library\PDF\QuyTrinh\Hiệu chuẩn thiết bị đo tốc độ DLVN-323_2016.pdf" />
+    <Content Include="Areas\Admin\Content\Library\PDF\QuyTrinh\Hiệu chuẩn áp kế DLVN_0263.pdf" />
+    <Content Include="Areas\Admin\Content\Library\PDF\QuyTrinh\Kiểm định máy đo pH ĐLVN-312017-.pdf" />
+    <Content Include="Areas\Admin\Content\Library\PDF\QuyTrinh\Kiểm định nhiệt kế thủ y tinh ĐLVN-202017.pdf" />
+    <Content Include="Areas\Admin\Content\Library\PDF\QuyTrinh\Quy trình hiệu chuẩn hộp điện trở DLVN-299.pdf" />
+    <Content Include="Areas\Admin\Content\Library\PDF\QuyTrinh\Quy trình hiệu chuẩn nồng độ-SO2CO2CONOx ĐLVN-2652016.pdf" />
+    <Content Include="Areas\Admin\Content\Library\PDF\QuyTrinh\Tieu chuan Iso 17025.pdf" />
+    <Content Include="Areas\Admin\Content\Sanpham\MayDoDoDan\PDF\Fivego-f3.pdf" />
+    <Content Include="Areas\Admin\Content\Sanpham\MayDoNhietDoIR\PDF\Extech-42515.pdf" />
+    <Content Include="Areas\Admin\Content\Sanpham\MayHienSong\PDF\U1604B-U1602B.pdf" />
+    <Content Include="Areas\Admin\Content\Sanpham\ThuocCapDienTu\PDF\Mitutoyo-Caliper%28500 Series%29.pdf" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Resources\JS\Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Resources\JS\Scripts\jquery-3.3.1.js" />
     <Content Include="Resources\JS\Scripts\jquery-3.3.1.min.js" />
@@ -2940,6 +2978,13 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Content\files\" />
     <Folder Include="Areas\Admin\Content\flash\" />
+    <Folder Include="Areas\Admin\Content\Library\Images\Bieumau\" />
+    <Folder Include="Areas\Admin\Content\Library\Images\Catalog\" />
+    <Folder Include="Areas\Admin\Content\Library\Images\Company\" />
+    <Folder Include="Areas\Admin\Content\Library\Images\QuyTrinh\" />
+    <Folder Include="Areas\Admin\Content\Library\PDF\Bieumau\" />
+    <Folder Include="Areas\Admin\Content\Sanpham\DeTuGaDongHoSo\PDF\" />
+    <Folder Include="Areas\Admin\Content\Sanpham\DongHoDaNang\PDF\" />
     <Folder Include="obj\Debug\edmxResourcesToEmbed\" />
     <Folder Include="Resources\Admin\gentelella-master\build\css\" />
     <Folder Include="Resources\Admin\gentelella-master\build\js\" />
@@ -3313,12 +3358,6 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Model\Model.csproj">
-      <Project>{83533385-e5ce-47e0-9c75-92f508f87679}</Project>
-      <Name>Model</Name>
-    </ProjectReference>
-  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -3334,7 +3373,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>1447</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
