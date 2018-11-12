@@ -1,9 +1,5 @@
-﻿ 
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Calgroup.Models.DAO
 {
@@ -14,8 +10,6 @@ namespace Calgroup.Models.DAO
         public IEnumerable<Project> getProjectDao()
         {
             return db.Projects.Where(x => x.Status == true).ToList();
-
-
         }
     }
 }

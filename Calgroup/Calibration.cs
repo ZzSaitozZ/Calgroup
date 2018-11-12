@@ -16,7 +16,7 @@ namespace Calgroup
     {
         public int ID { get; set; }
         public string Detail { get; set; }
-        public Nullable<bool> Status { get; set; }
+        public bool Status { get; set; }
         public string Category { get; set; }
     }
 }

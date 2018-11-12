@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
 namespace Calgroup.Areas.Admin.Models.BusinessModel
 {
-    public class AuthorizeBusiness: ActionFilterAttribute
+    public class AuthorizeBusiness : ActionFilterAttribute
     {
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
@@ -25,7 +23,7 @@ namespace Calgroup.Areas.Admin.Models.BusinessModel
 
             AdminDbContext db = new AdminDbContext();
             //Lấy thông tin user
-            var admin = db.Administrators
+            UserAdministrator admin = db.Administrators
                 .Where(a => a.UserId == userId && a.IsAdmin.Value != 0)
                 .FirstOrDefault();
 
@@ -36,10 +34,10 @@ namespace Calgroup.Areas.Admin.Models.BusinessModel
             }
 
             //Lấy ra tên các permission được gán cho người dùng
-            var listpermission = from p in db.Permissions
-                                 join g in db.GrantPermissions on p.PermissionId equals g.PermissionId
-                                 where g.UserId == userId
-                                 select p.PermissionName;
+            IQueryable<string> listpermission = from p in db.Permissions
+                                                join g in db.GrantPermissions on p.PermissionId equals g.PermissionId
+                                                where g.UserId == userId
+                                                select p.PermissionName;
 
             //Kiểm tra xem các permision có chứa tên action mà người dùng kich hoạt hay không?
             //Nếu không thì nhẩy tới trang thông báo

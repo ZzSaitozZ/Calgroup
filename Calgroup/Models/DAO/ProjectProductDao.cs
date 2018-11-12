@@ -1,9 +1,6 @@
-﻿ 
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Calgroup.Models.DAO
 {
@@ -14,14 +11,13 @@ namespace Calgroup.Models.DAO
         public IEnumerable<ProjectProduct> getProjectProductDao()
         {
             return db.ProjectProducts.Where(x => x.Status == true).ToList();
-
-
         }
+
         public bool Delete(int id)
         {
             try
             {
-                var user = db.ProjectProducts.Find(id);
+                ProjectProduct user = db.ProjectProducts.Find(id);
                 db.ProjectProducts.Remove(user);
                 db.SaveChanges();
                 return true;
@@ -32,8 +28,5 @@ namespace Calgroup.Models.DAO
             }
 
         }
-
-
     }
-
 }

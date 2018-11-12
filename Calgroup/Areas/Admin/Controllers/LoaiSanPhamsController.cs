@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using Calgroup.Resources.Common;
+using System;
 using System.Data.Entity;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Net;
-using System.Web;
+using System.Threading.Tasks;
 using System.Web.Mvc;
-using Calgroup.Resources.Common;
 
 namespace Calgroup.Areas.Admin.Controllers
 {
@@ -18,7 +15,7 @@ namespace Calgroup.Areas.Admin.Controllers
         // GET: Admin/LoaiSanPhams
         public async Task<ActionResult> Index()
         {
-            var loaiSanPhams = db.LoaiSanPhams.Include(l => l.Linhvuc);
+            IQueryable<LoaiSanPham> loaiSanPhams = db.LoaiSanPhams.Include(l => l.Linhvuc);
             return View(await loaiSanPhams.ToListAsync());
         }
 
@@ -29,7 +26,7 @@ namespace Calgroup.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-             LoaiSanPham loaiSanPham = await db.LoaiSanPhams.FindAsync(id);
+            LoaiSanPham loaiSanPham = await db.LoaiSanPhams.FindAsync(id);
             if (loaiSanPham == null)
             {
                 return HttpNotFound();
@@ -70,7 +67,7 @@ namespace Calgroup.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-             LoaiSanPham loaiSanPham = await db.LoaiSanPhams.FindAsync(id);
+            LoaiSanPham loaiSanPham = await db.LoaiSanPhams.FindAsync(id);
             if (loaiSanPham == null)
             {
                 return HttpNotFound();
@@ -104,7 +101,7 @@ namespace Calgroup.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-             LoaiSanPham loaiSanPham = await db.LoaiSanPhams.FindAsync(id);
+            LoaiSanPham loaiSanPham = await db.LoaiSanPhams.FindAsync(id);
             if (loaiSanPham == null)
             {
                 return HttpNotFound();
@@ -117,15 +114,15 @@ namespace Calgroup.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-             LoaiSanPham loaiSanPham = await db.LoaiSanPhams.FindAsync(id);
+            LoaiSanPham loaiSanPham = await db.LoaiSanPhams.FindAsync(id);
             db.LoaiSanPhams.Remove(loaiSanPham);
-            
+
             try
             {
                 //code
                 await db.SaveChangesAsync();
             }
-            catch (Exception Exception)
+            catch (Exception)
             {
                 //code
                 TempData["message"] = "Không thể xóa loại sản phẩm đã có sản phẩm";

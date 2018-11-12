@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using Calgroup.Areas.Admin.Models.BusinessModel;
+using Calgroup.Models.DAO;
+using Calgroup.Resources.Common;
+using System;
 using System.Data.Entity;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using  Calgroup.Models.DAO;
-using Calgroup.Resources.Common;
-using Calgroup.Areas.Admin.Models.BusinessModel;
 
 namespace Calgroup.Areas.Admin.Controllers
 {
@@ -40,8 +37,9 @@ namespace Calgroup.Areas.Admin.Controllers
         }
 
         // GET: Admin/ProjectProducts/Create
-        public ActionResult Create()        {
-            
+        public ActionResult Create()
+        {
+
             return View();
         }
 
@@ -62,11 +60,11 @@ namespace Calgroup.Areas.Admin.Controllers
             projectProduct.OriginalPrice = projectProduct.OriginalPrice;
             projectProduct.PromotionPrice = projectProduct.PromotionPrice;
             projectProduct.IncludedVAT = projectProduct.IncludedVAT;
-            projectProduct.Warranty = projectProduct.Warranty;           
+            projectProduct.Warranty = projectProduct.Warranty;
             projectProduct.Description = HttpUtility.HtmlDecode(projectProduct.Description);
             projectProduct.Content = HttpUtility.HtmlDecode(projectProduct.Content);
             projectProduct.HomeFlag = projectProduct.HomeFlag;
-            projectProduct.HotFlag=projectProduct.HotFlag;
+            projectProduct.HotFlag = projectProduct.HotFlag;
             projectProduct.CreatedDate = DateTime.Now;
             projectProduct.ViewCount = 1;
             projectProduct.Status = projectProduct.Status;
@@ -76,7 +74,6 @@ namespace Calgroup.Areas.Admin.Controllers
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-
             return View(projectProduct);
         }
 
@@ -116,11 +113,11 @@ namespace Calgroup.Areas.Admin.Controllers
             projectProduct.OriginalPrice = projectProduct.OriginalPrice;
             projectProduct.PromotionPrice = projectProduct.PromotionPrice;
             projectProduct.IncludedVAT = projectProduct.IncludedVAT;
-            projectProduct.Warranty = projectProduct.Warranty;           
+            projectProduct.Warranty = projectProduct.Warranty;
             projectProduct.Description = HttpUtility.HtmlDecode(projectProduct.Description);
             projectProduct.Content = HttpUtility.HtmlDecode(projectProduct.Content);
             projectProduct.HomeFlag = projectProduct.HomeFlag;
-            projectProduct.HotFlag=projectProduct.HotFlag;
+            projectProduct.HotFlag = projectProduct.HotFlag;
             projectProduct.UpdatedDate = DateTime.Now;
             projectProduct.ViewCount = 1;
             projectProduct.Status = projectProduct.Status;
@@ -142,6 +139,7 @@ namespace Calgroup.Areas.Admin.Controllers
             return Json(new { redirectUrl = Url.Action("Index", "ProjectProducts"), isRedirect = true });
 
         }
+
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
@@ -150,14 +148,16 @@ namespace Calgroup.Areas.Admin.Controllers
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
+
         public JsonResult ChangeStatus(int id)
         {
-            var result = new ChangesDAO().ProjectProductsStatus(id);
+            bool result = new ChangesDAO().ProjectProductsStatus(id);
             return Json(new
             {
                 status = result
             });
         }
+
         public string ChangeImage(int? id, string picture)
         {
             pic = picture;
@@ -174,6 +174,7 @@ namespace Calgroup.Areas.Admin.Controllers
             db.SaveChanges();
             return "";
         }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

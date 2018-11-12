@@ -1,11 +1,8 @@
-﻿ 
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace  Calgroup.Models.DAO
+namespace Calgroup.Models.DAO
 {
     public class ProductCategoriesDAO
     {
@@ -14,14 +11,13 @@ namespace  Calgroup.Models.DAO
         public IEnumerable<ProductCategory> getProductCategories(int id)
         {
             return db.ProductCategories.Where(x => x.Status == true && x.ID == id).ToList();
-
-
         }
+
         public bool Delete(int id)
         {
             try
             {
-                var user = db.ProductCategories.Find(id);
+                ProductCategory user = db.ProductCategories.Find(id);
                 db.ProductCategories.Remove(user);
                 db.SaveChanges();
                 return true;

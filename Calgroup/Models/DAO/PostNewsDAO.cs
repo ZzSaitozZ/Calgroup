@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
- 
 
-namespace  Calgroup.Models.DAO
+namespace Calgroup.Models.DAO
 {
     public class PostNewsDAO
     {
@@ -28,19 +25,17 @@ namespace  Calgroup.Models.DAO
 
         public IEnumerable<Post> ListByGroupAll()
         {
-            //return db.Posts.OrderByDescending(x => x.CreatedDate).Where(x => x.Status == true && x.CategoryID != 1002).Take(top).ToList();
             return db.Posts.OrderByDescending(x => x.CreatedDate).Where(x => x.Status == true).ToList();
         }
 
-        public IEnumerable<Post> ListByGroupId( long id)
+        public IEnumerable<Post> ListByGroupId(long id)
         {
             return db.Posts.Where(x => x.Status == true && x.ID == id).ToList();
         }
 
         public Post ViewDetail(long id)
         {
-            var item = db.Posts.Find(id);
-
+            Post item = db.Posts.Find(id);
             // Tăng số lần xem
             item.ViewCount++;
             db.SaveChanges();
@@ -51,7 +46,7 @@ namespace  Calgroup.Models.DAO
         {
             try
             {
-                var user = db.Posts.Find(id);
+                Post user = db.Posts.Find(id);
                 db.Posts.Remove(user);
                 db.SaveChanges();
                 return true;
@@ -67,7 +62,7 @@ namespace  Calgroup.Models.DAO
         {
             try
             {
-                var user = db.PostCategories.Find(id);
+                PostCategory user = db.PostCategories.Find(id);
                 db.PostCategories.Remove(user);
                 db.SaveChanges();
                 return true;

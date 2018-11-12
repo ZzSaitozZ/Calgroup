@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Net;
-using System.Web;
-using System.Web.Mvc;
-using Calgroup.Areas.Admin.Models.BusinessModel;
-using Calgroup.Areas.Admin.Models.DataModel;
+﻿using Calgroup.Areas.Admin.Models.BusinessModel;
 using Calgroup.Areas.Admin.Models.DaoModel;
 using Calgroup.Resources.Common;
+using System;
+using System.Data.Entity;
+using System.Linq;
+using System.Net;
+using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace Calgroup.Areas.Admin.Controllers
 {
@@ -18,7 +14,7 @@ namespace Calgroup.Areas.Admin.Controllers
     public class UserAdministratorsController : Controller
     {
         private Calgroup_v2DB db = new Calgroup_v2DB();
-        
+
         // GET: Admin/UserAdministrators
         public async Task<ActionResult> Index()
         {
@@ -53,9 +49,9 @@ namespace Calgroup.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include = "UserId,UserName,Password,FullName,Email,Avatar,IsAdmin,Allowed,CreatedDate")] UserAdministrator userAdministrator)
         {
-            var user = db.UserAdministrators.SingleOrDefault(x => x.UserName == userAdministrator.UserName);
+            UserAdministrator user = db.UserAdministrators.SingleOrDefault(x => x.UserName == userAdministrator.UserName);
 
-            var email = db.UserAdministrators.SingleOrDefault(x => x.Email == userAdministrator.Email);
+            UserAdministrator email = db.UserAdministrators.SingleOrDefault(x => x.Email == userAdministrator.Email);
 
             string passMD5 = Encryptor.MD5Hash(userAdministrator.UserName + userAdministrator.Password);
 
@@ -87,7 +83,7 @@ namespace Calgroup.Areas.Admin.Controllers
         }
         private static string  pass;
         private static string pic;
-        
+
 
         // GET: Admin/UserAdministrators/Edit/5
         public async Task<ActionResult> Edit(int? id)
@@ -98,7 +94,7 @@ namespace Calgroup.Areas.Admin.Controllers
             }
             UserAdministrator userAdministrator = await db.UserAdministrators.FindAsync(id);
             pass = db.UserAdministrators.SingleOrDefault(x => x.Password == userAdministrator.Password).Password;
-            
+
             if (userAdministrator == null)
             {
                 return HttpNotFound();
@@ -117,7 +113,7 @@ namespace Calgroup.Areas.Admin.Controllers
             if (pic != userAdministrator.Avatar)
             {
                 userAdministrator.Avatar = pic;
-            } 
+            }
 
             if (pass != userAdministrator.Password)
             {
@@ -135,24 +131,24 @@ namespace Calgroup.Areas.Admin.Controllers
             return View(userAdministrator);
         }
 
-               
+
         public JsonResult Delete(int id)
         {
-             new UserDaoModel().Delete(id);
+            new UserDaoModel().Delete(id);
 
             return Json(new { redirectUrl = Url.Action("Index", "UserAdministrators"), isRedirect = true });
 
         }
-        
+
         public JsonResult ChangeStatus(int id)
         {
-            var result = new UserDaoModel().ChangeStatus(id);
+            bool result = new UserDaoModel().ChangeStatus(id);
             return Json(new
             {
                 status = result
             });
         }
-        
+
         public string ChangeImage(int? id, string picture)
         {
             pic = picture;

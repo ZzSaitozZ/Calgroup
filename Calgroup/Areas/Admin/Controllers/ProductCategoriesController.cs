@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using Calgroup.Areas.Admin.Models.BusinessModel;
+using Calgroup.Models.DAO;
+using Calgroup.Resources.Common;
 using System.Data.Entity;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
- 
-using Calgroup.Areas.Admin.Models.BusinessModel;
-using  Calgroup.Models.DAO;
-using Calgroup.Resources.Common;
 
 namespace Calgroup.Areas.Admin.Controllers
 {
@@ -57,7 +52,7 @@ namespace Calgroup.Areas.Admin.Controllers
             productCategory.Name = StringHelper.UpperCase(productCategory.Name);
             productCategory.Alias = StringHelper.ToUnsignString(productCategory.Alias);
             productCategory.Description = HttpUtility.HtmlDecode(productCategory.Description);
-            
+
             if (ModelState.IsValid)
             {
                 db.ProductCategories.Add(productCategory);
@@ -108,10 +103,9 @@ namespace Calgroup.Areas.Admin.Controllers
 
         }
 
-       
         public JsonResult ChangeStatus(int id)
         {
-            var result = new ChangesDAO().ProductCategoriesStatus(id);
+            bool result = new ChangesDAO().ProductCategoriesStatus(id);
             return Json(new
             {
                 status = result

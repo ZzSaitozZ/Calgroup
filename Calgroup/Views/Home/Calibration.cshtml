@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Hiệu chuẩn";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -52,7 +51,6 @@
     .pull-right {
         float: right !important;
     }
-
 
     #P-card-container {
         margin: 0px auto 20px auto;
@@ -197,11 +195,8 @@
         <div class="navbar-toggler linhvuccha" data-toggle="collapse" data-target="#lvkeysight" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
             Hiệu chuẩn
             <span class="pull-right clickable"><i class="fas fa-angle-down"></i></span>
-
         </div>
-
         <div class="linhvuccon show" id="lvkeysight">
-
             @for (int i = 0; i < calibration.Count; i++)
             {
                 String a = "hieuchuan" + calibration[i].ID;
@@ -218,12 +213,9 @@
                     </div>
                 }
             }
-
-
         </div>
     </div>
     <div id="P-container" class="col-md-9" style="padding-left:5%;padding-right:5%">
-
         <div>
             @for (int i = 0; i < calibration.Count; i++)
             {
@@ -232,30 +224,23 @@
                 {
                     <div class="P-description .active" id=@a>
                         @Html.Raw(calibration[i].Detail);
-
                     </div>
                 }
                 else
                 {
                     <div class="P-description" id=@a style="display:none">
                         @Html.Raw(calibration[i].Detail);
-
                     </div>
                 }
 
             }
-
-
             @*<div class="P-description" id="detail" style="display:none">
                     <div class="Service">
                         <img class="img-fluid" src="~/Resources/Images/Banners/LĨNH VỰC ĐIỆN_1.png" />
                         <h4 class="Services line">Lĩnh vực điện - tần số</h4>
                     </div>
                 </div>*@
-
-
         </div>
-
     </div>
 </div>
 <script>

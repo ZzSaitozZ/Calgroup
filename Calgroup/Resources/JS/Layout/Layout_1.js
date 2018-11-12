@@ -34,10 +34,9 @@ function myFunction() {
     if (window.pageYOffset >= sticky) {
         navbar.classList.add("sticky");
         var h = $("#navbar").height() + 30;
-        $("#Body").css('margin-top', h );
+        $("#Body").css('margin-top', h);
     } else {
         navbar.classList.remove("sticky");
-
         $("#Body").css('margin-top', 'unset');
     }
 }

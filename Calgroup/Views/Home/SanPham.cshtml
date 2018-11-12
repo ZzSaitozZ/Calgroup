@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Sản phẩm";
 }
 @model Calgroup.VM.SanPhamPageVM
@@ -40,6 +39,7 @@
                 cursor: pointer;
                 background-color: rgba(0, 117, 191, 0.27058823529411763);
             }
+
             .linhvuccon div:nth-child(1) {
                 border-top: unset;
             }
@@ -51,7 +51,6 @@
     .pull-right {
         float: right !important;
     }
-
 
     #P-card-container {
         margin: 0px auto 20px auto;
@@ -213,7 +212,6 @@
     <div id="P-card-container">
         <h2 id="P-Category"></h2>
         <div id="P-card-subcontainer" class="row"></div>
-
     </div>
     <ul class="pagination justify-content-center" style="font-size:18px;"></ul>
 </div>
@@ -223,7 +221,6 @@
         <a href="@("/Chitiet/" + link.ToString())"></a>
     }
 </div>
-
 
 <script>
     var page = [];
@@ -288,10 +285,9 @@
             });
     }
 
-
     //Responsive with fixed width (SanPham)
     function setWidth() {
-        if ($(window).width() > 900) {            
+        if ($(window).width() > 900) {
             $('#P-card-container').width(($(window).width() - $('#lvcontainer').outerWidth(true)));
         }
         else $('#P-card-container').width('100%');
@@ -300,19 +296,17 @@
     //Cho Down JS Collapse
     $('.linhvuccha').click(function () {
         var $this = $(this);
-
-            if ($this.next().hasClass('show')) {
-                $this.find('i').removeClass('fa-angle-up').addClass('fa-angle-down');
-                $this.next().collapse()
+        if ($this.next().hasClass('show')) {
+            $this.find('i').removeClass('fa-angle-up').addClass('fa-angle-down');
+            $this.next().collapse();
+        }
+        else {
+            if ($('.linhvuccon').hasClass('show')) {
+                $('.show').collapse('hide').prev().find('i').removeClass('fa-angle-up').addClass('fa-angle-down');
             }
-            else {
-                if ($('.linhvuccon').hasClass('show')) {
-                    $('.show').collapse('hide').prev().find('i').removeClass('fa-angle-up').addClass('fa-angle-down');
-                }
-                $this.find('i').removeClass('fas fa-angle-down').addClass('fas fa-angle-up');
-                $this.next().collapse()
-            }
-
+            $this.find('i').removeClass('fas fa-angle-down').addClass('fas fa-angle-up');
+            $this.next().collapse();
+        }
     })
 
     //Auto icon

@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Calgroup.Areas.Admin.Models.BusinessModel;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Net;
-using System.Web;
+using System.Threading.Tasks;
 using System.Web.Mvc;
-using Calgroup.Areas.Admin.Models.BusinessModel;
-using Calgroup.Areas.Admin.Models.DataModel;
 
 namespace Calgroup.Areas.Admin.Controllers
 {
@@ -18,14 +14,12 @@ namespace Calgroup.Areas.Admin.Controllers
         private AdminDbContext db = new AdminDbContext();
 
         // GET: Admin/UserPermissions
-        
+
         public async Task<ActionResult> Index(string id)
         {
-            var permissions = db.Permissions.Where(u => u.BusinessId == id && (u.Status == true || u.Status == null));
+            IQueryable<UserPermission> permissions = db.Permissions.Where(u => u.BusinessId == id && (u.Status == true || u.Status == null));
             return View(await permissions.ToListAsync());
         }
-
-        
 
         // GET: Admin/UserPermissions/Details/5
         public async Task<ActionResult> Details(int? id)

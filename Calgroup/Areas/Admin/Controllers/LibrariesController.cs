@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using Calgroup.Models.DAO;
 using System.Data.Entity;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Net;
-using System.Web;
+using System.Threading.Tasks;
 using System.Web.Mvc;
- 
-using  Calgroup.Models.DAO;
 
 namespace Calgroup.Areas.Admin.Controllers
 {
@@ -20,7 +15,7 @@ namespace Calgroup.Areas.Admin.Controllers
         // GET: Admin/Libraries
         public async Task<ActionResult> Index()
         {
-            var libraries = db.Libraries.Include(l => l.LibraryCategory);
+            IQueryable<Library> libraries = db.Libraries.Include(l => l.LibraryCategory);
             return View(await libraries.ToListAsync());
         }
 
@@ -133,7 +128,7 @@ namespace Calgroup.Areas.Admin.Controllers
         //}
         public JsonResult ChangeStatus(int id)
         {
-            var result = new ChangesDAO().LibrariesStatus(id);
+            bool result = new ChangesDAO().LibrariesStatus(id);
             return Json(new
             {
                 status = result

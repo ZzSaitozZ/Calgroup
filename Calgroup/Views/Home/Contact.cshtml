@@ -2,6 +2,7 @@
     var layout = (Calgroup.VM.Layoutmodel)ViewBag.Mymodel;
     ViewBag.Title = "Liên hệ";
 }
+
 <div class="row justify-content-around" style="padding: 2% 5% 2% 5%;">
     <div class="ContactUs col-md-6 col-sm-12" id="ContactUs">
         <h2>Liên lạc với chúng tôi</h2>
@@ -34,43 +35,41 @@
 <div class="hidden" style="display:none">
     @foreach (var Lienlac in layout.Lienlac.Take(1))
     {
-        <input id="Name" value="@Lienlac.Name"/>
-
-        <input id="Address" value="@Lienlac.Address"/>
-
-        <input id="Phone" value="@Lienlac.Phone"/>
-
-        <input id="Email" value="@Lienlac.Email"/>
-
-        <input id="Lat" value="@Lienlac.Lat"/>
-
-        <input id="Lng" value="@Lienlac.Lng"/>
+        <input id="Name" value="@Lienlac.Name" />
+        <input id="Address" value="@Lienlac.Address" />
+        <input id="Phone" value="@Lienlac.Phone" />
+        <input id="Email" value="@Lienlac.Email" />
+        <input id="Lat" value="@Lienlac.Lat" />
+        <input id="Lng" value="@Lienlac.Lng" />
     }
 </div>
-            <script>
-                function initMap() {
-                    var Lat = document.getElementById("Lat").value;
-                    var Lng = document.getElementById("Lng").value;
-                    console.log(Lat)
-                    var map = new google.maps.Map(document.getElementById('map'), {
+
+<script>
+    function initMap() {
+        var Lat = document.getElementById("Lat").value;
+        var Lng = document.getElementById("Lng").value;
+
+        var map = new google.maps.Map(document.getElementById('map'), {
             zoom: 16,
             center: {
                 lat: parseFloat(Lat), lng: parseFloat(Lng)
             },
             scrollwheel: false,
             mapTypeId: google.maps.MapTypeId.ROADMAP
-                    });
-                var marker = new google.maps.Marker({
-                    position: new google.maps.LatLng( parseFloat(Lat), parseFloat(Lng)),
+        });
+
+        var marker = new google.maps.Marker({
+            position: new google.maps.LatLng(parseFloat(Lat), parseFloat(Lng)),
             map: map,
             title: 'Hello World!'
         });
-            marker.setMap(map);
-            console.log(Lat)
-            var contentString = '<h5>' + document.getElementById("Name").value + '</h5>' +
-                '<p>Địa chỉ: ' + document.getElementById("Address").value +'</p>' +
-                '<p>Điện thoại: ' + document.getElementById("Phone").value +'</p>' +
-                '<p>Email: <a href="#">' + document.getElementById("Email").value +'</a></p>'
+
+        marker.setMap(map);
+
+        var contentString = '<h5>' + document.getElementById("Name").value + '</h5>' +
+            '<p>Địa chỉ: ' + document.getElementById("Address").value + '</p>' +
+            '<p>Điện thoại: ' + document.getElementById("Phone").value + '</p>' +
+            '<p>Email: <a href="#">' + document.getElementById("Email").value + '</a></p>'
         var infowindow = new google.maps.InfoWindow({
             content: contentString
         });
@@ -78,13 +77,8 @@
         marker.addListener('mouseover', function () {
             infowindow.open(map, marker);
         });
-
-
     };
-
     //$('#map').hover(function () { $('.outerx').width(0) }, function () { $('.outerx').width(500) });
-
-
 </script>
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBU3hqOBborqZ-D86SlDhwOTiUA_D-Dke0&callback=initMap">

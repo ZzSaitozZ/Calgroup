@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using Calgroup.Areas.Admin.Models.BusinessModel;
+using Calgroup.Models.DAO;
+using Calgroup.Resources.Common;
+using System;
 using System.Data.Entity;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
- 
-using Calgroup.Areas.Admin.Models.BusinessModel;
-using  Calgroup.Models.DAO;
-using Calgroup.Resources.Common;
 
 namespace Calgroup.Areas.Admin.Controllers
 {
@@ -22,7 +19,7 @@ namespace Calgroup.Areas.Admin.Controllers
         // GET: Admin/Products
         public async Task<ActionResult> Index()
         {
-            var products = db.Products.Include(p => p.ProductCategory);
+            IQueryable<Product> products = db.Products.Include(p => p.ProductCategory);
             return View(await products.ToListAsync());
         }
 
@@ -75,7 +72,7 @@ namespace Calgroup.Areas.Admin.Controllers
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            
+
 
             ViewBag.CategoryID = new SelectList(db.ProductCategories, "ID", "Name", product.CategoryID);
             return View(product);
@@ -88,7 +85,7 @@ namespace Calgroup.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-     
+
             Product product = await db.Products.FindAsync(id);
             pic = product.ThumbnailImage;
 
@@ -120,7 +117,7 @@ namespace Calgroup.Areas.Admin.Controllers
             product.Status = product.Status;
             product.HotFlag = product.HotFlag;
             product.HomeFlag = product.HomeFlag;
-        
+
 
             product.MetaDescription = HttpUtility.HtmlDecode(product.MetaDescription);
             if (ModelState.IsValid)
@@ -142,6 +139,7 @@ namespace Calgroup.Areas.Admin.Controllers
             return Json(new { redirectUrl = Url.Action("Index", "Products"), isRedirect = true });
 
         }
+
         public string ChangeImage(int? id, string picture)
         {
             pic = picture;
@@ -158,14 +156,16 @@ namespace Calgroup.Areas.Admin.Controllers
             db.SaveChanges();
             return "";
         }
+
         public JsonResult ChangeStatus(int id)
         {
-            var result = new ChangesDAO().ProductStatus(id);
+            bool result = new ChangesDAO().ProductStatus(id);
             return Json(new
             {
                 status = result
             });
         }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

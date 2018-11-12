@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Thư viện";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -53,7 +52,6 @@
     .pull-right {
         float: right !important;
     }
-
 
     #P-card-container {
         margin: 0px auto 20px auto;
@@ -198,7 +196,6 @@
             @Model.Menu[0].Name
 
         </div>
-
         <div class="linhvuccon">
             @foreach (var linhvuccon in Model.Menu[0].LinhVucCon)
             {
@@ -212,7 +209,6 @@
             </div>*@
 
     </div>
-
     <div id="P-card-container">
         <h1 id="P-Category"></h1>
         <div id="P-card-subcontainer" class="row"></div>
@@ -223,8 +219,6 @@
     </div>
 </div>
 <script>
-
-
     //Ajax get product
     function LoadData() {
         $.ajax({
@@ -256,7 +250,6 @@
             }
             });
     }
-
 
     //Responsive with fixed width
     function setWidth() {
@@ -294,8 +287,6 @@
         if ($(this).css('left') == '300px') { $(this).css('left', 0); $('#lvcontainer').css('left', '-300px') }
         else { $(this).css('left', '300px'); $('#lvcontainer').css('left', 0) }
     })
-
-
 
     $('#pagination').pagination({
         pages: @Model.PageCount,

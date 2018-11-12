@@ -15,18 +15,20 @@
     }
 
         .Company h3 {
-            padding-top:10px;
+            padding-top: 10px;
             font-size: 25px;
             transition: all 0.5s;
         }
-    .hotline {        
+
+    .hotline {
         position: absolute;
         right: 1%;
         width: auto;
     }
+
     .Topnav div div.Bar {
-        display: inline-flex    !important ;
-        flex-direction:row !important;
+        display: inline-flex !important;
+        flex-direction: row !important;
     }
 
     .Topnav {
@@ -43,11 +45,13 @@
         letter-spacing: 1px;
         font-family: "Segoe UI",Arial,sans-serif;
     }
+
     .icon {
         padding: 18px 10px !important;
         margin-right: 0px;
         font-size: 20px !important;
     }
+
     a.Topnav-item {
         padding: 17px 5px;
         width: auto;
@@ -56,27 +60,33 @@
         outline: 0;
         font-size: 15px;
     }
+
     .Search {
         padding: unset;
         display: inline-flex;
         outline: 0;
         font-size: 20px;
     }
+
         .Search input {
             width: auto;
             max-width: 150px;
         }
+
     .Introduce {
-        width:100%;
-        text-align:center !important;
+        width: 100%;
+        text-align: center !important;
     }
+
     .slide {
         max-height: 400px !important;
     }
+
     .Baner-img {
         width: 100%;
         max-height: 400px;
     }
+
     .CategoryChoice {
         text-align: center;
     }
@@ -89,6 +99,7 @@
         .CategoryChoice .row .col-md-4 {
             margin: 4% 0 0 0;
         }
+
     .Service {
         margin: 0px 15px 0px 15px;
         height: 100%;
@@ -102,7 +113,7 @@
             text-align: center;
             height: 56px;
             letter-spacing: 1px;
-            font-size:larger;
+            font-size: larger;
             background-color: #0075bf;
             color: white;
             margin: unset;
@@ -113,6 +124,7 @@
         padding-top: 12px;
         padding-bottom: 11px;
     }
+
     .Item {
         margin: 0px 15px 0px 15px;
         height: 100%;
@@ -126,7 +138,7 @@
         .Item h4 {
             text-align: center;
             height: 56px;
-            font-size:larger;
+            font-size: larger;
             letter-spacing: 1px;
             background-image: linear-gradient(white, #F79119);
             color: black;
@@ -147,15 +159,16 @@
         height: auto;
     }
 
-    
+
     .Caroselfix1 h2 {
         top: 100px;
         right: 50px;
-        font-size:16px;
+        font-size: 16px;
         text-align: left;
         color: #ffffffb3;
         text-shadow: 0px 0px 20px white;
     }
+
     .Caroselfix2 h2 {
         top: 100px;
         right: 50px;
@@ -164,6 +177,7 @@
         color: #ffffffb3;
         text-shadow: 0px 0px 20px white;
     }
+
     .Caroselfix3 h2 {
         top: 100px;
         right: 50px;
@@ -187,7 +201,6 @@
     h2.Question-title {
         font-size: 2rem !important;
         text-align: center;
-        padding-left:unset  ;
+        padding-left: unset;
     }
 }
-

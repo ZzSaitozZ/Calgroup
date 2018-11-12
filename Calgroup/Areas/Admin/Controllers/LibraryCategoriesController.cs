@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
 using System.Data.Entity;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Net;
-using System.Web;
+using System.Threading.Tasks;
 using System.Web.Mvc;
- 
+
 
 namespace Calgroup.Areas.Admin.Controllers
 {
@@ -28,7 +24,7 @@ namespace Calgroup.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-             LibraryCategory libraryCategory = await db.LibraryCategories.FindAsync(id);
+            LibraryCategory libraryCategory = await db.LibraryCategories.FindAsync(id);
             if (libraryCategory == null)
             {
                 return HttpNotFound();
@@ -67,7 +63,7 @@ namespace Calgroup.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-             LibraryCategory libraryCategory = await db.LibraryCategories.FindAsync(id);
+            LibraryCategory libraryCategory = await db.LibraryCategories.FindAsync(id);
             if (libraryCategory == null)
             {
                 return HttpNotFound();
@@ -98,7 +94,7 @@ namespace Calgroup.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-             LibraryCategory libraryCategory = await db.LibraryCategories.FindAsync(id);
+            LibraryCategory libraryCategory = await db.LibraryCategories.FindAsync(id);
             if (libraryCategory == null)
             {
                 return HttpNotFound();
@@ -111,14 +107,14 @@ namespace Calgroup.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-             LibraryCategory libraryCategory = await db.LibraryCategories.FindAsync(id);
+            LibraryCategory libraryCategory = await db.LibraryCategories.FindAsync(id);
             db.LibraryCategories.Remove(libraryCategory);
             try
             {
                 //code
                 await db.SaveChangesAsync();
             }
-            catch (Exception Exception)
+            catch (Exception)
             {
                 //code
                 TempData["message"] = "Không thể xóa Loại thư viện có thư viện ";

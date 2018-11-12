@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using Calgroup.Models.DAO;
+using System;
 using System.Data.Entity;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Net;
-using System.Web;
+using System.Threading.Tasks;
 using System.Web.Mvc;
- 
-using  Calgroup.Models.DAO;
 
 namespace Calgroup.Areas.Admin.Controllers
 {
@@ -119,7 +114,7 @@ namespace Calgroup.Areas.Admin.Controllers
                 //code
                 await db.SaveChangesAsync();
             }
-            catch (Exception Exception)
+            catch (Exception)
             {
                 //code
                 TempData["message"] = "Không thể xóa lĩnh vực đang có loại sản phẩm";

@@ -1,17 +1,14 @@
 ﻿using Calgroup.Areas.Admin.Models.BusinessModel;
 using Calgroup.Areas.Admin.Models.DaoModel;
 using Calgroup.Resources.Common;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Calgroup.Areas.Admin.Controllers
 {
     public class AdminController : Controller
     {
-        AdminDbContext db = new AdminDbContext();
+        private AdminDbContext db = new AdminDbContext();
         // GET: Admin/Home
 
         public ActionResult Index()
@@ -30,7 +27,7 @@ namespace Calgroup.Areas.Admin.Controllers
         public ActionResult Login(string userName, string password)
         {
             string passMD5 = Encryptor.MD5Hash(userName + password);
-            var user = db.Administrators.SingleOrDefault(x => x.UserName == userName && x.Password == passMD5 && x.Allowed == true);
+            UserAdministrator user = db.Administrators.SingleOrDefault(x => x.UserName == userName && x.Password == passMD5 && x.Allowed == true);
             if (user != null)
             {
                 Session["userId"] = user.UserId;
@@ -43,7 +40,7 @@ namespace Calgroup.Areas.Admin.Controllers
             }
             ViewBag.error = "Đăng nhập sai hoặc bạn không có quyền vào";
             return View();
-            
+
         }
 
         public ActionResult Logout()
@@ -61,6 +58,7 @@ namespace Calgroup.Areas.Admin.Controllers
         {
             return View();
         }
+
         public EmptyResult Alive()
         {
             return new EmptyResult();

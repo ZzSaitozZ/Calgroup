@@ -1,14 +1,12 @@
-﻿using System;
+﻿using Calgroup.Areas.Admin.Models.BusinessModel;
+using Calgroup.Areas.Admin.Models.DataModel;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Net;
-using System.Web;
+using System.Threading.Tasks;
 using System.Web.Mvc;
-using Calgroup.Areas.Admin.Models.BusinessModel;
-using Calgroup.Areas.Admin.Models.DataModel;
 
 namespace Calgroup.Areas.Admin.Controllers
 {
@@ -21,9 +19,9 @@ namespace Calgroup.Areas.Admin.Controllers
         public async Task<ActionResult> Index(int id)
         {
             //Lấy tất cả các nghiệp vụ (controller) trong csdl
-            var listcontrol = db.Businesseses.Where(x=>x.Status==true);
+            IQueryable<UserBusiness> listcontrol = db.Businesseses.Where(x => x.Status == true);
             List<SelectListItem> items = new List<SelectListItem>();
-            foreach (var item in listcontrol)
+            foreach (UserBusiness item in listcontrol)
             {
                 items.Add(new SelectListItem() { Text = item.BusinessName, Value = item.BusinessId });
             }
@@ -31,16 +29,16 @@ namespace Calgroup.Areas.Admin.Controllers
             ViewBag.items = items;
 
             //Lấy danh sách quyền đã được cấp
-            var listgranted = from g in db.GrantPermissions
-                              join p in db.Permissions on g.PermissionId equals p.PermissionId
-                              where g.UserId == id
-                              select new SelectListItem() { Value = p.PermissionId.ToString(), Text = p.Description.ToString() };
+            IQueryable<SelectListItem> listgranted = from g in db.GrantPermissions
+                                                     join p in db.Permissions on g.PermissionId equals p.PermissionId
+                                                     where g.UserId == id
+                                                     select new SelectListItem() { Value = p.PermissionId.ToString(), Text = p.Description.ToString() };
             //Lưu ra biến
             ViewBag.listgranted = listgranted;
             //Lưu id của người dùng đang được cấp ra session
             Session["usergrant"] = id;
             //Lấy người dùng
-            var usergrant = await db.Administrators.FindAsync(id);
+            UserAdministrator usergrant = await db.Administrators.FindAsync(id);
             //Lưu tên ra biến
             ViewBag.usergrant = ": " + usergrant.UserName + " " + '(' + usergrant.FullName + ')';
             return View();
@@ -50,24 +48,26 @@ namespace Calgroup.Areas.Admin.Controllers
         public JsonResult getPermissions(string id, int usertemp)
         {
             //Lấy tất cả các permission của user và của business
-            var listgranted = (from g in db.GrantPermissions
-                               join p in db.Permissions on g.PermissionId equals p.PermissionId
-                               where g.UserId == usertemp && p.BusinessId == id
-                               select new PermissionAction { PermissionId = p.PermissionId, PermissionName = p.PermissionName, Description = p.Description, IsGranted = true }).ToList();
+            List<PermissionAction> listgranted = (from g in db.GrantPermissions
+                                                  join p in db.Permissions on g.PermissionId equals p.PermissionId
+                                                  where g.UserId == usertemp && p.BusinessId == id
+                                                  select new PermissionAction { PermissionId = p.PermissionId, PermissionName = p.PermissionName, Description = p.Description, IsGranted = true }).ToList();
 
             //Lấy tất cả các permission của business hiện tại
-            var listpermission = from p in db.Permissions.Where(x => x.Status == true)
-                                 where p.BusinessId == id
-                                 select new PermissionAction { PermissionId = p.PermissionId, PermissionName = p.PermissionName, Description = p.Description, IsGranted = false };
+            IQueryable<PermissionAction> listpermission = from p in db.Permissions.Where(x => x.Status == true)
+                                                          where p.BusinessId == id
+                                                          select new PermissionAction { PermissionId = p.PermissionId, PermissionName = p.PermissionName, Description = p.Description, IsGranted = false };
 
             //Lấy tất cả id của permission đã được gán ở trên cho người dùng
-            var listpermissionId = listgranted.Select(p => p.PermissionId);
+            IEnumerable<int> listpermissionId = listgranted.Select(p => p.PermissionId);
 
             //So sánh kiểm tra permission của business mà chưa có trong listgrant thì đưa vào (IsGrant=false)
-            foreach (var item in listpermission)
+            foreach (PermissionAction item in listpermission)
             {
                 if (!listpermissionId.Contains(item.PermissionId))
+                {
                     listgranted.Add(item);
+                }
             }
             return Json(listgranted.OrderBy(x => x.Description), JsonRequestBehavior.AllowGet);
 
@@ -77,8 +77,8 @@ namespace Calgroup.Areas.Admin.Controllers
         public string updatePermission(int id, int usertemp)
         {
             string msg = "";
-            var grant = db.GrantPermissions.Find(id, usertemp);
-            var p = db.Permissions.Where(x => x.Status == true);
+            UserGrantPermission grant = db.GrantPermissions.Find(id, usertemp);
+            IQueryable<UserPermission> p = db.Permissions.Where(x => x.Status == true);
             if (grant == null)
             {
                 UserGrantPermission g = new UserGrantPermission()
@@ -87,7 +87,7 @@ namespace Calgroup.Areas.Admin.Controllers
                     UserId = usertemp,
                     Description = ""
                 };
-                
+
                 db.GrantPermissions.Add(g);
                 msg = "<div class='alert alert-success'>Quyền cấp thành công</div>";
             }

@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Calgroup.Areas.Admin.Models.BusinessModel;
+using Calgroup.Models.DAO;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Net;
-using System.Web;
+using System.Threading.Tasks;
 using System.Web.Mvc;
- 
-using Calgroup.Areas.Admin.Models.BusinessModel;
-using  Calgroup.Models.DAO;
 
 namespace Calgroup.Areas.Admin.Controllers
 {
@@ -21,7 +17,7 @@ namespace Calgroup.Areas.Admin.Controllers
         // GET: Admin/Orders
         public async Task<ActionResult> Index()
         {
-            var orders = db.Orders.Include(o => o.AppUser);
+            IQueryable<Order> orders = db.Orders.Include(o => o.AppUser);
             return View(await orders.ToListAsync());
         }
 
@@ -32,7 +28,7 @@ namespace Calgroup.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var order = db.OrderDetails.Where(x => x.OrderID == id);
+            IQueryable<OrderDetail> order = db.OrderDetails.Where(x => x.OrderID == id);
             if (order == null)
             {
                 return HttpNotFound();
@@ -114,7 +110,7 @@ namespace Calgroup.Areas.Admin.Controllers
         }
         public JsonResult ChangeStatus(int id)
         {
-            var result = new ChangesDAO().OrdersStatus(id);
+            bool result = new ChangesDAO().OrdersStatus(id);
             return Json(new
             {
                 status = result

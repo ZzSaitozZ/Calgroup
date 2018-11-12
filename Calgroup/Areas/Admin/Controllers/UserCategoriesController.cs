@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using Calgroup.Areas.Admin.Models.BusinessModel;
 using System.Data.Entity;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Net;
-using System.Web;
+using System.Threading.Tasks;
 using System.Web.Mvc;
-using Calgroup.Areas.Admin.Models.BusinessModel;
-using Calgroup.Areas.Admin.Models.DataModel;
 
 namespace Calgroup.Areas.Admin.Controllers
 {
-    
+
     public class UserCategoriesController : Controller
     {
         private AdminDbContext db = new AdminDbContext();
@@ -20,7 +15,7 @@ namespace Calgroup.Areas.Admin.Controllers
         // GET: Admin/UserCategories
         public async Task<ActionResult> Index()
         {
-            var categories = db.Categories.Include(u => u.UserAdministrator);
+            IQueryable<UserCategory> categories = db.Categories.Include(u => u.UserAdministrator);
             return View(await categories.ToListAsync());
         }
 

@@ -11,7 +11,8 @@
     .Item {
         cursor: pointer;
     }
-	.ItemSP {
+
+    .ItemSP {
         cursor: pointer;
     }
 </style>
@@ -71,7 +72,7 @@
         </div>
         <div class="col-md-4" style="cursor:pointer">
             <div class="Service">
-                <img class="img-fluid" src="~/Resources/Images/Banners/Hiệu chuẩn nhiệt động học - Thermodynamic Calibration.png" id="row1"/>
+                <img class="img-fluid" src="~/Resources/Images/Banners/Hiệu chuẩn nhiệt động học - Thermodynamic Calibration.png" id="row1" />
                 <h4 class="Services">Lĩnh vực nhiệt - nhiệt & nhiệt ẩm</h4>
             </div>
         </div>
@@ -95,7 +96,7 @@
         </div>
         <div class="col-md-4" style="cursor:pointer">
             <div class="Service">
-                <img class="img-fluid row3son" src="~/Resources/Images/Banners/Hiệu chuẩn hóa lý - Chemical Calibration.png"/>
+                <img class="img-fluid row3son" src="~/Resources/Images/Banners/Hiệu chuẩn hóa lý - Chemical Calibration.png" />
                 <h4 class="Services line">Lĩnh vực hoá lý - thể tích</h4>
             </div>
         </div>
@@ -107,7 +108,7 @@
         </div>
         <div class="col-md-4" style="cursor:pointer">
             <div class="Service">
-                <img class="img-fluid row3son"  src="~/Resources/Images/Banners/Tận nơi.jpg" />
+                <img class="img-fluid row3son" src="~/Resources/Images/Banners/Tận nơi.jpg" />
                 <h4 class="Services">Hiệu chuẩn và sửa chữa thiết bị tận nơi</h4>
             </div>
         </div>
@@ -215,15 +216,15 @@
                                 $(this).addClass('active');
                                 $('#P-card-subcontainer').empty();
                                 $('#P-card-subcontainer').append(page[$(this)[0].dataset.page - 1]);
-								$('.Item').click(function () {
-                        window.location.href = '/ChiTiet/' + $(this)[0].dataset.alias;
-                    });
+                                $('.Item').click(function () {
+                                    window.location.href = '/ChiTiet/' + $(this)[0].dataset.alias;
+                                });
                             }
                         });
                     };
                     $('.Item').click(function () {
-						var win = window.open('/ChiTiet/' + $(this)[0].dataset.alias, '_blank');
-  						win.focus();
+                        var win = window.open('/ChiTiet/' + $(this)[0].dataset.alias, '_blank');
+                        win.focus();
                     });
                 }
                 $('#P-Category').html('' + data.CategoryVi);
@@ -251,12 +252,12 @@
                             $('#CC').html(content);
                             content = '';
                         }
-						
+
                     }
                 };
-				$('.ItemSP').click(function () {
-                	window.location.href = $(this).attr('href')
-             	});
+                $('.ItemSP').click(function () {
+                    window.location.href = $(this).attr('href')
+                });
             }
         });
     }
@@ -264,7 +265,7 @@
         LoadData_SP();
         LoadData_CC();
     });
-	$('.Service').click(function() {
-	window.location.href = '/Calibration'
-	});
+    $('.Service').click(function () {
+        window.location.href = '/Calibration'
+    });
 </script>

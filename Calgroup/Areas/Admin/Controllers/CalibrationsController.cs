@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using Calgroup.Areas.Admin.Models.BusinessModel;
+using Calgroup.Models.DAO;
 using System.Data.Entity;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
- 
-using Calgroup.Areas.Admin.Models.BusinessModel;
-using  Calgroup.Models.DAO;
 
 namespace Calgroup.Areas.Admin.Controllers
 {
@@ -132,7 +127,7 @@ namespace Calgroup.Areas.Admin.Controllers
         //}
         public JsonResult ChangeStatus(int id)
         {
-            var result = new ChangesDAO().CalibrationsStatus(id);
+            bool result = new ChangesDAO().CalibrationsStatus(id);
             return Json(new
             {
                 status = result

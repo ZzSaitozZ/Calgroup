@@ -1,6 +1,4 @@
-﻿
-@model List<Calgroup.getProductDetail_Result>
-
+﻿@model List<Calgroup.getProductDetail_Result>
 
 <style>
     #P-container {
@@ -47,7 +45,7 @@
 
     #manual {
         display: inline-block;
-        cursor:pointer;
+        cursor: pointer;
     }
 
         #manual a {
@@ -56,7 +54,7 @@
             color: white;
             padding: 5px 10px;
             display: inline-block;
-            cursor:pointer;
+            cursor: pointer;
         }
 
             #manual a:hover {
@@ -156,18 +154,22 @@
             width: inherit;
             background-color: ghostwhite;
         }
-		        @@media only screen and (max-width: 1000px ) {
-            #P-container{
-                width:100%;
-				text-align:center;
-            }
-            #P-img{
-                width:35%;
-            }
-            #P-wrapper{
-                width:100%;
-				text-align:left;
-            }
+
+    @@media only screen and (max-width: 1000px ) {
+        #P-container {
+            width: 100%;
+            text-align: center;
+        }
+
+        #P-img {
+            width: 35%;
+        }
+
+        #P-wrapper {
+            width: 100%;
+            text-align: left;
+        }
+    }
 </style>
 <div id="P-container">
     <img id="P-img" src="@Model[0].ImageLinkDetail" />
@@ -200,12 +202,9 @@
                 <div style="display:inline-block">
                     <ul class="tags">
                         <li><a href="#">Liên hệ</a></li>
-
-
                     </ul>
                 </div>
                 <hr />
-
             </div>
 
             <div class="P-description" id="detail" style="display:none">
@@ -216,7 +215,6 @@
                 @Html.Raw(Model[0].Specification)
             </div>
         </div>
-
     </div>
 </div>
 
@@ -230,13 +228,10 @@
 <ul class="pagination pagination-lg justify-content-center"></ul>
 
 <script>
-    
 	document.title = 'CalgroupVN - ' +  $('#P-Name').html();
-
     //TabNav
     $('.buttons').click(function () {
         var activeButton = $('#P-container .active')[0];
-
         id = $(this)[0].dataset.link;
         if (!$(this).hasClass('active')) {
             activeButton.className = activeButton.className.replace(" active", "");
@@ -245,8 +240,6 @@
             $('#' + id).show();
         }
     });
-
-   
 
     var page = [];
      function LoadData() {
@@ -300,10 +293,8 @@
                     window.location.href = '/ChiTiet/' + $(this)[0].dataset.alias;
                 });
                 }
-
             }
             });
-
     };
     LoadData();
 </script>

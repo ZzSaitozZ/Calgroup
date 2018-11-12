@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using System.Web.Routing;
 
 namespace Calgroup
@@ -12,26 +8,31 @@ namespace Calgroup
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+
             routes.MapRoute(
                name: "Search",
                url: "Search/{searchString}",
-               defaults: new { controller = "Home", action = "Search",searchString = UrlParameter.Optional }
+               defaults: new { controller = "Home", action = "Search", searchString = UrlParameter.Optional }
                );
+
             routes.MapRoute(
                name: "getSearch",
                url: "searchSanPham/{searchString}",
                defaults: new { controller = "Home", action = "searchSanPham", searchString = UrlParameter.Optional }
                );
+
             routes.MapRoute(
                name: "Library",
                url: "ThuVien/{aliascat}",
                defaults: new { controller = "Home", action = "Library", aliascat = UrlParameter.Optional }
                );
+
             routes.MapRoute(
                 name: "Libraries",
                 url: "getThuVien/{aliascat}",
                 defaults: new { controller = "Home", action = "getThuVien", aliascat = UrlParameter.Optional }
                 );
+
             routes.MapRoute(
                 name: "Products",
                 url: "getSanPham/{aliascat}",
@@ -54,13 +55,13 @@ namespace Calgroup
                name: "News",
                url: "News/{metatitle}-{id}",
                defaults: new { controller = "home", action = "NewsDetail", id = UrlParameter.Optional }
-               //namespaces: new[] { "Fix24h_AdobeBricks_V1.Controllers" }
-           );
+               );
+
             routes.MapRoute(
                 name: "Default",
                 url: "{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-            );
+                );
         }
     }
 }

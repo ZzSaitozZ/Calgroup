@@ -1,14 +1,12 @@
-﻿using System;
+﻿using Calgroup.Areas.Admin.Models.BusinessModel;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Net;
-using System.Web;
+using System.Threading.Tasks;
 using System.Web.Mvc;
-using Calgroup.Areas.Admin.Models.BusinessModel;
-using Calgroup.Areas.Admin.Models.DataModel;
 
 namespace Calgroup.Areas.Admin.Controllers
 {
@@ -17,14 +15,14 @@ namespace Calgroup.Areas.Admin.Controllers
     {
         private AdminDbContext db = new AdminDbContext();
 
-        
+
         public ActionResult UpdateBusiness()
         {
             ReflectionController rc = new ReflectionController();
             List<Type> listControllerType = rc.GetControllers("Calgroup.Areas.Admin.Controllers");
             List<string> listControllerOld = db.Businesseses.Select(c => c.BusinessId).ToList();
             List<string> listPermistionOld = db.Permissions.Select(p => p.PermissionName).ToList();
-            foreach (var c in listControllerType)
+            foreach (Type c in listControllerType)
             {
                 if (!listControllerOld.Contains(c.Name))
                 {
@@ -32,7 +30,7 @@ namespace Calgroup.Areas.Admin.Controllers
                     db.Businesseses.Add(b);
                 }
                 List<string> listPermission = rc.GetActions(c);
-                foreach (var p in listPermission)
+                foreach (string p in listPermission)
                 {
                     if (!listPermistionOld.Contains(c.Name + "-" + p))
                     {
@@ -49,7 +47,7 @@ namespace Calgroup.Areas.Admin.Controllers
         // GET: Admin/UserBusinesses
         public async Task<ActionResult> Index()
         {
-            return View(await db.Businesseses.Where(x=>x.Status==true || x.Status == null).ToListAsync());
+            return View(await db.Businesseses.Where(x => x.Status == true || x.Status == null).ToListAsync());
         }
 
         // GET: Admin/UserBusinesses/Details/5

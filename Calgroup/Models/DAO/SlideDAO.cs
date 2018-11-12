@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
- 
 
 namespace Calgroup.Models.DAO
 {
@@ -20,7 +17,7 @@ namespace Calgroup.Models.DAO
         {
             try
             {
-                var user = db.Slides.Find(id);
+                Slide user = db.Slides.Find(id);
                 db.Slides.Remove(user);
                 db.SaveChanges();
                 return true;

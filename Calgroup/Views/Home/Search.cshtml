@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "SanPham";
 }
 @model Calgroup.VM.SanPhamPageVM
@@ -52,7 +51,6 @@
     .pull-right {
         float: right !important;
     }
-
 
     #P-card-container {
         margin: 0px auto 20px auto;
@@ -199,7 +197,6 @@
                 @linhvuccha.Name
                 <span class="pull-right clickable"><i class="fas fa-angle-down"></i></span>
             </div>
-
             <div class="collapse linhvuccon" id="@linhvuccha.LinhVucCon[0][1]">
                 @foreach (var linhvuccon in linhvuccha.LinhVucCon)
                 {
@@ -213,14 +210,11 @@
     <div id="P-card-container">
         <h2 id="P-Category"></h2>
         <div id="P-card-subcontainer" class="row"></div>
-
     </div>
     <ul class="pagination justify-content-center" style="font-size:18px;"></ul>
 </div>
 <script>
     var page = [];
-
-
     //Ajax get product
     function LoadData() {
         $.ajax({
@@ -276,7 +270,6 @@
             });
     }
 
-
     //Responsive with fixed width (SanPham)
     function setWidth() {
         if ($(window).width() > 900) {
@@ -288,19 +281,17 @@
     //Cho Down JS Collapse
     $('.linhvuccha').click(function () {
         var $this = $(this);
-
-            if ($this.next().hasClass('show')) {
-                $this.find('i').removeClass('fa-angle-up').addClass('fa-angle-down');
-                $this.next().collapse()
+        if ($this.next().hasClass('show')) {
+            $this.find('i').removeClass('fa-angle-up').addClass('fa-angle-down');
+            $this.next().collapse()
+        }
+        else {
+            if ($('.linhvuccon').hasClass('show')) {
+                $('.show').collapse('hide').prev().find('i').removeClass('fa-angle-up').addClass('fa-angle-down');
             }
-            else {
-                if ($('.linhvuccon').hasClass('show')) {
-                    $('.show').collapse('hide').prev().find('i').removeClass('fa-angle-up').addClass('fa-angle-down');
-                }
-                $this.find('i').removeClass('fas fa-angle-down').addClass('fas fa-angle-up');
-                $this.next().collapse()
-            }
-
+            $this.find('i').removeClass('fas fa-angle-down').addClass('fas fa-angle-up');
+            $this.next().collapse()
+        }
     })
 
     //Auto icon

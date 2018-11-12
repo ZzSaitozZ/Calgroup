@@ -1,5 +1,4 @@
-﻿using Calgroup.Areas.Admin.Models.DataModel;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 
 namespace Calgroup.Areas.Admin.Models.BusinessModel
 {
@@ -9,6 +8,7 @@ namespace Calgroup.Areas.Admin.Models.BusinessModel
         {
 
         }
+
         public DbSet<UserAdministrator> Administrators { get; set; }
         public DbSet<UserBusiness> Businesseses { get; set; }
         public DbSet<UserCategory> Categories { get; set; }

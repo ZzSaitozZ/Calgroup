@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace Calgroup.Areas.Admin.Models.DataModel
+﻿namespace Calgroup.Areas.Admin.Models.DataModel
 {
     public class PermissionAction
     {

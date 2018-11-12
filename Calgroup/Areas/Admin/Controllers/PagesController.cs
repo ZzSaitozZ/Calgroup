@@ -1,21 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using Calgroup.Areas.Admin.Models.BusinessModel;
 using System.Data.Entity;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Net;
-using System.Web;
+using System.Threading.Tasks;
 using System.Web.Mvc;
- 
-using Calgroup.Areas.Admin.Models.BusinessModel;
 
 namespace Calgroup.Areas.Admin.Controllers
 {
     [AuthorizeBusiness]
     public class PagesController : Controller
     {
-        
+
         private Calgroup_v2DB db = new Calgroup_v2DB();
 
         // GET: Admin/Pages

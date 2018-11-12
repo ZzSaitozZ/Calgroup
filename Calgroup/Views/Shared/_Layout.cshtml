@@ -5,27 +5,27 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">	
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Công ty TNHH Thương mại dịch vụ hiệu chuẩn Calgroup...">
     <meta name="keywords" content="hieu chuan, hiệu chuẩn, kích thước, điện, nhiệt, nhiệt ẩm, lực, độ cứng, khối lượng, áp suất, hóa lý, thể tích, hiệu chuẩn calgroup, Calgroup.vn">
-	<meta property="og:title" content="Công ty TNHH Thương mại dịch vụ hiệu chuẩn Calgroup...">
-<meta property="og:type" content="article">
-<!-- <meta property="og:url" content="http://www.calgroup.vn"> -->
-<meta property="og:description" content=" Hiệu chuẩn phương tiện đo là thiết lập mối tương quan giữa đo lường và phương tiện đo. Hiệu chuẩn liên quan tới xác định các đặc tính đo lường của một phương tiện đo. Thực hiện thông qua việc so sánh trực tiếp với những chuẩn đã biết.">
-<meta property="og:image" content="/Resources/Images/Banners/logo.png">
-<!-- Dublin Core-->
-<meta name="DC.Title" content="Công ty TNHH Thương mại dịch vụ hiệu chuẩn Calgroup">
-<meta name="DC.Creator" content="CalgroupVN">
-<meta name="DC.Subject" content="Hiệu chuẩn thiết bị đo lường các lĩnh vực kỹ thuật">
-<meta name="DC.Description" content="Hiệu chuẩn phương tiện đo là thiết lập mối tương quan giữa đo lường và phương tiện đo. Hiệu chuẩn liên quan tới xác định các đặc tính đo lường của một phương tiện đo. Thực hiện thông qua việc so sánh trực tiếp với những chuẩn đã biết.">
-<meta name="DC.Publisher" content="CalgroupVN">
-<meta name="DC.Contributor" content="CalgroupVN">
-<meta name="DC.type" scheme="DCTERMS.DCMIType" content="Text">
-<meta name="DC.format" content="text/html; charset=UTF-8">
-<meta name="DC.language" scheme="DCTERMS.RFC1766" content="vi">
-<meta name="geo.region" content="VN">
+    <meta property="og:title" content="Công ty TNHH Thương mại dịch vụ hiệu chuẩn Calgroup...">
+    <meta property="og:type" content="article">
+    <!-- <meta property="og:url" content="http://www.calgroup.vn"> -->
+    <meta property="og:description" content=" Hiệu chuẩn phương tiện đo là thiết lập mối tương quan giữa đo lường và phương tiện đo. Hiệu chuẩn liên quan tới xác định các đặc tính đo lường của một phương tiện đo. Thực hiện thông qua việc so sánh trực tiếp với những chuẩn đã biết.">
+    <meta property="og:image" content="/Resources/Images/Banners/logo.png">
+    <!-- Dublin Core-->
+    <meta name="DC.Title" content="Công ty TNHH Thương mại dịch vụ hiệu chuẩn Calgroup">
+    <meta name="DC.Creator" content="CalgroupVN">
+    <meta name="DC.Subject" content="Hiệu chuẩn thiết bị đo lường các lĩnh vực kỹ thuật">
+    <meta name="DC.Description" content="Hiệu chuẩn phương tiện đo là thiết lập mối tương quan giữa đo lường và phương tiện đo. Hiệu chuẩn liên quan tới xác định các đặc tính đo lường của một phương tiện đo. Thực hiện thông qua việc so sánh trực tiếp với những chuẩn đã biết.">
+    <meta name="DC.Publisher" content="CalgroupVN">
+    <meta name="DC.Contributor" content="CalgroupVN">
+    <meta name="DC.type" scheme="DCTERMS.DCMIType" content="Text">
+    <meta name="DC.format" content="text/html; charset=UTF-8">
+    <meta name="DC.language" scheme="DCTERMS.RFC1766" content="vi">
+    <meta name="geo.region" content="VN">
     <title>CalgroupVN - @ViewBag.Title</title>
-	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
     @Styles.Render("~/bundles/bootstrapcss")
     @Styles.Render("~/bundles/css")
     @Styles.Render("~/bundles/Icon")
@@ -34,15 +34,14 @@
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/bootstrap")
     <link href="~/Resources/CSS/Layout/gridcustomtyle.css" rel="stylesheet" />
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-126094116-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-126094116-1');
-</script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-126094116-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'UA-126094116-1');
+    </script>
 
 </head>
 <body>
@@ -89,56 +88,57 @@
         <div class="container-fluid text-center" style="vertical-align:middle">
             <h2 style="text-align:center;color:#0075bf">Đối tác chiến lược</h2>
             @foreach (var Doitac in layout.Doitac)
-        {
-            <div class="d-inline">
-                <img class="Doitac" src="@Doitac.Image" />
-            </div>
-    }
+            {
+                <div class="d-inline">
+                    <img class="Doitac" src="@Doitac.Image" />
+                </div>
+            }
         </div>
         <br />
         <div class="container-fluid" style="padding-top:20px;position:relative;background-color: #0075bf;color:white">
             <h2 style="text-align:center">Hỗ trợ khách hàng</h2>
             <div class="row MenuBT justify-content-center">
                 @foreach (var NV in layout.Nhanvien.Take(8))
-        {
-			if (NV.Status == true) {
-            <div class="col-md-3 text-center">
-                <img style="height:100px;width:auto" src="@NV.Image" />
-                <h6>@NV.Role</h6>
-                <h5>@NV.Name</h5>
-                <h6><i class="fas fa-phone"></i> @NV.Phone</h6>
-                <h6>@NV.Email</h6>
-                <h6><a href="https://zalo.me/@NV.Zalo.Replace(" ","")"><img class="icons" style="height:30px;width:auto" src="~/Resources/Images/zalo.png" /></a> @NV.Zalo</h6>
-                <h6><a href="skype:@NV.Skype"><img class="icons" style="height:30px;width:auto" src="~/Resources/Images/skype.png" /></a> @NV.Skype</h6>
+                {
+                    if (NV.Status == true)
+                    {
+                        <div class="col-md-3 text-center">
+                            <img style="height:100px;width:auto" src="@NV.Image" />
+                            <h6>@NV.Role</h6>
+                            <h5>@NV.Name</h5>
+                            <h6><i class="fas fa-phone"></i> @NV.Phone</h6>
+                            <h6>@NV.Email</h6>
+                            <h6><a href="https://zalo.me/@NV.Zalo.Replace(" ","")"><img class="icons" style="height:30px;width:auto" src="~/Resources/Images/zalo.png" /></a> @NV.Zalo</h6>
+                            <h6><a href="skype:@NV.Skype"><img class="icons" style="height:30px;width:auto" src="~/Resources/Images/skype.png" /></a> @NV.Skype</h6>
 
-            </div>
-}}
+                        </div>
+                    }
+                }
             </div>
             <hr style="border: 0; height: 1px; background-image: linear-gradient(to right, #0075bf, white, #0075bf);" />
             <div class="row MenuBT justify-content-center">
                 <div class="col-md-3">
                     @foreach (var Lienlac in layout.Lienlac.Take(1))
-            {
-                <h5 class="text-uppercase font-weight-bold" style="border-bottom:solid">Contact Us</h5>
-                <p class="Footercontent"> @Lienlac.Name </p>
-                <p class="Footercontent">Địa chỉ: @Lienlac.Address</p>
-				<p class="Footercontent">E-Mail: @Lienlac.Email </p>
-                <p class="Footercontent">Điện thoại: @Lienlac.Phone</p>
-                <p class="Footercontent">GPĐKKD số: 0315121569, cấp ngày 20/06/2018, Sở KHĐT Tp.HCM</p>
-				<p class="Footercontent">Người đại diện: Đặng Hoàng Phi Long - Giám Đốc</p>
+                    {
+                        <h5 class="text-uppercase font-weight-bold" style="border-bottom:solid">Contact Us</h5>
+                        <p class="Footercontent"> @Lienlac.Name </p>
+                        <p class="Footercontent">Địa chỉ: @Lienlac.Address</p>
+                        <p class="Footercontent">E-Mail: @Lienlac.Email </p>
+                        <p class="Footercontent">Điện thoại: @Lienlac.Phone</p>
+                        <p class="Footercontent">GPĐKKD số: 0315121569, cấp ngày 20/06/2018, Sở KHĐT Tp.HCM</p>
+                        <p class="Footercontent">Người đại diện: Đặng Hoàng Phi Long - Giám Đốc</p>
+                    }
 
-    }
-	
                 </div>
                 <div class="col-md-3">
                     <h5 class="text-uppercase font-weight-bold" style="border-bottom:solid">Thông tin cần biết</h5>
                     <ul class="list-unstyled">
                         @foreach (var Cauhoi in layout.FAQ.Take(5))
-                {
-                    <li>
-                        <a class="Footerlink FAQ-button" data-toggle="modal" data-target="#exampleModalLong" data-alias="@Cauhoi.AliasName" value="@Cauhoi.Title" style="cursor: pointer">@Cauhoi.Title</a>
-                    </li>
-        }
+                        {
+                            <li>
+                                <a class="Footerlink FAQ-button" data-toggle="modal" data-target="#exampleModalLong" data-alias="@Cauhoi.AliasName" value="@Cauhoi.Title" style="cursor: pointer">@Cauhoi.Title</a>
+                            </li>
+                        }
                     </ul>
                 </div>
                 <div class="col-md-3">
@@ -156,7 +156,7 @@
                                     <i class="fab fa-google-plus fa-3x icons" style="color:white;"></i>
                                 </a>
                             </li>
-							<li class="list-inline-item">
+                            <li class="list-inline-item">
                                 <a class="btn-block btn-sm mx-1" href="https://www.youtube.com/channel/UC0GIKfpfSr-EoRv2HaQRp8w" target="_blank">
                                     <i class="fab fa-youtube fa-3x icons" style="color:white;"></i>
                                 </a>
@@ -173,9 +173,9 @@
             </div>
             <br />
         </div>
-        
+
         <div class="container-fluid text-center Copyright" style="padding-bottom:10px; padding-top:10px;background-color: #0075bf;color:white">
-                © 2018 Copyright - EWON
+            © 2018 Copyright - EWON
         </div>
     </footer>
     <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
@@ -196,11 +196,9 @@
             </div>
         </div>
     </div>
-
 </body>
 </html>
 <script>
-
     $('.FAQ-button').click(function () {
         $('.modal-title').text($(this).attr("value"))
         $.ajax({
@@ -216,8 +214,6 @@
         });
 
     })
-
-
 </script>
 @Scripts.Render("~/bundles/JavaScript")
 @RenderSection("scripts", required: false)

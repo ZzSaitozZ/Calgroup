@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using Calgroup.Areas.Admin.Models.BusinessModel;
 using System.Data.Entity;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Net;
-using System.Web;
+using System.Threading.Tasks;
 using System.Web.Mvc;
- 
-using Calgroup.Areas.Admin.Models.BusinessModel;
 
 namespace Calgroup.Areas.Admin.Controllers
 {
@@ -20,7 +15,7 @@ namespace Calgroup.Areas.Admin.Controllers
         // GET: Admin/OrderDetails
         public async Task<ActionResult> Index()
         {
-            var orderDetails = db.OrderDetails.Include(o => o.Color).Include(o => o.Order).Include(o => o.Product).Include(o => o.Size);
+            IQueryable<OrderDetail> orderDetails = db.OrderDetails.Include(o => o.Color).Include(o => o.Order).Include(o => o.Product).Include(o => o.Size);
             return View(await orderDetails.ToListAsync());
         }
 

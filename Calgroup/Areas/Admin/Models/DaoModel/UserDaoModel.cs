@@ -1,10 +1,7 @@
 ﻿using Calgroup.Areas.Admin.Models.BusinessModel;
- 
+
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using System.Web;
 
 namespace Calgroup.Areas.Admin.Models.DaoModel
 {
@@ -14,7 +11,7 @@ namespace Calgroup.Areas.Admin.Models.DaoModel
         private Calgroup_v2DB db1 = new Calgroup_v2DB();
         public bool ChangeStatus(int id)
         {
-            var user = db.Administrators.Find(id);
+            UserAdministrator user = db.Administrators.Find(id);
             user.Allowed = !user.Allowed;
             db.SaveChanges();
             return user.Allowed;
@@ -24,7 +21,7 @@ namespace Calgroup.Areas.Admin.Models.DaoModel
         {
             try
             {
-                var user = db.Administrators.Find(id);
+                UserAdministrator user = db.Administrators.Find(id);
                 db.Administrators.Remove(user);
                 db.SaveChanges();
                 return true;
@@ -39,10 +36,12 @@ namespace Calgroup.Areas.Admin.Models.DaoModel
         {
             return db.Administrators.Count();
         }
+
         public bool CheckUserName(string userName)
         {
             return db.Administrators.Count(x => x.UserName == userName) > 0;
         }
+
         public bool CheckEmail(string email)
         {
             return db.Administrators.Count(x => x.Email == email) > 0;

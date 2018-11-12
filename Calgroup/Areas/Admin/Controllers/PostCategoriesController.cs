@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Net;
-using System.Web;
-using System.Web.Mvc;
- 
+﻿using Calgroup.Models.DAO;
 using Calgroup.Resources.Common;
-using  Calgroup.Models.DAO;
+using System;
+using System.Data.Entity;
+using System.Net;
+using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace Calgroup.Areas.Admin.Controllers
 {
@@ -130,7 +125,7 @@ namespace Calgroup.Areas.Admin.Controllers
                 //code
                 await db.SaveChangesAsync();
             }
-            catch (Exception Exception)
+            catch (Exception)
             {
                 //code
                 TempData["message"] = "Không thể xóa Loại tin tức khi có tin tức";
@@ -145,7 +140,7 @@ namespace Calgroup.Areas.Admin.Controllers
 
         public JsonResult ChangeStatus(int id)
         {
-            var result = new ChangesDAO().PostsCateStatus(id);
+            bool result = new ChangesDAO().PostsCateStatus(id);
             return Json(new
             {
                 status = result

@@ -1,12 +1,7 @@
-﻿using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
-using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
+﻿using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using System.Web;
 
 namespace Calgroup.Resources.Common
 {
@@ -38,11 +33,13 @@ namespace Calgroup.Resources.Common
             }
             return str2;
         }
-     
+
         public static string UpperCase(string s)
         {
-            if (String.IsNullOrEmpty(s))
+            if (string.IsNullOrEmpty(s))
+            {
                 return s;
+            }
 
             string result = "";
 
@@ -56,9 +53,13 @@ namespace Calgroup.Resources.Common
                 if (word.Trim() != "")
                 {
                     if (word.Length > 1)
+                    {
                         result += word.Substring(0, 1).ToUpper() + word.Substring(1).ToLower() + " ";
+                    }
                     else
+                    {
                         result += word.ToUpper() + " ";
+                    }
                 }
 
             }
@@ -67,8 +68,10 @@ namespace Calgroup.Resources.Common
 
         public static string ShortArticle(string s, int x)
         {
-            if (String.IsNullOrEmpty(s))
+            if (string.IsNullOrEmpty(s))
+            {
                 return s;
+            }
 
             string result = "";
 
@@ -76,7 +79,6 @@ namespace Calgroup.Resources.Common
             //string str =  HttpUtility.HtmlDecode(s);
             string[] words = s.Split(' ');
 
-            
             if (x <= words.Count())
             {
                 for (int i = 0; i < x; i++)
@@ -91,9 +93,9 @@ namespace Calgroup.Resources.Common
                 {
                     result += words[i] + " ";
                 }
-               
+
             }
-            
+
             return result.Trim();
         }
         public static string ToAlias(string input)

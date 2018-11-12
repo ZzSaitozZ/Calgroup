@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
- 
-using Calgroup.Resources.Common;
 
 namespace Calgroup.Areas.Admin.Controllers
 {
@@ -19,7 +14,7 @@ namespace Calgroup.Areas.Admin.Controllers
         // GET: Admin/SanPhams
         public async Task<ActionResult> Index()
         {
-            var sanPhams = db.SanPhams.Include(s => s.LoaiSanPham);
+            IQueryable<SanPham> sanPhams = db.SanPhams.Include(s => s.LoaiSanPham);
             return View(await sanPhams.ToListAsync());
         }
 
@@ -91,7 +86,7 @@ namespace Calgroup.Areas.Admin.Controllers
             sanPham.Detail = HttpUtility.HtmlDecode(sanPham.Detail);
             sanPham.Specification = HttpUtility.HtmlDecode(sanPham.Specification);
             if (ModelState.IsValid)
-            {             
+            {
                 db.Entry(sanPham).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");

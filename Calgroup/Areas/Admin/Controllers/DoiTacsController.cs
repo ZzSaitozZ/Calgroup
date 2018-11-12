@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Data.Entity;
 using System.Net;
-using System.Web;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 
 namespace Calgroup.Areas.Admin.Controllers
@@ -27,7 +22,7 @@ namespace Calgroup.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-             DoiTac doiTac = await db.DoiTacs.FindAsync(id);
+            DoiTac doiTac = await db.DoiTacs.FindAsync(id);
             if (doiTac == null)
             {
                 return HttpNotFound();
@@ -54,7 +49,6 @@ namespace Calgroup.Areas.Admin.Controllers
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-
             return View(doiTac);
         }
 
@@ -65,7 +59,7 @@ namespace Calgroup.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-             DoiTac doiTac = await db.DoiTacs.FindAsync(id);
+            DoiTac doiTac = await db.DoiTacs.FindAsync(id);
             if (doiTac == null)
             {
                 return HttpNotFound();
@@ -96,7 +90,7 @@ namespace Calgroup.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-             DoiTac doiTac = await db.DoiTacs.FindAsync(id);
+            DoiTac doiTac = await db.DoiTacs.FindAsync(id);
             if (doiTac == null)
             {
                 return HttpNotFound();
@@ -109,7 +103,7 @@ namespace Calgroup.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-             DoiTac doiTac = await db.DoiTacs.FindAsync(id);
+            DoiTac doiTac = await db.DoiTacs.FindAsync(id);
             db.DoiTacs.Remove(doiTac);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
